@@ -1,0 +1,33 @@
+:host {
+  width: 100%;
+  .center {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+  }
+  .push-h {
+    margin: 0 16px;
+  }
+  button {
+    color: #fff;
+    background-color: #6128ff;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    border-width: 0;
+    padding: 8px;
+    &.disabled {
+      color: rgba(70,70,75,0.38);
+      background-color: #ebebeb;
+    }
+  }
+  i {
+    padding: 8px;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+}

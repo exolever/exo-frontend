@@ -1,0 +1,67 @@
+<ng-container *ngIf="showQuiz">
+  <h2 *ngIf="step?.personalQuiz?.url">{{ 'SERVICE.REFLECT.TITLE' | translate }}</h2>
+
+  <p class="body-1"  *ngIf="step?.personalQuiz?.url">
+    <ng-container *ngIf="forTeamMember(feedback); else paragraph1Coach">{{ 'SERVICE.REFLECT.PARAGRAPH1' | translate }}</ng-container>
+    <ng-template #paragraph1Coach>{{ 'SERVICE.REFLECT.PARAGRAPH1_COACH' | translate }}</ng-template>
+  </p>
+  <ng-container *ngIf="step">
+    <button *ngIf="!quizDone" mat-flat-button color="primary" (click)="onOpenQuiz(step)">
+      <ng-container *ngIf="forTeamMember(feedback); else quizCoach">{{ 'SERVICE.REFLECT.TAKE_QUIZ' | translate }}</ng-container>
+      <ng-template #quizCoach>{{ 'SERVICE.REFLECT.TAKE_QUIZ_COACH' | translate }}</ng-template>
+    </button>
+    <div *ngIf="step.personalQuiz.url" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start stretch"
+         fxLayoutGap="16px" class="push-top-sm push-bottom-sm"
+    >
+      <mat-card fxFlex="232px" fxFlex.lt-md="100%">
+        <mat-card-content fxLayout="column" fxLayoutAlign="space-between center">
+          <h3 fxFlexAlign="start">{{ 'SERVICE.REFLECT.YOUR_MARK' | translate }}</h3>
+          <div fxFlexAlign="center" class="container-personal-rating-kpi">
+            <span class="personal-rating-kpi" [ngClass]="{'disabled': !step.personalQuiz.personalRating}">
+              {{step.personalQuiz.personalRating*10}}%
+            </span>
+            <mat-progress-spinner [strokeWidth]="6" diameter="164" class="pie disabled" [value]="100"></mat-progress-spinner>
+            <mat-progress-spinner [strokeWidth]="6" diameter="164" class="pie active" [value]="step.personalQuiz.personalRating * 10"></mat-progress-spinner>
+          </div>
+          <label fxFlexAlign="start" *ngIf="!quizDone" class="caption-1 pad-top-sm">
+            {{ 'SERVICE.REFLECT.YOUR_MARK_FOOTER' | translate }}
+          </label>
+          <label fxFlexAlign="start" *ngIf="quizDone" class="caption-1 pad-top-sm pointer">
+            <a href="#" (click)="onOpenQuiz(step)">{{ 'SERVICE.REFLECT.TRY_AGAIN_2' | translate }}</a>
+          </label>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card fxFlex="grow" fxFlex.lt-md="100%">
+        <mat-card-content class="team-ranking" fxLayout="column" fxLayoutAlign="start center">
+          <h3 fxFlexAlign="start">{{ 'SERVICE.REFLECT.TEAM_RANKING' | translate }}</h3>
+          <div class="w-100" fxLayout="column" fxLayoutAlign="start stretch">
+            <app-team-rank *ngFor="let rating of step.personalQuiz.teamRatings; last as isLast"
+              [teamRating]="rating"
+              [ngClass]="{ 'push-bottom': !isLast }"
+            ></app-team-rank>
+          </div>
+          <div fxFlexAlign="start" class="caption-1 team-ranking--footer pad-top-lg">
+            <label *ngIf="!quizDone">
+              <ng-container *ngIf="forTeamMember(feedback); else rankFooterCoach">{{ 'SERVICE.REFLECT.TEAM_RANKING_FOOTER' | translate }}</ng-container>
+              <ng-template #rankFooterCoach>{{ 'SERVICE.REFLECT.TEAM_RANKING_FOOTER_COACH' | translate }}</ng-template>
+            </label>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </ng-container>
+</ng-container>
+
+<app-feedback
+  *ngIf="showFeedback"
+  [user]="user"
+  [feedback]="feedback"
+  [receivedFeedback]="receivedFeedback"
+  [step]="step"
+  [team]="team"
+  [role]="role"
+  (sendFeedback)="onSendFeedback($event)"
+  (fillSurvey)="onFillSurvey($event)"
+>
+</app-feedback>

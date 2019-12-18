@@ -1,0 +1,10 @@
+@import "variables";
+
+.persistent-message{
+  .error, .error .mat-icon{
+    color: mat-color($mat-red, A200);
+  }
+  .success, .success .mat-icon {
+    color:  mat-color($mat-teal, A700);
+  }
+}

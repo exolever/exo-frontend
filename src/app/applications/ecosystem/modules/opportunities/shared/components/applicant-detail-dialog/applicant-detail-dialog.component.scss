@@ -1,0 +1,17 @@
+@import "variables";
+@import 'themes/exo-platform-light-theme';
+
+.applicant-answer, .extra-information-questions{
+  color: mat-color($exo-indigo, 900);
+  &.extra-information-questions {
+    font-style: italic;
+  }
+}
+
+.mark-text{
+  color: mat-color($exo-indigo, 900);
+}
+
+.when {
+  white-space: nowrap;
+}

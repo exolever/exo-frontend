@@ -1,0 +1,21 @@
+@import "variables";
+
+:host {
+  width: 100%;
+  justify-content: center;
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+
+.ecosystem-media {
+  min-height: 90vh;
+}
+
+.filters {
+  max-width: 300px;
+  min-width: 300px;
+}
+
+.media {
+  margin: 16px;
+}

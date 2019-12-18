@@ -1,0 +1,30 @@
+@import "variables";
+
+// config
+$timer-shadow: 0 2px 8px 0 rgba(70, 70, 75, 0.32);
+
+:host {
+  right: 0;
+  z-index: 1;
+  position: fixed;
+}
+div {
+  display: flex;
+  align-items: center;
+  &:not(.no-border-radius) {
+    border-radius: 8px;
+  }
+  box-shadow: $timer-shadow;
+  background-color: mat-color($exo-teal, A400);
+  &.half-session-passed {
+    background-color: mat-color($exo-amber, 500);
+  }
+  &.about-to-expire {
+    background-color: mat-color($exo-red, 500);
+  }
+  mat-icon,
+  span {
+    letter-spacing: -0.2px;
+    color: #FFF;
+  }
+}

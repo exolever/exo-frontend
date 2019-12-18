@@ -1,0 +1,16 @@
+<div class="extended-view"
+     [@slideDialog]="animationState"
+     (@slideDialog.done)='onAnimationDone($event)'
+>
+  <div class="header mat-dialog-title">
+    <mat-toolbar color="primary">
+      <mat-icon (click)='onClose($event)' class="pointer">{{icon}}</mat-icon>
+      <div class="text-truncate pad-left text-transform-capitalize">{{title}}</div>
+    </mat-toolbar>
+  </div>
+  <div class="full-screen-container push-bottom pad" fxLayout="row" fxLayoutAlign="center">
+    <div class="container" [ngClass]="{'full-width': isFullWidth }">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

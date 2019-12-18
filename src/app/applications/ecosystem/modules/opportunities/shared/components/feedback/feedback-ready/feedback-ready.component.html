@@ -1,0 +1,68 @@
+<mat-accordion class="accordion-feedback">
+  <mat-expansion-panel class="push-bottom">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div>
+          <ng-content select=".avatar"></ng-content>
+        </div>
+        <app-material-icon-star-rating
+            [rating]="1"
+            [numberOfGrades]="1"
+            [readOnly]="true"
+            [allowHalf]="false"
+            size="medium"
+            class="rating-average"
+        ></app-material-icon-star-rating>
+        <span class="rating-average-span">{{avergateFeedback()}}/5</span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="feedback-expand">
+      <div class="push-bottom-sm">
+        <p class="foreground-secondary-text body-2">
+          1. {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.BRIEF.TITLE.CLIENT' | translate}}
+        </p>
+        <app-material-icon-star-rating
+          [rating]="feedback.explained"
+          [numberOfGrades]="5"
+          [readOnly]="true"
+          [allowHalf]="false"
+          size="medium"
+        ></app-material-icon-star-rating>
+      </div>
+      <div class="push-bottom-sm">
+        <p class="foreground-secondary-text body-2">
+          2. {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.COLLABORATION.TITLE' | translate}}
+        </p>
+        <app-material-icon-star-rating
+          [rating]="feedback.collaboration"
+          [numberOfGrades]="5"
+          [readOnly]="true"
+          [allowHalf]="false"
+          size="medium"
+        ></app-material-icon-star-rating>
+      </div>
+      <div class="push-bottom-sm">
+        <p class="foreground-secondary-text body-2">
+          3. {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.COMMUNICATION.TITLE' | translate}}
+        </p>
+        <app-material-icon-star-rating
+          [rating]="feedback.communication"
+          [numberOfGrades]="5"
+          [readOnly]="true"
+          [allowHalf]="false"
+          size="medium"
+        ></app-material-icon-star-rating>
+      </div>
+      <div class="push-bottom-sm" *ngIf="feedback.comment">
+        <p class="foreground-secondary-text body-2">{{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.REVIEW' | translate}}</p>
+        <p class="caption-1">{{feedback.comment}}</p>
+      </div>
+      <div class="push-bottom-sm" *ngIf="feedback.recommendation">
+        <p class="foreground-secondary-text body-2">
+          {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.RECOMMENDATION.TITLE' | translate}}:
+        </p>
+        <p class="caption-1">{{feedback.recommendation}} out of 10</p>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

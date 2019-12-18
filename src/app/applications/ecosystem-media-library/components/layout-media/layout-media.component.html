@@ -1,0 +1,28 @@
+<div class="exo-platform ecosystem-media" [fxFlex]="'0 1 ' + config.layoutMaxWidth">
+  <div class="exo-platform-light-theme">
+    <div class="header push-bottom-lg text-align-center">
+      <h1 class="w-100 push-top-none pad-top-lg">{{ 'MEDIA.ECOSYSTEM.LIBRARY' | translate }}</h1>
+      <p class="subheading-2 foreground-secondary-text">{{ 'MEDIA.ECOSYSTEM.SUBTITLE' | translate }}</p>
+      <button
+        *ngIf="canAddVideo()"
+        (click)="addVideo()"
+        mat-flat-button
+        color="primary"
+        class="add-video"
+      >
+        {{'MEDIA.ECOSYSTEM.ADD' | translate}}
+      </button>
+    </div>
+    <section class="media" fxLayout="row" fxLayoutAlign="space-between start">
+      <div fxFlex="grow" ngClass.gt-md="push-right-sm">
+        <app-media-grid></app-media-grid>
+      </div>
+      <div fxHide.lt-md fxShow class="filters pad-bottom pad-left" fxLayout="column" fxLayoutAlign="center end">
+        <app-sorter fxLayout="row" fxLayoutAlign="center center"></app-sorter>
+        <mat-card class="filters pad-bottom">
+          <app-media-filters [showFullScreenTitle]="false"></app-media-filters>
+        </mat-card>
+      </div>
+    </section>
+  </div>
+</div>

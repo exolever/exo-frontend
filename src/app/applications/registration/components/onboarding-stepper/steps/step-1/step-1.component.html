@@ -1,0 +1,67 @@
+
+<form [formGroup]="formStep1" novalidate *ngIf="formStep1">
+  <app-onboarding-step [active]="isActive" [order]="1" (goTo)="changePage($event)" title="{{'REGISTRATION.WELCOME' | translate}} {{formStep1.get('shortName').value}}"
+    subtitle="{{'REGISTRATION.STEPS.1.COMMUNITY' | translate}}" nextButton="{{'REGISTRATION.NEXT_BUTTON' | translate}}">
+    <main fxLayout="column">
+      <div
+        class="push-bottom-sm"
+        fxLayout="row"
+        fxLayoutAlign="center"
+        fxLayoutAlign.gt-sm="start"
+      >
+        <app-profile-pic
+          [avatar]="getAvatar()"
+          (croppedImage)="updateAvatar($event)"
+        ></app-profile-pic>
+      </div>
+      <mat-form-field>
+        <input
+          matInput
+          #fullName
+          placeholder="{{ 'REGISTRATION.FULL_NAME' | translate}}"
+          formControlName="fullName"
+        >
+        <mat-error>{{formStep1.get('fullName').errors | humanizeFormErrors}}</mat-error>
+        <mat-hint align="end">{{fullName.value.length}} / 255</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          #shortName
+          placeholder="{{'REGISTRATION.PREFERRED_NAME' | translate}}"
+          formControlName="shortName"
+        >
+        <mat-error>{{formStep1.get('shortName').errors | humanizeFormErrors}}</mat-error>
+        <mat-hint align="end">{{shortName.value.length}} / 100</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="{{'REGISTRATION.STEPS.1.LOCATION' | translate}}"
+          formControlName="location"
+          google-place
+          (onSelect)="setLocation($event)"
+        >
+        <mat-error>{{formStep1.get('location').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="{{'REGISTRATION.STEPS.1.HEADLINE' | translate}}"
+          #personal_mtp
+          formControlName="personalMtp"
+        >
+        <mat-error>{{formStep1.get('personalMtp').errors | humanizeFormErrors}}</mat-error>
+        <mat-hint align="start">{{'REGISTRATION.STEPS.1.HEADLINE_HINT' | translate}}</mat-hint>
+        <mat-hint align="end">{{personal_mtp.value.length}} / 144</mat-hint>
+      </mat-form-field>
+    </main>
+    <summary class="background-image">
+      <div fxLayout="column" fxLayoutAlign="start center">
+        <mat-icon class="mat-48">face_profile</mat-icon>
+        <div class="title summary-title upper-first-letter pad-top pad-bottom">{{'REGISTRATION.STEPS.1.BASIC_INFO' | translate}}</div>
+        <div class="body-2 summary-subtitle pad-top-xxs md push-bottom upper-first-letter">{{'REGISTRATION.STEPS.1.FILL_OUT' | translate}}</div>
+      </div>
+    </summary>
+  </app-onboarding-step>
+</form>

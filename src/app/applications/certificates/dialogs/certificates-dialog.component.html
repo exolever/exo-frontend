@@ -1,0 +1,36 @@
+<div mat-dialog-title class="text-transform-capitalize">{{ 'CERTIFICATES.DIALOG.TITLE' | translate }}</div>
+<mat-dialog-content class="dialog__content" [ngClass]="{'one-certificate': certification.certificates.length === 1}">
+  <perfect-scrollbar class="perfect-scrollbar with-actions ps-show-always">
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start start"
+      class="dialog__content--certificate"
+    >
+      <figure>
+        <img class="dialog__content--image" [src]="getImage(certification)"/>
+      </figure>
+      <div
+        class="dialog__content--info"
+        fxLayout="column"
+        fxLayoutAlign="start start"
+      >
+        <h2 class="subheading-2">{{ 'CERTIFICATES.CERTIFIED_IN' | translate }} {{ certification.name }}</h2>
+        <p>{{ certification.description | translate }}</p>
+        <a
+          *ngFor="let certificate of certification.certificates"
+          class="mat-link pad-top dialog__content--link"
+          [href]="certificate.url"
+          target="_blank"
+        >
+          {{ 'CERTIFICATES.DIALOG.SEE_CERTIFICATE' | translate }}
+        </a>
+      </div>
+    </div>
+  </perfect-scrollbar>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog__actions">
+  <button mat-flat-button color="primary" mat-dialog-close="true" cdkFocusRegionstart>
+    {{ 'CERTIFICATES.DIALOG.ACTIONS.CLOSE' | translate }}
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,35 @@
+<mat-card class="tc__card card-section">
+  <mat-card-content class="tc__content">
+    <div fxLayout="row" fxLayoutAlign="space-between start">
+      <ng-content select=".content__title"></ng-content>
+    </div>
+    <div
+      id="messages"
+      #messages
+      class="w-100 tc__messages--container"
+      infiniteScroll
+      [infiniteScrollDistance]="scrollDistance"
+      [infiniteScrollUpDistance]="scrollUpDistance"
+      [infiniteScrollThrottle]="throttle"
+      [scrollWindow]="false"
+      (scrolledUp)="onScrollUp($event)"
+      (scrolled)="scrolled.emit(scrollDirection.DOWN)"
+      *ngIf="conversation?.messages.length > 0; else emptyMessages"
+    >
+      <span *ngIf="loading" fxLayout="row" fxLayoutAlign="center" class="push-bottom push-top">
+        <mat-spinner [strokeWidth]="2" [diameter]="30"></mat-spinner>
+      </span>
+      <app-conversation-item *ngFor="let message of conversation?.messages" [message]="message" [attr.data-id]="message.id"></app-conversation-item>
+    </div>
+    <mat-divider></mat-divider>
+    <app-editor [replyingMessage]="replyingMessage" (submit)="submit.emit($event);"></app-editor>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #emptyMessages>
+  <exo-empty-moment>
+    <p class="empty-message subheading-2 text-align-center">
+      {{ 'ECOSYSTEM.OPPORTUNITIES.CONVERSATIONS_EMPTY' | translate }}
+    </p>
+  </exo-empty-moment>
+</ng-template>

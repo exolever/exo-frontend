@@ -1,0 +1,10 @@
+<div class="push-top-xxs">
+  <mat-progress-bar mode="determinate" [value]="(value * 100)/2"></mat-progress-bar>
+  <div class="push-top-xxs caption-1 primary-color">
+    <span>{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.PROGRESS' | translate : {step: value} }} - </span>
+    <ng-container  [ngSwitch]="value">
+      <span *ngSwitchCase="1">{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.PROGRESS_FORM' | translate}}</span>
+      <span *ngSwitchCase="2">{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.PROGRESS_CONFIRM' | translate}}</span>
+    </ng-container>
+  </div>
+</div>

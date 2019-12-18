@@ -1,0 +1,13 @@
+<section class="exo-platform push-top-lg pad" fxLayout="column" fxLayoutAlign="start start">
+  <mat-card class="w-100 card-section">
+    <mat-card-content>
+      <div class="section card-type push-bottom">
+        {{'ECOSYSTEM.WORKSPACE.PROJECTS.CREATE.SECTION' | translate }}
+      </div>
+      <h1>{{ 'ECOSYSTEM.WORKSPACE.PROJECTS.CREATE.TITLE' | translate}}</h1>
+      <section class="push-top-lg">
+        <app-project-general-form (dataToSave)="onSubmit($event)" (changeDataForm)="changeDataForm($event)"></app-project-general-form>
+      </section>
+    </mat-card-content>
+  </mat-card>
+</section>

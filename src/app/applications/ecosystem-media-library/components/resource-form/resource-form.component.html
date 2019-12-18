@@ -1,0 +1,97 @@
+<div class="exo-platform">
+  <div class="exo-platform-light-theme">
+    <div mat-dialog-title class="dark-header">
+      <div class="pad" fxLayout="row" fxLayoutAlign="start start">
+        <div fxFlex class="headline text-transform-capitalize">
+          <span *ngIf="editionMode; else addTitle">{{'MEDIA.FORM.TITLE_FORM_EDITION' | translate}}</span>
+          <ng-template #addTitle>{{'MEDIA.FORM.TITLE_FORM' | translate}}</ng-template>
+        </div>
+        <mat-icon matTooltip="{{'TOOLTIP.CLOSE' | translate}}" cdkFocusRegionstart fxOrder="2" fxFlex="24px" (click)="dialogRef.close()">close</mat-icon>
+      </div>
+    </div>
+    <mat-dialog-content>
+      <form [formGroup]="form" fxLayout="column" novalidate>
+        <mat-radio-group formControlName="origin" class="push-bottom" *ngIf="!editionMode">
+          <mat-radio-button [checked]="false" color="primary" value="OWN" class="push-right">{{'MEDIA.FORM.ORIGIN_OWN' | translate}}</mat-radio-button>
+          <mat-radio-button [checked]="false" color="primary" value="PUBLIC">{{'MEDIA.FORM.ORIGIN_PUBLIC' | translate}}</mat-radio-button>
+          <mat-error><label *ngIf="submitted">{{form.get('origin').errors | humanizeFormErrors}}</label></mat-error>
+        </mat-radio-group>
+        <mat-form-field class="push-bottom">
+          <input type="text" #linkInput matInput placeholder="{{'MEDIA.FORM.LINK_PLACEHOLDER' | translate}}" formControlName="url" />
+          <mat-error>{{form.get('url').errors | humanizeFormErrors}}</mat-error>
+          <mat-hint align="end">{{'MEDIA.FORM.LINK_HINT' | translate}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="push-bottom">
+          <input type="text" #titleInput matInput placeholder="{{'MEDIA.FORM.TITLE_PLACEHOLDER' | translate}}" formControlName="name" />
+          <mat-error>{{form.get('name').errors | humanizeFormErrors}}</mat-error>
+          <mat-hint align="end">{{titleInput.value.length}} / 50</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="push-bottom">
+          <textarea #description
+                    matInput
+                    matTextareaAutosize
+                    matAutosizeMaxRows=5
+                    matAutosizeMinRows=3
+                    formControlName="description"
+                    placeholder="{{'MEDIA.FORM.DESCRIPTION_PLACEHOLDER' | translate }}"
+          ></textarea>
+          <mat-error>{{form.get('description').errors | humanizeFormErrors}}</mat-error>
+          <mat-hint align="start">{{'MEDIA.FORM.DESCRIPTION_HINT' | translate }}</mat-hint>
+          <mat-hint align="end">{{description.value.length}} / 600</mat-hint>
+        </mat-form-field>
+        <mat-form-field hideRequiredMarker=true class="push-bottom">
+          <app-chips-autocomplete
+            formControlName="tags"
+            placeholder="{{'MEDIA.FORM.TAGS_PLACEHOLDER' | translate }}"
+            [buttonRef]="chipsAutocompleteButtonRef"
+            [autocompleteListItems]="tags"
+            [requireMatch] = "true"
+            [modelAutocompleteItem]="keywordModel"
+          ></app-chips-autocomplete>
+          <mat-error class="upper-first-letter">{{form.get('tags').errors | humanizeFormErrors}}</mat-error>
+        </mat-form-field>
+        <div fxLayout="row wrap" class="push-bottom-xxxs">
+          <div fxFlex="grow" class="push-bottom-xxs">
+            <label class="subheading-2">{{'MEDIA.FORM.TYPE_OF_PROJECT' | translate}}</label>
+          </div>
+          <mat-checkbox *ngFor="let projectType of mlProjectTypes"
+                        fxFlex="1 0 33%"
+                        fxFlex.lt-md="1 0 50%"
+                        fxFlex.lt-sm="1 0 100%"
+                        class="body-1 push-bottom-xxxs"
+                        color="primary"
+                        [formControl]="projectType.control"
+                        (change)="setSectionSelected(projectType.code)"
+          >
+            <span class="text-transform-capitalize">{{ (projectType.label | translate).toLowerCase()}}</span>
+          </mat-checkbox>
+        </div>
+        <mat-hint class="push-bottom" align="start">{{'MEDIA.FORM.SELECT_PROJECT_TYPE' | translate }}</mat-hint>
+        <div fxLayout="row wrap" class="push-bottom-xxxs">
+          <div fxFlex="grow" class="push-bottom-xxs">
+            <label class="subheading-2">{{'MEDIA.FORM.HUBS' | translate}}</label>
+          </div>
+          <mat-checkbox *ngFor="let hub of mlHubs"
+                        fxFlex="1 0 33%"
+                        fxFlex.lt-md="1 0 50%"
+                        fxFlex.lt-sm="1 0 100%"
+                        class="body-1 push-bottom-xxxs"
+                        color="primary"
+                        [formControl]="hub.control"
+                        (change)="setSectionSelected(hub.code)"
+          >
+            {{ hub.label | translate }}
+          </mat-checkbox>
+        </div>
+        <mat-hint class="push-bottom" align="start">{{'MEDIA.FORM.SELECT_HUBS' | translate }}</mat-hint>
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-flat-button color="accent" mat-dialog-close>{{'MEDIA.FORM.CANCEL' | translate}}</button>
+      <button #chipsAutocompleteButtonRef mat-flat-button (click)="onSubmit()" color="primary">
+        <span *ngIf="editionMode; else uploadButton">{{'MEDIA.FORM.EDIT' | translate}}</span>
+        <ng-template #uploadButton>{{'MEDIA.FORM.UPLOAD' | translate}}</ng-template>
+      </button>
+    </mat-dialog-actions>
+  </div>
+</div>

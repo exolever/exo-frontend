@@ -1,0 +1,7 @@
+<app-overlay-template [title]="
+  isEditing ? ('ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.DIALOG_TITLE_EDITION' | translate) :
+  ('ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.DIALOG_TITLE_CREATION' | translate)" (close)="closeOverlay()">
+  <app-sow-form *ngIf="activeStep === 1" [opportunity]="opportunity" [applicant]="applicant" [isEditing]="isEditing" (nextPage)="nextPage()"></app-sow-form>
+  <app-sow-confirmation *ngIf="activeStep === 2" [applicant]="applicant" [isEditing]="isEditing" (prevPage)="prevPage()"></app-sow-confirmation>
+</app-overlay-template>
+

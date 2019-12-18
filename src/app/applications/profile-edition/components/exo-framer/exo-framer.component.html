@@ -1,0 +1,105 @@
+<section *ngIf="form">
+  <a name="fromExoSkills"></a>
+  <form [formGroup]="form" novalidate fxLayout="column" fxLayoutAlign="start stretch">
+    <div formGroupName="mtp" class="mtp push-bottom-lg" fxLayout="column">
+      <h3>{{ 'ECOSYSTEM.PROFILE.EDIT.ATTRIBUTES.MTP.TITLE' | translate }}</h3>
+      <div class="push-bottom-sm">
+        <p class="caption-1 push-none">
+          {{ 'ECOSYSTEM.PROFILE.EDIT.ATTRIBUTES.MTP.DESCRIPTION' | translate }}
+        </p>
+      </div>
+      <div fxLayout="column" class="pad push-bottom-lg framer-card">
+        <p fxLayout class="body-2 push-none">
+          {{ 'ECOSYSTEM.PROFILE.EDIT.ATTRIBUTES.MTP.MTPDESIGN' | translate }}
+          <app-profile-help-popover
+            class="push-left-xxxs"
+            fxLayoutAlign="center center"
+            [type]="helpPopoverEnum.MTP"
+            [iconSize]="'mat-20'"
+            [color]="'grey-500'"
+          >
+          </app-profile-help-popover>
+        </p>
+        <mat-slider class="mtp"
+                    formControlName="mtp"
+                    [max]="5"
+                    [min]="0"
+                    thumbLabel
+                    [value]="form.controls['mtp'].value['mtp']"
+        ></mat-slider>
+        <app-slider-hint [value]="form.controls['mtp'].value['mtp']"></app-slider-hint>
+      </div>
+      <button *ngIf="showMtpButton"
+              mat-flat-button
+              color="primary"
+              fxFlexAlign="end"
+              (click)="onSubmitMtp()"
+      >
+        {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+      </button>
+    </div>
+    <div formGroupName="ideas" class="ideas push-bottom-lg" fxLayout="column">
+      <h3>{{ 'ECOSYSTEM.PROFILE.EDIT.ATTRIBUTES.IDEAS.TITLE' | translate }}</h3>
+      <div class="push-bottom-sm">
+        <p class="caption-1 push-none">
+          {{ 'ECOSYSTEM.PROFILE.EDIT.ATTRIBUTES.IDEAS.DESCRIPTION' | translate }}
+        </p>
+      </div>
+      <div *ngFor="let idea of user.getInternalEXOAttributes()" fxLayout="column" class="pad push-bottom framer-card">
+        <p fxLayout class="body-2 push-none">
+          {{idea.name}}
+          <app-profile-help-popover
+            class="push-left-xxxs"
+            fxLayoutAlign="center center"
+            [type]="getHelpPopoverType(idea.name)"
+            [iconSize]="'mat-20'"
+          >
+          </app-profile-help-popover>
+        </p>
+        <mat-slider color="warn" [formControlName]="idea.pk" [max]="5" [min]="0" thumbLabel [value]="idea.level"></mat-slider>
+        <app-slider-hint [value]="getValue('ideas', idea.pk)"></app-slider-hint>
+      </div>
+      <button *ngIf="showIdeasButton"
+              mat-flat-button
+              color="primary"
+              fxFlexAlign="end"
+              (click)="onSubmitIdeas()"
+      >
+        {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+      </button>
+    </div>
+    <div formGroupName="scales" fxLayout="column" class="push-top-lg">
+      <h3>{{ 'ECOSYSTEM.PROFILE.EDIT.ATTRIBUTES.SCALES.TITLE' | translate }}</h3>
+      <p class="caption-1 push-bottom-sm">{{ 'ECOSYSTEM.PROFILE.EDIT.ATTRIBUTES.SCALES.DESCRIPTION' | translate }}</p>
+      <div *ngFor="let scale of user.getExternalEXOAttributes()" fxLayout="column" class="pad push-bottom framer-card">
+        <p fxLayout class="body-2 push-none">
+          {{scale.name}}
+          <app-profile-help-popover
+            class="push-left-xxxs"
+            fxLayoutAlign="center center"
+            [type]="getHelpPopoverType(scale.name)"
+            [iconSize]="'mat-20'"
+            [color]="'blue-500'"
+          >
+          </app-profile-help-popover>
+        </p>
+        <mat-slider class="scale"
+                    thumbLabel
+                    [formControlName]="scale.pk"
+                    [value]="scale.level"
+                    [max]="5"
+                    [min]="0"
+        ></mat-slider>
+        <app-slider-hint [value]="getValue('scales', scale.pk)"></app-slider-hint>
+      </div>
+      <button *ngIf="showScalesButton"
+              mat-flat-button
+              color="primary"
+              fxFlexAlign="end"
+              (click)="onSubmitScales()"
+      >
+        {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+      </button>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,11 @@
+@import "~@openexo/design-system/mixins";
+@import "variables";
+@import "~@openexo/design-system/variables";
+
+:host {
+  max-width: $screen-md-min;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-bottom: map-get($spaceMeasures, 'xs');
+}

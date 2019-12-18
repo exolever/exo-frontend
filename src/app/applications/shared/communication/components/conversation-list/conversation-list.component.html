@@ -1,0 +1,35 @@
+<mat-card *ngIf="conversations" class="pad-top pad-bottom">
+  <mat-card-content class="card-content">
+    <p class="section text-align-center pad-left-lg pad-right-lg">
+      {conversations.length, plural, =1 {{{'CONVERSATIONS.CONVERSATION' | translate}} ({{conversations.length}})} other {{{'CONVERSATIONS.CONVERSATIONS' | translate}} ({{conversations.length}})}}
+    </p>
+    <section fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="16px">
+      <div *ngFor="let conversation of conversations"
+           class="conversations pointer"
+           (click)="onSelect(conversation)"
+           [ngClass]="{ 'selected': showSelected(conversation) }"
+      >
+        <div class="group-system"
+             fxLayout="row"
+             fxLayoutAlign="space-between center"
+        >
+          <exo-avatar-system [name]="conversation.name" [truncateName]="true">
+            <exo-avatar
+              [src]="conversation.image"
+            >
+            </exo-avatar>
+          </exo-avatar-system>
+          <ng-container>
+            <div *ngIf="conversation.unread > 0"
+                 fxLayout="row"
+                 fxLayoutAlign="space-between"
+            >
+              <exo-forum-icon></exo-forum-icon>
+              <label class="push-left-xxxs body-2">{{conversation.unread}}</label>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </section>
+  </mat-card-content>
+</mat-card>

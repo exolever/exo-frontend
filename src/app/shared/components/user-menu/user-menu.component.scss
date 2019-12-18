@@ -1,0 +1,15 @@
+@import "variables";
+
+div{
+  p {
+    margin-top: 0;
+    line-height: 1em;
+    font-size: $extra-sm;
+  }
+}
+
+::ng-deep .profileMenu {
+  background-color: white !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 6px 0 rgba(70, 70, 75, 0.32) !important;
+}

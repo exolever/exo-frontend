@@ -1,0 +1,19 @@
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/theming';
+:host {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+mat-card-content span {
+  color: mat-color($exo-purple, 500);
+}
+
+.prev-wrapper {
+  width: 308px;
+}
+
+.card-width {
+  width: 260px;
+}

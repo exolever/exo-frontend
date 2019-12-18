@@ -1,0 +1,32 @@
+<div #eventsWrapper class="events-wrapper">
+  <button
+    (click)="openEvents()"
+    [offsetTopElement]="eventsWrapper"
+    [classOnAbsolute]="{'z-index': 10, top: '104px', right: '24px'}"
+    [classOnFixed]="{'z-index': 10, top: '30px',  right: '24px'}"
+    appStickyOnScroll
+    class="push-top-md push-right-md"
+    id="floating-events"
+    color="primary"
+    mat-flat-button
+  >
+    <mat-icon [ngClass.lt-sm]="'margin-none'">open_in_new</mat-icon>
+    <span fxHide.lt-sm>{{ 'ECOSYSTEM.EVENTS.SEE_ALL_BUTTON' | translate }}</span>
+  </button>
+  <div fxLayout="column" fxLayoutAlign="start stretch" class="pad-left pad-right pad-top-lg pad-bottom-lg">
+    <h1 class="text-align-center">
+      {{'ECOSYSTEM.EVENTS.TITLE' | translate}}
+    </h1>
+    <h3 class="subheading-2 foreground-secondary-text text-align-center">
+      {{'ECOSYSTEM.EVENTS.SUBTITLE' | translate}}
+    </h3>
+
+    <div class="push-bottom-xl" fxLayout="row" fxLayoutAlign="center center">
+      <button color="primary" mat-flat-button [routerLink]="newEventAddress">
+        <mat-icon>add</mat-icon>
+        <span>{{'ECOSYSTEM.EVENTS.NEW_BUTTON' | translate}}</span>
+      </button>
+    </div>
+    <app-events-list></app-events-list>
+  </div>
+</div>

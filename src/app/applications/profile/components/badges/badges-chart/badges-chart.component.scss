@@ -1,0 +1,19 @@
+@import "~@openexo/design-system/variables";
+
+.legend-wrapper {
+  border: 1px solid rgba(70, 70, 75, 0.16);
+  border-radius: 6px;
+  padding: map-get($spaceMeasures, 'xxxs') map-get($spaceMeasures, 'xs');
+
+  .legend-badge {
+    margin-top: map-get($spaceMeasures, 'xxxs');
+    margin-bottom: map-get($spaceMeasures, 'xxxs');
+
+    .legend-badge-color {
+      height: 15px;
+      width: 15px;
+      border-radius: 6px;
+    }
+  }
+}
+

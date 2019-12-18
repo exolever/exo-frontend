@@ -1,0 +1,102 @@
+<h2 class="title-help-icon">
+  {{ 'ECOSYSTEM.WORKSPACE.PROJECTS.EDIT.NAVIGATION.TEAMS' | translate }}
+  <app-help-popover
+    [htmlContent]="'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.HELP' | translate"
+  ></app-help-popover>
+</h2>
+<p>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.DESCRIPTION' | translate}}</p>
+<div *ngIf="loading$ | async; else dataTable" fxLayoutAlign="center center">
+  <app-component-spinner-loader></app-component-spinner-loader>
+</div>
+<ng-template #dataTable>
+  <div fxLayout="row" fxLayoutAlign="end center" class="push-bottom">
+    <button mat-flat-button color="primary" type="button" (click)="onAdd()">
+      <mat-icon class="push-right-xxs">add</mat-icon>{{ 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.ADD_TEAM' | translate }}
+    </button>
+  </div>
+  <section *ngIf="emptyMoment$ | async; else teamsInformation" fxLayout="column" fxLayoutAlign="center center">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <div class="image-empty push-bottom"></div>
+      <div class="text-center subheading-2 push-bottom-none">
+        <span>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.EMPTY_TITLE' | translate}}</span>
+      </div>
+      <div class="text-center push-top-none slight-opacity caption-1">
+        <span>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.EMPTY_SUBTITLE' | translate}}</span>
+      </div>
+    </div>
+  </section>
+  <ng-template #teamsInformation>
+
+    <mat-expansion-panel *ngFor="let team of teams$ | async" class="push-top-sm">
+      <mat-expansion-panel-header>
+        <mat-panel-title fxLayout="row" fxLayoutAlign="start center">
+          <img class="logo push-right-sm" src="{{team.image}}">
+          <div fxLayout="column" fxLayoutAlign="center start">
+            <span class="body-2">{{team.name}}</span>
+            <span class="caption-1 foreground-secondary-text" i18n>
+              {{team.users.length}} {team.users.length, plural, =1 { {{'ECOSYSTEM.CIRCLES.MEMBER' | translate}} } other { {{'ECOSYSTEM.CIRCLES.MEMBERS' | translate}} }}
+            </span>
+          </div>
+        </mat-panel-title>
+        <mat-panel-description fxLayout="row" fxLayoutAlign="end center">
+          <button class="foreground-icon" mat-icon-button matTooltip="{{'TOOLTIP.AVAILABLE_ACTIONS' | translate }}"
+            [matMenuTriggerFor]="menu" (click)="stopPropagation($event)">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" x-position="before" (closed)="onMenuClosed()">
+            <button mat-menu-item *ngFor="let action of team.userActions" (click)="onTeamAction(action, team)">
+              <span>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.TEAM_ACTIONS.' + action| translate | titlecase }}</span>
+            </button>
+          </mat-menu>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div *ngIf="!team.users.length else usersTable" fxLayout="row" fxLayoutAlign="space-between center">
+        <span>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.NO_MEMBERS' | translate}}</span>
+        <a mat-button color="primary" (click)="onSelectUsers(team)" *ngIf="showSelectMembers(team)">
+          {{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.SELECT_MEMBERS' | translate}}
+        </a>
+      </div>
+      <ng-template #usersTable>
+        <div *ngFor="let teamRole of team.users; let isLast = last;">
+          <div [ngClass]="{'push-bottom-xs': !isLast, 'w-100': true}" fxLayout="row" fxLayoutAlign="space-between center">
+            <exo-avatar-system *ngIf="teamRole.projectMember?.user"
+                [name]="teamRole.projectMember.user.fullName || teamRole.projectMember.user.shortName"
+                [description]="teamRole.role.name">
+                <exo-avatar
+                  [src]="teamRole.projectMember.user.getPicture(48)"
+                  [alt]="teamRole.projectMember.user.fullName"
+                  [tooltip]="teamRole.projectMember.user.fullName"
+                  [size]="'xs'"
+                ></exo-avatar>
+            </exo-avatar-system>
+            <button class="foreground-icon" mat-icon-button matTooltip="{{'TOOLTIP.AVAILABLE_ACTIONS' | translate }}"
+              [matMenuTriggerFor]="MenuParticipant" (click)="stopPropagation($event)">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </div>
+          <mat-menu fxFlexAlign="end" #MenuParticipant="matMenu" x-position="before" (closed)="onMenuClosed()">
+            <ng-container *ngFor="let action of teamRole.userActions">
+              <button *ngIf="isNotGoToAction(action); else goToAction" mat-menu-item  (click)="onMemberAction(action, team, teamRole)">
+                <span>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.MEMBER_ACTIONS.' + action| translate | titlecase }}</span>
+              </button>
+
+            <ng-template #goToAction>
+              <button mat-menu-item [matMenuTriggerFor]="teamDestination">
+                {{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.MEMBER_ACTIONS.V' | translate | titlecase }}
+              </button>
+            </ng-template>
+          </ng-container>
+          </mat-menu>
+          <mat-menu #teamDestination="matMenu">
+            <ng-container *ngFor="let destination of teams$ | async">
+              <button mat-menu-item *ngIf="destination.pk !== team.pk" (click)="onMoveTo(team, teamRole, destination)">
+                {{destination.name}}
+              </button>
+            </ng-container>
+          </mat-menu>
+        </div>
+      </ng-template>
+    </mat-expansion-panel>
+
+  </ng-template>
+</ng-template>

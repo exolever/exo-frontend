@@ -1,0 +1,16 @@
+<quill-editor
+  [styles]="{
+    'min-height': '250px',
+    'height': 'auto',
+    'background-color': 'transparent',
+    'position': 'relative',
+    'display': 'grid',
+    'width': '100%'}"
+  placeholder=""
+  [formControl]="textControl"
+  [modules]="quillConfig"
+  bounds="self"
+  (onContentChanged)="saveInformation()"
+  (onBlur)="onBlur()"
+  (onFocus)="onContainerClick()"
+></quill-editor>

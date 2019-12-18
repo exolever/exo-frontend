@@ -1,0 +1,76 @@
+@import "~@openexo/design-system/variables";
+
+$margin: map-get($componentMeasure, '0.5x');
+$one-card: "(max-width: 626px)";
+$two-cards: "(min-width: 627px) and (max-width: 931px)";
+$three-cards: "(min-width: 932px)";
+
+@mixin flex-row-center{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  place-content: center;
+}
+
+@mixin flex-row-start-center{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  place-content: center flex-start;
+}
+
+@mixin flex-column-space-between {
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  place-content: flex-start space-between;
+  align-items: flex-start;
+}
+
+.wrapper {
+  max-width: map-get($componentMeasure, '20x');
+  .container-search, .no-people {
+    @media #{$one-card} {
+      margin: 0 auto;
+      width: 280px;
+      .searcher, .no-people-message{
+        margin: -12px;
+      }
+    }
+    @media #{$two-cards} {
+      margin: 0 auto;
+      width: 590px;
+      .searcher, .no-people-message{
+        margin: -12px;
+      }
+    }
+    @media #{$three-cards} {
+      width: calc(100% - #{$margin});
+    }
+  }
+  .container-people {
+    @include flex-row-center;
+    flex-wrap: wrap;
+    .person-card {
+      width: 250px;
+      height: 310px;
+      .mat-card-content{
+        @include flex-column-space-between;
+      }
+      .location, .language {
+        @include flex-row-start-center;
+        span.text-truncate {
+          width: 220px;
+        }
+      }
+    }
+  }
+}
+
+::ng-deep.mat-card {
+  box-shadow: 0 2px 8px 0 rgba(70, 70, 75, 0.32) !important;
+}
+
+::ng-deep h3 a {
+  border-bottom: 0 !important;
+}

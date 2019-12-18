@@ -1,0 +1,92 @@
+<div
+  *ngIf="answer"
+  class="w-100"
+  fxLayout="row"
+  fxLayout.xxs="column"
+  fxLayoutGap.xxs="24px"
+  fxLayoutAlign="space-between start"
+  fxLayoutAlign.xxs="start stretch">
+  <exo-avatar-system
+    [name]="answer.createdBy.fullName"
+    [description]="answer.createdBy.projectTitle || answer.createdBy.userTitle"
+    (click)="goToProfile($event)"
+    class="pointer push-bottom-sm"
+    [connected]="answer.createdBy.onLine">
+      <exo-avatar
+        [src]="answer.createdBy.profilePictures[1].url"
+        [alt]="answer.createdBy.fullName"
+        [tooltip]="answer.createdBy.fullName"
+      ></exo-avatar>
+  </exo-avatar-system>
+  <!-- menu -->
+  <div fxLayout="row" fxAlign="stretch" fxLayoutAlign="end center" fxLayoutAlign.xxs="space-between start">
+    <div class="caption-1 edited">
+      {{answer.modified | amTimeAgo}} <i *ngIf="!answer.modified.isSame(answer.created, 'second')" class="push-left-xxs">{{'FORUM.EDITED' | translate }}</i>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="showMenu()" fxFlexAlign="end">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+</div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="enableEditionMode()">
+    <span>{{'FORUM.EDIT' | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="deleteConfirmation(answer.pk)">
+    <span>{{'FORUM.DELETE' | translate }}</span>
+  </button>
+</mat-menu>
+<div class="html-content" [innerHTML]="answer.comment" *ngIf="!editionMode" [class.unread-spot]="!answer.seen"></div>
+<div fxLayout="row" fxLayoutAlign="space-between center" *ngIf="!editionMode" class="push-top">
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <app-material-icon-star-rating
+      *ngIf="answer.counterRating > 0"
+      [rating]="answer.avgRating"
+      [numberOfGrades]="5"
+      [readOnly]="true"
+      [allowHalf]="true"
+      size="medium"
+    ></app-material-icon-star-rating>
+    <span *ngIf="answer.counterRating > 0" class="caption-1 slight-opacity">({{answer.avgRating}}/5)</span>
+    <div class="push-left-xxxs caption-1" *ngIf="answer.counterRating > 0">
+      <span>
+        {{ answer.counterRating }} {answer.counterRating, plural, =1 {{{'FORUM.VOTE' | translate}}} other {{{'FORUM.VOTES' | translate}}}}
+      </span>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <label class="caption-1 push-right-xxxs">{{answer.numLikes}}</label>
+      <button mat-icon-button [color]="getFavoriteColor()" class="pointer" (click)="onFavorite()" type="button" matTooltip="{{ 'COMMON.LIKE' | translate }}">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+    <app-star-rating
+      class="push-left"
+      *ngIf="canBeVoted"
+      [answerPk]="answer.pk"
+      [initialValue]="answer.yourRating"
+      (voted)="onVoted($event)">
+    </app-star-rating>
+  </div>
+</div>
+<!--attached files-->
+<app-display-attached
+  class="push-top"
+  *ngIf="!editionMode && answer?.uploadedFiles?.length"
+  [resources]="answer.uploadedFiles">
+</app-display-attached>
+
+<app-write-comment
+  *ngIf="editionMode"
+  class="w-100 push-top inline-block"
+  [user]="user"
+  [commentContent]="answer.comment"
+  saveButton="{{'PROJECT.ASK_ECOSYSTEM.EDIT' | translate }}"
+  cancelButton="{{'PROJECT.ASK_ECOSYSTEM.CANCEL' | translate }}"
+  [hideCancelConfirmation]="true"
+  [resources]="answer.uploadedFiles"
+  [mentionsAPI]="mentionsAPI"
+  (saved)="onEdited($event)"
+  (cancelled)="disableEditionMode()"
+></app-write-comment>

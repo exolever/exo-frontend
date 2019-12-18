@@ -1,0 +1,11 @@
+@import '~@openexo/design-system/variables';
+
+.title-section {
+  position: relative;
+}
+
+::ng-deep.help-icon {
+  bottom: map-get($spaceMeasures, 'xxs');
+  position: absolute;
+}
+

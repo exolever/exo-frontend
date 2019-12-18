@@ -1,0 +1,54 @@
+<div fxLayoutAlign="center center" class="login">
+  <div fxLayout="row wrap" fxLayoutAlign="center start" [fxFlex]="'0 1 ' + config.layoutMaxWidth">
+    <div
+      fxLayoutAlign="center"
+      fxFlex="grow"
+      ngClass.gt-sm="push-bottom-sm"
+      ngClass.lt-sm="pad-top"
+      data-e2e="page-title">
+      <h2 class="title">{{'PUBLIC.REQUEST_PASSWORD_RESET' | translate }}</h2>
+    </div>
+    <form *ngIf="!isFormOk()"
+          [formGroup]="requestForm"
+          fxLayout="row wrap"
+          fxFlex="grow"
+          ngClass.lt-sm="pad-right pad-left"
+          (ngSubmit)="onSubmit()"
+    >
+      <mat-form-field color="primary" fxFlex="grow" appearance="fill">
+        <mat-label>
+          {{'PUBLIC.WRITE_EMAIL' | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+        >
+        <mat-error align="start">{{requestForm.get('email').errors| humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+      <div fxLayoutAlign="center" fxFlex="grow" class="push-bottom-sm">
+        <button type="submit"
+                mat-flat-button
+                color="primary"
+
+        >{{'PUBLIC.RESET_PASSWORD' | translate }}</button>
+      </div>
+    </form>
+    <div *ngIf="isFormOk()"
+         fxLayout="row wrap"
+         class="success-message"
+    >
+      <p fxFlex="grow" class="body-2 text-align-center push-none">
+        {{'PUBLIC.PASSWORD_RESET_REQUESTED' | translate }}
+      </p>
+      <p fxFlex="grow" class="body-1 text-align-center push-none push-bottom-sm">
+        {{'PUBLIC.RECEIVE_EMAIL' | translate }}
+      </p>
+    </div>
+    <div class="actions push-bottom-lg">
+      <a class="body-1" routerLink="/auth/login">
+        {{'PUBLIC.BACK_TO_LOGIN' | translate }}
+      </a>
+    </div>
+  </div>
+</div>

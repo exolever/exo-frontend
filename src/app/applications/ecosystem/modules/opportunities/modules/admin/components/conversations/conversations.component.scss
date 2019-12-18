@@ -1,0 +1,11 @@
+@import '~@openexo/design-system/variables';
+
+.tc__members--person {
+  vertical-align: bottom;
+}
+
+.members-item {
+  &:not(:last-child) {
+    margin-bottom: map-get($spaceMeasures, 'xs');
+  }
+}

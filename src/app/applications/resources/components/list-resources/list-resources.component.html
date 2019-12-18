@@ -1,0 +1,58 @@
+<div [ngSwitch]="typeListToShow">
+  <div *ngSwitchCase="typeListEnum.mdCard">
+    <div *ngFor="let resource of listResources">
+      <mat-card>
+        <mat-card-content fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon matTooltip="{{'TOOLTIP.ATTACHED_DOCUMENT' | translate}}" class="file-icon">insert_drive_file</mat-icon>
+          <div fxFlex fxLayout="column" fxLayoutAlign="start stretch" class="pad-left">
+            <div class="primary-color body-2" [ngClass]="{'apply-opacity':progressBar}">{{resource.name}}</div>
+            <mat-progress-bar mode="indeterminate" *ngIf="progressBar"></mat-progress-bar>
+            <div *ngIf="!progressBar" class="foreground-secondary-text caption-1">{{resource.extension}}</div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="end center" *ngIf="!progressBar">
+          <a [attr.href]="resource.url">
+            <button mat-icon-button class="foreground-icon" matTooltip="{{'TOOLTIP.DOWNLOAD' | translate}}" *ngIf="resource.isFile && configListResources.canBeDownloaded"><mat-icon>file_download</mat-icon></button>
+          </a>
+          <button class="foreground-icon" matTooltip="{{'TOOLTIP.DELETE' | translate}}" (click)="deleteResource(resource)" *ngIf="configListResources.canBeDeleted" mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div *ngSwitchCase="typeListEnum.mdList">
+    <mat-list #resourcesList>
+      <div *ngFor="let resource of listResources; let last = last;" [@transitionItemList]="listResources">
+        <mat-list-item>
+          <button matTooltip="{{'TOOLTIP.DELETE' | translate}}" (click)="deleteResource(resource)" *ngIf="configListResources.canBeDeleted" mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+          <mat-icon matTooltip="{{'TOOLTIP.LINK' | translate}}" matListAvatar *ngIf="resource.isLink" color="primary" >insert_link</mat-icon>
+          <mat-icon matTooltip="{{'TOOLTIP.FILE' | translate}}" matListAvatar *ngIf="resource.isFile">insert_drive_file</mat-icon>
+          <div matLine fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="column" fxLayoutAlign="start stretch" class="pad-left">
+              <div class="body-1 text-truncate">
+                <a [ngClass]="{'foreground-text':resource.isFile}" [attr.href]="resource.url || resource.link" target="_blank">{{resource.name}}</a>
+              </div>
+              <div class="foreground-secondary-text caption-1">{{resource.extension}}</div>
+            </div>
+            <mat-chip-list *ngIf="configListResources.showTargetText">
+              <mat-chip
+                class="default"
+                fxHide="true"
+                fxShow.gt-xs="true"
+                *ngFor="let tag of resource.publicTags">
+                <span class="ellipsed">{{tag}}</span>
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+          <a [attr.href]="resource.url">
+            <button mat-icon-button matTooltip="{{'TOOLTIP.DOWNLOAD' | translate}}" *ngIf="resource.isFile && configListResources.canBeDownloaded"><mat-icon>file_download</mat-icon></button>
+          </a>
+        </mat-list-item>
+        <mat-divider md-inset *ngIf="configListResources.showDivider && !last"></mat-divider>
+      </div>
+    </mat-list>
+  </div>
+</div>

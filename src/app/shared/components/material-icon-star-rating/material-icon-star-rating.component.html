@@ -1,0 +1,16 @@
+<mat-icon
+  *ngFor="let star of iterations; let i=index"
+  [ngClass]="{
+    marked: value > i,
+    rate: !readOnly,
+    'only-filled': showOnlyFilled,
+    large: size === 'large',
+    regular: size === 'regular',
+    small: size === 'small',
+    smallest: size === 'smallest'
+  }"
+  (click)="rate(i, $event)"
+  class="star"
+>
+  {{getStarShape(i)}}
+</mat-icon>

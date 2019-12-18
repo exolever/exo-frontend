@@ -1,0 +1,26 @@
+<app-overlay-template *ngIf="data.showFullScreen; else content" [title]="data.title" (close)="closeOverlay()">
+  <ng-container [ngTemplateOutlet]="content"></ng-container>
+</app-overlay-template>
+
+<ng-template #content>
+  <section cdkFocusRegionstart>
+    <h2>{{'ECOSYSTEM.OPPORTUNITIES.CLOSE_DIALOG.TITLE' | translate}}</h2>
+    <p class="push-bottom-none">
+      {{'ECOSYSTEM.OPPORTUNITIES.CLOSE_DIALOG.SUBTITLE' | translate}}
+    </p>
+    <mat-form-field class="push-top-lg w-100">
+      <textarea
+        matInput
+        matTextareaAutosize
+        [placeholder]="'ECOSYSTEM.OPPORTUNITIES.CLOSE_DIALOG.MESSAGE_PLACEHOLDER' | translate"
+        [matAutosizeMaxRows]="5"
+        [formControl]="message"
+      ></textarea>
+      <mat-error>{{message.errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+  </section>
+  <div class="push-top push-bottom" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px">
+    <button mat-flat-button color="accent" type="button" (click)="closeOverlay()">{{'ECOSYSTEM.OPPORTUNITIES.CLOSE_DIALOG.BUTTON_CANCEL' | translate}}</button>
+    <button mat-flat-button color="primary" type="button" (click)="submit()">{{'ECOSYSTEM.OPPORTUNITIES.CLOSE_DIALOG.BUTTON_APPLY' | translate}}</button>
+  </div>
+</ng-template>

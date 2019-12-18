@@ -1,0 +1,8 @@
+<app-ecosystem-navbar [showSections]="false"></app-ecosystem-navbar>
+<ng-container *ngIf="invitation">
+  <div fxLayout="row" fxLayoutAlign="center stretch" class="mat-app-background wrapper-onboarding">
+    <app-step-0 (goTo)="goTo($event)" [invitation]="invitation" [user]="user"></app-step-0>
+    <app-step-1 (goTo)="goTo($event)" [invitation]="invitation"></app-step-1>
+    <app-step-2 (goTo)="goTo($event)" [invitation]="invitation" [shortName]="dataToSend?.short_name"></app-step-2>
+  </div>
+</ng-container>

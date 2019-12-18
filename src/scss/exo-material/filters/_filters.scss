@@ -1,0 +1,12 @@
+@import "variables";
+
+body {
+  .filter-title {
+    padding: $sm;
+    padding-bottom: 0;
+    color: mat-color($exo-service-light-primary);
+  }
+  mat-card.filters {
+    padding: 0;
+  }
+}

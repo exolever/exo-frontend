@@ -1,0 +1,50 @@
+@import 'variables';
+
+@mixin exo-sidenav-theme($theme) {
+  $sidenav-width: 280px;
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  .sidenav-container {
+    height: 100%;
+    .sidenav, .mat-sidenav, mat-sidenav {
+      padding: 0;
+      box-shadow: none;
+      background-color: mat-color($background, 'background');
+      width: $sidenav-width;
+      * {
+        cursor: pointer;
+      }
+      h3.active-sidenav-link {
+        color: mat-color($exo-amber, 500);
+      }
+      p.active-sidenav-link {
+        text-decoration: underline;
+        font-weight: $slight-bold;
+      }
+      hr {
+        width: 100%;
+        border: 1px solid rgba(255, 255, 255, .08);
+      }
+      // reset block level elements text
+      h1, h2, h3, p {
+        margin-left: $lg;
+        &:not(.team-communication-link) {
+          margin-right: $lg;
+        }
+      }
+      h1, h2, h3, hr {
+        margin-top: $md;
+        margin-bottom: $md;
+      }
+      p {
+        margin-top: $sm;
+      }
+      &.mobile {
+        h1, h2, h3, p {
+          margin-left: $sm;
+          margin-right: $sm;
+        }
+      }
+    }
+  }
+}

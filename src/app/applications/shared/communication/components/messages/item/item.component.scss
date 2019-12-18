@@ -1,0 +1,41 @@
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/colors';
+
+:host {
+  width: 98%; // 100% - scrollbar;
+  display: block;
+}
+
+.item-container {
+  padding-top: map-get($spaceMeasures, 'sm');
+  &.group {
+    padding-top: map-get($spaceMeasures, 'xxs');
+  }
+}
+
+.box {
+  border-radius: map-get($spaceMeasures, 'xxs');
+  background-color: map-get($exo-blue, '500-0.08');
+  &-row-reverse {
+    background-color: map-get($exo-indigo, '0.08');
+  }
+}
+
+.message-item {
+  padding: map-get($spaceMeasures, 'sm');
+  .line-breaker {
+    word-break: break-word;
+  }
+}
+
+.new-messages {
+  color: white;
+  background-color: map-get($exo-blue, 500);
+  width: map-get($componentMeasure, '4x');
+  height: map-get($componentMeasure, '1x');
+  border-radius: map-get($spaceMeasures, 'xxs');
+  margin: map-get($spaceMeasures, 'xs') auto;
+  &__icon {
+    color: white;
+  }
+}

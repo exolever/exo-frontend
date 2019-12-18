@@ -1,0 +1,19 @@
+<div [formGroup]="form">
+  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch" fxLayoutGap="24px">
+    <div fxFlex="50%" fxLayout="column" class="w-100">
+      <mat-form-field [ngClass.lt-md]="'w-100'" appearance="fill" fxFlex.gt-sm="50%">
+        <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.LANGUAGE_LABEL' | translate}}</mat-label>
+        <mat-select formControlName="mainLanguage">
+          <mat-option *ngFor="let lang of (languages$ | async)" [value]="lang.name">{{lang.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  
+    <mat-form-field appearance="fill" class="w-100" fxFlex="50%">
+      <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.LANGUAGE_ALTERNATIVE_LABEL' | translate}} ({{'COMMON.OPTIONAL' | translate}})</mat-label>
+      <mat-select formControlName="secondaryLanguage">
+        <mat-option *ngFor="let lang of (languages$ | async)" [value]="lang.name">{{lang.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

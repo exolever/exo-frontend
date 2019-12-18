@@ -1,0 +1,14 @@
+<h2 class="pad-top-pad-bottom">
+  {{ resourceBlock.title ? resourceBlock.title : 'MEDIA.RESOURCES.TOOLS.TITLE' | translate }}
+</h2>
+<p *ngIf="resourceBlock.subtitle">{{resourceBlock.subtitle}}</p>
+
+<div fxLayout="row wrap" fxLayoutGap="16px" class="resources-container">
+  <app-resource-item *ngFor="let resource of resourceBlock.contents; let last = last"
+                      fxFlex.lt-sm="calc(100%)"
+                      fxFlex.gt-xs="0 1 calc(50% - 16px)"
+                      [resource]="resource"
+                      class="push-bottom"
+  >
+  </app-resource-item>
+</div>

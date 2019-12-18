@@ -1,0 +1,17 @@
+@import "variables";
+
+.profile-info {
+  @media (min-width: $screen-sm-max){
+    margin: $xs 0;
+  }
+  margin: 0;
+}
+
+@media (max-width: $screen-xs-max){
+  .mat-dialog-content {
+    max-height: 100%;
+    .perfect-scrollbar{
+      max-height: 100%;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<mat-card [ngClass]="{ 'no-shadow': inExpansionPanel }">
+  <mat-card-content>
+    <p *ngIf="!inExpansionPanel" class="filters-actions section">{{ baseTranslateString + 'TITLE' | translate }}</p>
+    <div *ngIf="!inExpansionPanel">
+      <p class="subheading-2 centered">
+        {{ baseTranslateString + 'MAIN1' | translate }} <br>
+        {{ baseTranslateString + 'MAIN2' | translate }}
+      </p>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="16px">
+      <button
+        mat-button
+        color="primary"
+        type="button"
+        (click)="recommendSomeone( environment.TF_RECOMMEND_IND_URL )">
+        {{ 'COMMON.YES' | translate }}
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

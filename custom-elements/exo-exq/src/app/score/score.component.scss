@@ -1,0 +1,72 @@
+
+.score-wrapper {
+  display: flex;
+  text-align: center;
+}
+.background {
+  background: url('../../assets/bg-intro.jpg') no-repeat center center fixed;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  width: 100%;
+  background-size: cover;
+  @media (orientation: landscape) and (max-height: 450px) {
+    position: relative;
+  }
+}
+.circle-progress {
+  flex: 1;
+  height: 400px;
+  width: 400px;
+  @media (max-width: 599px) {
+    height: 300px;
+    width: 300px;
+  }
+}
+.logo {
+  margin-bottom: 24px;
+  height: 150px;
+  background: url('../../assets/openexo-logo-rgb.svg') no-repeat center center;
+  @media (max-width: 599px) {
+    height: 80px;
+  }
+}
+
+.vert-center {
+  margin: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.center {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 599px) {
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    button {
+      padding: 0 35% !important;
+      display: flex;
+      align-self: center;
+      &::ng-deep {
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+}
+
+.circle-wrapper {
+  margin-bottom: 48px;
+}

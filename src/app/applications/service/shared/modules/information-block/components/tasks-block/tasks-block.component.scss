@@ -1,0 +1,18 @@
+@import "~@openexo/design-system/variables";
+@import 'themes/exo-platform-dark-theme';
+
+.icon-svg {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  -webkit-mask: url($static-root + 'assets/images/icons/multi_check.svg') no-repeat 50% 50%;
+  mask: url($static-root + 'assets/images/icons/multi_check.svg') no-repeat 50% 50%;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  &.tasks-done {
+    background-color: map-get($mat-dark-theme-foreground, icon-success);
+  }
+  &.tasks-pending {
+    background-color: map-get($mat-dark-theme-foreground, icon-disabled);
+  }
+}

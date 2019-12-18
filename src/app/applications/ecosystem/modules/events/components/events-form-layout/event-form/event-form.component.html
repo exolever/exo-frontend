@@ -1,0 +1,183 @@
+<section>
+  <div *ngIf="event" fxLayout="column" fxLayoutAlign="start start" class="push-bottom">
+          <span *ngIf="event.isRejected()"
+                class="pretty-label red caption-2 push-bottom-xxs">{{'ECOSYSTEM.EVENTS.CARD.STATUS.REJECTED' | translate | uppercase }}</span>
+    <span *ngIf="event.isPublished()"
+          class="pretty-label green caption-2 push-bottom-xxs">{{'ECOSYSTEM.EVENTS.CARD.STATUS.PUBLISHED' | translate | uppercase }}</span>
+    <span *ngIf="event.isPending()" class="pretty-label blue caption-2 push-bottom-xxs">
+              {{'ECOSYSTEM.EVENTS.CARD.STATUS.UNDER_REVISION' | translate | uppercase }}</span>
+  </div>
+  <form [formGroup]="form" novalidate>
+    <section *ngIf="!event" fxLayout="column">
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch"
+           fxLayoutGap="24px">
+        <div fxLayout="row" [ngClass.gt-sm]="'w-100'">
+          <mat-form-field [ngClass]="(!isOther() ? 'w-50' : 'w-100')" appearance="fill">
+            <mat-label>{{'ECOSYSTEM.EVENTS.FORM.TYPE_PLACEHOLDER' | translate}}</mat-label>
+            <mat-select formControlName="category">
+              <mat-option *ngFor="let opt of typePermissions"
+                          value="{{opt.category}}">{{opt.typeEventName}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <app-help-popover
+            class="push-top-sm"
+            [title]="'ECOSYSTEM.EVENTS.FORM.HELP_TITLE' | translate"
+            [htmlContent]="'ECOSYSTEM.EVENTS.FORM.HELP' | translate"
+          ></app-help-popover>
+        </div>
+        <div *ngIf="isOther()" fxLayout="row" [ngClass.gt-sm]="'w-100'">
+          <mat-form-field [ngClass]="(!isOther() ? 'w-50' : 'w-100')" appearance="fill">
+            <mat-label>{{'ECOSYSTEM.EVENTS.FORM.TYPE_NAME_PLACEHOLDER' | translate}}</mat-label>
+            <input formControlName="typeEventName" matInput type="text"/>
+          </mat-form-field>
+        </div>
+      </div>
+    </section>
+    <section>
+      <mat-form-field appearance="fill" class="w-100 push-none">
+        <mat-label>{{'ECOSYSTEM.EVENTS.FORM.DESCRIPTION_PLACEHOLDER' | translate}}</mat-label>
+        <input #name formControlName="title" matInput type="text"/>
+        <mat-hint align="end">{{name.value.length}} / 100</mat-hint>
+        <mat-error>{{form.get('title').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+    </section>
+    <app-upload-image (upload)="onAfterUpload($event)"></app-upload-image>
+    <div class="push-bottom-sm" fxLayout="column">
+      <section fxLayout="row" class="push-bottom-lg">
+        <mat-radio-group formControlName="followType" fxLayoutGap="24px">
+          <mat-radio-button color="primary" value="P" class="push-right-sm">{{'ECOSYSTEM.EVENTS.FORM.PRESENCE_TYPES.P' | translate}}</mat-radio-button>
+          <mat-radio-button color="primary" value="S">{{'ECOSYSTEM.EVENTS.FORM.PRESENCE_TYPES.S' | translate}}</mat-radio-button>
+          <mat-radio-button color="primary" value="V">{{'ECOSYSTEM.EVENTS.FORM.PRESENCE_TYPES.V' | translate}}</mat-radio-button>
+          <mat-error class="push-top-xxs">{{form.get('followType').errors | humanizeFormErrors}}</mat-error>
+        </mat-radio-group>
+      </section>
+
+      <section fxLayout="row">
+        <mat-form-field *ngIf="!isVirtual()" [ngClass.lt-md]="'w-100'" appearance="fill" fxFlex.gt-sm="50%">
+          <mat-label>{{'ECOSYSTEM.EVENTS.FORM.LOCATION_PLACEHOLDER' | translate}}</mat-label>
+          <input (onSelect)="setLocation($event)" formControlName="location" google-place matInput>
+          <mat-hint>{{'ECOSYSTEM.EVENTS.FORM.LOCATION_HINT' | translate}}</mat-hint>
+          <mat-error>{{form.get('location').errors | humanizeFormErrors}}</mat-error>
+        </mat-form-field>
+      </section>
+      <section fxLayout="row">
+        <mat-form-field [ngClass.lt-md]="'w-100'" appearance="fill" fxFlex.gt-sm="50%" class="push-none">
+          <mat-label>{{'ECOSYSTEM.EVENTS.FORM.LANGUAGE_PLACEHOLDER' | translate}}</mat-label>
+          <mat-select formControlName="languages" multiple>
+            <mat-option *ngFor="let lang of (languages$ | async)" [value]="lang.name">{{lang.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </section>
+    </div>
+    <div class="push-bottom-lg" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch"
+         fxLayoutGap="24px">
+      <div fxFlex="50%" fxLayout="column">
+        <md2-datepicker
+          class="datepicker appearance-fill"
+          formControlName="start"
+          openOnFocus="true"
+          placeholder="{{'ECOSYSTEM.EVENTS.FORM.START_LABEL' | translate }}"
+          type="date"
+          [min]="today"
+        >
+        </md2-datepicker>
+        <mat-error *ngIf="showErrors('start')">{{form.get('start').errors | humanizeFormErrors}}</mat-error>
+      </div>
+      <div class="w-100" fxFlex="50%" fxLayout="column">
+        <md2-datepicker
+          class="datepicker appearance-fill"
+          formControlName="end"
+          openOnFocus="true"
+          placeholder="{{'ECOSYSTEM.EVENTS.FORM.END_LABEL' | translate }}"
+          type="date"
+          [min]="minValueForEndDate"
+        >
+        </md2-datepicker>
+        <mat-error *ngIf="showErrors('end')">{{form.get('end').errors | humanizeFormErrors}}</mat-error>
+      </div>
+    </div>
+
+    <section>
+      <div class="notification-item push-bottom-lg"
+           fxLayout="row"
+           fxLayoutAlign="space-between center"
+      >
+      <span class="body-2 notification-name"
+            ngClass.lt-sm="pad-right-xxxs">{{'ECOSYSTEM.EVENTS.FORM.FREE_EVENT' | translate}}</span>
+        <mat-slide-toggle
+          [checked]="false"
+          class="slide-toggle"
+          formControlName="showPrice"
+        ></mat-slide-toggle>
+      </div>
+    </section>
+
+    <section>
+      <h2>
+        {{'ECOSYSTEM.EVENTS.FORM.SPEAKERS_TITLE' | translate}}
+      </h2>
+      <div class="push-bottom-sm">
+        <exo-alert *ngIf="!isReviewer"
+          [isCloseable]="true"
+          message="{{'ECOSYSTEM.EVENTS.FORM.SPEAKERS_BOX' | translate}}"
+          closeButtonText="{{'COMMON.CLOSE' | translate}}"
+        ></exo-alert>
+      </div>
+
+      <app-ecosystem-searcher
+        (update)="onUpdateSpeakerList($event)"
+        [consultants]="speakerList"
+        [consultantsExtraOptions]="speakerExtraOptions"
+        [isSortable]="true"
+        placeholder="{{'ECOSYSTEM.EVENTS.FORM.SPEAKERS_PLACEHOLDER' | translate}}"
+        emptyMoment="{{'SEARCHER_TABLE.EMPTY_SPEAKER' | translate}}"
+      >
+      </app-ecosystem-searcher>
+    </section>
+    <section>
+      <h2>
+        {{'ECOSYSTEM.EVENTS.FORM.PROMOTION_TITLE' | translate}}
+      </h2>
+      <h3 class="foreground-secondary-text">
+        {{'ECOSYSTEM.EVENTS.FORM.PROMOTION_SUBTITLE' | translate}}
+      </h3>
+      <div class="push-bottom-sm">
+        <exo-alert *ngIf="!isReviewer"
+          [isCloseable]="true"
+          class="push-bottom-sm"
+          message="{{'ECOSYSTEM.EVENTS.FORM.PROMOTION_BOX' | translate}}"
+          closeButtonText="{{'COMMON.CLOSE' | translate}}"
+        ></exo-alert>
+      </div>
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>{{'ECOSYSTEM.EVENTS.FORM.PROMOTION_PLACEHOLDER' | translate}}</mat-label>
+        <input formControlName="url" matInput type="text"/>
+        <mat-error>{{form.get('url').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+    </section>
+
+
+    <div *ngIf="!isReviewer" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px">
+      <button (click)="goBack()"
+              color="accent" mat-flat-button type="button">{{'ECOSYSTEM.EVENTS.CANCEL' | translate}}</button>
+      <button (click)="onSubmit()" *ngIf="event"
+              color="primary"
+              mat-flat-button type="button">{{'ECOSYSTEM.EVENTS.SAVE' | translate}}</button>
+      <button (click)="onSubmit()" *ngIf="!event"
+              color="primary" mat-flat-button type="button">{{'ECOSYSTEM.EVENTS.CREATE' | translate}}</button>
+    </div>
+  </form>
+</section>
+
+<ng-template #mainSpeakerTemplate>
+  <div
+    class="speaker"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    fxLayoutAlign.lt-sm="start center"
+    ngClass.lt-sm="push-xxs"
+  >
+    <mat-icon class="label-targeted">bookmark</mat-icon>
+    <span>{{'SEARCHER_TABLE.MAIN_SPEAKER' | translate}}</span>
+  </div>
+</ng-template>

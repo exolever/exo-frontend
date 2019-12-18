@@ -1,0 +1,29 @@
+<section class="exo-platform pad-left pad-right" fxLayout="column" fxLayoutAlign="start start">
+  <app-back-to-snippet class="push-top-sm push-bottom-lg"
+    (back)="onCancel($event)"
+    priorNavigationTranslateString="{{ backLabel | translate}}"
+  ></app-back-to-snippet>
+  <mat-card class="w-100">
+    <mat-card-content>
+      <div class="push-top-sm push-bottom-sm">
+        <h3 class="headline push-none">{{'PROJECT.ASK_ECOSYSTEM.EDIT_QUESTION_TITLE' | translate }}</h3>
+      </div>
+      <app-write-comment
+        *ngIf="question$ | async as question"
+        class="w-100 inline-block"
+        titleLabel="{{'PROJECT.ASK_ECOSYSTEM.TITLE_LABEL' | translate }}"
+        [titleContent]="question.title"
+        commentLabel="{{'PROJECT.ASK_ECOSYSTEM.COMMENT' | translate }}"
+        [commentContent]="question.description"
+        tagsLabel="{{'FORUM.CATEGORIES' | translate }}"
+        [tagsContent]="question.tags"
+        tagsHint="{{'FORUM.CATEGORIES_HINT' | translate }}"
+        saveButton="{{'PROJECT.ASK_ECOSYSTEM.SAVE' | translate }}"
+        cancelButton="{{'COMMON.CANCEL' | translate }}"
+        [resources]="question.uploadedFiles"
+        (cancelled)="onCancel($event)"
+        (saved)="onSaved($event)"
+      ></app-write-comment>
+    </mat-card-content>
+  </mat-card>
+</section>

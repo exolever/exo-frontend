@@ -1,0 +1,67 @@
+.ngx-dropdown-container .ngx-dropdown-button {
+  background-color: $field-background-color !important;
+  span {
+    color: $grey-text-color;
+  }
+}
+
+.ngx-dropdown-container .ngx-dropdown-button, ul.available-items li  {
+  &:focus {
+    outline: none;
+    background-color: white;
+  }
+}
+.ngx-dropdown-container .ngx-dropdown-list-container {
+  .search-container input:focus{
+    border-bottom: 1px solid $accent-color !important;
+  }
+  ul{
+    li {
+      white-space: nowrap !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &.available-items li {
+      color: mat-color($accent) !important;
+      &:hover {
+        background-color: rgba(0, 24, 70, 0.04);
+      }
+      &.active {
+        background-color: rgba(0, 24, 70, 0.4) !important;
+      }
+    }
+    &.selected-items li{
+      background-color: mat-color($accent) !important;
+      border-radius: 5px;
+    }
+    li {
+      font-family: $font-family;
+      font-size: 16px;
+    }
+  }
+}
+ngx-select-dropdown.withScroll .ngx-dropdown-container .ngx-dropdown-list-container ul.available-items {
+  max-height: 140px;
+  overflow-y: scroll;
+}
+
+ngx-select-dropdown.selected-option{
+  button span:first-child{
+    color:mat-color($accent) !important;
+  }
+}
+
+// For scroll
+.ngx-dropdown-container .ngx-dropdown-list-container ul.available-items {
+  &::-webkit-scrollbar-track {
+    padding: 2px 0;
+    background-color: white;
+  }
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    border-radius: 4px;
+  }
+}

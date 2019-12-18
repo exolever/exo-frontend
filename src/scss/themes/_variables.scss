@@ -1,0 +1,21 @@
+@import "exo-default-theme";
+@import "exo-platform-light-theme";
+@import "exo-platform-dark-theme";
+
+$primary: map-get($exo-default-theme, primary);
+$accent: map-get($exo-default-theme, accent);
+$warn: map-get($exo-default-theme, warn);
+$foreground: map-get($exo-default-theme, foreground);
+$background: map-get($exo-default-theme, background);
+
+$exo-service-light-primary: map-get($exo-platform-light-theme, primary);
+$exo-service-light-accent: map-get($exo-platform-light-theme, accent);
+$exo-service-light-warn: map-get($exo-platform-light-theme, warn);
+$exo-service-light-foreground: map-get($exo-platform-light-theme, foreground);
+$exo-service-light-background: map-get($exo-platform-light-theme, background);
+
+$exo-service-dark-primary: map-get($exo-platform-dark-theme, primary);
+$exo-service-dark-accent: map-get($exo-platform-dark-theme, accent);
+$exo-service-dark-warn: map-get($exo-platform-dark-theme, warn);
+$exo-service-dark-foreground: map-get($exo-platform-dark-theme, foreground);
+$exo-service-dark-background: map-get($exo-platform-dark-theme, background);

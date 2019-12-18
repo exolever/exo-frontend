@@ -1,0 +1,24 @@
+@import "variables";
+@import "~@openexo/design-system/variables";
+.grey {
+  color: mat-color($exo-grey, 900, 0.64);
+}
+
+img {
+  width: map-get($spaceMeasures, 'sm');
+  height: map-get($spaceMeasures, 'sm');
+  border-radius: 50%;
+}
+
+.item {
+  border-radius: $xxs;
+  background-color: mat-color($exo-grey, 900, 0.04);
+}
+
+.push-top-comment {
+  margin-top: map-get($spaceMeasures, 'xxs');
+}
+
+.date {
+  min-width: map-get($spaceMeasures, 'xl');
+}

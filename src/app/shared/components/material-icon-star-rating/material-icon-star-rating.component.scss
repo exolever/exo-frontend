@@ -1,0 +1,40 @@
+@import "variables";
+// config
+$medium-size: 24px;
+$large-size: 48px;
+$small-size: 16px;
+$smallest-size: 14px;
+$regular-size: 24px;
+
+.star.mat-icon {
+  color: mat-color($exo-amber, 500);
+  cursor: default;
+  user-select: none;
+  font-size: $medium-size;
+
+  &.rate {
+    cursor: pointer;
+  }
+
+  &.large {
+    font-size: $large-size;
+  }
+
+  &.regular {
+    font-size: $regular-size;
+  }
+
+  &.small {
+    font-size: $small-size;
+  }
+
+  &.smallest {
+    font-size: $smallest-size;
+  }
+
+  &.only-filled {
+    &:not(.marked) {
+      display: none;
+    }
+  }
+}

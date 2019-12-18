@@ -1,0 +1,30 @@
+<mat-card
+  class="card-profile push-bottom-sm"
+  [attr.data-e2e]="item.user.fullName | replace:' ':'-' | lowercase"
+  (click)="pnService.goToProfile(item.user.slug, 'COMMON.PROJECT_DIRECTORY')"
+  ngClass.lt-sm="push-right-none"
+>
+  <div class="card-profile-content text-align-center pad-top-sm pad-bottom-sm push-bottom">
+    <ng-content select=".extraIcons"></ng-content>
+    <exo-avatar-system [name]="item.user.fullName" description="{{item.description}}" direction="column">
+      <exo-avatar [src]="item.user.getPicture(96)"
+                  [alt]="'TOOLTIP.PROFILE_PICTURE' | translate"
+                  [size]="'lg'"
+                  [tooltip]="item.user.fullName"
+                  [certificates]="item.certificates"
+      ></exo-avatar>
+    </exo-avatar-system>
+    <div *ngIf="loggedUserisStaff" class="profile-status" [ngClass]="{'is-active': item.isActive}"></div>
+  </div>
+  <mat-divider></mat-divider>
+  <section class="card-footer">
+    <p *ngFor="let info of item.extraInformation; trackBy: trackByFn" class="caption-1" fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon class="mat-16 fa-lg push-right-xs" [matTooltip]="info.tooltip">{{info.icon}}</mat-icon>
+      <span
+        class="text-truncate"
+        [matTooltip]="info.description"
+        [attr.data-e2e]="dataE2E ? dataE2E : ''"
+      >{{info.description}}</span>
+    </p>
+  </section>
+</mat-card>

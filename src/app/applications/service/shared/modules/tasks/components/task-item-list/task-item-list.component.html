@@ -1,0 +1,13 @@
+<mat-card class="w-100 pad pointer" (click)= "showTask($event)">
+  <mat-card-content fxLayout="row" fxLayoutAlign="space-between center" class="push-bottom-none">
+    <app-task-status [task]="task" (done)="markAsDone()" (toDo)="markAsToDo()"></app-task-status>
+    <span fxFlex="grow" class="body-2 text-truncate">
+      {{task.order}}. {{task.name}}
+    </span>
+    <div class="actions">
+      <button mat-button color="primary" (click)= "showTask($event)" class="push-left" *ngIf="task.blocks.length > 0">
+        {{ 'SERVICE.TASKS.GO_TO' | translate | uppercase }}
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

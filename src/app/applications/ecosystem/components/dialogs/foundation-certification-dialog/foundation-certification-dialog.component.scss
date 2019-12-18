@@ -1,0 +1,11 @@
+@import "~@openexo/design-system/variables";
+
+.information-first-level {
+  max-width: map-get($componentMeasure, '20x');
+}
+
+.cert-img::ng-deep {
+  img {
+    width: 150px;
+  }
+}

@@ -1,0 +1,129 @@
+<section class="exo-platform pad-left pad-right pad-bottom" fxLayout="column" fxLayoutAlign="start stretch">
+  <div *ngIf="(certification$ | async) as certification" class="text-align-center push-top-lg push-bottom-lg">
+    <h1 class="push-top-none">{{'ECOSYSTEM.WORKSPACE.PROJECTS.TITLE' | translate}}</h1>
+    <h3 class="subheading-2 slight-opacity">{{'ECOSYSTEM.WORKSPACE.PROJECTS.SUBTITLE' | translate}}</h3>
+    <div class="text-align-center" >
+      <button mat-flat-button color="primary" (click)="onCreate(certification)">
+        <span fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="push-right-xxxs">add</mat-icon>
+          {{ 'ECOSYSTEM.WORKSPACE.PROJECTS.CREATE_NEW' | translate }}
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayout.lt-md="column" >
+    <div class="project-list w-100">
+      <div fxLayout="row" fxLayoutAlign="space-between center" fxLayout.lt-sm="column" fxLayoutGap="16px" *ngIf="(totalProjects$ | async) > 0 || (text$ | async)">
+        <mat-form-field floatLabel="never" class="w-100" >
+          <mat-icon matPrefix class="search-icon pad-right">search</mat-icon>
+          <input
+            matInput
+            type="text"
+            placeholder="{{'FORUM.SEARCH' | translate}}"
+            [formControl]="searchBox"
+            [value]="text$ | async"
+            #search
+          >
+          <mat-icon matSuffix class="pointer" *ngIf="searchBox.value" (click)="searchBox.setValue('')">close</mat-icon>
+        </mat-form-field>
+        <mat-form-field apparence="fill">
+          <mat-select #matSelectSortBy
+                      placeholder="{{'COMMON.ACTIONS.SORT_BY' | translate}}"
+                      class="push-right-xxs sort-by"
+                      [value]="sortBy$ | async"
+                      (selectionChange)="onUpdateSortBy($event)"
+          >
+            <mat-option value="date">
+              {{'ECOSYSTEM.WORKSPACE.PROJECTS.SORT_BY.DATE' | translate}}
+            </mat-option>
+            <mat-option value="status">
+              {{'ECOSYSTEM.WORKSPACE.PROJECTS.SORT_BY.STATUS' | translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div *ngIf="loading$ | async" fxLayoutAlign="center center">
+        <app-component-spinner-loader></app-component-spinner-loader>
+      </div>
+
+      <section *ngIf="(emptyMoment$ | async) && !(loading$ | async)" fxLayout="column" fxLayoutAlign="center center">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <div class="image-empty push-bottom"></div>
+          <div class="text-center subheading-2 push-bottom-none">
+            <span *ngIf="!(text$ | async); else titleNoResults">{{'ECOSYSTEM.WORKSPACE.PROJECTS.EMPTY_TITLE' | translate}}</span>
+            <ng-template #titleNoResults>{{'ECOSYSTEM.WORKSPACE.PROJECTS.EMPTY_TITLE' | translate}}</ng-template>
+          </div>
+          <div class="text-center push-top-none slight-opacity caption-1">
+            <span *ngIf="!(text$ | async); else subtitleNoResults">{{'ECOSYSTEM.WORKSPACE.PROJECTS.EMPTY_SUBTITLE' | translate}}</span>
+            <ng-template #subtitleNoResults>{{'ECOSYSTEM.WORKSPACE.PROJECTS.EMPTY_SUBTITLE' | translate}}</ng-template>
+          </div>
+        </div>
+      </section>
+
+      <h3 i18n *ngIf="(this.text$ | async) && !(this.loading$ | async) && (totalProjects$ | async) as totalProjects">
+        {{totalProjects}} {totalProjects, plural, =1 { {{'ECOSYSTEM.WORKSPACE.PROJECTS.PROJECT_SEARCH' | translate}} } other { {{'ECOSYSTEM.WORKSPACE.PROJECTS.PROJECTS_SEARCH' | translate}} }}
+      </h3>
+
+      <mat-card *ngFor="let project of projects$ | async" class="push-bottom-sm">
+        <mat-card-content (click)="onClick(project)" class="pointer">
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="row">
+              <span class="section push-right" [ngClass]="{'foreground-secondary-text': project.isFinished()}">{{ project.templateName | uppercase }}</span>
+              <app-project-status-label [project]="project"></app-project-status-label>
+            </div>
+            <button class="foreground-icon" mat-icon-button matTooltip="{{'TOOLTIP.AVAILABLE_ACTIONS' | translate }}"
+             [matMenuTriggerFor]="menu" (click)="stopPropagation($event)">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </div>
+          <div class="content" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between start" fxLayoutAlign.lt-sm="start start">
+            <div fxFlex="75">
+              <h2>{{project.name}}</h2>
+              <div class="foreground-secondary-text subheading-2 push-bottom" exoLineClamp [lines]="1">
+                <ng-container *ngIf="project.customer">{{project.customer}} | </ng-container>{{project.location}}
+              </div>
+            </div>
+            <div class="applicants">
+              <div class="avatars">
+                <span class="avatar" *ngFor="let user of project.users; let i = index">
+                  <exo-avatar
+                    [src]="user.profilePictures[1][1]"
+                    [alt]="user.fullName"
+                    [tooltip]="user.fullName"
+                  >
+                  </exo-avatar>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center" class="foreground-secondary-text">
+            <ng-container *ngIf="project.isStarted()">
+              <mat-icon class="push-right-xxxs" matTooltip="{{'ECOSYSTEM.WORKSPACE.PROJECTS.TOOLTIPS.CURRENT_STEP' | translate }}">map</mat-icon>
+              <label class="caption-1 push-right">{{project.currentStep.name}}</label>
+            </ng-container>
+            <mat-icon class="push-right-xxxs" matTooltip="{{'ECOSYSTEM.WORKSPACE.PROJECTS.TOOLTIPS.START_DATE' | translate }}">date_range</mat-icon>
+            <label class="caption-1">{{project.start | formatDate: 'short'}}</label>
+          </div>
+          <mat-menu #menu="matMenu" x-position="before" (closed)="onMenuClosed()">
+            <ng-container *ngFor="let action of project.userActions">
+              <button mat-menu-item  (click)="onProjectAction(action, project)">
+                <span>{{'ECOSYSTEM.WORKSPACE.PROJECTS.ACTIONS.' + action | translate | titlecase }}</span>
+              </button>
+            </ng-container>
+          </mat-menu>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-paginator
+        *ngIf="!(emptyMoment$ | async) && !(loading$ | async) && (totalProjects$ | async)"
+        class="transparent"
+        (page)="paginatorChange($event)"
+        [length]="totalProjects$ | async"
+        [pageSize]="pageSize$ | async"
+        [pageIndex]="pageIndex$ | async"
+        [pageSizeOptions]="[5, 15, 25]">
+      </mat-paginator>
+    </div>
+  </div>
+</section>

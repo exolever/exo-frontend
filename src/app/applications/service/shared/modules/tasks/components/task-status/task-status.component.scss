@@ -1,0 +1,9 @@
+@import 'themes/exo-platform-dark-theme';
+
+.task-done {
+  color: map-get($mat-dark-theme-foreground, icon-success);
+}
+
+.task-pending {
+  color: map-get($mat-dark-theme-foreground, icon-disabled);
+}

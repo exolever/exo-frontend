@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+@import 'scss/theme';
+@include mat-core();
+
+// Use the desired palette
+$primary: mat-palette($mat-purple);
+$secondary: mat-palette($mat-indigo);
+// Create the theme
+$theme: mat-light-theme($primary, $secondary);
+
+// Include component specific mixin
+@include mat-select-theme($theme);
+@include mat-stepper-theme($theme);
+
+@font-face {
+  font-family: Roboto;
+  src: url(assets/font/Roboto-Regular.ttf) format("opentype");
+}

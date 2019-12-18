@@ -1,0 +1,47 @@
+@import "variables";
+
+// profile sections background colors
+$primaryBackground: #f8f8f9;
+$alternateBackground: #fbfcfb;
+
+:host {
+  width: 100%;
+  .exo-platform, .exo-platform-light-theme {
+    position: relative;
+    ::ng-deep .alternate-background {
+      &.primary {
+        background-color: $primaryBackground;
+      }
+      &.secondary {
+        background-color: $alternateBackground;
+      }
+    }
+  }
+  app-back-to-snippet,
+  #floating-share, #floating-chat {
+    position: absolute;
+  }
+  #floating-share, #floating-chat {
+    z-index: 1;
+    top: 0;
+    right: 0;
+    color: white;
+    background-color: mat-color($exo-blue, 500) !important;
+    @media screen and (max-width: 600px) {
+      width: $xl;
+      min-width: $xl;
+      padding: 0;
+      mat-icon.mat-icon {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+/** forced margins, defined this way bc theme overrides with !important */
+.top-margin {
+  margin-top: $xs !important;
+}
+.bottom-margin {
+  margin-bottom: $xs !important;
+}

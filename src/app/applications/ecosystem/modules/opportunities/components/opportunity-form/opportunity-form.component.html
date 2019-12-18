@@ -1,0 +1,243 @@
+<form [formGroup]="form" novalidate autocomplete="off">
+  <h1>
+    {{ opportunity ? ('ECOSYSTEM.OPPORTUNITIES.EDIT.TITLE' | translate) : 'ECOSYSTEM.OPPORTUNITIES.CREATE.TITLE' | translate}}
+  </h1>
+
+  <section class="push-top-lg">
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.PROJECT_LABEL' | translate}}</mat-label>
+      <input matInput type="text" formControlName="title"/>
+      <mat-hint align="end">{{form.get('title').value.length}} / {{managementOpportunityFormService.maxLengthForTitleEntity}}</mat-hint>
+      <mat-error>{{form.get('title').errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.ENTITY_LABEL' | translate}}</mat-label>
+      <input matInput type="text" formControlName="entity"/>
+      <mat-hint align="end">{{form.get('entity').value.length}} / {{managementOpportunityFormService.maxLengthForTitleEntity}}</mat-hint>
+      <mat-error>{{form.get('entity').errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <app-filestack-attach-button (uploaded)="addResource($event)"></app-filestack-attach-button>
+      <label class="push-left">{{'ECOSYSTEM.OPPORTUNITIES.CREATE.ATTACH' | translate}}</label>
+    </div>
+    <div *ngIf="form.get('files').value.length" class="push-top-xs">
+      <app-uploaded-files-list [uploadedResources]="form.get('files').value">
+      </app-uploaded-files-list>
+    </div>
+
+    <mat-form-field hideRequiredMarker class="w-100 push-top-lg">
+      <app-custom-quill-editor
+        formControlName="description"
+        [placeholder]="'ECOSYSTEM.OPPORTUNITIES.CREATE.DESCRIPTION' | translate"
+        [required]="true"
+        [isSubmitted]="isSubmitted"
+      >
+      </app-custom-quill-editor>
+      <mat-error>{{form.get('description').errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+    <ng-container  *ngIf="myProjects$ | async as myProjects">
+      <mat-form-field appearance="fill" class="w-100" *ngIf="myEvents$ | async as myEvents">
+        <mat-label *ngIf="opportunity?.infoDetail; else defaultLabel">{{opportunity.infoDetail}}</mat-label>
+        <ng-template #defaultLabel>
+          <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.RELATED_ENTITY.LABEL' | translate}}</mat-label>
+        </ng-template>
+        <mat-select formControlName="relatedEntity">
+          <mat-option>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.RELATED_ENTITY.NONE' | translate}}</mat-option>
+          <mat-optgroup
+            label="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.RELATED_ENTITY.EVENTS' | translate}}">
+            <mat-option *ngFor="let event of myEvents" [value]="event">
+              {{event.title}}
+            </mat-option>
+          </mat-optgroup>
+          <mat-optgroup
+            label="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.RELATED_ENTITY.PROJECTS' | translate}}">
+            <mat-option *ngFor="let project of myProjects" [value]="project">
+              {{project.name}}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+        <mat-hint>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.RELATED_ENTITY.HINT' | translate}}</mat-hint>
+      </mat-form-field>
+    </ng-container>
+
+    <mat-form-field appearance="fill" class="w-100 push-bottom-lg" hideRequiredMarker>
+      <app-chips-autocomplete
+        formControlName="keywords"
+        placeholder="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.KEYWORDS' | translate }}"
+        [buttonRef]="saveButton"
+        [autocompleteListItems]="allKeywords$ | async"
+        [modelAutocompleteItem] = "keywordModel"
+      ></app-chips-autocomplete>
+      <mat-error>
+        {{ form.get('keywords').errors | humanizeFormErrors }}
+      </mat-error>
+      <mat-hint align="start">{{ 'ECOSYSTEM.OPPORTUNITIES.CREATE.KEYWORDS_HINT' | translate }}</mat-hint>
+    </mat-form-field>
+
+    <app-target-management
+      [opportunity]="opportunity"
+    ></app-target-management>
+
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" fxLayoutAlign.lt-md="start stretch">
+      <mat-form-field appearance="fill" class="w-100" fxFlex="0 1 calc(50% - 12px)">
+        <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.POSITIONS_NUMBERS' | translate}}</mat-label>
+        <input matInput type="text" formControlName="numPositions"/>
+        <mat-hint align="start">{{ 'ECOSYSTEM.OPPORTUNITIES.CREATE.POSITIONS_NUMBERS_HINT' | translate }}</mat-hint>
+        <mat-error>{{form.get('numPositions').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" fxLayoutAlign.lt-md="start stretch" class="push-bottom-lg">
+      <div fxFlex="50%" fxLayout="column" class="w-100">
+        <md2-datepicker
+          class="datepicker appearance-fill"
+          formControlName="deadlineDate"
+          placeholder="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.DEADLINE_LABEL' | translate }}"
+          type="date"
+          [min]="today"
+          openOnFocus="true">
+        </md2-datepicker>
+        <mat-hint align="start">{{ 'ECOSYSTEM.OPPORTUNITIES.CREATE.DEADLINE_HINT' | translate }}</mat-hint>
+        <mat-error *ngIf="managementOpportunityFormService.showErrors('deadlineDate', isSubmitted)" class="push-top-xxs push-left-xxs">
+          {{form.get('deadlineDate').errors | humanizeFormErrors}}
+        </mat-error>
+      </div>
+    </div>
+
+    <section>
+      <h2 class="title-help-icon">
+        {{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.TITLE' | translate}}
+      </h2>
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch">
+        <div fxFlex="50%" fxLayout="row" class="w-100" fxFlex="0 1 calc(50% - 24px)" fxFlex.lt-md="0 1 calc(100% - 24px)">
+          <mat-form-field appearance="fill">
+            <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.PROJECT_TYPE.LABEL' | translate}}</mat-label>
+            <mat-select formControlName="category">
+              <mat-option *ngFor="let category of categories" [value]="category">
+                {{category.name}}
+              </mat-option>
+            </mat-select>
+            <mat-hint>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.PROJECT_TYPE.HINT' | translate}}</mat-hint>
+          </mat-form-field>
+          <app-help-popover
+            class="push-top-sm"
+            [title]="'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.PROJECT_TYPE.HELP_TITLE' | translate"
+            [htmlContent]="'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.PROJECT_TYPE.HELP' | translate"
+          ></app-help-popover>
+        </div>
+        <mat-form-field *ngIf="isCustomCategory" appearance="fill" ngClass.gt-sm='push-left' fxFlex.gt-sm="50%">
+          <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.PROJECT_TYPE.OTHER_LABEL' | translate}}</mat-label>
+          <input matInput type="text" formControlName="customCategory"/>
+          <mat-hint align="end">{{form.get('customCategory').value.length}} / {{maxLengthForCustomCategory}}</mat-hint>
+          <mat-error>{{form.get('customCategory').errors | humanizeFormErrors}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch">
+        <div fxFlex="50%" fxLayout="row" class="w-100" fxFlex="0 1 calc(50% - 24px)" fxFlex.lt-md="0 1 calc(100% - 24px)">
+          <mat-form-field appearance="fill" fxFlex="0 1">
+            <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.ROLE_REQUESTED.LABEL' | translate}}</mat-label>
+            <mat-select formControlName="role">
+              <mat-option *ngFor="let role of roles" [value]="role">
+                {{role.name}}
+              </mat-option>
+            </mat-select>
+            <mat-hint *ngIf="isOpen()">{{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.ROLE_REQUESTED.HINT' | translate }}</mat-hint>
+          </mat-form-field>
+          <app-help-popover
+            class="push-top-sm"
+            [title]="'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.ROLE_REQUESTED.HELP_TITLE' | translate"
+            [htmlContent]="'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.ROLE_REQUESTED.HELP' | translate :{ url: roleUrlHelpCenter } "
+          ></app-help-popover>
+        </div>
+        <mat-form-field *ngIf="isCustomRole" appearance="fill" ngClass.gt-sm='push-left' fxFlex.gt-sm="50%">
+          <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.ROLE_REQUESTED.OTHER_LABEL' | translate}}</mat-label>
+          <input matInput type="text" formControlName="customRole"/>
+          <mat-hint align="end">{{form.get('customRole').value.length}} / {{maxLengthForCustomRole}}</mat-hint>
+          <mat-error>{{form.get('customRole').errors | humanizeFormErrors}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <ng-container *ngIf="isOpen()">
+        <div fxLayout="row" fxLayoutAlign="start start" fxLayoutAlign.lt-md="start stretch">
+          <mat-form-field appearance="fill" fxFlex="0 1 calc(50% - 24px)" fxFlex.lt-md="0 1 calc(100% - 24px)">
+            <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.REQUIRED_CERTIFICATION.LABEL' | translate}}</mat-label>
+            <mat-select formControlName="certification">
+              <mat-option *ngFor="let certification of filteredCertifications" [value]="certification.code">
+                {{certification.name}}
+              </mat-option>
+            </mat-select>
+            <mat-hint>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.REQUIRED_CERTIFICATION.HINT' | translate}}</mat-hint>
+          </mat-form-field>
+        </div>
+        <div *ngIf="certifiedPeople" class="push-bottom-lg">
+          <exo-alert
+            message="{{certifiedPeople.count}} {{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.MEMBERS_ABLE_TO_APPLY' | translate}}"
+            [isCloseable]="true"
+            [closeButtonText]="'COMMON.CLOSE' | translate "
+            typeAlert="success"
+          ></exo-alert>
+        </div>
+      </ng-container>
+    </section>
+    <app-languages-management [opportunity]="opportunity" [isSubmitted]="isSubmitted"></app-languages-management>
+    <app-mode-management [data]="opportunity"></app-mode-management>
+  </section>
+  <section>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" fxLayoutAlign.lt-md="start stretch" class="push-bottom-lg">
+      <div fxFlex="0 1 calc(50% - 12px)" fxLayout="column" class="w-100">
+        <md2-datepicker
+          class="datepicker appearance-fill"
+          formControlName="startDate"
+          placeholder="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.START_LABEL' | translate }}"
+          type="date"
+          [min]="startMinValue"
+          openOnFocus="true">
+        </md2-datepicker>
+        <mat-hint align="start">{{ 'ECOSYSTEM.OPPORTUNITIES.CREATE.START_HINT' | translate }}</mat-hint>
+        <mat-error *ngIf="managementOpportunityFormService.showErrors('startDate', isSubmitted)" class="push-top-xxs push-left-xxs">
+          {{form.get('startDate').errors | humanizeFormErrors}}
+        </mat-error>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch" fxLayoutGap="24px">
+      <div fxFlex="50%" fxLayout="column" class="w-100">
+        <mat-form-field appearance="fill">
+          <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.DURATION_LABEL' | translate}} ({{'COMMON.OPTIONAL' | translate}})</mat-label>
+          <input matInput type="text" formControlName="duration"/>
+          <mat-hint align="start">{{ 'ECOSYSTEM.OPPORTUNITIES.CREATE.POSITIONS_NUMBERS_HINT' | translate }}</mat-hint>
+          <mat-error>{{form.get('duration').errors | humanizeFormErrors}}</mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill" class="w-100" fxFlex="50%">
+        <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.DURATION_UNIT_LABEL' | translate}}</mat-label>
+        <mat-select formControlName="durationUnit">
+          <mat-option *ngFor="let unit of durationUnits | keyvalue: durationUnitsOrder" [value]="unit.value">
+            {{'ECOSYSTEM.OPPORTUNITIES.CREATE.DURATION_UNITS.' + unit.value | translate}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('durationUnit').errors">{{form.get('durationUnit').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+    </div>
+  </section>
+  <app-payment-management
+    [budgets]="opportunity?.budgets" [isSubmitted]="isSubmitted"
+  ></app-payment-management>
+  <app-questions-management
+    [questions]="opportunity?.questions"
+  ></app-questions-management>
+  <div class="body-1 push-bottom-lg">
+    {{'ECOSYSTEM.OPPORTUNITIES.CREATE.AGREEMENT.PART_1' | translate}}
+    <a class="pointer" (click)="seeMarketplaceConditions()">{{'ECOSYSTEM.OPPORTUNITIES.CREATE.AGREEMENT.LINK' | translate}}</a>
+    {{'ECOSYSTEM.OPPORTUNITIES.CREATE.AGREEMENT.PART_2' | translate}}
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end" class="push-top-lg">
+    <button mat-flat-button color="accent" type="button" (click)="goBack()">{{'COMMON.CANCEL' | translate}}</button>
+    <button #saveButton mat-flat-button color="primary" type="submit" (click)="onSubmit()" class="push-left-xs">
+      <ng-container *ngIf="opportunity;else createButtonsTpl">{{'COMMON.ACTIONS.SAVE' | translate}}</ng-container>
+      <ng-template #createButtonsTpl>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.PREVIEW' | translate}}</ng-template>
+    </button>
+  </div>
+</form>

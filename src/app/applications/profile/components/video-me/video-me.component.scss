@@ -1,0 +1,62 @@
+@import "variables";
+@import 'themes/exo-platform-light-theme';
+
+/** config */
+$maxBioWrapperHeight: 240px;
+
+.bio-container {
+  background: white;
+  padding: 0 $sm;
+  .bio-wrapper {
+    max-height: $maxBioWrapperHeight;
+    overflow: hidden;
+    &.no-limited-height {
+      max-height: none;
+    }
+  }
+}
+.video-wrapper {
+  position: relative;
+  border-radius: $xxxs;
+  overflow: hidden;
+  .play-icon {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    mat-icon {
+      width: 7rem;
+      height: 7rem;
+      font-size: 7rem;
+      transition: all .2s ease-in-out;
+    }
+    &:hover {
+      mat-icon {
+        width: 8rem;
+        height: 8rem;
+        font-size: 8rem;
+        color: white;
+      }
+    }
+  }
+}
+.bottom-info {
+  border-top: 1px solid #DDC;
+  padding: $xs 0;
+  mat-icon {
+    color: map-get($mat-light-theme-foreground, disabled);
+  }
+}
+
+/** template styles */
+.wrapper-empty-moment-video {
+  width: 100%;
+  height: 100%;
+  padding: $sm $xs;
+  background-color: white;
+  .empty-moment {
+    min-height: $maxBioWrapperHeight;
+  }
+}

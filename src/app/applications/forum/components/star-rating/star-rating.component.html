@@ -1,0 +1,23 @@
+<div class="rating-toggle-control pointer"
+     fxLayoutAlign="center center"
+     (click)="showRate = !showRate"
+     [ngClass]="{ 'is-rated': initialValue }"
+>
+  <mat-icon *ngIf="initialValue; else notRatedYet" class="push-right-xxs">star</mat-icon>
+  <ng-template #notRatedYet>
+    <mat-icon class="push-right-xxs">star_border</mat-icon>
+  </ng-template>
+  <h3 class="body-2 vote text-uppercase">{{'FORUM.VOTE' | translate}}</h3>
+</div>
+<div *ngIf="showRate && form" class="star-rating push-top-sm">
+  <mat-card fxLayoutAlign="center center">
+    <form [formGroup]="form">
+      <app-material-icon-star-rating #starRating
+        [numberOfGrades]="5"
+        formControlName="given-rating"
+        size="large"
+        (click)="onSubmit()"
+      ></app-material-icon-star-rating>
+    </form>
+  </mat-card>
+</div>

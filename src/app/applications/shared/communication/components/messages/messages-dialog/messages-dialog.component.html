@@ -1,0 +1,9 @@
+<app-overlay-template (close)="close()" icon="arrow_back" title="{{'PROJECT.TEAM_COMMUNICATION.DIALOG.TITLE' | translate}}">
+  <app-conversation-messages *ngIf="conversation$ | async as conversation"
+                             fxFlex="grow" fxFill
+                             [conversation]="conversation"
+                             [smallDevices]="true"
+                             (submit)="submit($event, conversation)"
+  >
+  </app-conversation-messages>
+</app-overlay-template>

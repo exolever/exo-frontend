@@ -1,0 +1,19 @@
+<div
+  fxLayout="row wrap"
+  fxLayoutAlign="center"
+  [fxFlex]="'1 1 ' + config.layoutMiddleWidth"
+  fxFlex.lt-md="grow"
+>
+  <mat-tab-group
+    dynamicHeight=false
+    [disableRipple]="true"
+    fxLayout="row wrap"
+    fxLayoutAlign="center"
+  >
+    <div *ngFor="let skill of skills">
+      <mat-tab [label]="skill.label">
+        <app-skills-list [skills]="skill.data" [maxSkillsLength]="maxSkillsLength"></app-skills-list>
+      </mat-tab>
+    </div>
+  </mat-tab-group>
+</div>

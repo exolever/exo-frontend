@@ -1,0 +1,16 @@
+<div mat-dialog-title fxLayout="row" fxLayoutAlign="space-between center" >
+  <span>Event filters</span>
+  <i class="material-icons pointer" (click)="close()">close</i>
+</div>
+<div mat-dialog-content>
+  <exo-filters 
+    [events]="data.events"
+    [inDialog]=true
+    [selectedFilters]="data.selectedFilters"
+    [languageOptions]="data.languageOptions"
+    [countryOptions]="data.countryOptions"
+    (selectedOptions)="selectedOptions($event)"></exo-filters>
+</div>
+<div mat-dialog-actions fxLayout="column" fxLayoutAlign="end stretch">
+  <button class="button" (click)="applyFilters()">Apply filters</button>
+</div>

@@ -1,0 +1,46 @@
+<mat-card
+  class="w-100 survey-card push-bottom">
+  <mat-card-content class="w-100 pointer" fxLayout="column" fxLayoutAlign="space-between stretch" (click)="!current ? showResults() : null">
+    <div fxLayout="row" fxLayoutAlign="space-between start">
+      <div
+        [lines]="2"
+        class="title" exoLineClamp
+        matTooltip="{{survey.name}}"
+      >
+          {{survey.name}}
+    </div>
+      <div class="survey-menu" fxLayout="row" fxLayoutAlign="center center">
+          <button
+            (click)="stopPropagation($event)"
+            [matMenuTriggerFor]="actionsMenu"
+            class="foreground-icon"
+            mat-icon-button
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #actionsMenu="matMenu">
+            <button (click)="goToEdit()" mat-menu-item>{{ 'ECOSYSTEM.EXQ.CARD.EDIT' | translate }}</button>
+            <button *ngIf="survey.totalAnswers > 0 && !current" (click)="showResults()" mat-menu-item>{{ 'ECOSYSTEM.EXQ.CARD.SHOW_RESULTS' | translate }}</button>
+            <button (click)="viewSurvey(survey)" mat-menu-item>{{ 'ECOSYSTEM.EXQ.CARD.PREVIEW' | translate }}</button>
+            <button (click)="shareSurvey()" mat-menu-item>{{ 'ECOSYSTEM.EXQ.CARD.SHARE' | translate }}</button>
+            <button (click)="onDownloadCSV()" mat-menu-item>{{ 'ECOSYSTEM.EXQ.CARD.CSV' | translate }}</button>
+            <button (click)="onDeleteSurvey()" mat-menu-item>{{ 'ECOSYSTEM.EXQ.CARD.DELETE' | translate }}</button>
+          </mat-menu>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="16px">
+      <div fxLayout="row">
+        <mat-icon class="push-right-xxxs" matTooltip="{{'ECOSYSTEM.EXQ.CARD.START' | translate}}">today</mat-icon>
+        <label class="body-1">
+          {{survey.created | formatDate: 'short'}}
+        </label>
+      </div>
+      <div fxLayout="row">
+        <mat-icon class="push-right-xxxs" matTooltip="{{'ECOSYSTEM.EXQ.CARD.REPLIES' | translate}}">person</mat-icon>
+        <label class="body-1">
+            {{survey.totalAnswers}}
+        </label>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

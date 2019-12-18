@@ -1,0 +1,15 @@
+@import "variables";
+
+.container{
+  border:1px solid;
+  border-radius: 2px;
+  &.primary {
+    border-color: mat-color($primary);
+  }
+  &.accent{
+    border-color: mat-color($accent);
+  }
+  &.error{
+    border-color: mat-color($mat-red, A200);
+  }
+}

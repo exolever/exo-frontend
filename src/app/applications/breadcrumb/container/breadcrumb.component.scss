@@ -1,0 +1,22 @@
+@import 'themes/exo-platform-light-theme';
+
+.breadcrumb {
+  padding: 16px 40px;
+  background-color: map-get($mat-light-theme-background, input-background);
+  overflow-wrap: break-word;
+  a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: map-get($mat-light-theme-foreground, base);
+    &.current-step {
+      color: mat-color($exo-grey, 900, .64);
+    }
+    &:not(:first-child) {
+      margin: 0 8px;
+    }
+    &:not(:last-child):after {
+      content: ">";
+      padding-left: 16px;
+    }
+  }
+}

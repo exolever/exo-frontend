@@ -1,0 +1,23 @@
+<section class="activity" fxLayout="column">
+  <div class="header" fxLayout="row" fxLayoutAlign="start center">
+    <div class="circle-icon" fxLayoutAlign="center center">
+      <mat-icon [ngClass]="{'active': status}">
+        {{item.icon}}
+      </mat-icon>
+    </div>
+    <h3 class="push-none">{{ item.name | translate }}</h3>
+    <mat-slide-toggle [disabled]="disabled" [checked]="status" class="slide-toggle" (change)="changeStatus($event)"></mat-slide-toggle>
+  </div>
+  <div class="description push-top-xxs">
+    <p class="body-1 push-none">{{ item.description | translate }}</p>
+  </div>
+  <ng-content select=".extra-information"></ng-content>
+  <div class="download push-top-xxs" *ngIf="item.agreement">
+    <p class="caption-1 push-none">
+      {{ 'ECOSYSTEM.PROFILE.EDIT.INTERESTS.AGREEMENTS' | translate }}.
+      <a [href]="item.agreement.filename" class="caption-1" target="_blank">
+        {{ 'ECOSYSTEM.PROFILE.EDIT.INTERESTS.DOWNLOAD' | translate }}
+      </a>
+    </p>
+  </div>
+</section>

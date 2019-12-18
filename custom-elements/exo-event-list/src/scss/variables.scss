@@ -1,0 +1,18 @@
+
+@import '~@angular/material/theming';
+@import "theme";
+
+$primary: map-get($exo-theme, primary);
+$accent: map-get($exo-theme, accent);
+
+$font-family: Roboto;
+$font-size: 16px;
+$primary-color: mat-color($primary);
+$accent-color: mat-color($accent);
+$field-background-color:#fbfbfb;
+$grey-text-color: #9b9b9b;
+
+$one-card: "(max-width: 845px)";
+$two-cards: "(min-width: 846px) and (max-width: 1212px)";
+$three-cards: "screen and (min-width: 1213px)";
+

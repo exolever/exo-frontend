@@ -1,0 +1,41 @@
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/theming';
+
+.datepicker {
+  background-color: rgba(70, 70, 75, 0.04);
+  border-radius: map-get($spaceMeasures, 'xxxs');
+  padding: .4em;
+  min-height: 60px;
+}
+
+.notification-item {
+  background-color: map-get($mat-light-theme-background, activities);
+  max-width: 180px;
+  padding: map-get($spaceMeasures, 'sm');
+  border-radius: map-get($spaceMeasures, 'xxxs');
+
+  // CSS to change Default/'Accent' color.
+  ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: map-get($mat-light-theme-background, activities-toggle-active);
+  }
+
+  ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: map-get($mat-light-theme-background, activities-icon-active);
+  }
+}
+
+.label-targeted {
+  color: map_get($exo-amber, 500);
+  margin-right: 10px;
+}
+
+.speaker {
+  min-width: 125px;
+  span {
+    color: map_get($mat-grey, 700);
+    font-weight: bold;
+  }
+}
+.w-50 {
+  width: 50%;
+}

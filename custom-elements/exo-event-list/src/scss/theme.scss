@@ -1,0 +1,81 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$exo-purple: (
+  50: #d9c5ff,
+  100: #c29fff,
+  200: #b48aff,
+  300: #9a62ff,
+  400: #7e38ff,
+  500: #6f23ff,
+  600: #6620ed,
+  700: #5c1cd7,
+  800: #5018bf,
+  900: #3a1090,
+  A100: #b48aff,
+  A200: #7e38ff,
+  A400: #6f23ff,
+  A700: #6620ed,
+  contrast:
+    (
+      50: $dark-primary-text,
+      100: $dark-primary-text,
+      200: $dark-primary-text,
+      300: $dark-primary-text,
+      400: $dark-primary-text,
+      500: $light-primary-text,
+      600: $light-primary-text,
+      700: $light-primary-text,
+      800: $light-primary-text,
+      900: $light-primary-text,
+      A100: $dark-primary-text,
+      A200: $light-primary-text,
+      A400: $light-primary-text,
+      A700: $light-primary-text
+    )
+);
+
+$exo-indigo: (
+  50: #e7ebef,
+  100: #cfd7de,
+  200: #87c2ce,
+  300: #9faebe,
+  400: #8699ad,
+  500: #6c859c,
+  600: #526f8b,
+  700: #375b7b,
+  800: #002e58,
+  900: #001846,
+  A100: #87c2ce,
+  A200: #8699ad,
+  A400: #6c859c,
+  A700: #526f8b,
+  contrast:
+  (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+
+$primary: mat-palette($exo-purple, 500);
+$accent: mat-palette($mat-indigo, 900);
+
+$exo-theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($exo-theme);
+
+
+

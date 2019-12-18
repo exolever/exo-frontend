@@ -1,0 +1,62 @@
+<section [formGroup]="form">
+  <div class="push-bottom" [ngClass]="{'push-bottom': isTargeted(), 'push-bottom-lg': !isTargeted()}">
+    <mat-radio-group disableRipple="true" formControlName="target">
+      <mat-radio-button color="primary" [value]="target.OPEN" class="push-right-sm big-body">Open</mat-radio-button>
+      <mat-radio-button color="primary" [value]="target.TARGETED" class="big-body">Targeted</mat-radio-button>
+    </mat-radio-group>
+    <div>
+      <mat-hint>{{ 'ECOSYSTEM.OPPORTUNITIES.CREATE.TARGET_HINT' | translate }}</mat-hint>
+    </div>
+  </div>
+  <ng-container *ngIf="isTargeted()">
+    <app-ecosystem-searcher
+      [consultants]="form.get('recipients').value"
+      [consultantsExtraOptions]="recipientsExtraOptions"
+      (update)="onUpdateRecipients($event)"
+      [isSortable]="false"
+      [excludeMe]="true"
+      [isRequired]="true"
+      [isSubmitted]="isSubmitted"
+      emptyMoment="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.TARGET_EMPTY_MOMENT' | translate}}"
+      placeholder="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.TARGET_PLACE_HOLDER' | translate}}"
+    >
+    </app-ecosystem-searcher>
+  </ng-container>
+</section>
+
+<ng-template #sentTemplate>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    fxLayoutAlign.lt-sm="start center"
+    ngClass.lt-sm="push-xxs"
+    class="push-left-xxs"
+  >
+    <span fxShow.gt-xs fxHide.lt-sm>{{ 'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.STATUS.SENT' | translate }}</span>
+  </div>
+</ng-template>
+
+<ng-template #rejectedTemplate>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    fxLayoutAlign.lt-sm="start center"
+    ngClass.lt-sm="push-xxs"
+    class="push-left-xxs"
+  >
+    <span class="pretty-label red caption-2">{{ 'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.STATUS.DISCARDED' | translate }}</span>
+  </div>
+</ng-template>
+
+<ng-template #selectedTemplate>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    fxLayoutAlign.lt-sm="start center"
+    ngClass.lt-sm="push-xxs"
+    class="push-left-xxs"
+  >
+    <span class="pretty-label green caption-2">{{ 'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.STATUS.SELECTED' | translate }}</span>
+  </div>
+</ng-template>
+

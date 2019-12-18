@@ -1,0 +1,19 @@
+@import "variables";
+
+:host {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1280px;
+}
+
+.ecosystem-opportunities--container {
+  height: 100%;
+  background-color: #f7f7f7;
+  padding: 0 16px;
+  @media only screen and (min-width: 1280px)  {
+    padding: 0;
+  }
+}
+::ng-deep.mat-paginator-container {
+  background-color: #f7f7f7;
+}

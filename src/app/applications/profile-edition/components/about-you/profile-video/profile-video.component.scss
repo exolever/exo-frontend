@@ -1,0 +1,35 @@
+@import "variables";
+@import 'themes/exo-platform-light-theme';
+
+// config
+$upload-video-container-height: 222px;
+$change-video-width: 170px;
+
+.upload-video {
+  cursor: pointer;
+  height: $upload-video-container-height;
+  border-radius: $xxs;
+  color: map-get($mat-light-theme-foreground, feeling-icon-hover);
+  background-color: map-get($mat-light-theme-background, mat-button-disabled);
+  mat-icon {
+    color: map-get($mat-light-theme-foreground, feeling-icon-hover);
+  }
+  input {
+    position: absolute;
+    cursor: pointer;
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+  }
+}
+.change-video {
+  cursor: pointer;
+  padding: $xs 0;
+  @media (min-width: $screen-xs){
+    margin-left: $change-video-width; // Half of video width
+  }
+  &:hover {
+    color: mat-color($exo-service-light-primary);
+  }
+
+}

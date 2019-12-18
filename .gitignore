@@ -1,0 +1,56 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+*.sublime-*
+
+# compiled output
+/dist
+/tmp
+
+# dependencies
+/node_modules
+/bower_components
+
+# IDEs and editors
+/.idea
+/.vscode
+/.vs
+.project
+.classpath
+*.launch
+.settings/
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage/*
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.map
+
+#System Files
+.DS_Store
+Thumbs.db
+
+# Environments deploy
+/src/environments/*.ts
+
+# Local Scripts for Development
+update_npm_environ.sh
+
+# Docs from compodoc
+/documentation/*
+
+# Development scripts for custom-element
+src/assets/custom-elements.js
+
+docker-compose.yml
+.env
+.bak
+.env.bak
+
+# Package lock file
+package-lock.json

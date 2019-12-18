@@ -1,0 +1,10 @@
+<section class="exo-platform pad" fxLayout="column" fxLayoutAlign="start start">
+  <mat-card class="w-100">
+    <mat-card-content *ngIf="circle$ | async as circle">
+      <div class="push-top-sm">
+        <h3 class="headline push-bottom-sm">{{'ECOSYSTEM.CIRCLES.UPDATE_CIRCLE' | translate }} {{ circle.name }}</h3>
+      </div>
+      <app-circles-form (cancel)="goBack($event)" (save)="onSave($event)" [circle]="circle"></app-circles-form>
+    </mat-card-content>
+  </mat-card>
+</section>

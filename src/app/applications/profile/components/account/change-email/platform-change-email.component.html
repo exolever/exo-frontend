@@ -1,0 +1,34 @@
+<div mat-dialog-title class="text-transform-capitalize">{{'ACCOUNTS.CHANGEEMAIL' | translate}}</div>
+
+<mat-dialog-content
+  *ngIf="changeEmailForm"
+  cdkFocusRegionstart
+>
+  <form [formGroup]="changeEmailForm" fxLayout="column">
+    <mat-form-field appearance="fill">
+      <mat-label>{{'ACCOUNTS.NEW_EMAIL' | translate}}</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="newEmail"
+        autofocus
+      />
+      <mat-error data-e2e="change-mail-error">{{changeEmailForm.get('newEmail').errors| humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button
+          color="accent"
+          data-e2e="email-change-cancel"
+          (click)="onClose()"
+  >
+    {{'ACCOUNTS.CANCEL' | translate}}
+  </button>
+  <button mat-flat-button
+          type="submit"
+          color="primary"
+          data-e2e="email-change-save"
+          (click)="onSubmit()"
+  >{{'ACCOUNTS.SAVE' | translate}}</button>
+</mat-dialog-actions>

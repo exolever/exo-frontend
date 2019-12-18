@@ -1,0 +1,67 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center" class="w-100 login">
+  <div *ngIf="!isPasswordReset()"
+       fxLayout="row wrap"
+       fxLayoutAlign="center start"
+       [fxFlex]="'1 1 ' + config.layoutMaxWidth"
+  >
+    <div
+      fxLayoutAlign="center"
+      fxFlex="grow"
+      class="push-bottom-sm"
+      data-e2e="page-title">
+      <h2 class="title">{{'PUBLIC.SET_NEW_PASSWORD_LOW' | translate }}</h2>
+    </div>
+    <form [formGroup]="changePasswordForm"
+          fxLayout="row wrap"
+          fxFlex="grow"
+          (ngSubmit)="onSubmit()"
+    >
+      <show-hide-password fxFlex="grow">
+        <mat-form-field color="primary" fxFlex="grow">
+          <input data-e2e="password"
+                 #showHideInput
+                 matInput
+                 type="password"
+                 placeholder="{{'PUBLIC.NEW_PASSWORD' | translate }}"
+                 formControlName="new_password1"
+          >
+          <mat-hint> {{'PUBLIC.PASSWORD_8CH_MIN' | translate }} </mat-hint>
+          <mat-error>{{'PUBLIC.PASSWORD_8CH_MIN' | translate }}</mat-error>
+        </mat-form-field>
+      </show-hide-password>
+      <show-hide-password fxFlex="grow">
+        <mat-form-field color="primary" fxFlex="grow">
+          <input #showHideInput
+                 matInput
+                 type="password"
+                 placeholder="{{'PUBLIC.CONFIRM_PASSWORD' | translate }}"
+                 formControlName="new_password2"
+          >
+          <mat-error> {{'PUBLIC.PASSWORD_NOT_MATCH' | translate }}</mat-error>
+        </mat-form-field>
+      </show-hide-password>
+      <div fxLayoutAlign="center" fxFlex="grow" class="push-bottom-sm">
+        <button type="submit"
+                mat-flat-button
+                color="primary"
+        >{{'PUBLIC.SET_NEW_PASSWORD' | translate }}</button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="isPasswordReset()" fxLayout="row wrap" fxLayoutAlign="center">
+    <div fxFlex="grow" fxLayoutAlign="center">
+      <mat-icon class="icon-ok foreground-icon">check</mat-icon>
+    </div>
+    <div fxFlex="grow" fxLayout="row wrap" fxLayoutAlign="center">
+      <h2 fxFlex="grow" class="title text-align-center">{{'PUBLIC.PASSWORD_RESET' | translate }}</h2>
+      <p fxFlex="grow" class="body-1 text-align-center">{{'PUBLIC.PASSWORD_RESET_USE' | translate }}</p>
+    </div>
+    <div fxFlex="grow" class="push-top-sm" fxLayoutAlign="center">
+      <button mat-flat-button
+              routerLink="/auth/login"
+              color="primary"
+      >{{'PUBLIC.GO_TO_LOGIN' | translate }}</button>
+    </div>
+  </div>
+</div>

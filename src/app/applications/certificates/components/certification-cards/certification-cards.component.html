@@ -1,0 +1,18 @@
+<div class="push-bottom-sm" fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="center stretch">
+  <div *ngFor="let certification of certifications; let index=index" fxLayoutGap="16px">
+    <ng-container *ngIf="user">
+      <div fxLayout="row" fxLayoutAlign="center" class="push-top-xxs push-bottom-xxs">
+        <img class="image" [src]="getImage(certification)" alt="Certification image"/>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <span *ngIf="(getRequestInfo(certification)?.status === statusEnum.Requested)"
+              class="pretty-label green caption-2 push-bottom-xxs">{{'ECOSYSTEM.CIRCLES.DIALOG.CERTIFICATIONS.REQUESTED' | translate | uppercase }}</span>
+        <span *ngIf="(getRequestInfo(certification)?.status === statusEnum.Pending)"
+              class="pretty-label blue caption-2 push-left-xxs">{{'ECOSYSTEM.CIRCLES.DIALOG.CERTIFICATIONS.IN_PROGRESS' | translate | uppercase }}</span>
+        <span *ngIf="getRequestInfo(certification)?.startDate as date" class="subheading-2 foreground-secondary-text">
+              {{'ECOSYSTEM.CIRCLES.DIALOG.CERTIFICATIONS.START' | translate }}
+              {{date | formatDate:'_longFormat'}}</span>
+      </div>
+    </ng-container>
+  </div>
+</div>

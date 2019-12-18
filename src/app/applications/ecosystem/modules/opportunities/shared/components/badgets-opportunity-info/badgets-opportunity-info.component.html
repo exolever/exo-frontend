@@ -1,0 +1,71 @@
+<div class="push-bottom" fxLayout="row wrap" fxLayoutGap="8px">
+  <div fxLayout="row" class="icon-pretty-label" matTooltip="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.POSITIONS_NUMBERS' | translate}}">
+    <mat-icon class="push-right-xxxs">people</mat-icon>
+    <label class="body-1">{{opportunity.numPositions}} {opportunity.numPositions, plural, =1 { {{'ECOSYSTEM.OPPORTUNITIES.POSITION' | translate}} } other { {{'ECOSYSTEM.OPPORTUNITIES.POSITIONS' | translate}} }}</label>
+  </div>
+  <div *ngIf="opportunity.entity" fxLayout="row" class="opportunity-data icon-pretty-label" matTooltip="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.ENTITY_LABEL_TOOLTIP' | translate}}">
+    <mat-icon class="push-right-xxxs">domain</mat-icon>
+    <label class="body-1">{{opportunity.entity}}</label>
+  </div>
+  <div *ngIf="opportunity.infoDetail" fxLayout="row" class="opportunity-data icon-pretty-label" matTooltip="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.PROJECT_LABEL_TOOLTIP' | translate}}">
+    <mat-icon class="push-right-xxxs">work</mat-icon>
+    <label class="body-1">{{opportunity.infoDetail}}</label>
+  </div>
+  <div *ngIf="!opportunity.mode || (opportunity.mode === mode.onSite && opportunity.location) || opportunity.mode === mode.online" fxLayout="row" class="opportunity-data icon-pretty-label" matTooltip="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.LOCATION_LABEL_TOOLTIP' | translate}}">
+    <mat-icon class="push-right-xxxs">place</mat-icon>
+    <label class="body-1">
+      {{!opportunity.mode ? ('COMMON.TBD' | translate) : opportunity.mode === mode.onSite ? opportunity.location : ('COMMON.ONLINE' | translate) }}
+    </label>
+  </div>
+  <div *ngIf="opportunity.exoCategory && opportunity.exoCategory.name" fxLayout="row" class="opportunity-data icon-pretty-label" matTooltip="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.PROJECT_TYPE.LABEL' | translate}}">
+    <label class="body-1">
+      {{ opportunity.getCategoryName() }}
+    </label>
+  </div>
+  <div fxLayout="row" class="opportunity-data icon-pretty-label" matTooltip="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.WHEN_AND_DURATION' | translate}}">
+    <mat-icon class="push-right-xxxs">calendar_today</mat-icon>
+    <label class="body-1">
+      <span *ngIf="opportunity.startDate; else noStartDate">{{opportunity.startDate | formatDate: 'short'}}</span>
+      /
+      <ng-container *ngIf="opportunity.duration && opportunity.durationUnit; else noDuration">
+        <span i18n>
+          {opportunity.duration, plural, =1 {
+            {{opportunity.duration}} {{'ECOSYSTEM.OPPORTUNITIES.CREATE.DURATION_UNITS.' + opportunity.durationUnit | translate}}
+          } other {
+            {{opportunity.duration}} {{'ECOSYSTEM.OPPORTUNITIES.CREATE.DURATION_UNITS_PLURAL.' + opportunity.durationUnit | translate}}
+          }}
+        </span>
+      </ng-container>
+    </label>
+  </div>
+  <div *ngIf="opportunity.budgets.length > 0" fxLayout="row" class="opportunity-data icon-pretty-label" matTooltip="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.BUDGET_LABEL' | translate}}">
+    <ng-container
+      *ngFor="let budget of opportunity.budgets; let last = last"
+      [ngTemplateOutlet]="showBudget"
+      [ngTemplateOutletContext]="{amount: budget.budget, currency: budget.currency, last: last}"
+    ></ng-container>
+    <ng-template #showBudget let-amount="amount" let-currency="currency" let-last="last">
+      <mat-icon class="push-right-xxxs" *ngIf="budgetInDollars(currency) || budgetInEuros(currency)">credit_card</mat-icon>
+      <label class="body-1" *ngIf="budgetInDollars(currency)">${{amount}}</label>
+      <label class="body-1" *ngIf="budgetInEuros(currency)">€{{amount}}</label>
+      <label class="body-1" *ngIf="budgetInEXO(currency)">
+        <img src="assets/public/mini_exos_icon.png" class="push-right-xxxs" /> {{amount}}
+      </label>
+      <span class="push-right-xxxs push-left-xxxs" *ngIf="!last">+</span>
+    </ng-template>
+  </div>
+  <div *ngIf="showId" class="opportunity-data icon-pretty-label" [matTooltip]="'ECOSYSTEM.OPPORTUNITIES.TOOLTIP.ID' | translate">
+    <label class="body-1">
+      {{'ECOSYSTEM.OPPORTUNITIES.ID' | translate}}{{opportunity.pk}}
+    </label>
+  </div>
+</div>
+
+<!-- Keep this template in order to keep backward compatibility -->
+<ng-template #noDuration>
+  <span>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.DURATION_PENDING' | translate}}</span>
+</ng-template>
+
+<ng-template #noStartDate>
+  <span>{{'COMMON.TBD' | translate}}</span>
+</ng-template>

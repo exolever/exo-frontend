@@ -1,0 +1,9 @@
+@import "~@openexo/design-system/variables";
+
+:host {
+  width: 100%;
+  .advisory-call-form-container {
+    max-width: map-get($componentMeasure, '20x');
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "compileOnSave": false,
+  "include": [
+    "src/**/*"
+  ],
+  "compilerOptions": {
+    "baseUrl": "./src/app",
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "outDir": "./dist/out-tsc",
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "sourceMap": true,
+    "strict": false,
+    "target": "es2015",
+    "plugins": [
+      { "name": "@angular/language-service" }
+    ],
+    "lib": [
+      "es2017",
+      "dom",
+      "esnext.asynciterable"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "./typings"
+    ],
+    "paths": {
+      "@public/*": [
+        "public/*"
+      ],
+      "@resources/*": [
+        "applications/resources/*"
+      ],
+      "@ratings/*": [
+        "applications/ratings/*"
+      ],
+      "@conversations/*": [
+        "applications/conversations/*"
+      ],
+      "@core/*": [
+        "core/*"
+      ],
+      "@shared/*": [
+        "shared/*"
+      ],
+      "@animations/*": [
+        "animations/*"
+      ],
+      "@profile/*": [
+        "applications/profile/*"
+      ],
+      "@profile-edition/*": [
+        "applications/profile-edition/*"
+      ],
+      "@applications/*": [
+        "applications/*"
+      ],
+      "@loaders/*": [
+        "applications/loaders/*"
+      ],
+      "@messages/*": [
+        "applications/messages/*"
+      ],
+      "@ecosystem-media-library/*": [
+        "applications/ecosystem-media-library/*"
+      ],
+      "@service/*": [
+        "applications/service/*"
+      ],
+      "@ecosystem/*": [
+        "applications/ecosystem/*"
+      ],
+      "@forum/*": [
+        "applications/forum/*"
+      ],
+      "@opportunities/*": [
+        "applications/ecosystem/modules/opportunities/*"
+      ],
+      "@circles/*": [
+        "applications/circles/*"
+      ],
+      "@routing/*": [
+        "routing/*"
+      ],
+      "@testing/*": [
+        "testing/*"
+      ],
+      "@app/*": [
+        "*"
+      ],
+      "@overlay/*": [
+        "core/modules/overlay/*"
+      ],
+      "@environments/*": [
+        "../environments/*"
+      ]
+    }
+  },
+  "exclude": [
+    "**/node_modules/**"
+  ]
+}

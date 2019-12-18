@@ -1,0 +1,15 @@
+@import "~@openexo/design-system/mixins";
+@import "~@openexo/design-system/variables";
+@import "variables";
+
+.empty-moment {
+  height: 100%;
+  padding: map-get($spaceMeasures, 'xl') 0;
+  & > div > .image {
+    @include retina-background-image($static-root + 'assets/empty_moments/opportunities_empty_state', 'png', 200px, 220px);
+    width: 200px;
+    height: 220px;
+    background-repeat: no-repeat;
+    margin: 0 auto 16px;
+  }
+}

@@ -1,0 +1,27 @@
+<div fxLayout="column">
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <h1>{{'ECOSYSTEM.CIRCLES.DIALOG.CERTIFICATIONS.TITLE' | translate}}</h1>
+    <div class="subheading-2 push-none">{{'ECOSYSTEM.CIRCLES.DIALOG.CERTIFICATIONS.SUBTITLE1' | translate}}</div>
+    <div class="subheading-2 push-none">{{'ECOSYSTEM.CIRCLES.DIALOG.CERTIFICATIONS.SUBTITLE2' | translate}}</div>
+  </div>
+  <mat-horizontal-stepper fxHide.lt-sm [selectedIndex]="user.certificationRequests.length - 1">
+    <mat-step *ngFor="let step of certifications$ | async">
+    </mat-step>
+  </mat-horizontal-stepper>
+  <app-certification-cards
+    [certifications]="certifications$ | async"
+    [user]="user"
+  ></app-certification-cards>
+  <div class="push-bottom-sm">
+    <span *ngIf="consultant?.startDate"
+      class="caption-1">{{'ECOSYSTEM.CIRCLES.DIALOG.CERTIFICATIONS.ASTERISK' | translate}}</span>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end">
+    <button (click)="dialogRef.close()" class="push-top-xxs push-right" color="accent" mat-flat-button>
+      {{'COMMON.CLOSE' | translate}}
+    </button>
+    <button (click)="goToFoundations(); dialogRef.close()" class="push-top-xxs" color="primary" mat-flat-button>
+      {{'ECOSYSTEM.CIRCLES.DIALOG.CERTIFICATIONS.START_FOUNDATIONS' | translate}}
+    </button>
+  </div>
+</div>

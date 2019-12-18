@@ -1,0 +1,32 @@
+@import "~@openexo/design-system/variables";
+@import 'themes/exo-platform-light-theme';
+
+:host {
+  max-width: calc(#{map-get($componentMeasure, '20x')} + 24px);
+}
+
+.badge-container{
+  padding: map-get($componentMeasure, '0.3x');
+  background-color: map-get($mat-light-theme-background, input-background);
+  min-width: 222px;
+  height: 80px;
+  border-radius: 7px;
+
+  .initials-container {
+    border-radius: 50%;
+    height: map-get($componentMeasure, '1x');
+    .initials {
+      color: white;
+    }
+  }
+
+  .badge-context {
+    .counter{
+      padding-right: map-get($spaceMeasures, 'xxs');
+      padding-left: map-get($spaceMeasures, 'xxs');
+      border-radius: 4px;
+      background-color: rgba(70, 70, 75, 0.16);
+      font-weight: bold;
+    }
+  }
+}

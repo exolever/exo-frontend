@@ -1,0 +1,30 @@
+<form *ngIf="form" [formGroup]="form" fxLayout="column">
+  <div class="purpose" formGroupName="purpose" fxLayout="column">
+    <h3>{{ 'ECOSYSTEM.PROFILE.EDIT.PURPOSE.TITLE' | translate }}</h3>
+    <p class="caption-1 pad-bottom-sm push-none">
+      {{ 'ECOSYSTEM.PROFILE.EDIT.PURPOSE.DESCRIPTION' | translate }}
+    </p>
+    <mat-form-field appearance="fill" class="input-large">
+      <textarea  #purpose
+        matInput
+        type="text"
+        formControlName="purpose"
+      >
+      </textarea>
+      <mat-hint align="end"> {{purpose.value.length}} / {{purposeMaxLength}}</mat-hint>
+      <mat-error>
+        {{form.controls.purpose.get('purpose').errors | humanizeFormErrors}}
+      </mat-error>
+    </mat-form-field>
+    <button
+      *ngIf="showEditButton"
+      (click)="onSubmitPurpose()"
+      mat-flat-button
+      color="primary"
+      type="button"
+      class="submit-button push-bottom-lg"
+    >
+      {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+    </button>
+  </div>
+</form>

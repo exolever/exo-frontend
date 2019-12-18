@@ -1,0 +1,10 @@
+@import "~@openexo/design-system/mixins";
+@import "~@openexo/design-system/variables";
+
+
+.image-empty {
+  @include retina-background-image($static-root + 'assets/empty_moments/opportunities_empty_state', 'png', 200px, 200px);
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+}

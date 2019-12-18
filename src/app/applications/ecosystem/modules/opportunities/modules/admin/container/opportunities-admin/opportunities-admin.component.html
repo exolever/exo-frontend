@@ -1,0 +1,27 @@
+<ng-container *ngIf="(loading$ | async); else opportunityBlock">
+  <div fxLayout="row" fxLayoutAlign="center" class="opportunity-loader">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+</ng-container>
+<ng-template #opportunityBlock>
+  <section *ngIf="opportunity$ | async as opportunity" fxLayout="column" class="opportunity-container">
+    <div fxLayout="row" fxLayout.lt-md="column"  fxLayoutGap="24px" fxLayoutAlign="start space-between" class="push-bottom-lg">
+      <app-opportunity-info fxFlex="100"
+        [opportunity]="opportunity$ | async"
+        [conversations]="conversations"
+        [totalUnreadMessages]="totalUnreadMessages">
+      </app-opportunity-info>
+      <app-applicants-status-card
+        fxFlex="30"
+        fxFlex.lt-md="100"
+        [opportunity]="opportunity"
+        [maxAvatars]="3"
+      >
+      </app-applicants-status-card>
+    </div>
+    <section class="opportunities-tabs push-top">
+      <exo-router-tabs [tabs]="tabs"></exo-router-tabs>
+      <router-outlet></router-outlet>
+    </section>
+  </section>
+</ng-template>

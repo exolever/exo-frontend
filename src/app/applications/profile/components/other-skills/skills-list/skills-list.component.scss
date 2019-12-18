@@ -1,0 +1,25 @@
+@import "variables";
+@import 'themes/exo-platform-light-theme';
+
+.container {
+  background: white;
+  div.point-bars {
+    border-radius: 1em;
+    height: 9px;
+    width: 88px;
+    overflow: hidden;
+    background-color: rgba(70, 70, 75, .04);
+    .marked {
+      height: 100%;
+      &:first-child {
+        background-color: map-get($mat-light-theme-background, beginner);
+      }
+      &:nth-child(2) {
+        background-color: map-get($mat-light-theme-background, intermediate);
+      }
+      &:last-child {
+        background-color: map-get($mat-light-theme-background, advanced);
+      }
+    }
+  }
+}

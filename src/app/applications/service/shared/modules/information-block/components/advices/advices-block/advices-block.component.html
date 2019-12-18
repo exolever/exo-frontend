@@ -1,0 +1,11 @@
+<h2>
+  {{ advicesBlock.title ? advicesBlock.title : 'SERVICE.ADVICES.TITLE' | translate }}
+</h2>
+
+<div fxLayout="column">
+  <app-advice-item *ngFor="let advice of advicesBlock.contents; let last = last"
+                    [advice]="advice"
+                    [ngClass]="{'push-bottom': !last}"
+  >
+  </app-advice-item>
+</div>

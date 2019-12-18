@@ -1,0 +1,13 @@
+<section class="push-top-lg push-bottom-lg" fxLayout="column">
+  <mat-card class="form-wrapper card-section">
+    <mat-card-content>
+      <div class="section card-type push-bottom">
+        {{'ECOSYSTEM.EXQ.TITLE' | translate}}
+      </div>
+      <h1>{{(!(survey$ | async)) ? ('ECOSYSTEM.EXQ.FORM.CREATE' | translate) : ('ECOSYSTEM.EXQ.FORM.EDIT' | translate)}}</h1>
+      <div>
+        <app-survey-form [survey]="(survey$ | async)"></app-survey-form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

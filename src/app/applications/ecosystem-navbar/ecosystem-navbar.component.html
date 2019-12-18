@@ -1,0 +1,82 @@
+<!-- the top menu bar of the project view -->
+<section class="exo-platform">
+  <nav class="exo-platform-light-theme toolbar-wrapper">
+    <mat-toolbar
+      #toolbar
+      class="nav-bar"
+    >
+      <div class="left-items" fxLayoutAlign="start center">
+        <div
+          class="pointer circle-logo"
+          [ngClass.lt-md]="'push-right-xxs'"
+          [ngClass.gt-sm]="'push-right'"
+          [routerLink]="urlLogo()"
+        ></div>
+        <div *ngIf="showSections" fxHide.gt-md id="ecosystem-menu-lt-md" fxLayout="row" fxLayoutAlign="start center"
+             (click)="onMobileDropdownToggle()"
+        >
+          <p class="subheading-2 selected-link">{{ selectedLink }}</p>
+          <mat-icon *ngIf="isOpenedNavigationDropdown; else expandLess">expand_less</mat-icon>
+          <ng-template #expandLess><mat-icon>expand_more</mat-icon></ng-template>
+        </div>
+      </div>
+      <div fxLayout="row" class="push-left-sm" fxLayoutAlign="start center">
+        <div class="links-wrapper" fxLayout="row" fxHide.lt-lg *ngIf="showSections">
+          <ng-container *ngFor="let link of links">
+            <ng-container *ngTemplateOutlet="linkList; context: { $implicit: link, isMobile: false}"></ng-container>
+          </ng-container>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center" class="mailbox-link" *ngIf="showSections">
+          <a [routerLink]="urls.ECOSYSTEM_MAILBOX">
+            <mat-icon *ngIf="unread$ | async as unread; else withoutBadge" class="pointer" [matBadge]="unread">comment</mat-icon>
+            <ng-template #withoutBadge>
+              <mat-icon class="pointer">comment</mat-icon>
+            </ng-template>
+          </a>
+        </div>
+        <exo-user-menu *ngIf="user" [user]="user" #userMenu></exo-user-menu>
+      </div>
+    </mat-toolbar>
+  </nav>
+  <nav #mobileDropdown
+       class="links-wrapper mobile-dd"
+       [ngClass]="{ 'show': !dropdownConfig.opaque }"
+       fxLayout="column"
+       fxLayoutAlign="center center"
+  >
+    <ng-container *ngFor="let link of links">
+      <ng-container *ngTemplateOutlet="linkList; context: { $implicit: link, isMobile: true }"></ng-container>
+    </ng-container>
+  </nav>
+</section>
+
+<!-- full screen overlay for when the mobile dropdown is unfold -->
+<div
+  class="fullscreen-overlay"
+  [ngClass]="{ 'displayOverlay': dropdownConfig.displayOverlay, 'show': !dropdownConfig.opaque }"
+></div>
+
+<!-- template for the link list -->
+<ng-template #linkList let-link let-isMobile="isMobile">
+  <div fxLayout="row" fxLayoutAlign="center center"  >
+    <ng-container *ngIf="link.children.length === 0; else linkWithSubmenuTpl">
+      <a [routerLink]="link.url"
+        routerLinkActive="ecosystem-link-active weight-bold"
+        class="pointer"
+        (click)="setSelectedLink( isMobile )"
+        [ngClass]="{'isNew': link.isNew}"
+      >{{ link.label }}</a>
+      <span *ngIf="link.isNew" class="new-label blue push-left-xxs caption-2">{{ 'ECOSYSTEM.NAVBAR.LABEL_NEW' | translate | uppercase }}</span>
+    </ng-container>
+    <ng-template #linkWithSubmenuTpl>
+      <a [ngClass]="{'ecosystem-link-active weight-bold': isCurrentMenu(link)}" class="pointer" [matMenuTriggerFor]="submenu">{{ link.label }}</a>
+      <mat-menu #submenu="matMenu">
+        <ng-container *ngFor="let submenu of link.children">
+          <a *ngIf="submenu.external" mat-menu-item  [href]="submenu.url" target="_blank">{{submenu.label}}</a>
+          <a *ngIf="!submenu.external" mat-menu-item  [routerLink]="submenu.url">{{submenu.label}}</a>
+        </ng-container>
+      </mat-menu>
+    </ng-template>
+  </div>
+</ng-template>
+

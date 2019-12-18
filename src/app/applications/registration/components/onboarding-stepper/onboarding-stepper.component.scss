@@ -1,0 +1,52 @@
+@import "variables";
+
+.wrapper-onboarding{
+  min-height: calc(100vh - 64px);
+
+  ::ng-deep {
+    &.circle {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: mat-color($mat-grey, 100);
+      margin: 24px 6px;
+      cursor: pointer;
+      &.active {
+        background-color: mat-color($exo-indigo, 800);
+      }
+    }
+
+    &.summary-title {
+      color: white;
+      font-weight: $weight-bold;
+      text-align: center;
+    }
+
+    &.summary-subtitle {
+      color: white;
+      text-align: center;
+    }
+
+    &.avatar {
+      height: 48px;
+      width: 48px;
+      border-radius: 50%;
+      border: 1px solid mat-color($mat-blue-grey, 100);
+    }
+
+    &.img-avatar {
+      height: 100px;
+      width: 100px;
+      border-radius: 50%;
+    }
+
+    &.mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+      background-color: mat-color($exo-blue, 500)
+    }
+
+    &.mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+      background-color: mat-color($exo-blue, 500, 0.5)
+    }
+  }
+
+}

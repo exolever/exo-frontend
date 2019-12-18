@@ -1,0 +1,39 @@
+@import "variables";
+
+:host {
+  .container {
+    padding: 0;
+    @media only screen and (min-width: 960px)  {
+      padding: 0 16px 0 0;
+    }
+  }
+
+  button {
+    ::ng-deep .mat-button-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  .empty-container {
+    height: 100%;
+  }
+
+  .project {
+    ::ng-deep.mat-paginator-container {
+      background-color: white;
+    }
+  }
+
+  ::ng-deep.mat-paginator-container {
+    background-color: #f7f7f7;
+    justify-content: center;
+  }
+  ::ng-deep.mat-paginator-page-size-select {
+    width: 60px;
+  }
+}
+
+.img-empty-moment {
+  font-size: 148px;
+}

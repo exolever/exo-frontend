@@ -1,0 +1,25 @@
+:host {
+
+  button.filters-actions__button.filters-actions__button {
+    // Unset height & line-height from button-design in filter section.
+    height: unset;
+    line-height: unset;
+  }
+
+  .filter-title {
+    padding: 36px 24px 24px;
+  }
+
+  ::ng-deep .mat-expansion-panel.mat-expansion-panel {
+    background-color: transparent;
+  }
+
+  .filters-actions {
+    margin: 0;
+  }
+
+  .submit-button {
+    margin-top: 24px;
+  }
+
+}

@@ -1,0 +1,9 @@
+@import "~@openexo/design-system/variables";
+.rate-container {
+  padding: map-get($spaceMeasures, 'xs') !important;
+}
+
+.button-rate {
+  text-align: right;
+  padding-right: 4px !important;
+}

@@ -1,0 +1,61 @@
+@import "variables";
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/theming';
+
+button {
+  min-width: map-get($spaceMeasures, 'lg');
+  padding: 0;
+  outline: none;
+}
+
+.list-box {
+  border-radius: 6px;
+  box-shadow: 0 2px 8px 0 rgba(70, 70, 75, 0.32);
+  background-color: #ffffff;
+  border: solid 1px #ccc;
+  &.cdk-drop-list {
+    background-color: rgba(111, 35, 255, 0.08);
+  }
+}
+
+.list-item {
+  padding: map-get($spaceMeasures, 'xs') map-get($spaceMeasures, 'sm');
+  border-bottom: solid 1px #ccc;
+  color: $black-87-opacity;
+  background: white;
+  &.sortable {
+    cursor: move;
+  }
+  &:hover {
+    .drag-indicator {
+      color: mat-color($exo-purple, 500);
+    }
+    background-color: mat-color($exo-grey, 50);
+  }
+}
+
+.cdk-drag {
+  display: flex;
+  font-size: 14px;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-preview {
+  font-family: $font-family;
+  background-color: mat-color($exo-grey, 50);
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.list-box:last-child {
+  border: none;
+}
+
+.list-item.cdk-drop-list-dragging .list-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

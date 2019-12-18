@@ -1,0 +1,13 @@
+<mat-card class="push-bottom">
+  <mat-card-content fxLayout="row" fxLayoutAlign="space-between center" class="rate-container">
+    <div>
+      <ng-content select=".avatar"></ng-content>
+    </div>
+    <div>
+      <ng-content select=".feedback-icons"></ng-content>
+      <button *ngIf="showButton" mat-button color="primary" class="button-rate" (click)="feedbackDialog.emit(feedback)">
+        {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.RATE' | translate}}
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

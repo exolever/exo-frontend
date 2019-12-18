@@ -1,0 +1,67 @@
+<div *ngIf="title" class="section primary-color push-bottom-sm">{{title}}</div>
+<h3 class="headline  push-bottom-sm">{{ post?.title }}</h3>
+<div *ngIf="post" class="w-100 push-bottom-sm"
+  fxLayout="row"
+  fxLayout.xxs="column"
+  fxLayoutAlign="space-between start"
+  fxLayoutAlign.xxs="start stretch"
+  fxLayoutGap.xxs="24px"
+>
+  <exo-avatar-system
+    [name]="post.createdBy.fullName"
+    [description]="post.createdBy.projectTitle || post.createdBy.userTitle"
+    (click)="goToProfile($event)"
+    [connected]="post.createdBy.onLine"
+    class="pointer">
+    <exo-avatar
+      [src]="post.createdBy.profilePictures[1].url"
+      [alt]="post.createdBy.fullName"
+      [tooltip]="post.createdBy.fullName"
+    ></exo-avatar>
+  </exo-avatar-system>
+  <!-- menu -->
+  <div fxLayout="row" fxAlign="stretch" fxLayoutAlign="end center" fxLayoutAlign.xxs="space-between center">
+    <div class="caption-1 edited">
+      {{post.modified | amTimeAgo}} <i *ngIf="post.hasBeenEdited" class="push-left-xxs">{{'FORUM.EDITED' | translate }}</i>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="showMenu()" fxFlexAlign="end">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+</div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="editEmit(post.pk)">
+    <span>{{'FORUM.EDIT' | translate }}</span>
+  </button>
+  <button mat-menu-item (click)="deleteConfirmation(post.pk)">
+    <span>{{'FORUM.DELETE' | translate }}</span>
+  </button>
+</mat-menu>
+
+<div *ngIf="post" class="html-content" [innerHTML]="post.description"></div>
+
+<!--attached files-->
+<div *ngIf="post?.uploadedFiles?.length" class="push-top">
+  <app-display-attached [resources]="post.uploadedFiles"></app-display-attached>
+</div>
+
+<!--tags-->
+<div *ngIf="post?.tags && post?.tags?.length" fxLayout="row wrap" class="push-top">
+  <p class="body-2" fxFlex="grow">{{'FORUM.CATEGORIES' | translate }}:</p>
+  <mat-chip-list>
+    <mat-chip *ngFor="let tag of post.tags" class="text-truncate body-2 not-effects">{{tag.name}}</mat-chip>
+  </mat-chip-list>
+</div>
+
+<!--Views and favorite-->
+<div fxLayout="row" fxLayoutAlign="space-between center" class="push-top" *ngIf="post">
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <mat-icon>remove_red_eye</mat-icon><label class="caption-1 push-left-xxxs">{{post.numViews}}</label>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <label class="caption-1 push-right-xxxs">{{post.numLikes}}</label>
+    <button mat-icon-button [color]="getFavoriteColor()" (click)="onFavorite()" type="button" [matTooltip]="getFavoriteTooltip()">
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </div>
+</div>

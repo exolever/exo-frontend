@@ -1,0 +1,8 @@
+<div class="w-100">
+  <exo-router-tabs *ngIf="(category === typeEvent.WORKSHOP && tabs.length > 1)" [tabs]="tabs"></exo-router-tabs>
+  <div class="exo-platform-light-theme" fxLayout="column">
+    <div class="wrapper pad-xs w-100" ngClass.lt-md="w-100" fxFlexAlign="center" fxLayoutAlign="center">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

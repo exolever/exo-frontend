@@ -1,0 +1,111 @@
+<mat-card
+  class="side-navigation"
+  fxShow="false"
+  fxShow.gt-sm="true"
+>
+  <div class="container">
+    <mat-list role="list">
+      <div class="summary" fxLayout="row" fxLayoutAlign="space-between center" routerLinkActive="active">
+        <a
+          mat-list-item
+          routerLink="summary"
+          class="subheading-2"
+        >
+          {{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.SUMMARY' | translate }}
+        </a>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+      <div class="about-you" fxLayout="row" fxLayoutAlign="space-between center" routerLinkActive="active">
+        <a
+          mat-list-item
+          routerLink="about-you"
+          class="subheading-2"
+        >
+          {{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.ABOUT_YOU' | translate }}
+        </a>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+      <div *ngIf="isConsultant$ | async" class="your-purpose" fxLayout="row" fxLayoutAlign="space-between center" routerLinkActive="active">
+        <a
+          mat-list-item
+          routerLink="your-purpose"
+          class="subheading-2"
+        >
+          {{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.PURPOSE' | translate }}
+        </a>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+      <div *ngIf="isConsultant$ | async" class="activities" fxLayout="row" fxLayoutAlign="space-between center" routerLinkActive="active">
+        <a
+          mat-list-item
+          routerLink="desired-activities"
+          class="subheading-2"
+        >
+          {{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.INTERESTS' | translate }}
+        </a>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+      <div *ngIf="isConsultant$ | async" class="pillars" fxLayout="row" fxLayoutAlign="space-between center" routerLinkActive="active">
+        <a
+          mat-list-item
+          routerLink="core-pillars"
+          class="subheading-2"
+        >
+          {{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.CORE_PILLARS' | translate }}
+        </a>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+      <div *ngIf="isConsultant$ | async" class="exo-framer" fxLayout="row" fxLayoutAlign="space-between center" routerLinkActive="active">
+        <a
+          mat-list-item
+          routerLink="exo-framer"
+          class="subheading-2"
+        >
+          {{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.EXO_FRAMER' | translate }}
+        </a>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+      <div *ngIf="isConsultant$ | async" class="skills" fxLayout="row" fxLayoutAlign="space-between center" routerLinkActive="active">
+        <a
+          mat-list-item
+          routerLink="other-skills"
+          class="subheading-2"
+        >
+          {{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.OTHER_SKILLS' | translate }}
+        </a>
+        <mat-icon>chevron_right</mat-icon>
+      </div>
+    </mat-list>
+  </div>
+</mat-card>
+<mat-form-field
+  appearance="fill"
+  class="menu-mobile push-none"
+  fxShow="true"
+  fxShow.gt-sm="false"
+>
+  <mat-select
+    [(value)]="selected"
+    (selectionChange)="navigateTo($event)"
+  >
+    <mat-option value="summary">
+      {{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.SUMMARY' | translate }}
+    </mat-option>
+    <mat-option value="about-you">{{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.ABOUT_YOU' | translate }}</mat-option>
+    <mat-option *ngIf="isConsultant$ | async" value="your-purpose">
+      {{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.PURPOSE' | translate }}
+    </mat-option>
+    <mat-option *ngIf="isConsultant$ | async" value="desired-activities">
+      {{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.INTERESTS' | translate }}
+    </mat-option>
+    <mat-option *ngIf="isConsultant$ | async" value="core-pillars">
+      {{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.CORE_PILLARS' | translate }}
+    </mat-option>
+    <mat-option *ngIf="isConsultant$ | async" value="exo-framer">
+      {{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.EXO_FRAMER' | translate }}
+    </mat-option>
+    <mat-option *ngIf="isConsultant$ | async" value="other-skills">
+      {{ 'ECOSYSTEM.PROFILE.EDIT.NAVIGATION.OTHER_SKILLS' | translate }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

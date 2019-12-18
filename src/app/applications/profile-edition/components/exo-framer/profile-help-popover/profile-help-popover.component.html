@@ -1,0 +1,98 @@
+<mat-icon
+  [matPopoverTriggerFor]="helpPopoverElement"
+  class="pointer"
+  [ngClass]="iconSize"
+  [color]="color"
+>
+  help
+</mat-icon>
+<mat-popover #helpPopoverElement="matPopover" xPosition="{{xPosition}}" yPosition="{{yPosition}}" [overlapTrigger]="false" matPopoverTrigger="click"
+             mdPopoverPlacement="bottom" [matPopoverDelay]="400" [ngSwitch]="type">
+  <mat-card *ngSwitchCase="helpPopoverEnum.MTP">
+    <mat-card-title class="popover__title">{{'PROFILE.MTP_TITLE' | translate}}</mat-card-title>
+    <mat-card-content>
+      <div>
+        {{'PROFILE.MTP_DESCRIPTION' | translate}}
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngSwitchCase="helpPopoverEnum.STAFF_ON_DEMAND">
+    <mat-card-title class="popover__title">{{'PROFILE.STAFF' | translate}}</mat-card-title>
+    <mat-card-content>
+      <div>
+        {{'PROFILE.STAFF_DESCRIPTION' | translate}}
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngSwitchCase="helpPopoverEnum.COMMUNITY_CROWD">
+    <mat-card-title class="popover__title">{{'PROFILE.COMMUNITY_CROWD' | translate}}</mat-card-title>
+    <mat-card-content>
+      <div [innerHTML]="'PROFILE.COMMUNITY_CROWD_DESCRIPTION' | translate">
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngSwitchCase="helpPopoverEnum.ALGORITHMS">
+    <mat-card-title class="popover__title">{{'PROFILE.ALGORITHMS' | translate}}</mat-card-title>
+    <mat-card-content>
+      <div>
+        {{'PROFILE.ALGORITHMS_DESCRIPTION' | translate}}
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngSwitchCase="helpPopoverEnum.LEVERAGED_ASSETS">
+    <mat-card-title class="popover__title">{{'PROFILE.LEVERAGED' | translate}}</mat-card-title>
+    <mat-card-content>
+      <div>
+        {{'PROFILE.LEVERAGED_DESCRIPTION' | translate}}
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngSwitchCase="helpPopoverEnum.ENGAGEMENT">
+    <mat-card-title class="popover__title">{{'PROFILE.ENGAGEMENT' | translate}}</mat-card-title>
+    <mat-card-content>
+      <div>
+        {{'PROFILE.ENGAGEMENT_DESCRIPTION' | translate}}
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngSwitchCase="helpPopoverEnum.INTERFACES">
+    <mat-card-title class="popover__title">{{'PROFILE.INTERFACES' | translate}}</mat-card-title>
+    <mat-card-content>
+      <div>
+        {{'PROFILE.INTERFACES_DESCRIPTION' | translate}}
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngSwitchCase="helpPopoverEnum.DASHBOARDS">
+    <mat-card-title class="popover__title">{{'PROFILE.DASHBOARDS' | translate}}</mat-card-title>
+    <mat-card-content>
+      <div>
+        {{'PROFILE.DASHBOARDS_DESCRIPTION' | translate}}
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngSwitchCase="helpPopoverEnum.EXPERIMENTS">
+    <mat-card-title class="popover__title">{{'PROFILE.EXPERIMENTS' | translate}}</mat-card-title>
+    <mat-card-content>
+      <div>
+        {{'PROFILE.EXPERIMENTS_DESCRIPTION' | translate}}
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngSwitchCase="helpPopoverEnum.AUTONOMY">
+    <mat-card-title class="popover__title">{{'PROFILE.AUTONOMY' | translate}}</mat-card-title>
+    <mat-card-content>
+      <div>
+        {{'PROFILE.AUTONOMY_DESCRIPTION' | translate}}
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngSwitchCase="helpPopoverEnum.SOCIAL_TECHNOLOGIES">
+    <mat-card-title class="popover__title">{{'PROFILE.SOCIAL' | translate}}</mat-card-title>
+    <mat-card-content>
+      <div>
+        {{'PROFILE.SOCIAL_DESCRIPTION' | translate}}
+      </div>
+    </mat-card-content>
+  </mat-card>
+</mat-popover>

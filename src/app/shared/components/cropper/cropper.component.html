@@ -1,0 +1,18 @@
+<div class="exo-platform">
+  <div class="exo-platform-light-theme">
+    <div mat-dialog-title>
+      <label *ngIf="!maxSizeExceeded">{{'SHARED.CROP_YOUR_IMAGE' | translate }}</label>
+      <label *ngIf="maxSizeExceeded">{{'SHARED.SOMETHING_WENT_WRONG' | translate }}</label>
+    </div>
+    <mat-dialog-content cdkFocusRegionstart>
+      <img-cropper #cropper [image]="data" [settings]="settings" *ngIf="!maxSizeExceeded; else hideCropper"></img-cropper>
+      <ng-template #hideCropper>
+        <p *ngIf="maxSizeExceeded">{{'SHARED.CROP_IMAGE_LIMIT' | translate }}</p>
+      </ng-template>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button *ngIf="!maxSizeExceeded" mat-flat-button mat-dialog-close color="primary" (click)="dialogRef.close(data)">{{'SHARED.SAVE' | translate }}</button>
+      <button *ngIf="maxSizeExceeded" mat-flat-button mat-dialog-close color="primary">{{'SHARED.OK' | translate }}</button>
+    </mat-dialog-actions>
+  </div>
+</div>

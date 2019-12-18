@@ -1,0 +1,16 @@
+@import 'variables';
+@import '~@openexo/design-system/variables';
+
+:host {
+  flex: auto;
+}
+
+.mat-card-content {
+  padding: 0;
+}
+
+.mat-list-item {
+  &.applicant-item {
+    padding: map-get($spaceMeasures, xxs) 0;
+  }
+}

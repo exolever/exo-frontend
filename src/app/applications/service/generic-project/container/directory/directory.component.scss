@@ -1,0 +1,22 @@
+@import '~@openexo/design-system/mixins';
+@import '~@openexo/design-system/variables';
+
+$unit: map-get($componentMeasure, '1x');
+.directory-team{
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: calc(#{$unit} * 22);
+  padding: map-get($spaceMeasures, 'sm');
+}
+
+
+::ng-deep.ecosystem-member {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  @include retina-background-image($static-root + 'assets/directory/ecosystemMember', 'png', 30px, 30px)
+}

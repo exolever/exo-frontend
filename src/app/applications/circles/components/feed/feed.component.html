@@ -1,0 +1,17 @@
+<div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="16px" *ngIf="questions$ | async as questions; else loading">
+  <div class="w-100">
+      <app-feed-item *ngFor="let post of questions"
+      [user]="user$ | async"
+      [post]="post"
+      (seeDetails)="onSeeDetails(post.circle.slug, post.slug)"
+      (edit)="onEdit(post.slug)"
+      (delete)="onDelete(post.pk)"
+    ></app-feed-item>
+  </div>
+  <app-circles-shortcuts [circles]="circles$ | async" fxFlex.gt-sm="296px"></app-circles-shortcuts>
+</div>
+<ng-template #loading>
+  <div fxLayoutAlign="center center">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+</ng-template>

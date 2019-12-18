@@ -1,0 +1,45 @@
+<section class="push-top-lg">
+  <form [formGroup]="form" novalidate>
+    <mat-form-field class="w-100">
+      <input #name formControlName="name" matInput placeholder="{{'ECOSYSTEM.EXQ.FORM.PLACEHOLDER.NAME' | translate}}"/>
+      <mat-hint align="end">{{name.value.length}} / 100</mat-hint>
+      <mat-error>{{form.get('name').errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select formControlName="language" placeholder="{{'ECOSYSTEM.EXQ.FORM.PLACEHOLDER.LANGUAGE' | translate}}">
+        <mat-option [value]="'en'">
+          {{'ACCOUNTS.LANGUAGES.ENGLISH' | translate}}
+        </mat-option>
+        <mat-option [value]="'es'">
+          {{'ACCOUNTS.LANGUAGES.SPANISH' | translate}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+      <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="start center" fxLayoutAlign.lt-sm="start">
+      <span class="push-bottom push-right-xxs">{{getDomain()}}</span>
+      <mat-form-field>
+        <input formControlName="slug" matInput pattern="^\b[a-z0-9\-]+" placeholder="{{'ECOSYSTEM.EXQ.FORM.PLACEHOLDER.SLUG' | translate}}">
+        <mat-error *ngIf="form.get('slug').errors?.pattern">{{'ECOSYSTEM.EXQ.FORM.PLACEHOLDER.SLUG_ERROR' | translate}}</mat-error>
+        <mat-error *ngIf="!form.get('slug').errors?.pattern">{{form.get('slug').errors | humanizeFormErrors}}</mat-error>
+        <mat-error *ngIf="error?.slug">{{error?.slug}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="16px">
+      <mat-checkbox class="caption-1 foreground-secondary-text" color="primary" formControlName="sendResults">
+        {{'ECOSYSTEM.EXQ.FORM.PLACEHOLDER.SEND_RESULTS' | translate }}
+      </mat-checkbox>
+      <mat-checkbox class="caption-1 foreground-secondary-text" color="primary" formControlName="showResults">
+        {{'ECOSYSTEM.EXQ.FORM.PLACEHOLDER.SHOW_RESULTS' | translate }}
+      </mat-checkbox>
+    </div>
+    <div class="push-top" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px">
+      <button (click)="goBack()"
+              color="accent" mat-flat-button type="button">{{'COMMON.CANCEL' | translate}}</button>
+      <button (click)="onSubmit()"
+              color="primary"
+              mat-flat-button type="button">
+        {{survey ? ('ECOSYSTEM.EXQ.FORM.ACTIONS.SAVE' | translate) : ('ECOSYSTEM.EXQ.FORM.ACTIONS.CREATE' | translate)}}
+      </button>
+    </div>
+  </form>
+</section>

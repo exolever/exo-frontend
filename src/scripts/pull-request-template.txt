@@ -1,0 +1,33 @@
+####Description####
+
+What is doing the code in the pull-request.
+
+####Motivation and Context####
+
+Why is done this code, the goal, motivation and any information that you consider interesting for understanding the code
+
+####How Has This Been Tested?####
+
+Are passing all tests? Have you developed new tests for this code? Have you done any manuall test?
+
+####ng test suite####
+
+Screenshots (if appropriate):
+
+####Checklist:####
+
+ [] My code follows the code style of this project (https://angular.io/styleguide).
+
+ [] My change requires a change to the documentation.
+
+ [] I have updated the documentation accordingly.
+
+ [] I have added tests to cover my changes.
+
+ [] I added a picture AOT file
+
+ [] I made build AOT localy
+
+ [] All new and existing tests passed.
+
+ [] This change needs to update the deployment process (sandbox or production)

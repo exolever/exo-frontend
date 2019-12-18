@@ -1,0 +1,12 @@
+@import 'themes/exo-platform-dark-theme';
+
+$height: 72px;
+
+.uploader-container {
+  height: $height;
+  border: 1px solid mat-color($mat-dark-theme-background, 'card-shadow');
+  border-radius: 6px;
+  & > .icon {
+    border-right: 1px solid mat-color($mat-dark-theme-background, 'card-shadow');
+  }
+}

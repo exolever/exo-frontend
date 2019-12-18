@@ -1,0 +1,28 @@
+<section class="profile-video">
+  <div *ngIf="!user.video"
+       class="upload-video"
+       fxLayout="column"
+       fxLayoutAlign="center center"
+       [fxFlex]="'0 1 ' + uploadVideoContainerWidth"
+       (click)="openFilePicker()"
+  >
+    <mat-icon class="mat-24">cloud_upload</mat-icon>
+    <span class="body-2">
+      {{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.SHARE_VIDEO' | translate }}
+    </span>
+  </div>
+
+  <div class="video" *ngIf="user.video" fxLayout="column" fxLayoutAlign="center start" fxLayoutAlign.lt-sm="center center">
+    <video width="360" controls controlsList="nodownload">
+      <source [src]="user.video">
+      Your browser does not support HTML5 video.
+    </video>
+    <mat-icon
+      (click)="openFilePicker()"
+      class="mat-24 change-video"
+      matTooltip="{{'TOOLTIP.CHANGE_VIDEO' | translate}}"
+    >
+      cloud_upload
+    </mat-icon>
+  </div>
+</section>

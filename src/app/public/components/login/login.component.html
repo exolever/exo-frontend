@@ -1,0 +1,69 @@
+<div fxLayoutAlign="center center" class="login">
+  <div fxLayout="row wrap" fxLayoutAlign="center start" [fxFlex]="'0 1 ' + config.layoutMaxWidth">
+    <div
+      fxLayoutAlign="center"
+      fxFlex="grow"
+      ngClass.gt-sm="push-bottom-sm"
+      ngClass.lt-sm="pad-top"
+      data-e2e="page-title">
+      <h2 class="title">{{ 'PUBLIC.LOGIN_TITLE' | translate }}</h2>
+    </div>
+    <app-alert *ngIf="showAlert"
+               [message]="userMessage"
+               typeAlert=error
+    ></app-alert>
+    <form [formGroup]="loginForm"
+          fxLayout="row wrap"
+          fxFlex="grow"
+          (ngSubmit)="onSubmit()"
+          ngClass.lt-sm="pad-right pad-left"
+          class="border"
+    >
+      <mat-form-field color="primary" fxFlex="grow" appearance="fill">
+        <mat-label>
+          {{'PUBLIC.EMAIL' | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="username"
+        >
+        <mat-error align="start">
+          {{loginForm.get('username').errors| humanizeFormErrors}}
+        </mat-error>
+      </mat-form-field>
+      <show-hide-password fxFlex="grow">
+        <mat-form-field color="primary" fxFlex="grow" appearance="fill">
+          <mat-label>
+            {{'PUBLIC.PASSWORD' | translate }}
+          </mat-label>
+          <input
+            #showHideInput
+            matInput
+            type="password"
+            formControlName="password"
+          >
+          <mat-error align="start">
+            {{loginForm.get('password').errors| humanizeFormErrors}}
+          </mat-error>
+        </mat-form-field>
+      </show-hide-password>
+      <a class="caption-1 sign-up-link push-bottom-sm" color="primary" routerLink="{{requestPasswordUrl()}}">
+        {{'PUBLIC.FORGOTTEN_PW' | translate }}
+      </a>
+
+      <div fxFlex="grow" fxLayoutAlign="center" class="push-bottom-sm">
+        <button
+          mat-flat-button
+          type="submit"
+          color="primary"
+        >
+          {{'PUBLIC.LOG_IN' | translate }}
+        </button>
+      </div>
+    </form>
+    <div fxFlex="grow" fxLayoutAlign="center" class="push-top-sm">
+      <p >{{'PUBLIC.NEW_OPENEXO' | translate }} <a href="https://www.openexo.com/join-community" color="primary">{{'PUBLIC.SIGN_UP_LOW' | translate }}</a></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<ng-container [ngSwitch]="true" >
+  <span *ngSwitchCase="project.isADraft()" class="pretty-label dark-blue caption-2">{{'ECOSYSTEM.WORKSPACE.PROJECTS.STATUS.DRAFT' | translate | uppercase }}</span>
+  <span *ngSwitchCase="project.isStarted()" class="pretty-label green caption-2">{{'ECOSYSTEM.WORKSPACE.PROJECTS.STATUS.STARTED' | translate | uppercase }}</span>
+  <span *ngSwitchCase="project.isFinished()" class="pretty-label grey caption-2">{{'ECOSYSTEM.WORKSPACE.PROJECTS.STATUS.FINISHED' | translate | uppercase }}</span>
+</ng-container>

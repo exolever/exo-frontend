@@ -1,0 +1,16 @@
+<div mat-dialog-title>{{'ECOSYSTEM.WORKSHOPS.TITLE_IMPORT' | translate}}</div>
+<mat-dialog-content>
+  {{'ECOSYSTEM.WORKSHOPS.FILE_ATTENDEES' | translate}} <a href="/assets/public/attendees-list.csv" target="_blank">attendees-list.csv</a>.
+  <p>
+    <input type="file" (change)="parse($event.target.files)"/>
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-flat-button color="accent" type="button" [mat-dialog-close]="true">
+    {{'COMMON.CANCEL' | translate}}
+  </button>
+  <button mat-flat-button type="button" [disabled]="!contentParsed" (click)="upload()" color="primary">
+    {{'ECOSYSTEM.WORKSHOPS.ADD' | translate}}
+  </button>
+</mat-dialog-actions>

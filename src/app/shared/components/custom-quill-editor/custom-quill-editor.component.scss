@@ -1,0 +1,66 @@
+@import "~@openexo/design-system/variables";
+@import "~@openexo/design-system/theming";
+
+
+$inactiveToolbarButtonColor: mat-color($exo-grey, 900, 0.64);
+$activeToolbarButtonColor: mat-color($exo-grey, 900);
+
+.custom-hint {
+  display: block;
+}
+
+
+::ng-deep {
+  .ql-editor {
+    overflow: inherit;
+    height: inherit;
+    display: table-cell;
+  }
+
+  .ql-editor.ql-blank::before {
+    font-style: normal;
+  }
+
+  .ql-toolbar.ql-snow {
+    background-color: transparent;
+    border: 0;
+    padding: map-get($spaceMeasures, 'xs') 0px;
+    margin-top: map-get($spaceMeasures, 'xs');
+    & span.ql-formats {
+      margin-right: map-get($spaceMeasures, 'xs');
+    }
+
+    & button:hover, button:focus, button.ql-active,
+    .ql-picker-label:hover, .ql-picker-label.ql-active,
+    .ql-picker-item:hover, .ql-picker-item.ql-selected {
+      color: $activeToolbarButtonColor;
+      & .ql-fill, .ql-stroke.ql-fill {
+        fill: $activeToolbarButtonColor;
+      }
+      & .ql-stroke, .ql-stroke-miter {
+        stroke: $activeToolbarButtonColor;
+      }
+    }
+
+    & .ql-stroke{
+      stroke: $inactiveToolbarButtonColor;
+    }
+
+    & .ql-stroke-miter {
+      stroke: $inactiveToolbarButtonColor;
+    }
+
+    & .ql-fill, .ql-stroke.ql-fill {
+      fill: $inactiveToolbarButtonColor;
+    }
+  }
+  .ql-container.ql-snow {
+    border-width: 0px;
+    padding-top: 0px;
+    font-family: unset;
+    font-size: unset;
+    &:not(.ql-disabled) a {
+      white-space: pre-wrap;
+    }
+  }
+}

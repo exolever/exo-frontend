@@ -1,0 +1,141 @@
+<section class="ecosystem-directory exo-platform">
+  <div class="layout-container">
+    <div class="header push-bottom-lg text-align-center">
+      <h1 class="w-100 push-top-none pad-top-lg">{{'ECOSYSTEM.DIRECTORY.TITLE' | translate }}</h1>
+      <p class="subheading-2 foreground-secondary-text">{{'ECOSYSTEM.DIRECTORY.DESCRIPTION' | translate }}</p>
+    </div>
+    <section class="directory-list" fxFill fxLayout="row">
+      <section class="directory-items" fxFlex="100">
+        <!-- top forum and invite for mobile -->
+        <nav class="mobile-top-modal" fxLayout="column" fxHide.gt-sm fxShow.lt-md>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="mobile-invite">
+              <mat-panel-title fxLayoutAlign="center">
+                {{ 'DASHBOARD.DIRECTORY.INVITE_ASIDE.MAIN' | translate }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-invite-modal
+              [user]="loggedUser$ | async"
+              [fxFlex]="'1 1 ' + mobileInviteButtonWidth"
+              [inExpansionPanel]="true"
+            ></app-invite-modal>
+          </mat-expansion-panel>
+        </nav>
+        <div
+          class="container-items"
+          fxLayout="row"
+          fxLayout.lt-md="column"
+          fxLayoutAlign="space-between end"
+        >
+          <div class="search" fxFlex="85">
+            <mat-form-field
+              class="search-form-field"
+              [floatLabel]="'never'"
+            >
+              <mat-icon matPrefix class="search-icon pad-right">search</mat-icon>
+              <input
+                matInput
+                type="text"
+                data-e2e="search-input"
+                placeholder="{{'ECOSYSTEM.DIRECTORY.SEARCH.HELP' | translate}}"
+                [formControl]="searchControl"
+                [value]="searchedText$ | async"
+                #searchField
+              >
+              <mat-icon matSuffix class="pointer" *ngIf="searchField.value" (click)="searchControl.reset()">close</mat-icon>
+            </mat-form-field>
+          </div>
+          <div fxFlex="none" class="filter-mobile" fxShow="false" fxShow.lt-md="true" fxLayout="row" fxLayoutAlign="center center">
+            <button
+              data-e2e="filter-mobile-btn"
+              mat-flat-button
+              class="pad-left-lg pad-top-xxxs pad-right-lg pad-bottom-xxxs"
+              color="primary"
+              (click)="onShowFiltersDialog()"
+            >
+              <span>{{'DASHBOARD.DIRECTORY.FILTER_FAB' | translate}}</span>
+              <span *ngIf="numberOfFilters$ | async as numberOfFilter" class="bullet foreground-text push-left">{{numberOfFilter}}</span>
+            </button>
+          </div>
+          <div fxFlex="none" class="results" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutAlign.lt-md="space-between end">
+            <p *ngIf="((totalConsultants$ | async) && (totalConsultants$ | async) > 0); else noResources" class="search__results push-bottom body-1 foreground-secondary-text" i18n>
+              {{totalConsultants$ | async}} {totalConsultants$ | async, plural, =1 { {{'ECOSYSTEM.DIRECTORY.SEARCH.RESULT' | translate | lowercase}} } other { {{'ECOSYSTEM.DIRECTORY.SEARCH.RESULTS' | translate | lowercase}} }}
+            </p>
+            <ng-template #noResources>
+              <p class="search__results push-bottom body-1 foreground-secondary-text" i18n>{{'COMMON.NO' | translate}} {{'ECOSYSTEM.DIRECTORY.SEARCH.RESULTS' | translate}}</p>
+            </ng-template>
+
+            <!-- Mobile section -->
+            <div class="select-filter" fxShow="false" fxShow.lt-md="true">
+              <ng-container [ngTemplateOutlet]="filterTpl" [ngTemplateOutletContext]="{resolution: 'mobile'}"></ng-container>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!(isLoading$ | async) else loading" class="cards">
+          <app-people
+            [isStaff]="(loggedUser$ | async)?.isStaff"
+          >
+          </app-people>
+          <div
+          *ngIf="(!(totalConsultants$ | async) || (totalConsultants$ | async) === 0)"
+            data-e2e="no-results" class="subheading-2 title">
+            {{'ECOSYSTEM.DIRECTORY.SEARCH.EMPTY' | translate}}
+          </div>
+        </div>
+      </section>
+      <section
+        class="directory-filters"
+        fxLayout="column"
+        fxLayoutAlign="start end"
+        fxFlex
+        fxHide.lt-md
+        fxShow.gt-sm
+      >
+        <div class="select-filter">
+          <ng-container [ngTemplateOutlet]="filterTpl" [ngTemplateOutletContext]="{resolution: 'desktop'}"></ng-container>
+        </div>
+        <mat-card class="filters pad-bottom" *ngIf="!openedDialog">
+          <app-directory-filters [showFullScreen]="false"></app-directory-filters>
+        </mat-card>
+        <app-invite-modal [user]="loggedUser$ | async" class="push-top push-bottom"></app-invite-modal>
+      </section>
+    </section>
+  </div>
+</section>
+
+<ng-template #loading>
+  <div fxLayoutAlign="center center">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+</ng-template>
+
+<ng-template #filterTpl let-resolution="resolution">
+  <mat-form-field>
+    <mat-select
+      (selectionChange)="onUpdateSortBy($event)"
+      [value]="sortBy$ | async"
+      placeholder="{{'DASHBOARD.DIRECTORY.SORT_BY' | translate}}"
+      [attr.data-e2e]="'order-by-select-' + resolution"
+      #mdSelectSortBy
+    >
+      <mat-option value="activity" data-e2e="activity-option">
+        {{'DASHBOARD.DIRECTORY.OPTIONS_SORT_BY.ACTIVITY' | translate}}
+      </mat-option>
+      <mat-option value="projects" data-e2e="num-projects-option">
+        {{'DASHBOARD.DIRECTORY.OPTIONS_SORT_BY.NUMBER_OF_PROJECTS' | translate}}
+      </mat-option>
+      <mat-option value="registered" data-e2e="join-date-option">
+        {{'DASHBOARD.DIRECTORY.OPTIONS_SORT_BY.JOINING_DATE' | translate}}
+      </mat-option>
+      <mat-option value="name" data-e2e="full-name-option">
+        {{'DASHBOARD.DIRECTORY.OPTIONS_SORT_BY.FULL_NAME' | translate}}
+      </mat-option>
+      <mat-option value="location" data-e2e="location-option">
+        {{'DASHBOARD.DIRECTORY.OPTIONS_SORT_BY.LOCATION' | translate}}
+      </mat-option>
+      <mat-option value="status" *ngIf="(loggedUser$ | async)?.isStaff" data-e2e="status-option">
+        {{'DASHBOARD.DIRECTORY.OPTIONS_SORT_BY.ACTIVE_STATUS' | translate}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</ng-template>

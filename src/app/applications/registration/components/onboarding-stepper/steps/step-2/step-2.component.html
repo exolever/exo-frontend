@@ -1,0 +1,30 @@
+<div *ngIf="isActive" class="pad container exo-platform step2-wrapper">
+  <h1 class="push-top-lg push-bottom-none">{{shortName}}, {{'REGISTRATION.STEPS.2.TITLE' | translate}}</h1>
+  <h2 class="foreground-secondary-text pad-bottom-lg">{{'REGISTRATION.STEPS.2.SUBTITLE' | translate}}</h2>
+  <mat-card>
+    <mat-card-content class="pad-sm">
+      <div fxLayout.lt-md="column" fxLayoutGap="24px">
+        <div fxFlex="50%" fxFlex.lt-md="100%">
+          <div style="padding:56.25% 0 0 0;position:relative">
+            <iframe #video id="video1" src="https://player.vimeo.com/video/280816024?byline=0" class="frame" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          </div>
+          <div class="video-help truncate-text">
+            <div><strong>{{'REGISTRATION.STEPS.2.VIDEO1_TITLE' | translate}}</strong></div>
+          </div>
+        </div>
+        <div fxFlex="50%" fxFlex.lt-md="100%">
+          <div style="padding:56.25% 0 0 0;position:relative">
+            <iframe #video id="video2" src="https://player.vimeo.com/video/280327154?byline=0" class="frame" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          </div>
+        <div class="video-help truncate-text">
+            <div><strong>{{'REGISTRATION.STEPS.2.VIDEO2_TITLE' | translate}}</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center center" class="push-top-lg">
+        <button mat-flat-button color="primary" (click)="next()">{{'REGISTRATION.STEPS.2.BUTTON' | translate}}</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

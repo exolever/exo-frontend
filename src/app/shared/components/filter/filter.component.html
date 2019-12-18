@@ -1,0 +1,73 @@
+<mat-expansion-panel [attr.data-e2e]="name +'-expansion-panel'">
+  <mat-expansion-panel-header>
+    <mat-panel-title fxLayoutAlign="start center">
+      <span class="body-1" [class.weight-bold]="filtersCounter > 0">{{name}}</span>
+      <span *ngIf="filtersCounter > 0" fxLayoutAlign="center center" class="bullet push-left-xxxs">{{filtersCounter}}</span>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <div fxLayout="column" class="push-bottom">
+    <mat-radio-group *ngIf="isRadioButton; else checkBox" fxLayout="column"
+    [value]="getFirstValueSelected()"
+    [name]="name">
+      <mat-radio-button
+        *ngFor="let option of optionsForm.controls; let i = index; let last = last"
+        class="body-1"
+        [ngClass]="{'push-bottom-xxxs': !last}"
+        (change)="onRadioChange($event)"
+        color="primary"
+        [id]="id+'-'+listToShow[i].pk"
+        [formControl]="option"
+        [value]="listToShow[i].pk"
+        [checked]="optionChecked(listToShow[i])"
+        ngDefaultControl
+      >
+        {{listToShow[i].name}}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <ng-template #checkBox>
+      <mat-checkbox
+        *ngFor="let option of optionsForm.controls; let i = index; let last = last"
+        class="body-1"
+        [ngClass]="{'push-bottom-xxxs': !last}"
+        (change)="onCheckboxChange($event)"
+        color="primary"
+        [id]="id+'-'+listToShow[i].pk"
+        [checked]="optionChecked(listToShow[i])"
+        [formControl]="option"
+        [value]="listToShow[i].pk">
+        {{listToShow[i].name}}
+      </mat-checkbox>
+    </ng-template>
+  </div>
+
+  <mat-expansion-panel name="add-more-box" *ngIf="allowSearch" [hideToggle]="true" [attr.data-e2e]="name + '-search-expansion-panel'">
+    <mat-expansion-panel-header class="search">
+      <mat-panel-title class="service-body-2">
+        <label class="subheading-2 text-decoration-underline"
+               [attr.data-e2e]="name+'-search-more'"
+        >
+          {{'DASHBOARD.DIRECTORY.FILTERS.SEARCH_MORE' | translate}}
+        </label>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <mat-form-field
+        [floatLabel]="'never'"
+      >
+        <mat-icon
+          matPrefix
+          class="mat-16 push-right-xxxs">search</mat-icon>
+        <input matInput placeholder="{{'DASHBOARD.DIRECTORY.FILTERS.SEARCH' | translate}} {{name}}" [formControl]="optionToAdd" [matAutocomplete]="auto" [attr.data-e2e]="name + '-search-input'">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayOption">
+          <mat-option *ngFor="let item of filteredOptions | async" [value]="item" (onSelectionChange)="onSelectionChange($event)" [disabled]="isAddedPreviously(item)" #option>
+            <span [attr.data-e2e]="item.name+'-search-option'">{{item.name}}</span>
+            <span *ngIf="option.disabled" class="caption-1 pad-left-xxxs">{{'COMMON.ADDED' | translate}}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </mat-expansion-panel>
+</mat-expansion-panel>

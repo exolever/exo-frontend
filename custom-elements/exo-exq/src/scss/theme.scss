@@ -1,0 +1,8 @@
+@import '~@openexo/design-system/theming';
+// // Create the theme
+$theme: mat-light-theme($primary, $secondary, $warn);
+
+// Include component specific mixin
+@include mat-select-theme($theme);
+@include mat-stepper-theme($theme);
+@include mat-checkbox-theme($theme);

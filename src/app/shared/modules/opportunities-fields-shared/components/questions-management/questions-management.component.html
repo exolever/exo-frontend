@@ -1,0 +1,27 @@
+<section [formGroup]="form">
+  <h2 class="title-help-icon">
+    {{'ECOSYSTEM.OPPORTUNITIES.CREATE.REQUIREMENT_FORM' | translate}}
+    <app-help-popover
+      [content]="'ECOSYSTEM.OPPORTUNITIES.CREATE.HELP.REQUIREMENTS' | translate"
+    ></app-help-popover>
+  </h2>
+  <div class="push-bottom-lg">
+    <exo-alert
+      [message]="'ECOSYSTEM.OPPORTUNITIES.CREATE.QUESTIONS_ALERT' | translate"
+      [isCloseable]="true"
+      [closeButtonText]="'COMMON.CLOSE' | translate "
+      typeAlert="info"
+    ></exo-alert>
+  </div>
+  <div formArrayName="questions">
+    <ng-container *ngFor="let question of form.get('questions')['controls']; let i = index; let isLast = last ">
+      <h3 class="foreground-secondary-text">{{'ECOSYSTEM.OPPORTUNITIES.CREATE.QUESTION' | translate}} {{i+1}}</h3>
+      <mat-form-field class="w-100" appearance="fill" [ngClass]="{'push-bottom-none': isLast}">
+        <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.QUESTION_LABEL' | translate}}</mat-label>
+        <input matInput type="text" [formControlName]="i"/>
+        <mat-hint align="end">{{form.get('questions').controls[i].value.length}} / {{maxLengthQuestion}}</mat-hint>
+        <mat-error>{{form.get('questions').controls[i].errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+    </ng-container>
+  </div>
+</section>

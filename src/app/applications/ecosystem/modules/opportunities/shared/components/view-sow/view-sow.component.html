@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>
+  {{'ECOSYSTEM.OPPORTUNITIES.VIEW_SOW.TITLE' | translate}}
+</h2>
+<mat-dialog-content>
+  <perfect-scrollbar class="perfect-scrollbar with-actions ps-show-always">
+    <div class="body-1">
+      <p>
+        <span class="body-2">1. {{'ECOSYSTEM.OPPORTUNITIES.VIEW_SOW.PROJECT_SECTION' | translate}}</span>
+      </p>
+      <p>
+        <span class="body-2">{{'ECOSYSTEM.OPPORTUNITIES.VIEW_SOW.SUBJECT' | translate}}: </span>{{data.sow.title}}<br/>
+        <span class="body-2">{{'ECOSYSTEM.OPPORTUNITIES.VIEW_SOW.CLIENT' | translate}}: </span>{{data.sow.entity}}<br/>
+        <span class="body-2">{{'ECOSYSTEM.OPPORTUNITIES.VIEW_SOW.DESCRIPTION' | translate}}: </span>
+        <p *ngIf="data.sow.description" class="line-breaker" [innerHTML]="data.sow.description"></p>
+        <span class="body-2">{{'ECOSYSTEM.OPPORTUNITIES.VIEW_SOW.LOCATION' | translate}}: </span>
+          {{data.sow.location ? data.sow.location : 'ECOSYSTEM.OPPORTUNITIES.VIEW_SOW.ONLINE' | translate }}<br/>
+        <span class="body-2">{{'ECOSYSTEM.OPPORTUNITIES.VIEW_SOW.START_DATE' | translate}}: </span>
+          {{data.sow.startDate | formatDate: 'short'}}<br/>
+        <span class="body-2">{{'ECOSYSTEM.OPPORTUNITIES.VIEW_SOW.END_DATE' | translate}}: </span>
+          {{data.sow.endDate | formatDate: 'short'}}<br/>
+        <ng-container *ngIf="data.sow.startTime">
+          <span class="body-2">{{'ECOSYSTEM.OPPORTUNITIES.VIEW_SOW.START_TIME' | translate}}: </span>
+            {{data.sow.startTime.format('h:mm A')}} <ng-container *ngIf="data.sow.timeZone">({{data.sow.timeZone}})</ng-container><br/>
+        </ng-container>
+        <ng-container *ngIf="data.sow.locationUrl">
+          <span class="body-2">{{'ECOSYSTEM.OPPORTUNITIES.VIEW_SOW.CONFERENCIE_URL' | translate}}: </span>
+            <a [href]="data.sow.locationUrl" target="_blank" >{{data.sow.locationUrl}}</a> <br/>
+        </ng-container>
+      <p class="push-top-xs">
+        <span class="body-2">2. {{'ECOSYSTEM.OPPORTUNITIES.VIEW_SOW.COMPENSATION_SECTION' | translate }}: </span>
+      </p>
+      <p>
+        <span class="body-2">{{'ECOSYSTEM.OPPORTUNITIES.VIEW_SOW.PAYABLE_AMOUNT' | translate }}: </span>
+          {{humanizedBudgets()?.join(" " +('COMMON.AND' | translate | lowercase) + " " )}}<br/>
+      </p>
+    </div>
+  </perfect-scrollbar>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button color="primary" mat-flat-button mat-dialog-close>{{'COMMON.CLOSE' | translate}}</button>
+</mat-dialog-actions>
+

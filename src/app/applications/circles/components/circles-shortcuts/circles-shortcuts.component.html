@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-content>
+    <div class="section primary-color">{{ 'ECOSYSTEM.CIRCLES.YOUR_CIRCLES' | translate }}</div>
+    <div *ngFor="let circle of circles" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="16px" class="item">
+      <div fxLayout="row" fxLayoutAlign="start center"
+        class="subheading-2 push-bottom-none pointer"
+        [routerLink]="['/ecosystem/circles/'+ circle.slug]"
+        [matTooltip]="circle.name"
+        exoLineClamp [lines]="2">
+        <img [src]="circle.image" class="push-right-xxs">
+        {{circle.name}}
+      </div>
+      <div>
+        <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="showMenu(circle)">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button *ngIf="canPost(circle)" mat-menu-item [routerLink]="['/ecosystem/circles/'+ circle.slug + '/create']">
+            <span>{{ 'ECOSYSTEM.CIRCLES.ACTIONS.NEW_POST' | translate }}</span>
+          </button>
+          <button *ngIf="canEdit(circle)" mat-menu-item [routerLink]="['/ecosystem/circles/'+ circle.slug + '/edit']">
+            <span>{{ 'ECOSYSTEM.CIRCLES.ACTIONS.EDIT_CIRCLE' | translate }}</span>
+          </button>
+          <button *ngIf="canLeave(circle)" mat-menu-item (click)="leaveCircle(circle)">
+            <span>{{ 'ECOSYSTEM.CIRCLES.ACTIONS.LEAVE_CIRCLE' | translate }}</span>
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+    <div class="w-100 push-top-sm text-align-center">
+      <button
+        mat-flat-button
+        [routerLink]="['/ecosystem/circles/create']"
+        color="primary"
+        type="button"
+        (click)="onClick()"
+        matTooltip="{{ 'ECOSYSTEM.CIRCLES.CREATE_CIRCLE.NEW' | translate }}">
+          <mat-icon>add</mat-icon>
+          <span>{{ 'ECOSYSTEM.CIRCLES.CREATE_CIRCLE.NEW' | translate }}</span>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

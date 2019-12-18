@@ -1,0 +1,22 @@
+export class StaticPermissions {
+  static ACCOUNTS_USER_EDIT_USER_PROFILE = 'user_edit_profile';
+  static CONSULTANT_CONSULTANT_EDIT_CONSULTANTS = 'consultant_edit_profile';
+  static CONSULTANT_CONSULTANT_LIST_CONSULTANTS = 'consultant_list';
+  static PROJECT_PROJECT_EDIT_PROJECT = 'edit_project';
+  static PROJECT_PROJECT_VIEW_PROJECT = 'full_view';
+  static PROJECT_ONLY_VIEW = 'only_view';
+  static PROJECT_PROJECT_PROJECT_MANAGER = 'project_manager';
+  static TEAM_TEAM_CAN_CHANGE_TEAM = 'change_team';
+  static TEAM_PERMS_COACH_TEAM = 'coach_team';
+  static TEAM_PERMS_FULL_VIEW_TEAM = 'team_full_view';
+  static ASSIGNMENT_PERMS_VIEW_ASSIGNMENT = 'team_assignment_view';
+  static MEDIA_LIBRARY_UPLOAD = 'add_resource';
+  static MEDIA_LIBRARY_UPDATE = 'change_resource';
+  static MEDIA_LIBRARY_DELETE = 'delete_resource';
+  static ADD_WORKSHOP = 'add_workshop';
+  static ADD_EVENT = 'add_event';
+  static CAN_ACCESS_MARKETPLACE = 'view_marketplace_full';
+  static CAN_ACCESS_EXQ = 'exq_access';
+  static CAN_VIEW_EXQ = 'view_exq_full';
+  static CAN_ACCESS_PROJECTS = 'exo_projects_access';
+}

@@ -1,0 +1,29 @@
+<div [formGroup]="form">
+  <div class="push-bottom-sm">
+    <mat-radio-group disableRipple="true" formControlName="mode">
+      <mat-radio-button color="primary" [value]="modes.onSite" class="push-right-sm big-body">{{'ECOSYSTEM.OPPORTUNITIES.CREATE.MODALITIES.ON_SITE' | translate}}</mat-radio-button>
+      <mat-radio-button color="primary" [value]="modes.online" class="push-right-sm big-body" (click)="preventChangeWithErrors($event)">{{'ECOSYSTEM.OPPORTUNITIES.CREATE.MODALITIES.ONLINE' | translate}}</mat-radio-button>
+      <mat-radio-button *ngIf="!isRequired" color="primary" [value]="modes.toBeDefined" class="big-body">{{'ECOSYSTEM.OPPORTUNITIES.CREATE.MODALITIES.TBD' | translate}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  
+  <div fxLayout="row">
+    <mat-form-field fxFlex.gt-sm="50%" appearance="fill" class="w-100 push-bottom-lg" *ngIf="isOnSite()">
+      <mat-label *ngIf="!isRequired">{{'ECOSYSTEM.OPPORTUNITIES.CREATE.LOCATION_LABEL_OPTIONAL' | translate}}</mat-label>
+      <mat-label *ngIf="isRequired">{{'ECOSYSTEM.OPPORTUNITIES.CREATE.LOCATION_LABEL' | translate}}</mat-label>
+      <input
+        matInput
+        formControlName="location"
+        google-place
+        (onSelect)="setLocation($event)">
+      <mat-error>{{form.get('location').errors | humanizeFormErrors}}</mat-error>
+      <mat-hint align="start">{{ 'ECOSYSTEM.OPPORTUNITIES.CREATE.LOCATION_HINT' | translate }}</mat-hint>
+    </mat-form-field>
+  
+    <mat-form-field fxFlex.gt-sm="50%" appearance="fill" class="w-100" *ngIf="isOnLine() && form.get('locationUrl')">
+      <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.CONFERENCIE_URL' | translate}}</mat-label>
+      <input matInput type="text" formControlName="locationUrl"/>
+      <mat-error>{{form.get('locationUrl').errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<section class="exo-platform">
+  <div class="text-align-center push-top-lg push-bottom-lg" *ngIf="project$ | async as project">
+    <div class="title-section">
+      <h1 class="push-top-none push-bottom-none">
+        {{project.name}}
+        <span class="push-left"><app-project-status-label [project]="project"></app-project-status-label></span>
+      </h1>
+    </div>
+    <div class="text-align-center push-top">
+      <button mat-flat-button color="accent" class="push-right-sm" (click)="onPreview(project)">
+        {{ 'ECOSYSTEM.WORKSPACE.PROJECTS.PREVIEW' | translate }}
+      </button>
+      <button mat-flat-button color="primary" (click)="onPublish(project)" [disabled]="disablePublishButton(project)">
+        {{ 'ECOSYSTEM.WORKSPACE.PROJECTS.PUBLISH.ACTION' | translate }}
+      </button>
+    </div>
+  </div>
+  <section class="pad-left-sm pad-bottom-sm pad-right-sm container" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="24px">
+    <app-project-side-navigation
+        fxFlex="296px"
+        fxFlex.lt-md="grow"
+      ></app-project-side-navigation>
+      <mat-card class="block-edition pad-sm" fxFlex="grow">
+        <mat-card-content>
+          <router-outlet></router-outlet>
+        </mat-card-content>
+      </mat-card>
+  </section>
+</section>

@@ -1,0 +1,52 @@
+@import "variables";
+@import "dialog";
+@import "multi-select";
+
+exo-event-list, .cdk-overlay-container {
+  font-family: $font-family;
+  font-size: $font-size;
+  z-index: 999999 !important;
+}
+
+.button {
+  background-color: $primary-color;
+  box-shadow: none;
+  color: white;
+  border: 0px; 
+  font-size: 18px;
+  font-weight: 500; 
+  border-radius: 36px;
+  height:48px;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+}
+
+input {
+  background-color: $field-background-color;
+  padding: 12px;
+  border: 1px solid #ccc;
+  color: black;
+  box-sizing: border-box;
+  border-radius: 2px;
+  &:focus {
+    outline: none;
+    background-color: white;
+  }
+}
+
+::placeholder {
+  color: $grey-text-color;
+  font-weight: 400;
+}
+
+.pointer{
+  cursor:pointer;
+}
+
+.empty-moment-image{
+  background-image: url('assets/empty-moment.svg');
+  width: 212px;
+  height: 200px;
+}

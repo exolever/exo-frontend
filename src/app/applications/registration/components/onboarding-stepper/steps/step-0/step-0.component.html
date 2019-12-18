@@ -1,0 +1,26 @@
+<div *ngIf="isActive" class="exo-platform step0-wrapper pad-left pad-right">
+  <mat-card class="push-top-sm">
+    <mat-card-content>
+      <div class="main-box">
+        <div class="display-1 push-bottom-none">{{'REGISTRATION.STEPS.0.TITLEA' | translate}}</div>
+        <div class="display-1 push-bottom-none">{{'REGISTRATION.STEPS.0.TITLEB' | translate}}</div>
+        <section class="bck-image">
+          <img src="/assets/onboarding/welcome.svg">
+        </section>
+        <p class="text">{{'REGISTRATION.STEPS.0.PARAGRAPH1' | translate}}</p>
+        <p class="text">{{'REGISTRATION.STEPS.0.PARAGRAPH2' | translate}}</p>
+        <p class="text">{{'REGISTRATION.STEPS.0.PARAGRAPH3' | translate}}</p>
+        <p class="text">{{'REGISTRATION.STEPS.0.PARAGRAPH4' | translate}}</p>
+        <p class="text">{{'REGISTRATION.STEPS.0.PARAGRAPH5' | translate}}</p>
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <div class="text-align-right">
+            <div class="subheading-2 push-bottom-none">{{'REGISTRATION.STEPS.0.NAME' | translate}}</div>
+            <div class="body-1 push-bottom-none">{{'REGISTRATION.STEPS.0.POSITION' | translate}}</div>
+          </div>
+          <div class="avatar-image push-left"></div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <button mat-flat-button color="primary" class="pad-left pad-right push-top-lg push-bottom-lg" (click)="goAhead()">{{'REGISTRATION.STEPS.0.BUTTON' | translate}}</button>
+</div>

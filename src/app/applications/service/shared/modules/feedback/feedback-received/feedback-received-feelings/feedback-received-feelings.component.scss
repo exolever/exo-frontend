@@ -1,0 +1,46 @@
+@import "variables";
+
+.star-rating ::ng-deep {
+  mat-icon {
+    &:not(.marked) {
+      display: none;
+    }
+  }
+}
+
+.grey {
+  color: mat-color($exo-grey, 900, 0.64);
+}
+
+img {
+  width: $sm;
+  height: $sm;
+  border-radius: 50%;
+}
+
+.item {
+  border-radius: $xxs;
+  background-color: mat-color($exo-grey, 900, 0.04);
+}
+
+mat-icon.mood-bad {
+  color: mat-color($exo-red, 700);
+}
+
+mat-icon.sentiment-very-dissatisfied {
+  color: mat-color($exo-red, 700);
+}
+
+mat-icon.sentiment-dissatisfied {
+  color: mat-color($exo-grey, 700);
+}
+
+mat-icon.sentiment-satisfied-alt {
+  color: mat-color($exo-teal, 600);
+}
+
+mat-icon.sentiment-very-satisfied {
+  color: mat-color($exo-teal, 600);
+}
+
+

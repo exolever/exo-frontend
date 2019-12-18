@@ -1,0 +1,73 @@
+<mat-card *ngIf="opportunity" class="card-section">
+  <mat-card-content>
+    <div class="advise push-bottom-sm" fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="section primary-color">{{opportunity.getRoleName() | uppercase }}</span>
+      <app-opportunity-menu-actions (sendAction)="manageActions($event)"
+                                    [opportunity]="opportunity"></app-opportunity-menu-actions>
+    </div>
+    <div class="info" fxLayout="column" fxLayoutAlign="start">
+      <div class="headline push-bottom-xxs">
+        {{opportunity.subject}}
+      </div>
+      <div [ngClass]="{'push-bottom': opportunity.isClosed() || opportunity.isTargetFixed()}">
+        <span class="pretty-label grey caption-2 slight-opacity push-right-xxs" *ngIf="opportunity.isClosed()">{{'ECOSYSTEM.OPPORTUNITIES.CLOSED' | translate | uppercase }}</span>
+        <span class="pretty-label purple caption-2" *ngIf="opportunity.isTargetFixed()">{{'ECOSYSTEM.OPPORTUNITIES.TARGETED' | translate | uppercase }}</span>
+      </div>
+      <div fxLayout="row wrap" fxLayoutGap="16px" class="push-bottom-sm">
+        <div *ngIf="opportunity.applicants?.length > 0" [ngClass]="{'new-applicants': opportunity.newApplicants}" fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="push-right-xxxs">person</mat-icon>
+          <label class="body-2">
+            {{ opportunity.applicants.length }} { opportunity.applicants.length, plural, =1 { {{'ECOSYSTEM.OPPORTUNITIES.APPLICANT' | translate}} } other { {{'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.TITLE' | translate}} }}
+            <span *ngIf="opportunity.newApplicants">({{opportunity.newApplicants}} { opportunity.newApplicants, plural, =1 { {{'ECOSYSTEM.OPPORTUNITIES.NEW_APPLICANT' | translate}} } other { {{'ECOSYSTEM.OPPORTUNITIES.NEW_APPLICANTS' | translate}} }})</span>
+          </label>
+        </div>
+        <div *ngIf="conversations && conversations.length > 0" [ngClass]="{'unread': totalUnreadMessages > 0 }"
+             fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="push-right-xxxs">forum</mat-icon>
+          <label class="body-2">
+          <span>
+            {{conversations.length}} {conversations.length, plural, =1 { {{'ECOSYSTEM.OPPORTUNITIES.CONVERSATION' | translate }} } other { {{'ECOSYSTEM.OPPORTUNITIES.CONVERSATIONS' | translate }} }}
+          </span>
+            <span *ngIf="totalUnreadMessages > 0">
+            ({{totalUnreadMessages}} {totalUnreadMessages, plural, =1 { {{'ECOSYSTEM.OPPORTUNITIES.NEW_MESSAGE' | translate }} } other { {{'ECOSYSTEM.OPPORTUNITIES.NEW_MESSAGES' | translate }}}})
+          </span>
+          </label>
+        </div>
+      </div>
+      <app-badgets-opportunity-info [opportunity]="opportunity" [showId]="true"></app-badgets-opportunity-info>
+      <ng-container *ngIf="showDesc">
+        <!-- Description -->
+        <div class="body-1 line-breaker opportunity-description" [innerHTML]="opportunity.description"></div>
+
+        <!-- Attached files -->
+        <div *ngIf="opportunity.files.length > 0" class="push-top-sm">
+          <app-display-attached [resources]="opportunity.files"></app-display-attached>
+        </div>
+
+        <!-- Categories -->
+        <p class="push-top-sm"><b>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.KEYWORDS_LABEL' | translate}}:</b></p>
+        <mat-chip-list>
+          <mat-chip *ngFor="let tag of opportunity.keywords" disableRipple="true" class="default">{{ tag.name }}</mat-chip>
+        </mat-chip-list>
+
+        <!-- Languages -->
+        <ng-container *ngIf="opportunity.mainLanguage">
+          <p class="push-top-sm"><b>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.LANGUAGES_LABEL' | translate}}:</b></p>
+          <mat-chip-list>
+            <mat-chip disableRipple="true" class="default">
+              {{ opportunity.mainLanguage.name }}
+            </mat-chip>
+            <mat-chip *ngIf="opportunity.secondaryLanguage" disableRipple="true" class="default">
+              {{ opportunity.secondaryLanguage.name }}
+            </mat-chip>
+          </mat-chip-list>
+        </ng-container>
+      </ng-container>
+      <div class="push-top-lg" fxLayout="row" fxLayoutAlign="end center">
+        <button mat-button type="button" (click)="showBtn()" color="primary">
+          {{showBtnText}}
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

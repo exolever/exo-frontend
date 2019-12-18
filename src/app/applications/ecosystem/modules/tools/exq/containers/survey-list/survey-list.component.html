@@ -1,0 +1,73 @@
+<div class="pad-bottom-lg" fxLayout="column">
+  <div *ngIf="loading$ | async" class="w-100" fxLayout="row" fxLayoutAlign="center">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+  <div *ngIf="!(loading$ | async) && (emptyMoment$ | async) && !(searchedText$ | async)"
+       class="empty-moment" fxLayout="column"
+       fxLayoutAlign="center center"
+  >
+    <exo-empty-moment>
+      <div class="empty-message text-align-center">
+        <div class="subheading-2">
+          {{'ECOSYSTEM.EXQ.CARD.EMPTY' | translate}}
+        </div>
+      </div>
+    </exo-empty-moment>
+
+  </div>
+  <section *ngIf="(!(loading$ | async) && !(emptyMoment$ | async)) || !!(searchedText$ | async)">
+    <div class="push-bottom" fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutAlign.lt-sm="center stretch">
+      <div
+        class="w-100"
+        fxLayout="row"
+        fxLayoutAlign="space-between end"
+      >
+        <div class="search" fxFlex="90">
+          <mat-form-field
+            [floatLabel]="'never'"
+            class="search-form-field w-100"
+          >
+            <mat-icon class="search-icon pad-right" matPrefix>search</mat-icon>
+            <input
+              #searchField
+              [formControl]="searchControl"
+              [value]="searchedText$ | async"
+              data-e2e="search-input"
+              matInput
+              placeholder="{{'ECOSYSTEM.EXQ.SEARCH.PLACEHOLDER' | translate}}"
+              type="text"
+            >
+            <mat-icon (click)="searchControl.reset()" *ngIf="searchField.value" class="pointer" matSuffix>close
+            </mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="results push-bottom-sm" fxFlex="none" fxHide.lt-md="true" fxLayout="row" fxLayoutAlign="space-between center">
+          <p *ngIf="((totalSurveys$ | async) && (totalSurveys$ | async) > 0)"
+             class="search__results push-bottom body-1 foreground-secondary-text" i18n>
+            {{totalSurveys$ | async}} {totalSurveys$ | async, plural, =1 { {{'ECOSYSTEM.DIRECTORY.SEARCH.RESULT' | translate | lowercase}} } other { {{'ECOSYSTEM.DIRECTORY.SEARCH.RESULTS' | translate | lowercase}} }}
+          </p>
+        </div>
+      </div>
+      <app-survey-card
+        *ngFor="let survey of surveys$ | async"
+        [survey]="survey"
+        class="push-bottom w-100"
+      ></app-survey-card>
+      <div
+        *ngIf="!(surveys$ | async).length"
+        class="subheading-2 title" data-e2e="no-results">
+        {{'ECOSYSTEM.EXQ.SEARCH.EMPTY' | translate}}
+      </div>
+    </div>
+  </section>
+  <mat-paginator
+    (page)="paginatorChange($event)"
+    *ngIf="(totalSurveys$ | async) > 0"
+    [length]="totalSurveys$ | async"
+    [pageIndex]="(pageIndex$ | async) -1"
+    [pageSizeOptions]="[5, 10, 15, 20, 25]"
+    [pageSize]="pageSize$ | async"
+    class="paginator"
+    data-e2e="paginator">
+  </mat-paginator>
+</div>

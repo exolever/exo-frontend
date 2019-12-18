@@ -1,0 +1,60 @@
+<section class="directory-team exo-platform" fxLayout="column" fxLayoutAlign="start center">
+  <h1 class="headline pad-top">
+    {{'PROJECT.DIRECTORY' | translate}}
+  </h1>
+
+  <h3 class="subtitle foreground-secondary-text pad-bottom-sm">
+    {{'PROJECT.DIRECTORY_SUBTITLE' | translate }}
+  </h3>
+
+  <div *ngIf="members.length; else loading" class="pad-bottom-sm">
+    <button
+      class="button-select"
+      fxLayout="row"
+      fxLayoutAlign="space-between center"
+      [matMenuTriggerFor]="menu"
+    >
+      <span>{{filterSelected}}</span>
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button
+        *ngFor="let filter of filters"
+        (click)="changeFilters(filter)"
+        mat-menu-item
+      >
+        {{filter.label}}
+      </button>
+    </mat-menu>
+  </div>
+
+  <div class="number-people pad-bottom-sm">
+    <p class="caption-1 foreground-secondary-text">
+      {{(members | membersByRole:filteredValue:filteredValueData:availableFilters | membersByTeam: filteredValue)
+      .length}} {{'PROJECT.DIRECTORY_PEOPLE' | translate}}
+    </p>
+  </div>
+
+  <ng-template #loading>
+    <div layout="row" fxLayoutAlign="center" class="push-top-sm">
+      <app-component-spinner-loader></app-component-spinner-loader>
+    </div>
+  </ng-template>
+
+  <section
+    class="cards"
+    fxLayout="row wrap"
+    [fxLayoutAlign]="(members | membersByRole:filteredValue:filteredValueData:availableFilters | membersByTeam: filteredValue).length > 1 ? 'center stretch' : 'start center'"
+    fxLayoutAlign.lt-md="center stretch"
+    fxLayoutGap="16px"
+  >
+  <app-member-card
+    *ngFor="let member of members | membersByRole:filteredValue:filteredValueData:availableFilters | membersByTeam: filteredValue"
+    [item]="deserializerItemCard(member)">
+    <div class="extraIcons ecosystem-lever-members" fxLayout="row">
+      <div class="lever-member push-right" *ngIf="member.isOpenExOMember" matTooltip="{{ 'ECOSYSTEM.DIRECTORY.CARD.OPENEXO_MEMBER' | translate }}"></div>
+      <div class="ecosystem-member" *ngIf="belongEcosystem(member)" matTooltip="{{ 'ECOSYSTEM.DIRECTORY.CARD.ECOSYSTEM_MEMBER' | translate }}"></div>
+    </div>
+  </app-member-card>
+  </section>
+</section>

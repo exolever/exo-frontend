@@ -1,0 +1,58 @@
+<section class="other-skills">
+  <form *ngIf="form" [formGroup]="form" novalidate fxLayout="column" fxLayoutAlign="start stretch">
+    <div formGroupName="technologies" fxLayout="column" class="push-bottom">
+      <h3>{{'ECOSYSTEM.PROFILE.EDIT.EXPERTISE_AREAS.TECHNOLOGIES' | translate}}</h3>
+      <app-autocomplete-level
+        [itemList]="technologiesList"
+        [selectedItems]="selectedTechnologies"
+        (onChange)="changeTechnologies()"
+      ></app-autocomplete-level>
+      <button
+        *ngIf="showTechnologiesButton"
+        (click)="submitTechnologies()"
+        color="primary"
+        class="button-submit push-bottom-lg"
+        type="button"
+        mat-flat-button
+      >
+        {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+      </button>
+    </div>
+    <div formGroupName="expertises" fxLayout="column" class="push-top-xxs push-bottom">
+      <h3>{{'ECOSYSTEM.PROFILE.EDIT.EXPERTISE_AREAS.EXPERTISE' | translate}}</h3>
+      <app-autocomplete-level
+        [itemList]="expertiseList"
+        [selectedItems]="selectedExpertise"
+        (onChange)="changeExpertise()"
+      ></app-autocomplete-level>
+      <button
+        *ngIf="showExpertiseButton"
+        (click)="submitExpertise()"
+        color="primary"
+        class="button-submit push-bottom-lg"
+        type="button"
+        mat-flat-button
+      >
+        {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+      </button>
+    </div>
+    <div formGroupName="industries" fxLayout="column" class="push-top-xxs">
+      <h3>{{'ECOSYSTEM.PROFILE.EDIT.EXPERTISE_AREAS.INDUSTRIES' | translate}}</h3>
+      <app-autocomplete-level
+        [itemList]="industriesList"
+        [selectedItems]="selectedIndustries"
+        (onChange)="changeIndustries()"
+      ></app-autocomplete-level>
+      <button
+        *ngIf="showIndustriesButton"
+        (click)="submitIndustries()"
+        color="primary"
+        class="button-submit push-bottom-lg"
+        type="button"
+        mat-flat-button
+      >
+        {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+      </button>
+    </div>
+  </form>
+</section>

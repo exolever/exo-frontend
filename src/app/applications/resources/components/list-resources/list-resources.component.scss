@@ -1,0 +1,64 @@
+@import "variables";
+
+:host ::ng-deep {
+  mat-card {
+    box-shadow: none;
+    border: 1px solid mat-color($mat-blue-grey, 50);
+    .file-icon {
+      font-size: 36pt;
+      color: mat-color($mat-blue-grey, 900);
+      opacity: 0.20;
+    }
+    mat-card-actions {
+      background-color: mat-color($mat-blue-grey, 50);
+    }
+    .apply-opacity {
+      opacity: 0.36;
+    }
+    .mat-card-content {
+      margin-bottom: 0;
+    }
+  }
+}
+
+mat-chip-list {
+  min-width: 0;
+  position: relative;
+  flex-direction: column;
+  vertical-align: top;
+  mat-chip {
+    justify-content: center;
+    &.ellipsable {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 33px;
+      flex: 1 1 33px;
+      & ~.ellipsable {
+        min-width: 100%;
+      }
+      span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+  font-size: 14px;
+}
+
+mat-list {
+  padding-top: 0;
+}
+mat-divider {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+::ng-deep .mat-card .mat-divider {
+  position: relative;
+}

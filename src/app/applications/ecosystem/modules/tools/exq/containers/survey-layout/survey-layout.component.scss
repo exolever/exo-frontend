@@ -1,0 +1,23 @@
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/theming';
+
+:host {
+  width: 100%;
+  flex: 0 1 1280px;
+  box-sizing: border-box;
+  max-width: 1280px;
+}
+
+.margin-none {
+  margin: 0 !important;
+}
+
+.ecosystem-survey--container{
+  padding-left: 16px;
+  @media #{map-get($mediaqueries, 'lt-sm')} {
+    padding-right: 16px;
+  }
+  @media #{map-get($mediaqueries, 'gt-lg')} {
+    padding: 0;
+  }
+}

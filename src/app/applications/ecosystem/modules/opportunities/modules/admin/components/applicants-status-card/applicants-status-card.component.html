@@ -1,0 +1,94 @@
+<mat-card
+  *ngIf="opportunity.applicants.length > 0 && selectedApplicants.length === 0"
+  class="applicants-card text-align-center"
+  fxLayout="column"
+  fxLayoutAlign="start center"
+>
+  <h2>{{'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.ASSIGN_TITLE' | translate}}</h2>
+  <mat-card-content class="content">
+    <ng-container *ngTemplateOutlet="severalApplicantTpl; context: { applicants: opportunity.applicants }"></ng-container>
+    <h3>
+      {
+        opportunity.applicants.length,
+        plural,
+          =1 { {{'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.MEMBER_APPLIED' | translate}} }
+          other { {{'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.MEMBERS_APPLIED' | translate : { number: opportunity.applicants.length } }} }
+      }
+    </h3>
+  </mat-card-content>
+</mat-card>
+
+<mat-card
+  *ngIf="opportunity.applicants.length === 0 && selectedApplicants.length === 0"
+  class="applicants-card text-align-center"
+  fxLayout="column"
+  fxLayoutAlign="start center"
+>
+  <h2>{{'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.WAITING' | translate }}</h2>
+  <mat-card-content class="content">
+    <div>
+      <mat-icon>account_circle</mat-icon>
+    </div>
+    <h3>
+      {{'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.ENCOURAGE' | translate}}
+    </h3>
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngIf="selectedApplicants.length > 0; " class="applicant-selected" fxLayout="column" fxLayoutAlign="start center">
+  <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+    <div class="section primary-color text-uppercase pad-bottom">
+      {selectedApplicants.length, plural, =1 { {{'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.ASSIGNED' | translate}} } other { {{'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.PLURAL_ASSIGNED' | translate}} }}
+    </div>
+    <ng-container *ngTemplateOutlet="selectedApplicantsTpl; context: { applicants: selectedApplicants }"></ng-container>
+  </mat-card-content>
+  <mat-card-actions align="center">
+    <button *ngIf="showCloseAction()" mat-flat-button type="button" color="primary" (click)="closeOpportunity()">
+      {{'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.CLOSE' | translate}}
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<ng-template #severalApplicantTpl let-applicants=applicants>
+  <div class="applicants">
+    <div class="avatars">
+      <span *ngIf="maxAvatars < applicants.length" class="avatar remain">
+        <span class="h-100" fxLayout="column" fxLayoutAlign="center center">
+        {{opportunity.applicants.length - maxAvatars}}+
+        </span>
+      </span>
+      <ng-container *ngFor="let applicant of applicants; let i = index">
+        <span class="avatar" *ngIf="i < maxAvatars">
+          <exo-avatar
+            [src]="applicant.user.profilePictures[1][1]"
+            [alt]="applicant.user.fullName"
+            [tooltip]="applicant.user.fullName"
+          >
+          </exo-avatar>
+        </span>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #selectedApplicantsTpl let-applicants=applicants>
+  <div class="applicants">
+    <div class="avatars">
+      <span *ngIf="maxAvatars < applicants.length" class="avatar remain">
+        <span class="h-100" fxLayout="column" fxLayoutAlign="center center">
+        {{opportunity.applicants.length - maxAvatars}}+
+        </span>
+      </span>
+      <ng-container *ngFor="let applicant of applicants; let i = index">
+        <span class="avatar" *ngIf="i < maxAvatars">
+          <exo-avatar
+            [src]="applicant.user.profilePictures[1][1]"
+            [alt]="applicant.user.fullName"
+            [tooltip]="applicant.user.fullName"
+          >
+          </exo-avatar>
+        </span>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>

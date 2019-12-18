@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>{{'ECOSYSTEM.OPPORTUNITIES.REOPEN_DIALOG.TITLE' | translate }}</h2>
+<mat-dialog-content cdkFocusRegionstart>
+  <p class="push-bottom-sm">{{'ECOSYSTEM.OPPORTUNITIES.REOPEN_DIALOG.DESCRIPTION' | translate }}</p>
+  <md2-datepicker
+    class="datepicker appearance-fill"
+    [formControl]="deadline"
+    placeholder="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.DEADLINE_LABEL' | translate }}"
+    type="date"
+    [min]="tomorrow"
+    openOnFocus="true">
+  </md2-datepicker>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button color="accent" type="button" mat-dialog-close>{{'COMMON.CANCEL' | translate}}</button>
+  <button color="primary" mat-flat-button type="button"  (click)="onSubmit()">{{'ECOSYSTEM.OPPORTUNITIES.REOPEN_DIALOG.REOPEN' | translate }}</button>
+</mat-dialog-actions>

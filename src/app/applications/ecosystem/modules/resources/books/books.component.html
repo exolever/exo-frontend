@@ -1,0 +1,29 @@
+<div class="books-container">
+  <div fxLayout="column" fxLayoutAlign="start stretch" class="pad-left pad-right pad-top-lg pad-bottom-lg">
+    <h1 class="text-align-center">
+      {{'ECOSYSTEM.BOOKS.TITLE' | translate}}
+    </h1>
+    <h3 class="subheading-2 foreground-secondary-text text-align-center">
+      {{'ECOSYSTEM.BOOKS.SUBTITLE' | translate}}
+    </h3>
+    <mat-card class="card-section w-100" *ngFor="let book of books">
+      <mat-card-content fxLayout="row">
+        <div [ngStyle]="{'background-image': 'url(' + book.thumbnail + ')'}" fxHide.lt-md fxShow.gt-sm class="push-right-lg book-image"></div>
+        <div fxLayout="column" fxLayoutAlign="start stretch" class="w-100">
+          <h2 fxFlexAlign.lt-md="center" class="push-bottom-none">{{book.title}}</h2>
+          <h3 fxFlexAlign.lt-md="center" class="foreground-secondary-text">{{book.authors}}</h3>
+          <div [ngStyle]="{'background-image': 'url(' + book.thumbnail + ')'}" fxFlexAlign="center" Show.lt-md fxHide.gt-sm class="book-image push-bottom"></div>
+          <div class="body-1">{{book.description}}</div>
+          <div *ngIf="book.downloads.length > 0" class="subheading-2 push-top-lg push-bottom-none">{{'ECOSYSTEM.BOOKS.DOWNLOADS' | translate}}</div>
+          <div fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="8px">
+            <a *ngFor="let d of book.downloads" href="{{d.pdf}}" target='_blank' class="push-top-xxs">{{d.language}}</a>
+          </div>
+          <div class="w-100" ngClass.lt-md="push-top-sm" ngClass.gt-sm="push-top-lg" fxLayout="row" fxLayout.lt-md="column-reverse" fxLayoutAlign="end center" fxLayoutAlign.lt-md="start end">
+            <button ngClass.lt-md="push-top" mat-flat-button color="accent" (click)="goTo(book.website)">{{'ECOSYSTEM.BOOKS.VISIT_WEBSITE' | translate}}</button>
+            <button ngClass.gt-sm="push-left" mat-flat-button color="primary" (click)="goTo(book.buy)">{{'ECOSYSTEM.BOOKS.ORDER_COPY' | translate}}</button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/theming';
+
+.menu-mobile {
+  width: 100%;
+  @media (min-width: #{map-get($mediaqueries, 'gt-sm')}){
+    width: 0;
+  }
+}
+
+.side-navigation {
+  width: 296px;
+  margin-right: 24px;
+  .container {
+    padding: 24px;
+
+    .active {
+      a {
+        text-decoration: underline;
+      }
+      mat-icon {
+        color: mat-color($primary);
+      }
+    }
+
+    a.subheading-2 {
+      margin: 0;
+      text-decoration: none;
+    }
+  }
+
+  .side-navigation-title {
+    color: mat-color($primary);
+  }
+
+  ::ng-deep .mat-list-item-content.mat-list-item-content {
+    padding: 0;
+  }
+}

@@ -1,0 +1,15 @@
+@import "./../variables";
+mat-checkbox ::ng-deep {
+
+  .mat-checkbox-layout {
+    white-space: unset;
+  }
+  .mat-checkbox-inner-container {
+    margin: 8px;
+  }
+}
+  .mat-checkbox-checked ::ng-deep {
+    .mat-checkbox-background {
+      background-color: $purple;
+    }
+  }

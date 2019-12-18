@@ -1,0 +1,44 @@
+<mat-card
+  class="side-navigation"
+  fxShow="false"
+  fxShow.gt-sm="true"
+>
+  <div class="container">
+    <mat-list role="list">
+      <ng-container [ngTemplateOutlet]="sectionTpl" [ngTemplateOutletContext]="{ sectionName: 'GENERAL'}"></ng-container>
+      <ng-container [ngTemplateOutlet]="sectionTpl" [ngTemplateOutletContext]="{ sectionName: 'MEMBERS'}"></ng-container>
+      <ng-container [ngTemplateOutlet]="sectionTpl" [ngTemplateOutletContext]="{ sectionName: 'TEAMS'}"></ng-container>
+      <ng-container [ngTemplateOutlet]="sectionTpl" [ngTemplateOutletContext]="{ sectionName: 'STEPS'}"></ng-container>
+      <ng-container [ngTemplateOutlet]="sectionTpl" [ngTemplateOutletContext]="{ sectionName: 'SETTINGS'}"></ng-container>
+    </mat-list>
+  </div>
+</mat-card>
+
+<mat-form-field
+  appearance="fill"
+  class="menu-mobile push-none w-100"
+  fxShow="true"
+  fxShow.gt-sm="false"
+>
+  <mat-select
+    [value]="url$ | async"
+    (selectionChange)="navigateTo($event)"
+  >
+    <mat-option value="general">{{ 'ECOSYSTEM.WORKSPACE.PROJECTS.EDIT.NAVIGATION.GENERAL' | translate }}</mat-option>
+    <mat-option value="members">{{ 'ECOSYSTEM.WORKSPACE.PROJECTS.EDIT.NAVIGATION.MEMBERS' | translate }}</mat-option>
+    <mat-option value="teams">{{ 'ECOSYSTEM.WORKSPACE.PROJECTS.EDIT.NAVIGATION.TEAMS' | translate }}</mat-option>
+    <mat-option value="steps">{{ 'ECOSYSTEM.WORKSPACE.PROJECTS.EDIT.NAVIGATION.STEPS' | translate }}</mat-option>
+    <mat-option value="settings">{{ 'ECOSYSTEM.WORKSPACE.PROJECTS.EDIT.NAVIGATION.SETTINGS' | translate }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<ng-template #sectionTpl let-sectionName="sectionName">
+  <div fxLayout="row" fxLayoutAlign="space-between center" routerLinkActive="active">
+    <a
+      mat-list-item
+      routerLink="{{sectionName | lowercase}}"
+      class="subheading-2"
+    > {{ 'ECOSYSTEM.WORKSPACE.PROJECTS.EDIT.NAVIGATION.' + sectionName | translate }}</a>
+    <mat-icon>chevron_right</mat-icon>
+  </div>
+</ng-template>

@@ -1,0 +1,58 @@
+<form [formGroup]="form" novalidate>
+    <div fxLayout="row" fxLayoutAlign="start center" class="push-bottom-lg pad-bottom">
+      <img [src]="getAvatar()" class="logo pointer" (click)="uploadFile()" matTooltip="{{'ECOSYSTEM.CIRCLES.CREATE_CIRCLE.LOGO_LABEL' | translate }}">
+      <div *ngIf="!form.get('image').value?.url" (click)="uploadFile()" fxLayout="row" fxLayoutAlign="start center" class="pointer caption-1 push-left">
+        <mat-icon class="push-left push-right-xxs">image_search</mat-icon>
+        {{'ECOSYSTEM.CIRCLES.CREATE_CIRCLE.LOGO_LABEL' | translate}}
+      </div>
+    </div>
+
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        autocomplete="off"
+        placeholder="{{'ECOSYSTEM.CIRCLES.CREATE_CIRCLE.NAME_LABEL' | translate }}"
+        formControlName="name">
+      <mat-error>{{form.get('name').errors | humanizeFormErrors}}</mat-error>
+      <mat-hint align="end">{{form.get('name')?.value?.length}} / {{validationConfig.maxLength}}</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>
+        {{'ECOSYSTEM.CIRCLES.CREATE_CIRCLE.DESCRIPTION_LABEL' | translate}}
+      </mat-label>
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        formControlName="description"
+        #descriptionArea
+      ></textarea>
+      <mat-error>{{form.get('description').errors | humanizeFormErrors}}</mat-error>
+      <mat-hint align="end">{{descriptionArea.value.length}} / {{validationConfig.maxLength}}</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="w-100">
+      <app-chips-autocomplete
+        formControlName="tags"
+        placeholder="{{'ECOSYSTEM.CIRCLES.CREATE_CIRCLE.CATEGORIES_LABEL' | translate }}"
+        [autocompleteListItems]="allKeywords | async"
+        [modelAutocompleteItem] = "keywordModel"
+        [required]="false"
+        [requireMatch]="true"
+      ></app-chips-autocomplete>
+      <mat-hint align="start">{{'ECOSYSTEM.CIRCLES.CREATE_CIRCLE.CATEGORIES_HINT' | translate }}</mat-hint>
+    </mat-form-field>
+
+    <div class="push-bottom"
+      fxLayout="row" fxLayoutAlign="end center"
+      fxLayout.xxs="column" fxLayoutAlign.xxs="start stretch"
+      fxLayoutGap="16px">
+      <button type="button" mat-flat-button color="accent" (click)="onCancel()">
+        {{ 'COMMON.ACTIONS.CANCEL' | translate }}
+      </button>
+      <button type="button" mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">
+        {{ 'COMMON.ACTIONS.SAVE' | translate }}
+      </button>
+    </div>
+  </form>

@@ -1,0 +1,60 @@
+<mat-card>
+  <mat-card-content>
+    <p class="section primary-color">
+      {{'ECOSYSTEM.CIRCLES.SEARCH_MEMBERS.CIRCLE_USERS' | translate }}
+    </p>
+    <mat-form-field [floatLabel]="'never'" class="push-bottom-none" *ngIf="enableSearch">
+      <mat-icon matPrefix class="search-icon pad-right">search</mat-icon>
+      <input matInput type="text" placeholder="{{'ECOSYSTEM.CIRCLES.SEARCH_MEMBERS.HELP' | translate}}" [formControl]="filterForm">
+      <mat-icon matSuffix class="pointer" *ngIf="filterForm.value" (click)="clearForm()">close</mat-icon>
+    </mat-form-field>
+    <section>
+      <p class="push-top-none caption-1" *ngIf="totalResults && participantsLabel">
+        {{ totalResults }} {{ participantsLabel | translate | lowercase }}
+      </p>
+      <!-- desktop -->
+      <div class="members-container" fxShow.gt-sm fxHide.lt-md>
+        <perfect-scrollbar #perfectscroll [config]="{suppressScrollY: loadingData}" (psYReachEnd)="seeMore()" class="perfect-scrollbar ps-show-always">
+          <ng-container *ngTemplateOutlet="memberList"></ng-container>
+        </perfect-scrollbar>
+      </div>
+      <!-- mobile-->
+      <div fxShow.lt-md fxHide.gt-sm>
+        <div class="push-top">
+          <ng-container *ngTemplateOutlet="memberList"></ng-container>
+          <div class="text-align-center push-top-xs">
+            <button *ngIf="people.length < totalResults; else seeLessButton" mat-button color="primary" (click)="seeMore()">
+              {{'ECOSYSTEM.CIRCLES.SEARCH_MEMBERS.SEE_MORE' | translate }}
+            </button>
+          </div>
+          <ng-template #seeLessButton>
+            <div class="text-align-center push-top-xs">
+              <button *ngIf="totalResults > 15" mat-button color="primary" (click)="seeLess()">{{'ECOSYSTEM.CIRCLES.SEARCH_MEMBERS.SEE_LESS' | translate }}</button>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </section>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #memberList>
+  <exo-avatar-system *ngFor="let member of people; let isFirst = first; let isLast = last"
+    [ngClass]="{'push-top-xxs': !isFirst, 'push-bottom-xxs': !isLast}"
+    [name]="member.fullName"
+    [description]="member.projectTitle || member.userTitle"
+    [truncateName]="true"
+    [truncateDescription]="true">
+    <exo-avatar
+      [src]="member.profilePictures[1].url"
+      [alt]="member.fullName"
+      [tooltip]="member.fullName"
+    ></exo-avatar>
+  </exo-avatar-system>
+  <div *ngIf="people.length === 0 && !loadingData" class="subheading-2 push-bottom-none">
+      {{'ECOSYSTEM.CIRCLES.SEARCH_MEMBERS.EMPTY' | translate }}
+  </div>
+  <div *ngIf="loadingData" class="push" fxLayout="row" fxLayoutAlign="center center">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+</ng-template>

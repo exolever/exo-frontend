@@ -1,0 +1,44 @@
+@import "variables";
+@import "~@openexo/design-system/mixins";
+@import "~@openexo/design-system/variables";
+
+.help-section {
+  padding: 24px;
+  @media (max-width: $screen-sm-max) {
+    padding: 16px;
+  }
+  &.bc1 {
+    @include retina-background-image($static-root + 'assets/onboarding/1', 'png', 950px, 950px);
+  }
+  &.bc2 {
+    @include retina-background-image($static-root + 'assets/onboarding/2', 'png', 950px, 950px);
+  }
+  &.bc3 {
+    @include retina-background-image($static-root + 'assets/onboarding/3', 'png', 950px, 950px);
+  }
+  &.bc4 {
+    @include retina-background-image($static-root + 'assets/onboarding/4', 'png', 950px, 950px);
+  }
+  &.bc5 {
+    @include retina-background-image($static-root + 'assets/onboarding/5', 'png', 950px, 950px);
+  }
+  &.help-section {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+.big {
+  width: 960px;
+}
+
+.expanded {
+  width: 90vw;
+}
+
+:host {
+  width: 100%;
+  text-align: center;
+  max-width: 960px;
+}

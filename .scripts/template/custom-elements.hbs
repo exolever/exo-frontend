@@ -1,0 +1,17 @@
+// AUTOMATICALLY GENERATED FILE: DONT MODIFY
+
+const urls = [
+{{#each components}}
+  '{{this}}',
+{{/each}}
+];
+
+function loadCustomElements(scripts) {
+  scripts.forEach((src) => {
+    const newScript = document.createElement('script');
+    document.head.appendChild(newScript);
+    newScript.src = src;
+  });
+}
+
+loadCustomElements(urls);

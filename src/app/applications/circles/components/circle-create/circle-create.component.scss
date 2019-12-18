@@ -1,0 +1,8 @@
+@import "~@openexo/design-system/variables";
+
+:host {
+  max-width: map-get($breakpoints, 'sm');
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}

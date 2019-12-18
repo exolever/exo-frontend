@@ -1,0 +1,48 @@
+@import "variables";
+
+:host{
+  z-index: 2147483001; // Avoid Intercom button with a higher z-index
+  mat-toolbar {
+    span {
+      margin-left: 40px;
+      @media (max-width: $screen-sm-min){
+        margin-left: 32px;
+      }
+    }
+  }
+
+  .extended-view {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .full-screen-container{
+    background-color: mat-color($mat-grey, 50);
+    position: absolute;
+    width: 100%;
+    overflow-y: auto;
+    .container{
+      width: 100%;
+      @media (min-width: $screen-md-min){
+        width: 60%;
+        &.full-width {
+          width: 100%;
+        }
+      }
+    }
+    left:0;
+    top: 56px; // Heigth of toolbar
+    height: calc(100% - 56px);
+    @media (min-width: $screen-sm-min){
+      top: 64px; // Heigth of toolbar
+      height: calc(100% - 64px);
+    }
+  }
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}

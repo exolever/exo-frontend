@@ -1,0 +1,21 @@
+@import '~@openexo/design-system/mixins';
+@import '~@openexo/design-system/variables';
+
+.tc__messages--container {
+  padding: 0 map-get($spaceMeasures, 'xxxs') map-get($spaceMeasures, 'sm') 0;
+  height: 40vh;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.tc__title {
+  line-height: 1;
+}
+
+::ng-deep.mat-menu-panel {
+  max-height: map-get($componentMeasure, '6x');
+}
+
+.mat-card mat-divider.mat-divider-horizontal {
+  position: relative;
+}

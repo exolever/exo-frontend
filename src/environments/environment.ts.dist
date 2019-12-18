@@ -1,0 +1,41 @@
+export const environment = {
+  // app config
+  env: 'localhost',  // define options
+  production: true, // toggle to false in your environment.ts in local machine
+
+  // Raven
+  ravenUrl: '',
+
+  APP_BASE_HREF: '/',
+
+  // woopraProject
+  woopraProjectDN: '/',
+
+  // Intercom
+  INTERCOM_APP_ID: 'p25hgm3t',
+
+  // Git Branch name or Tag (release)
+  SOURCE_NAME: '<SOURCE_NAME>',
+
+  CLIENT_ID_ADD_EVENT_TO_CALENDAR: 'aYpICMRGczFgkzJbSmkb43059',
+
+  // Typeform ecosystem recommend someone (TEST SURVEYS FOR DEV MODE)
+  TF_RECOMMEND_IND_URL: 'https://openexo.typeform.com/to/huqXeG/',
+  TF_RECOMMEND_ENT_URL: 'https://openexo.typeform.com/to/u7t82n/',
+
+  // Typeform for sprint send feedback
+  TF_FEEDBACK_FOR_PARTICIPANT_SPRINT: 'https://openexo.typeform.com/to/MwcD2I',
+  TF_FEEDBACK_FOR_COACH_SPRINT: 'https://openexo.typeform.com/to/qlnT4l',
+
+  // Filestack API KEY
+  FILESTACK_API_KEY: 'AvvsSOUhSNGp7ybufZ6lbz',
+
+  // Google code
+  GANALYTICS_KEY: 'UA-135475643-1',
+  GMAPS_KEY: 'AIzaSyC_7O2X1L92psvmJWcS_MW6hebrh_32_b4',
+
+  SENTRY_DSN: 'https://35ec6c890a154da59965c8854ec02404@sentry.io/1421405',
+  FACEBOOK_PIXEL: '1990699537703030',
+  SEGMENT_KEY: 'zoe8Iy3A1j1Yp6Fsfel0NBl8rtTfhcgy',
+  VIMEO_KEY: 'd6758f0596a084da44056e392f27904d'
+};

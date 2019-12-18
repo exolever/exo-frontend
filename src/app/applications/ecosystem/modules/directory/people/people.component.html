@@ -1,0 +1,22 @@
+<section class="cards" fxLayout="row wrap"
+         fxLayoutAlign="start center"
+         fxLayoutAlign.lt-lg="center stretch"
+         fxLayoutGap.gt-xs="12px"
+>
+  <app-member-card
+    *ngFor="let consultant of consultants$ | async"
+    [loggedUserisStaff]="isStaff"
+    [item]="deserializerItemCard(consultant)">
+    <div class="extraIcons openexo-member"  *ngIf="consultant.isOpenExOMember" matTooltip="{{ 'ECOSYSTEM.DIRECTORY.CARD.OPENEXO_MEMBER' | translate }}"></div>
+  </app-member-card>
+</section>
+<mat-paginator
+  data-e2e="paginator"
+  *ngIf="(totalConsultants$ | async) > 0"
+  class="people-paginator"
+  (page)="paginatorChange($event)"
+  [length]="totalConsultants$ | async"
+  [pageSize]="pageSize$ | async"
+  [pageIndex]="(pageIndex$ | async) -1"
+  [pageSizeOptions]="[5, 10, 15, 20, 25]">
+</mat-paginator>

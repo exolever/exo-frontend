@@ -1,0 +1,75 @@
+<exo-alert *ngIf="hasFeedbacks()"
+  [message]="message"
+  closeButtonText="{{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.CLOSE' | translate}}"
+  [isCloseable]="false"
+></exo-alert>
+
+<section class="opportunity-feedback push-top-sm" *ngIf="feedbacks.length > 0; else emptyMoment">
+  <ng-container *ngFor="let feedback of feedbacks">
+    <app-feedback-completed *ngIf="feedback.statusCompleted" [feedback]="feedback" (feedbackDialog)="feedbackDialog($event)">
+      <exo-avatar-system class="avatar"
+          [name]="feedback.userApplicant.fullName">
+        <exo-avatar [src]="feedback.userApplicant.profilePictures[0][1]"
+                    [alt]="feedback.userApplicant.fullName"
+                    [tooltip]="feedback.userApplicant.fullName"
+        ></exo-avatar>
+      </exo-avatar-system>
+    </app-feedback-completed>
+    <app-feedback-completed *ngIf="feedback.statusApplicant" [feedback]="feedback" (feedbackDialog)="feedbackDialog($event)">
+      <exo-avatar-system
+          class="avatar"
+          [name]="feedback.userApplicant.fullName">
+        <exo-avatar [src]="feedback.userApplicant.profilePictures[1][1]"
+                    [alt]="feedback.userApplicant.fullName"
+                    [tooltip]="feedback.userApplicant.fullName"
+        ></exo-avatar>
+      </exo-avatar-system>
+    </app-feedback-completed>
+    <app-feedback-completed *ngIf="feedback.statusRequester" [feedback]="feedback" (feedbackDialog)="feedbackDialog($event)"
+                            [showButton]="false">
+      <exo-avatar-system
+          class="avatar"
+          [name]="feedback.userApplicant.fullName">
+        <exo-avatar [src]="feedback.userApplicant.profilePictures[1][1]"
+                    [alt]="feedback.userApplicant.fullName"
+                    [tooltip]="feedback.userApplicant.fullName"
+        ></exo-avatar>
+      </exo-avatar-system>
+      <div class="feedback-icons push-none">
+        <mat-icon fxShow fxHide.gt-sm class="mat-24 query-builder" matTooltip="{{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.WAITING' | translate}}">query_builder</mat-icon>
+        <p fxShow fxHide.lt-md class="push-none">{{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.WAITING' | translate}}</p>
+      </div>
+    </app-feedback-completed>
+    <app-feedback-completed *ngIf="feedback.statusReady && !feedback.createdBy" [showButton]="false" [feedback]="feedback">
+      <exo-avatar-system
+          class="avatar"
+          [name]="feedback.userApplicant.fullName">
+        <exo-avatar [src]="feedback.userApplicant.profilePictures[1][1]"
+                    [alt]="feedback.userApplicant.fullName"
+                    [tooltip]="feedback.userApplicant.fullName"
+        ></exo-avatar>
+      </exo-avatar-system>
+      <div class="feedback-icons">
+        <p class="pretty-label grey push-none" matTooltip="{{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.NO_FEEDBACK_TOOLTIP' | translate}}">{{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.NO_FEEDBACK' | translate | uppercase }}</p>
+      </div>
+    </app-feedback-completed>
+    <app-feedback-ready *ngIf="feedback.statusReady && feedback.createdBy" [feedback]="feedback">
+      <exo-avatar-system
+          class="avatar"
+          [name]="feedback.userApplicant.fullName">
+        <exo-avatar [src]="feedback.userApplicant.profilePictures[1][1]"
+                    [alt]="feedback.userApplicant.fullName"
+                    [tooltip]="feedback.userApplicant.fullName"
+        ></exo-avatar>
+      </exo-avatar-system>
+    </app-feedback-ready>
+  </ng-container>
+</section>
+
+<ng-template #emptyMoment>
+  <exo-empty-moment>
+    <p class="empty-message subheading-2 text-align-center">
+      {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.EMPTY_MOMENT' | translate}}
+    </p>
+  </exo-empty-moment>
+</ng-template>

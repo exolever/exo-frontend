@@ -1,0 +1,97 @@
+@import '~@angular/material/theming';
+@import '_exo-colors.scss';
+
+$exo-dark-primary: mat-palette($mat-blue-grey, 800, 400, 900);
+$exo-dark-accent: mat-palette($exo-blue, 500, A100, 600);
+
+// The warn palette is optional (defaults to red).
+$exo-dark-warn:    mat-palette($mat-pink, 100);
+
+$mat-dark-theme-foreground: (
+  base:            white,
+  divider:         $white-12-opacity,
+  dividers:        $white-12-opacity,
+  disabled:        rgba(white, 0.3),
+  disabled-button: rgba(white, 0.3),
+  disabled-text:   rgba(white, 0.3),
+  hint-text:       rgba(white, 0.3),
+  secondary-text:  rgba(white, 0.7),
+  icon:            white,
+  icons:           white,
+  text:            white,
+  slider-off:        rgba(white, 0.3),
+  slider-min:        rgba(white, 0.87),
+  slider-off-active: rgba(white, 0.3),
+
+  // Custom vars
+  exo-highlight-icon: white,
+  exo-a: white,
+  exo-toolbar-icons: white,
+
+  // New themes.
+  // Icons
+  icon-success: map_get($exo-teal, A400),
+
+  // Buttons
+  mat-raised-button: white,
+
+  // Chips
+  chip-remove-icon-hover: map-get($exo-red, 700),
+
+);
+
+$mat-dark-theme-background: (
+  raised-button: rgba(55, 71, 79, 0.85),
+  disabled-button: map_get($mat-blue-grey, 50),
+  unselected-chip: map_get($mat-blue-grey, 50),
+  dialog: white,
+  card:white,
+  background: map_get($exo-grey, 50), // Background for class mat-app-background
+  app-bar: map_get($mat-blue-grey, 800), // For toolbar
+  status-bar: map_get($exo-indigo, 900),
+  hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+  focused-button: $black-6-opacity,
+  selected-button: map_get($exo-grey, 300),
+  selected-disabled-button: map_get($exo-grey, 400),
+  disabled-button-toggle: map_get($exo-grey, 200),
+  disabled-list-option: map_get($exo-grey, 200),
+
+  // Custom vars
+  exo-progress-bar-fill: map_get($mat-blue-grey, 300),
+  exo-progress-bar-buffer: map_get($mat-blue-grey, 50),
+  exo-chip-color: map_get($mat-blue-grey, 600),
+  exo-chip-outlined-border-color: map_get($mat-blue-grey, 300),
+  exo-chip-outlined-color: map_get($mat-blue-grey, 500),
+  exo-dark-dialog-header: map_get($mat-blue-grey, 50),
+  exo-dialog-actions: mat-color($exo-grey, 50),
+  exo-highlight-hover-background-color: mat-color($mat-light-blue, 300, 0.7),
+  exo-highlight-hover-color: white,
+  exo-loader-circle: white,
+  exo-bullet: map_get($mat-blue-grey, 50),
+
+  // New Themes
+  service-header-assignments: map_get($exo-purple, 700),
+
+  // Buttons
+  mat-button-hover: mat-color($exo-grey, 900, 0.16),
+  mat-button-disabled: mat-color($exo-grey, 900, 0.38),
+  button-outlined-hover: mat-color($exo-red, 500, 0.24),
+  mat-raised-button: white,
+  mat-raised-button-hover: map_get($exo-red, 700),
+  mat-raised-button-disabled: mat-color($exo-grey, 900, 0.38),
+
+  // Cards
+  card-shadow: rgba(70, 70, 75, 0.16),
+  resource-color-pdf: map_get($resources-color, pdf),
+  resource-color-spreadsheet: map_get($resources-color, spreadsheet),
+  resource-color-document: map_get($resources-color, document),
+  resource-color-slides: map_get($resources-color, slides),
+  resource-color-form: map_get($resources-color, form),
+
+  // Chips
+  chip-background: rgba(255, 255, 255, 0.16),
+
+);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$exo-dark-theme: mat-dark-theme($exo-dark-primary, $exo-dark-accent, $exo-dark-warn);

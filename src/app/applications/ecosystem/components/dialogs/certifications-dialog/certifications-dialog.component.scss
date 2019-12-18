@@ -1,0 +1,15 @@
+mat-horizontal-stepper::ng-deep {
+  margin: 24px 70px 0 70px;
+  .mat-horizontal-content-container {
+    display: none;
+  }
+  mat-step-header {
+    width: 25px;
+    height: 40px;
+    pointer-events: none;
+  }
+  &:hover {
+    background-color: transparent;
+    cursor: default;
+  }
+}

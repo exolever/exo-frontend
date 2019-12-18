@@ -1,0 +1,27 @@
+<section class="select-your-level">
+  <section fxLayout="row wrap">
+    <section class="levels" fxLayout="row" fxFlex="0 1 480px">
+      <div
+        *ngFor="let level of levelList"
+        class="levels-vote"
+        fxFlex="33%"
+        [ngClass]="{
+          'selected': levels[level].selected,
+          'beginner': level === 1,
+          'intermediate': level === 2,
+          'advanced': level === 3
+        }"
+        (click)="emitLevel(level)"
+        (mouseenter)="hoverLevel(level)"
+        (mouseleave)="blurLevel()"
+      >
+      </div>
+    </section>
+    <div class="push-top-xxs" fxFlex="grow">
+      <p class="push-none">
+        <span class="caption-2">{{getLevel(item.level)}}: </span>
+        <span class="caption-1">{{description(item.level)}}</span>
+      </p>
+    </div>
+  </section>
+</section>

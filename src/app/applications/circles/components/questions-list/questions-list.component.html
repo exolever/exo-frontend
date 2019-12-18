@@ -1,0 +1,93 @@
+<section class="exo-platform pad-left pad-right pad-bottom" fxLayout="column" fxLayoutAlign="start stretch" *ngIf="circle$ | async as circle">
+  <div class="text-align-center push-top-lg push-bottom-lg">
+    <h1 class="push-top-none">{{circle.name}} {{'ECOSYSTEM.CIRCLES.CIRCLE' | translate}}</h1>
+    <h3 class="subheading-2 slight-opacity">{{circle.description}}</h3>
+    <div class="text-align-center" >
+      <button *ngIf="circle.canPost" mat-flat-button color="primary" (click)="onCreate(circle)">
+        <span fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="push-right-xxxs">add</mat-icon>
+          {{ 'ECOSYSTEM.CIRCLES.CREATE_NEW' | translate }}
+        </span>
+      </button>
+      <button *ngIf="circle.isGuest() && circle.slug !== 'marketplace'" mat-flat-button color="primary" (click)="onCreate(circle)">
+        <span fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="push-right-xxxs">add</mat-icon>
+          {{ 'ECOSYSTEM.CIRCLES.JOIN' | translate }}
+        </span>
+      </button>
+
+      <!-- TODO: Remove after delete marketplace circle in backend-->
+      <div *ngIf="circleSlug === 'marketplace'">
+        <button mat-flat-button color="primary" routerLink="/ecosystem/opportunities/all" class="push-bottom">GO TO MARKETPLACE</button>
+        <exo-alert
+          [isCloseable]="false"
+          message="We have launched a new Marketplace allowing you to post opportunities for our community members to help you with your ExO Initiatives. Please, go to the menu Marketplace and start making your ideas exponential!">
+        </exo-alert>
+      </div>
+
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="16px">
+    <div class="w-100">
+      <mat-form-field floatLabel="never" class="w-100" *ngIf="(totalQuestion$ | async) > 0 || (text$ | async)">
+        <mat-icon matPrefix class="search-icon pad-right">search</mat-icon>
+        <input
+          matInput
+          type="text"
+          placeholder="{{'FORUM.SEARCH' | translate}}"
+          [formControl]="searchBox"
+          [value]="text$ | async"
+          #search
+        >
+        <mat-icon matSuffix class="pointer" *ngIf="searchBox.value" (click)="searchBox.setValue('')">close</mat-icon>
+      </mat-form-field>
+
+      <div *ngIf="loading$ | async" fxLayoutAlign="center center">
+        <app-component-spinner-loader></app-component-spinner-loader>
+      </div>
+
+      <section *ngIf="(emptyMoment$ | async) && !(loading$ | async)" fxLayout="column" fxLayoutAlign="center center">
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <div class="image-empty push-bottom"></div>
+          <div class="text-center subheading-2 push-bottom-none">
+            <span *ngIf="!(text$ | async); else titleNoResults">{{'ECOSYSTEM.CIRCLES.EMPTY_TITLE' | translate}}</span>
+            <ng-template #titleNoResults>{{'ECOSYSTEM.CIRCLES.EMPTY_TITLE_SEARCH' | translate}}</ng-template>
+          </div>
+          <div class="text-center push-top-none slight-opacity caption-1">
+            <span *ngIf="!(text$ | async); else subtitleNoResults">{{'ECOSYSTEM.CIRCLES.EMPTY_SUBTITLE' | translate}}</span>
+            <ng-template #subtitleNoResults>{{'ECOSYSTEM.CIRCLES.EMPTY_SUBTITLE_SEARCH' | translate}}</ng-template>
+          </div>
+        </div>
+      </section>
+
+      <h3 i18n *ngIf="(this.text$ | async) && !(this.loading$ | async) && (totalQuestion$ | async) as totalQuestions">
+        {{totalQuestions}} {totalQuestions, plural, =1 { {{'FORUM.POST_SEARCH' | translate}} } other { {{'FORUM.POSTS_SEARCH' | translate}} }}
+      </h3>
+
+      <app-post-summary *ngFor="let question of questions$ | async"
+        class="push-bottom w-100 inline-block"
+        [post]="question"
+        [user]="user$ | async"
+        (seeDetails)="onSeeDetails(question.slug)"
+        (edit)="onEdit(question.slug)"
+        (delete)="onDelete(question.pk)"
+        >
+      </app-post-summary>
+
+      <mat-paginator
+        *ngIf="!(emptyMoment$ | async) && !(loading$ | async) && (totalQuestion$ | async)"
+        class="transparent"
+        (page)="paginatorChange($event)"
+        [length]="totalQuestion$ | async"
+        [pageSize]="pageSize$ | async"
+        [pageIndex]="pageIndex$ | async"
+        [pageSizeOptions]="[5, 15, 25]">
+      </mat-paginator>
+    </div>
+    <div fxFlex.gt-sm="296px">
+      <app-circles-shortcuts [circles]="circles$ | async"></app-circles-shortcuts>
+      <app-members-wrapper class="push-top inline-block w-100" [circleSlug]="circle.slug"></app-members-wrapper>
+    </div>
+  </div>
+</section>

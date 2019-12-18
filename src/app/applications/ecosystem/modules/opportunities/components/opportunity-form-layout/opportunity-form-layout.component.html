@@ -1,0 +1,16 @@
+<section fxLayout="column" class="push-top-lg push-bottom-lg">
+  <mat-card class="push-left push-right card-section" *ngIf="isCreation || !(loading$ | async); else loadingTpl">
+    <mat-card-content>
+      <div class="section card-type push-bottom">
+        {{title}}
+      </div>
+      <app-opportunity-form #formComponent [opportunity] = "opportunity$ | async" ></app-opportunity-form>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<ng-template #loadingTpl>
+  <span fxLayout="row" fxLayoutAlign="center" class="pad-top-sm">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </span>
+</ng-template>

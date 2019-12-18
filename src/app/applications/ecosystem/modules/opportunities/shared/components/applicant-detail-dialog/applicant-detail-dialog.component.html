@@ -1,0 +1,77 @@
+<app-overlay-template *ngIf="dialogData.showFullScreen; else containerDialog" [title]="dialogData.title" (close)="closeOverlay()">
+  <mat-dialog-content>
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </mat-dialog-content>
+  <ng-container [ngTemplateOutlet]="actions"></ng-container>
+</app-overlay-template>
+
+<ng-template #containerDialog>
+  <h2 mat-dialog-title cdkFocusRegionstart>
+    {{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.TITLE' | translate}}
+  </h2>
+  <mat-dialog-content>
+    <perfect-scrollbar class="perfect-scrollbar with-actions ps-show-always">
+      <ng-container [ngTemplateOutlet]="content"></ng-container>
+    </perfect-scrollbar>
+  </mat-dialog-content>
+  <ng-container [ngTemplateOutlet]="actions"></ng-container>
+</ng-template>
+
+<ng-template #content>
+  <div fxLayout="row" fxLayoutAlign="space-between start" class="pad-bottom-sm">
+    <exo-avatar-system *ngIf="applicant && applicant.user"
+                       [name]="applicant.user.fullName"
+                       [description]="applicant.user.userTitle"
+                       [truncateDescription]="true"
+    >
+      <exo-avatar [src]="applicant.user.profilePictures[2][1]"
+                  [alt]="applicant.user.fullName"
+                  [tooltip]="applicant.user.fullName"
+      >
+      </exo-avatar>
+    </exo-avatar-system>
+    <div class="caption-1 push-left-xs when">{{applicant.created | formatDate: 'short'}}</div>
+  </div>
+  <span *ngIf="applicant.isRejected()" class="pretty-label red caption-2 push-bottom-sm">{{ 'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.STATUS.DISCARDED' | translate | uppercase}}</span>
+  <span *ngIf="applicant.isSelected()" class="pretty-label green caption-2 push-bottom-sm">{{ 'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.STATUS.SELECTED' | translate | uppercase }}</span>
+  <div class="pad-bottom-sm">
+    <p class="body-1 line-breaker push-bottom-none">{{applicant.summary}}</p>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center" class="pad-bottom-sm">
+    <mat-icon class="mat-16">person</mat-icon>
+    <a
+        [routerLink]="applicant.user.profileUrl"
+        target="_blank"
+        class="pad-left pointer body-1 mat-link"
+    >
+      {{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SEE_PROFILE' | translate}}
+    </a>
+  </div>
+  <h3 *ngIf="hasAnswers()">{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.QUESTIONNAIRE' | translate}}</h3>
+  <div *ngFor="let answer of applicant.answers; let i = index" class="push-bottom-sm body-1">
+    <p>{{answer.question.title}}</p>
+    <p class="push-top-xs push-left-xs">
+      {{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.APPLICANT_ANSWER' | translate}}:
+      <span class="applicant-answer body-2">{{answer.responseText }}</span>
+    </p>
+  </div>
+  <div class="pad-bottom-sm" *ngIf="applicant.questionsExtraInfo">
+    <p>{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.QUESTION_EXTRA_INFORMATION' | translate}}</p>
+    <p class="push-top-xs push-left-xs">
+      {{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.APPLICANT_ANSWER' | translate}}:
+      <span class="applicant-extra-information-questions body-2">{{applicant.questionsExtraInfo}}</span>
+    </p>
+  </div>
+</ng-template>
+
+<ng-template #actions>
+  <mat-dialog-actions *ngIf="dialogData.showChat">
+    <ng-container *ngIf="applicant.isRejected() || applicant.isSelected()">
+      <button mat-flat-button color="primary" type="button" (click)="closeOverlay(true)">{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.ACTIONS.GO_TO_CONVERSATION' | translate}}</button>
+    </ng-container>
+    <ng-container *ngIf="applicant.isRequested()">
+      <button mat-flat-button color="accent" type="button" (click)="closeOverlay(true)">{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.ACTIONS.GO_TO_CONVERSATION' | translate}}</button>
+      <button mat-flat-button color="primary" type="button" (click)="openSow(false)">{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.ACTIONS.SELECT' | translate}}</button>
+    </ng-container>
+  </mat-dialog-actions>
+</ng-template>

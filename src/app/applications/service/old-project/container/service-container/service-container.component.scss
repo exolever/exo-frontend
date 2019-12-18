@@ -1,0 +1,165 @@
+@import 'variables';
+@import '~@openexo/design-system/colors';
+@import '~@openexo/design-system/variables';
+
+// TODO: The links should be <a> instead <h3>
+// I created a bugfix https://exoworks.atlassian.net/browse/EXO-3869 to fix.
+
+// config
+$sidenav-width: 280px;
+$toggle-height: 40px;
+
+mat-toolbar {
+  justify-content: space-between;
+  .left-items {
+    display: flex;
+    .circle-logo {
+      width: 90px;
+      height: $lg;
+      background: url($static-root + 'assets/public/project_mobile.svg') no-repeat;
+      @media (min-width: $screen-sm) {
+        width: 150px;
+        height: 30px;
+        background: url($static-root + 'assets/public/logo_white.svg') no-repeat;
+      }
+    }
+  }
+}
+
+.toggle-container {
+  height: $toggle-height;
+  display: flex;
+  align-items: center;
+  margin-right: $sm;
+  #sidenav-toggle {
+    width: 24px;
+    height: 16px;
+    position: relative;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+    span {
+      height: 3px;
+      width: 100%;
+      border-radius: 1px;
+      display: block;
+      position: absolute;
+      background: white;
+      opacity: 1;
+      left: 0;
+      transform: rotate(0deg);
+      transition: .25s ease-in-out;
+      &:nth-child(1) {
+        top: 0;
+        transform-origin: left center;
+      }
+      &:nth-child(2) {
+        top: 7px;
+        transform-origin: left center;
+      }
+      &:nth-child(3) {
+        top: 14px;
+        transform-origin: left center;
+      }
+    }
+    &.open {
+      span {
+        &:nth-child(1) {
+          transform: rotate(45deg);
+          top: -2px;
+          left: 2px;
+        }
+        &:nth-child(2) {
+          width: 0;
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: rotate(-45deg);
+          top: 15px;
+          left: 2px;
+        }
+      }
+    }
+  }
+}
+.fit-width {
+  width: calc(100%  - #{$sidenav-width});
+  position: absolute;
+}
+div.animate-margin {
+  transition: margin .24s ease-in-out;
+  &.sidebar-margin {
+    margin-left: $sidenav-width;
+  }
+}
+
+.sidenav {
+
+  h3:first-child {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .steps-container {
+    transition: max-height .3s ease-in-out;
+    max-height: 888px;
+    overflow: hidden;
+    margin-left: 16px;
+
+    .steps-assignments {
+      display: block;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 400;
+      margin: 0 24px;
+      padding: 24px 0 0 12px;
+      line-height: 24px;
+      &.active-sidenav-link {
+        text-decoration: underline;
+        font-weight: 500;
+      }
+    }
+
+    a:last-child {
+      margin-bottom: 0;
+    }
+
+    &.folded-steps {
+      max-height: 0;
+    }
+  }
+}
+
+h3 {
+  &:active, &:focus {
+    outline: none;
+  }
+}
+
+.steps-container + h3 {
+  margin-top: 0;
+}
+
+.sidenav-container {
+  z-index: 20;
+  overflow: initial;
+}
+
+.nav-steps {
+
+  h3.menu-steps.menu-steps {
+    margin-right: $xxs;
+  }
+
+  &.expand > * {
+    color: mat-color($exo-service-dark-primary);
+  }
+
+  mat-icon {
+    color: white;
+  }
+}
+
+.step-disabled {
+  color: rgba(255, 255, 255, 0.38);
+}

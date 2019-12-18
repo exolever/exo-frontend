@@ -1,0 +1,7 @@
+@import '~@openexo/design-system/theming';
+
+$theme: mat-light-theme($primary, $secondary, $warn);
+
+// Include component specific mixin
+@include mat-input-theme($theme);
+@include mat-card-theme($theme);

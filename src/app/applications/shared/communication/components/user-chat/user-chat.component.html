@@ -1,0 +1,24 @@
+<app-overlay-template (close)="close()" icon="arrow_back" [title]="data?.conversation.name">
+  <mat-card *ngIf="!conversationExists; else messages">
+    <mat-card-content>
+      <exo-empty-moment>
+        <p class="empty-message subheading-2 text-align-center">
+          {{ 'ECOSYSTEM.COMMUNICATION.MESSAGES_EMPTY' | translate }}
+        </p>
+      </exo-empty-moment>
+      <mat-divider></mat-divider>
+      <app-editor class="push-top-sm" [replyingMessage]="true" (submit)="submit($event)"></app-editor>
+    </mat-card-content>
+  </mat-card>
+</app-overlay-template>
+
+<ng-template #messages>
+  <app-conversation-messages
+      *ngIf="conversation$ | async as conversation" fxFlex="grow" fxFill
+      [conversation]="conversation"
+      [smallDevices]="true"
+      (submit)="submit($event, conversation)"
+      (scrolled)="onScroll($event, conversation)"
+  >
+  </app-conversation-messages>
+</ng-template>

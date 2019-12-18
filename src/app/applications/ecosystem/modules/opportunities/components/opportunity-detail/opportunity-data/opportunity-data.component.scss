@@ -1,0 +1,10 @@
+.no-wrap {
+  white-space: nowrap;
+}
+
+// Do responsive images added via opportunity description overflow. ::ng-deep is needed to work with innerHTML.
+::ng-deep .content {
+  img {
+    max-width: 100%;
+  }
+}

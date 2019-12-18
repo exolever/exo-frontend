@@ -1,0 +1,13 @@
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/theming';
+
+$unit: map-get($componentMeasure, '1x');
+
+.mat-dialog-content {
+  @media #{map-get($mediaqueries, 'gt-sm')} {
+    width: calc(#{$unit} * 12);
+  }
+  .option-disabled {
+    color: mat_color($exo-grey, 900, 0.64);
+  }
+}

@@ -1,0 +1,11 @@
+<div class="center">
+  <button (click)="onPrev()" [disabled]="!prevBtn" [ngClass]="{'disabled': !prevBtn}">
+    <i class="material-icons">arrow_back</i>
+  </button>
+  <div class="text">
+    <span class="push-h" > {{(page - 1) * events?.length + 1}} - {{((page - 1) * events?.length) + events?.length}} of {{count}}</span>
+  </div>
+  <button (click)="onNext()" [disabled]="!nextBtn" [ngClass]="{'disabled': !nextBtn}">
+    <i class="material-icons">arrow_forward</i>
+  </button>
+</div>

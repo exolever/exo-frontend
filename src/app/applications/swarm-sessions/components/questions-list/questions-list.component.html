@@ -1,0 +1,138 @@
+<section class="exo-platform pad" fxLayout="column" fxLayoutAlign="start stretch" #timerFrame id="timer-frame">
+  <section
+    fxFlexAlign="end"
+    fxLayout="column"
+    fxLayoutGap="16px"
+    class="push-right-xs notifications-box"
+    appStickyOnScroll
+    [offsetTopElement]="timerFrame"
+    [classOnAbsolute]="{top: 'unset'}"
+    [classOnFixed]="{top: '16px'}">
+      <app-session-timer *ngIf="selectedSession$ | async as session"
+        inService="true"
+        [session]="session"
+        fxHide.lt-md
+        fxShow.gt-sm
+        class="push-right-xs"
+      ></app-session-timer>
+      <app-refresh-announce
+        class="push-top-xl"
+        *ngIf="showRefresh$ | async"
+        message="{{ 'SWARM.REFRESH_ANNOUNCE.NEW_UPDATES' | translate }}"
+        (refresh)="initializeData()"
+      ></app-refresh-announce>
+  </section>
+  <app-session-timer *ngIf="selectedSession$ | async as session"
+    fxFlex="100%"
+    class="w-100 mobile-timer"
+    inService="true"
+    [session]="session"
+    fxHide.gt-sm
+    fxShow.lt-md
+    isMobile="true"
+    appStickyOnScroll
+    [offsetTopElement]="timerFrame"
+    [classOnAbsolute]="{top: 'unset'}"
+    [classOnFixed]="{top: '16px' }"
+  ></app-session-timer>
+  <div class="push-top-lg" *ngIf="selectedSession$ | async as session">
+    <h1 class="push-top-sm text-align-center ">{{'SWARM.TITLE' | translate}}</h1>
+    <h3 class="subheading-2 slight-opacity text-align-center ">{{'SWARM.SUBTITLE_SPRINT' | translate}}</h3>
+    <div *ngIf="isSessionExpired(session); else expired" fxLayout="row" fxLayoutAlign="center center">
+      <mat-icon class="push-right-xxs slight-opacity">watch_later</mat-icon>
+      <span class="body-2">From {{ session.startAt.format('hh:mm') }} to {{ session.endAt.format('hh:mm') }}</span>
+    </div>
+  </div>
+
+  <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" fxLayoutGap="24px" class="push-top-lg">
+    <div class="w-100"> <!-- question list -->
+      <div class="questions-filters" fxLayout="row" fxLayoutAlign="space-between" fxLayoutGap="24px">
+        <mat-form-field floatLabel="never" *ngIf="(totalQuestion$ | async) > 0 || (text$ | async)" fxFlex="70">
+          <mat-icon matPrefix class="search-icon pad-right">search</mat-icon>
+          <input
+              matInput
+              type="text"
+              placeholder="{{'FORUM.SEARCH' | translate}}"
+              [formControl]="searchBox"
+              [value]="text$ | async"
+              #search
+          >
+          <mat-icon matSuffix class="pointer" *ngIf="searchBox.value" (click)="searchBox.setValue('')">close</mat-icon>
+        </mat-form-field>
+        <mat-form-field fxFlex *ngIf="(totalQuestion$ | async) > 0 || (text$ | async)">
+          <mat-select [value]="sortValue$ | async" (selectionChange)="onUpdateSortBy($event)" placeholder="{{'SWARM.QUESTION.PLACEHOLDER' | translate}}">
+            <mat-option *ngFor="let sort of sortOptions" [value]="sort.value">
+              {{ sort.text }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div *ngIf="loading$ | async" fxLayoutAlign="center center">
+        <app-component-spinner-loader></app-component-spinner-loader>
+      </div>
+      <div *ngIf="(emptyMoment$ | async) && !(loading$ | async)" fxLayout="column" fxLayoutAlign="center center">
+        <exo-empty-moment>
+          <div class="empty-message text-align-center">
+            <div class="text-center subheading-2 push-bottom-none">
+              <span *ngIf="!(text$ | async); else titleNoResults">{{'SWARM.EMPTY_TITLE_ECO' | translate}}</span>
+              <ng-template #titleNoResults>{{'PROJECT.ASK_ECOSYSTEM.EMPTY_TITLE_SEARCH' | translate}}</ng-template>
+            </div>
+            <div class="text-center push-top-none slight-opacity caption-1">
+              <span *ngIf="!(text$ | async); else subtitleNoResults">{{'SWARM.EMPTY_SUBTITLE_ECO' | translate}}</span>
+              <ng-template #subtitleNoResults>{{'PROJECT.ASK_ECOSYSTEM.EMPTY_SUBTITLE_SEARCH' | translate}}</ng-template>
+            </div>
+          </div>
+        </exo-empty-moment>
+      </div>
+
+      <h3 i18n *ngIf="(this.text$ | async) && !(this.loading$ | async) && (totalQuestion$ | async) as totalQuestions">
+        {{totalQuestions}} {totalQuestions, plural, =1 { {{'FORUM.QUESTION_SEARCH' | translate}} } other { {{'FORUM.QUESTIONS_SEARCH' | translate}} }}
+      </h3>
+
+      <app-post-summary *ngFor="let question of questions$ | async"
+        class="push-bottom"
+        [post]="question"
+        [user]="user$ | async"
+        (seeDetails)="onSeeDetails($event)"
+        >
+      </app-post-summary>
+
+      <mat-paginator
+        *ngIf="!(emptyMoment$ | async) && !(loading$ | async) && (totalQuestion$ | async)"
+        class="transparent"
+        (page)="paginatorChange($event)"
+        [length]="totalQuestion$ | async"
+        [pageSize]="pageSize$ | async"
+        [pageIndex]="pageIndex$ | async"
+        [pageSizeOptions]="[5, 15, 25, 50]">
+      </mat-paginator>
+    </div>
+    <mat-card class="w-100" fxFlex.lt-md="100%" fxFlex="350px"> <!-- advisors list -->
+      <mat-card-content *ngIf="selectedSession$ | async as session">
+        <div class="section primary-color push-bottom-sm">{{'SWARM.ADVISORS' | translate }}</div>
+        <exo-avatar-system *ngFor="let advisor of session.advisors; let isLast = last;"
+          class="inline-block w-100"
+          [class.push-bottom-xs]="!isLast"
+          [name]="advisor.fullName"
+          [description]="advisor.projectTitle || advisor.userTitle"
+          [truncateDescription]="true"
+          [truncateName]="true"
+          [connected]="advisor.onLine">
+          <exo-avatar
+            [src]="advisor.profilePictures[1].url"
+            [alt]="advisor.fullName"
+            [tooltip]="advisor.fullName"
+          ></exo-avatar>
+        </exo-avatar-system>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
+
+<ng-template #expired>
+  <exo-alert
+    typeAlert="info"
+    message="{{'SWARM.NOTICE_BOX.ENDED' | translate}}"
+    class="push-top push-left-sm push-right-sm"
+  ></exo-alert>
+</ng-template>

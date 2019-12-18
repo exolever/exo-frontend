@@ -1,0 +1,6 @@
+@import "~@openexo/design-system/variables";
+
+.circle-logo {
+  max-height: map_get($spaceMeasures, sm);
+  max-width: map_get($spaceMeasures, sm);
+}

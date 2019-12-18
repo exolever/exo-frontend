@@ -1,0 +1,32 @@
+@import "variables";
+@import "~@openexo/design-system/variables";
+
+.consent-container {
+  min-height: calc(100vh - 150px); // Size of the footer
+  background-color:rgba(70, 70, 75, 0.04);
+  color: mat-color($exo-grey, 900);
+  .consent{
+    margin-top: $bigger;
+    max-width: 960px;
+    @media (max-width: 1008px) { // Hide the padding when it has space 960 + 24 + 24
+      padding: 24px;
+    }
+    .mat-card {
+      margin-top: $xl;
+      .mat-card-content{
+        margin: 0px;
+        @media (min-width: 840px) {
+          margin: $sm;
+          .image {
+            margin-left: $bigger;
+            min-width: 280px;
+            height: 207px;
+            width: 233px;
+            background: url($static-root + 'assets/consent/consent.svg') no-repeat;
+            background-position: center; 
+          } 
+        }
+      }
+    }
+  }
+}

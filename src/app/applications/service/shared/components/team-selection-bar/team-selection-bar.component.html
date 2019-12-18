@@ -1,0 +1,20 @@
+<section class="exo-platform" fxLayoutAlign="center center">
+  <div
+    class="exo-platform-light-theme team-selection"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+  >
+    <div [matMenuTriggerFor]="teamSelectionMenu" fxLayout class="pointer">
+      <p class="caption-1">
+        {{ 'SERVICE.MENU.VIEWING_AS' | translate }}
+        <span class="weight-bold">
+          {{ getTeamSelected().name }}
+        </span>
+      </p>
+      <mat-icon>arrow_drop_down</mat-icon>
+    </div>
+  </div>
+</section>
+<mat-menu #teamSelectionMenu="matMenu" class="exo-platform-light-theme" xPosition="before" yPosition="below">
+  <button *ngFor="let team of teams" mat-menu-item (click)="selectTeam(team)">{{team.name}}</button>
+</mat-menu>

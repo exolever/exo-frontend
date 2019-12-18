@@ -1,0 +1,65 @@
+@import 'scss/index';
+// ngx share button imports
+@import '~@ngx-share/button/themes/default/default-theme';
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+
+@include exo-helpers();
+
+.mat-autocomplete-panel {
+  max-width: none !important;
+}
+
+// Manage scroll of body for fullscreen
+body.fullscreen-dialog-opened {
+    overflow: hidden;
+    .mat-dialog-container {
+        overflow: hidden;
+        max-width: none !important;
+    }
+}
+
+// dark backdrop overlay
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  &.dark-backdrop {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+// Styles for Google places
+.pac-container {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.32);
+  padding: 12px 0;
+  &::after {
+    margin: 0 12px;
+  }
+  .pac-item {
+    cursor: pointer;
+    font-family: $font-family;
+    padding: 16px;
+    border-top:0;
+    &, .pac-item-query{
+      font-size: 16px;
+    }
+  }
+}
+
+// Reset to navigation. (Move navigation to anchors instead p and h3-.-)
+p, h3 {
+  &:focus{
+    outline: none;
+  }
+}
+
+.mat-app-background {
+  background-color: #fafafa;
+}
+
+// Generic styles for title with help icon
+.title-help-icon {
+  position: relative;
+  .help-icon {
+    bottom: map-get($spaceMeasures, 'xxs');
+    position: absolute;
+  }
+}

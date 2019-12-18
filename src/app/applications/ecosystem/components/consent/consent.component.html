@@ -1,0 +1,36 @@
+<div fxLayout="column" fxLayoutAlign="start center" class="consent-container exo-platform">
+  <div class="consent">
+    <ng-container *ngIf="showQuestion; else thanksMessageTpl">
+      <h1>{{'CONSENT.TITLE' | translate}}</h1>
+      <div class="big-body" *ngIf="showQuestion">{{'CONSENT.DESCRIPTION' | translate}}</div>
+    </ng-container>
+    <ng-template #thanksMessageTpl><h1>{{'CONSENT.TITLE_THANKS' | translate}}</h1></ng-template>
+    <mat-card>
+      <mat-card-content fxLayout="row">
+        <div fxLayout="column" fxLayoutAlign="space-between start" *ngIf="showQuestion; else cardThankTpl">
+          <div class="big-body weight-bold">{{'CONSENT.QUESTION' | translate}}</div>
+          <div class="w-100 push-top-sm" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="start stretch" fxLayoutAlign="end center" fxLayout="row">
+            <button mat-button color="primary" (click)="sendAction(false)">{{'COMMON.ACTIONS.DECLINE' | translate }}</button>
+            <button
+              (click)="sendAction(true)"
+              ngClass.lt-sm="push-top push-left-none"
+              ngClass.gt-xs="push-top-none push-left"
+              mat-flat-button color="primary"
+            >{{'COMMON.ACTIONS.ACCEPT' | translate }}</button>
+          </div>
+        </div>
+        <div class="image"></div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div class="footer">
+  <app-ecosystem-footer></app-ecosystem-footer>
+</div>
+
+<ng-template #cardThankTpl>
+  <div fxLayout="column" fxLayoutAlign="space-between start">
+    <div class="big-body weight-bold">{{'CONSENT.THANK_MESSAGE' | translate}}</div>
+    <button [routerLink]="urlHome" fxFlexAlign="end" class="push-top-sm" mat-flat-button color="primary" >{{'CONSENT.GO_TO_OPENEXO' | translate }}</button>
+  </div>
+</ng-template>

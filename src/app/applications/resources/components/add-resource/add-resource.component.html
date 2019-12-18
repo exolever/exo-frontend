@@ -1,0 +1,21 @@
+<div [ngSwitch]="typeElementShow" fxLayout="column">
+  <div *ngSwitchCase="typeElementArea.dragAndDrop" fxLayout="column" fxLayoutAlign="start stretch">
+    <label fxLayout="column" fxLayoutAlign="center center" tdFileDrop (fileDrop)="eventFile($event)" class="drag-and-drop">
+      <input type="file" name="file" accept="{{fileTypes}}" (change)="eventFile($event)">
+      <div class="headline" *ngIf="title">{{title}}</div>
+      <mat-icon class="pad-top pad-bottom">cloud_upload</mat-icon>
+      <div class="foreground-secondary-text body-1">
+        {{'RESOURCES.DRAG_AND_DROP' | translate }}
+      </div>
+    </label>
+    <div class="pad-top-xxxs caption-1 foreground-secondary-text">{{'RESOURCES.SIZE_LIMIT' | translate }}: {{maxFileSize | fileSize}}</div>
+  </div>
+  <div *ngSwitchCase="typeElementArea.buttonResource" class="typeButton">
+    <input [hidden]="true" type="file" name="file" accept="{{fileTypes}}" (change)="eventFile($event)" #fileAttack>
+    <button mat-button color="primary" (click)="fileAttack.click()"> {{'RESOURCES.ATTACH' | translate }} </button>
+  </div>
+  <div *ngSwitchCase="typeElementArea.buttonLink" class="typeButton">
+    <button mat-button color="primary" (click)="openLinkDialog()"> {{'RESOURCES.LINK' | translate }} </button>
+  </div>
+  <mat-progress-bar *ngSwitchCase="typeElementArea.progressBar" mode="indeterminate"></mat-progress-bar>
+</div>

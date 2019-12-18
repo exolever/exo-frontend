@@ -1,0 +1,25 @@
+@import 'variables';
+
+::ng-deep {
+  mat-spinner.mat-progress-spinner circle,
+  mat-spinner.mat-spinner circle {
+    animation:
+      mat-progress-spinner-stroke-rotate-100 4s cubic-bezier(.35,0,.25,1) infinite,
+      exoColorsTransition 2s infinite alternate !important;
+  }
+}
+
+@keyframes exoColorsTransition {
+  0% {
+    stroke: mat-color($mat-amber, 500);
+  }
+  25% {
+    stroke: mat-color($mat-purple, 500);
+  }
+  50% {
+    stroke: mat-color($mat-indigo, 900);
+  }
+  75% {
+    stroke: mat-color($mat-red, 500);
+  }
+}

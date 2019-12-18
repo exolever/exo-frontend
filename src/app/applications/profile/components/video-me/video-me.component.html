@@ -1,0 +1,69 @@
+<div class="container" fxLayout="row wrap" fxLayoutAlign="center">
+  <div fxLayout="row"
+       fxFlex="1 1 44%"
+       fxFlex.lt-md="grow"
+       fxLayoutAlign="start start"
+       class="video-wrapper pointer"
+  >
+    <app-video-display *ngIf="profileUser.video" [video]="profileUser.video"></app-video-display>
+  </div>
+  <div
+    fxLayout="row wrap"
+    [fxFlex]="decideBioWidth()"
+    fxFlex.lt-md="grow"
+    [ngClass.gt-sm]="{'push-left-sm': profileUser.video}"
+    ngClass.lt-md= "push-top-sm"
+    class="bio-container"
+  >
+    <div #bioWrapper
+         *ngIf="profileUser.bioMe"
+         fxFlex="grow"
+         class="bio-wrapper pad-top-xs"
+         [ngClass]="{ 'no-limited-height': readMore }"
+    >
+      <p #bioText class="body-1 line-breaker">{{ profileUser.bioMe || 'Edit to add a description'  }}</p>
+    </div>
+    <div class="bottom-info"
+         fxLayout="row"
+         fxLayout.lt-sm="column-reverse"
+         fxLayoutAlign="space-between center"
+         fxFlex="1 0 100%"
+         fxFlexAlign="end"
+    >
+      <div *ngIf="orderedSocialNetworks().length; else emptySocialNetworks" fxLayoutAlign="start center">
+        <a *ngFor="let socialNetwork of getSocialPublicNetworks()"
+           class="push-right-xxxs"
+           [href]="socialNetwork.value"
+           target="_blank"
+           matTooltip="{{ socialNetwork.getName() | translate }}"
+        >
+          <mat-icon *ngIf="socialContactIsPersonalWebsite(socialNetwork.networkType)">link</mat-icon>
+          <mat-icon *ngIf="!socialContactIsPersonalWebsite(socialNetwork.networkType)"
+                    [svgIcon]="socialNetwork.networkType"
+          ></mat-icon>
+        </a>
+      </div>
+      <div ngClass.lt-sm="push-bottom-xxs">
+        <button *ngIf="canShowMoreBio()"
+                mat-button color="primary"
+                (click)="onReadMoreToggle()"
+        >
+          {{ ('PROFILE.PLATFORM.VIDEO_ME.READ_MORE' | translate).toUpperCase() }}
+        </button>
+        <button *ngIf="readMore"
+                mat-button color="primary"
+                (click)="onReadMoreToggle()"
+        >
+          {{ ('PROFILE.PLATFORM.VIDEO_ME.READ_LESS' | translate).toUpperCase() }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- empty moment for social networks -->
+<ng-template #emptySocialNetworks>
+  <div>
+    <span class="foreground-secondary-text">{{ 'PROFILE.PLATFORM.VIDEO_ME.EMPTY_MOMENT_SOCIAL' | translate }}</span>
+  </div>
+</ng-template>

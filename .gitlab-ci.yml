@@ -1,0 +1,156 @@
+# GitLab Pipeline
+#
+# To run in local use `gitlab-runner exec docker <jobname>`
+---
+image: node:11-alpine
+
+# cache:
+#   key: ${CI_COMMIT_REF_SLUG}
+#   paths:
+#     - node_modules/
+# services:
+#   - docker:dind
+
+variables:
+  CONTAINER_IMAGE: registry.gitlab.com/$CI_PROJECT_PATH
+  AWS_BUCKET: exotest
+
+before_script:
+  - export SOURCE_BRANCH=$(echo $CI_COMMIT_REF_NAME | sed "s/\//_/g")
+  - sh src/scripts/pre-build.sh
+
+stages:
+  - build
+  - deploy
+
+# # This is NOT a job and will be ignored by GitLab-CI
+# .shared_hidden_key: &shared  # This is an anchor
+#   before_script:
+#     - npm install
+
+#     - echo "Copying dist -> ts..."
+#     - cp src/environments/environment.ts.dist src/environments/environment.ts
+#     - cp src/environments/environment.ts.dist src/environments/environment.prod.ts
+
+#     - echo "Copying and modifying files for release..."
+#     - if [ ! -z "$BITBUCKET_TAG" ]; then sed "s/0.0.0/$BITBUCKET_TAG/" src/environments/environment.prod.ts.dist > src/environments/environment.prod.ts; fi
+#     - if [ ! -z "$BITBUCKET_TAG" ]; then sed -i "s/0.0.0/$BITBUCKET_TAG/" src/index.html; fi
+
+#     - echo "Setting SOURCE_BRANCH variable..."
+#     - sed -i "s/<SOURCE_BRANCH>/$SOURCE_BRANCH/" src/environments/environment.ts
+#     - sed -i "s/<SOURCE_BRANCH>/$SOURCE_BRANCH/" src/environments/environment.prod.ts
+
+#   after_script:
+#     - echo after script
+
+
+
+# before_script:
+
+
+test:
+  stage: build
+  # cache:
+  #   policy: pull
+  #   paths:
+  #     - node_modules/
+  # <<: *shared  # This is a reference to the anchor.
+  script:
+    # install dependencies to use chrome w/ puppeteer
+    # - apt update && apt install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+
+    # - apt-get update && apt-get install --yes --no-install-recommends chromium
+    - apk add --no-cache tzdata chromium
+    - export CHROME_BIN=/usr/bin/chromium-browser
+    - export TZ=Europe/Madrid
+    - npm run test:headless
+lint:
+  stage: build
+  # cache:
+  #   policy: pull
+  #   paths:
+  #     - node_modules/
+  # <<: *shared  # This is a reference to the anchor.
+  script:
+    # install dependencies to use chrome w/ puppeteer
+    # - apt update && apt install -yq gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+    # - sh src/scripts/pre-build.sh
+    - export PATH="${PATH}:node_modules/.bin/"
+    - ng lint openexo --format=verbose
+
+build-master:
+  stage: build
+  script:
+    - npm run build:highMemoMaster -- --deploy-url=https://cdn.openexo.com/bundles/exo-frontend/$SOURCE_BRANCH/
+
+  only:
+    refs:
+      - master
+
+build:
+  stage: build
+  # cache:
+  #   paths:
+  #     - node_modules/
+  # <<: *shared  # This is a reference to the anchor.
+  script:
+    # - npm ci
+    - npm run build:highMemoNamedChunks
+  except:
+    refs:
+      - master
+
+  artifacts:
+    paths:
+      - dist/
+
+deploy:sentry:
+  stage: deploy
+  script:
+    - unset NPM_CONFIG_USER
+    - npm install @sentry/cli
+    - export PATH="${PATH}:node_modules/.bin/"
+    - export SENTRY_ORG=openexo
+    - export SENTRY_PROJECT=frontend
+    - export SENTRY_AUTH_TOKEN=41f942daa3c0426d84f82e4c63652525bd47040aaa2440f485b71e5696ab34e8
+    - sentry-cli releases new $SOURCE_BRANCH
+    - sentry-cli releases files $SOURCE_BRANCH upload-sourcemaps --ext ts --ext map --ext js dist/
+    - sentry-cli releases finalize $SOURCE_BRANCH
+  only:
+    refs:
+      - master
+
+#     - npm install @sentry/cli
+#     - export PATH="${PATH}:node_modules/.bin/"
+#     - export SENTRY_ORG=openexo
+#     - export SENTRY_PROJECT=openexo
+
+#     - export SOURCE_BRANCH=$(echo $CI_COMMIT_REF_NAME | sed "s/\//_/g")
+#     - npm install @sentry/cli
+#     - export PATH="${PATH}:node_modules/.bin/"
+#     - export SENTRY_ORG=openexo
+#     - export SENTRY_PROJECT=angular
+
+
+#     - export SENTRY_AUTH_TOKEN=41f942daa3c0426d84f82e4c63652525bd47040aaa2440f485b71e5696ab34e8
+#     - sentry-cli releases new $SOURCE_BRANCH
+#     - sentry-cli releases files $SOURCE_BRANCH upload-sourcemaps --ext ts --ext map --ext js dist/
+#     - sentry-cli releases finalize $SOURCE_BRANCH
+
+deploy:s3:
+  stage: deploy
+  script:
+    - apk --no-cache add python2 py2-pip py2-magic py2-dateutil py2-six
+    - pip install s3cmd
+    - s3cmd
+      --access_key=$AWS_KEY
+      --secret_key=$AWS_SECRET
+      --force
+      --delete-removed
+      --human-readable-sizes
+      --stop-on-error
+      --acl-public
+      --recursive
+      --exclude="*.map"
+      sync dist/*
+      s3://$AWS_BUCKET/bundles/$CI_PROJECT_NAME/$CI_COMMIT_REF_NAME/

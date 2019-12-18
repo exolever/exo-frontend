@@ -1,0 +1,49 @@
+@import '~@openexo/design-system/theming';
+@import '~@openexo/design-system/mixins';
+@import '~@openexo/design-system/variables';
+
+:host {
+  cursor: pointer;
+  mat-card {
+    &:hover {
+      background-color: mat-color($exo-grey, 50);
+    }
+  }
+
+  .card-profile {
+    width: 248px;
+    height: 340px;
+    margin-bottom: 24px;
+    @media #{map-get($mediaqueries, 'gt-xxs')} {
+      margin-right: 12px;
+    }
+    padding: 24px;
+
+    mat-divider {
+      position: unset;
+    }
+
+    .card-profile-content {
+      height: 200px;
+    }
+
+    .card-footer {
+      margin-top: 10px;
+      text-align: left;
+    }
+
+    .profile-status {
+      width: 19px;
+      height: 19px;
+      background-color: lightgrey;
+      position: absolute;
+      border-radius: 50%;
+      bottom: 2px;
+      right: 50px;
+      &.is-active {
+        background-color: #7df2aa;
+        border: solid 1px #3ac483;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import "variables";
+
+mat-form-field.search {
+  width: 100%;
+  margin: 0;
+  margin-bottom: $sm;
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+    &:hover {
+      .mat-form-field-underline {
+        opacity: 1;
+        transition: opacity ease-in-out .3s;
+      }
+    }
+    mat-icon {
+      color: mat-color($exo-grey, 900, 0.64);
+      font-size: 18px;
+      margin-right: $xs;
+    }
+    border-radius: $xxs $xxs 0 0;
+    overflow: hidden;
+    .mat-form-field-flex {
+      padding: .75em 1.25em;
+    }
+    .mat-form-field-underline {
+      opacity: 0;
+      transition: opacity ease-in-out .3s;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<mat-card class="pad-bottom-sm">
+  <mat-card-content>
+    <div class="section primary-color push-bottom align-center prev-wrapper">{{'ECOSYSTEM.EVENTS.PREVIEW_CARD.PREVIEW' | translate}}</div>
+    <div *ngIf="event" (click)="goToSite()" [ngClass]="{'pointer': event?.url.length}" class="event-card push-top-lg push-bottom-sm card-width" fxLayout="column">
+      <div
+           [ngStyle]="{'background-image': event.eventImage ? 'url('+ event.eventImage +')' : ''}"
+           [ngClass]="{'empty-card': !event.eventImage}"
+           class="image-author"
+           fxFlex="144px">
+        <div fxLayoutAlign="end end">
+          <div *ngIf="event.showPrice" class="free"><span>{{'ECOSYSTEM.EVENTS.PREVIEW_CARD.FREE' | translate}}</span></div>
+        </div>
+      </div>
+      <div class="event-information" fxFlex="100%" fxLayout="column" fxLayoutAlign="space-between start">
+        <div>
+          <div>
+            <div [lines]="2" class="name card-width" exoLineClamp title="{{event?.title}}">{{event?.title}}</div>
+          </div>
+          <div *ngIf="getFirstParticipant() as participant" class="author-name">{{'ECOSYSTEM.EVENTS.PREVIEW_CARD.HOSTED' | translate}}
+            <span>
+              <a href="{{participant.profileUrl}}">{{participant.fullName}}</a>
+            </span>
+          </div>
+        </div>
+        <div>
+          <div class="event-w">
+            <i class="material-icons">today</i>
+            {{event.start | formatDate: 'short' }}
+          </div>
+          <div class="event-w text-truncate">
+            <i class="material-icons">location_on</i>
+            <ng-container *ngIf="event.followType !== 'V'">{{event.location}}</ng-container>
+            <ng-container *ngIf="event.followType === 'S'"> | {{'ECOSYSTEM.EVENTS.FORM.PRESENCE_TYPES.SS' | translate}}</ng-container>
+            <ng-container *ngIf="event.followType === 'V'">{{'ECOSYSTEM.EVENTS.FORM.PRESENCE_TYPES.V' | translate}}</ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+    <div *ngIf="isReviewer" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px" class="pad-right-sm pad-left-sm pad-bottom-sm">
+      <button color="accent" (click)="onClickAction(statusTypeEnum.REJECTED)"
+              mat-flat-button type="button">{{'ECOSYSTEM.EVENTS.FORM.REJECT' | translate}}</button>
+      <button color="primary" (click)="onClickAction(statusTypeEnum.PUBLIC)"
+              mat-flat-button type="button">{{'ECOSYSTEM.EVENTS.FORM.PUBLISH' | translate}}</button>
+  </div>
+</mat-card>

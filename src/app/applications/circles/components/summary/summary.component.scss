@@ -1,0 +1,19 @@
+@import "variables";
+
+img.logo {
+  max-width: 108px;
+  max-height: 108px;
+}
+
+.kpis {
+  border-right: 1px solid mat-color($foreground, divider);
+  border-bottom: 1px solid mat-color($foreground, divider);
+}
+
+app-post-summary {
+  display: block;
+  &.divider {
+    border-bottom: 1px solid mat-color($foreground, divider);
+  }
+}
+

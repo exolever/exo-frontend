@@ -1,0 +1,68 @@
+<app-overlay-template *ngIf="data.showFullScreen; else containerDialog" [title]="data.title" (close)="onClose()">
+  <ng-container [ngTemplateOutlet]="content"></ng-container>
+  <ng-container [ngTemplateOutlet]="actions"></ng-container>
+</app-overlay-template>
+
+<ng-template #containerDialog>
+  <div mat-dialog-title class="text-transform-capitalize">{{ data.title }}</div>
+  <mat-dialog-content>
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </mat-dialog-content>
+  <ng-container [ngTemplateOutlet]="actions"></ng-container>
+</ng-template>
+
+<ng-template #content>
+  <form [formGroup]="form" novalidate autocomplete="off" fxLayout="column">
+    <mat-form-field>
+      <input matInput placeholder="{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.COLLABORATOR_LABEL' | translate }}"
+        formControlName="consultant" [matAutocomplete]="auto">
+      <mat-hint align="start">{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.COLLABORATOR_HINT' | translate }}</mat-hint>
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let consultant of filteredConsultant | async" [value]="consultant">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <img class="avatar-autocomplete" src="{{ consultant.getPicture(144) }}" />
+          <span class="text-truncate">{{ consultant.fullName }}</span>
+        </div>
+      </mat-option>
+    </mat-autocomplete>
+    <div fxLayout="row">
+      <mat-form-field appearance="fill" class="push-bottom-none" fxFlex="grow">
+        <mat-label>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.ROLE_LABEL' | translate}}</mat-label>
+        <mat-select formControlName="roles" multiple>
+          <mat-option *ngFor="let r of rolesList" [value]="r.role" [disabled]="r.isDisabled">
+            <div class="text-truncate" [ngClass]="{'option-disabled': r.isDisabled}">{{ r.role.name }}</div>
+          </mat-option>
+        </mat-select>
+        <mat-error>{{form.get('roles').errors | humanizeFormErrors}}</mat-error>
+        <mat-hint align="start">{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.ROLE_HINT' | translate }}</mat-hint>
+      </mat-form-field>
+      <app-help-popover
+        fxFlex="24px"
+        [xPosition]="'before'"
+        [htmlContent]="'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.ROLE_HELP_DESCRIPTION' | translate"
+      ></app-help-popover>
+    </div>
+    <mat-form-field appearance="fill" class="push-bottom-none push-top">
+      <mat-label>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.TEAM_LABEL' | translate}}</mat-label>
+      <mat-select formControlName="teams" multiple>
+        <mat-option *ngFor="let team of allTeams" [value]="team">
+          <div class="text-truncate"> {{ team.name }} </div>
+        </mat-option>
+      </mat-select>
+      <mat-error>{{form.get('teams').errors | humanizeFormErrors}}</mat-error>
+      <mat-hint align="start">{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.TEAMS_HINT' | translate }}</mat-hint>
+    </mat-form-field>
+  </form>
+</ng-template>
+
+<ng-template #actions>
+  <mat-dialog-actions align="end">
+    <button mat-flat-button color="accent" (click)="onClose()">
+      {{ 'COMMON.ACTIONS.CANCEL' | translate }}
+    </button>
+    <button mat-flat-button color="primary" cdkFocusRegionstart type="submit" (click) ="onSave()" class="button-save">
+      {{ 'COMMON.ACTIONS.SAVE' | translate }}
+    </button>
+  </mat-dialog-actions>
+</ng-template>

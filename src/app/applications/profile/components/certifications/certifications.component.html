@@ -1,0 +1,11 @@
+<div *ngIf="profileUser.certifications.length > 0">
+  <div class="push-top" fxLayout="row wrap" fxLayoutGap="16px" fxLayoutAlign="center center">
+    <div *ngFor="let certification of profileUser.certifications">
+      <img
+        matTooltip="{{'CERTIFICATES.CERTIFIED_IN' | translate}} {{certification.name}}"
+        class="small-imagen pointer pad-top"
+        [src]="getImage(certification)"
+        (click)="goTo(certification)"/>
+    </div>
+  </div>
+</div>

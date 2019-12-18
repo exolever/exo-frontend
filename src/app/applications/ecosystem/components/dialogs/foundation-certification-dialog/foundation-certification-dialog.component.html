@@ -1,0 +1,14 @@
+<div class="information-first-level">
+  <div *ngIf="(certification$ | async) as certification" fxLayout="column" fxLayoutAlign="space-between start">
+    <div fxLayout="row">
+      <div fxShow.gt-xxs fxHide.xxs class="push-right-sm cert-img"><img [src]="getImage(certification)" class="image"/></div>
+      <div class="push-top-xxs body-2">{{'ECOSYSTEM.FIRST_LEVEL_CERTIFICATION.DESCRIPTION' | translate}}</div>
+    </div>
+    <div class="w-100 push-top-sm" fxLayout="row" fxLayoutAlign="end center">
+    <button (click)="sendAction(certification,lang.spanish)" color="primary" class="push-right"
+            mat-flat-button>{{'ECOSYSTEM.FIRST_LEVEL_CERTIFICATION.START_NOW_ES' | translate }}</button>
+    <button (click)="sendAction(certification,lang.english)" color="primary"
+            mat-flat-button>{{'ECOSYSTEM.FIRST_LEVEL_CERTIFICATION.START_NOW_EN' | translate }}</button>
+  </div>
+  </div>
+</div>

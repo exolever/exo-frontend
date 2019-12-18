@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<mat-dialog-content>
+  <perfect-scrollbar class="ps-show-always perfect-scrollbar">
+    <div class="push-bottom-sm">
+      <exo-avatar-system [name]="data.applicant.user.fullName" >
+        <exo-avatar size="xs" [src]="data.applicant.user.profilePictures[1][1]" [alt]="data.applicant.user.fullName"></exo-avatar>
+      </exo-avatar-system>
+    </div>
+    <div class="push-bottom-sm">
+      <exo-alert 
+        [message]="data.message"
+        [typeAlert]="data.typeAlert"
+      ></exo-alert>
+    </div>
+    <p class="push-bottom-sm">{{'ECOSYSTEM.OPPORTUNITIES.CONFIRMATION_DIALOG.DESCRIPTION' | translate }}</p>
+    <mat-form-field class="w-100">
+      <textarea
+        matTextareaAutosize
+        matAutosizeMaxRows="5"
+        [placeholder]="'ECOSYSTEM.OPPORTUNITIES.CONFIRMATION_DIALOG.PLACEHOLDER_MESSAGE' | translate"
+        matInput
+        [formControl]="message">
+      </textarea>
+    </mat-form-field>
+  </perfect-scrollbar>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button color="accent" type="button" mat-dialog-close>{{'COMMON.CANCEL' | translate}}</button>
+  <button color="primary" mat-flat-button (click)="onAction()">{{data.action}}</button>
+</mat-dialog-actions>

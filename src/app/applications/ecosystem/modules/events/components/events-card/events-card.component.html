@@ -1,0 +1,67 @@
+<mat-card
+  class="w-100 event-card push-bottom pointer current">
+  <mat-card-content class="w-100" fxLayout="column" fxLayoutAlign="space-between stretch" (click)="goToEdit()">
+    <div fxFlex="grow" fxLayout="column" fxLayoutAlign="space-between stretch">
+      <div>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+          <span [lines]="1"
+                [ngClass]="{'out-of-date': !isUpDate() }"
+                class="section push-bottom-xxs"
+                exoLineClamp
+                matTooltip="{{event.typeEventName}}"
+          >
+            {{event.typeEventName}}
+          </span>
+
+          <div class="event-menu" fxLayout="row" fxLayoutAlign="center center">
+            <button
+              (click)="stopPropagation($event)"
+              [matMenuTriggerFor]="actionsMenu"
+              class="push-left-sm cursor-pointer menu-actions"
+              mat-icon-button
+            >
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #actionsMenu="matMenu">
+              <button (click)="goToEdit()" mat-menu-item>{{ 'ECOSYSTEM.EVENTS.CARD.EDIT' | translate }}</button>
+              <button (click)="onDeleteEvent()" mat-menu-item>{{ 'ECOSYSTEM.EVENTS.CARD.DELETE' | translate }}</button>
+            </mat-menu>
+          </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <span *ngIf="event.isRejected()"
+                class="pretty-label red caption-2 push-bottom-xxs">{{'ECOSYSTEM.EVENTS.CARD.STATUS.REJECTED' | translate | uppercase }}</span>
+          <span *ngIf="event.isPublished()"
+                class="pretty-label green caption-2 push-bottom-xxs">{{'ECOSYSTEM.EVENTS.CARD.STATUS.PUBLISHED' | translate | uppercase }}</span>
+          <span *ngIf="event.isPending()" class="pretty-label blue caption-2 push-bottom-xxs">
+              {{'ECOSYSTEM.EVENTS.CARD.STATUS.UNDER_REVISION' | translate | uppercase }}</span>
+        </div>
+        <h3
+            [lines]="2"
+            class="foreground-secondary-text" exoLineClamp
+            matTooltip="{{event.title}}"
+        >
+            {{event.title}}
+
+        </h3>
+      </div>
+
+      <div>
+        <hr class="foreground-secondary-text w-100"/>
+        <div
+          appTruncateString="30"
+          class="body-1"
+        >
+          {{ 'ECOSYSTEM.EVENTS.FORM.PRESENCE_TYPES.' + event.followType | translate }}
+        </div>
+        <div class="body-1 foreground-secondary-text">
+          {{event.location}}
+        </div>
+        <div class="body-2 push-top-xs event-date" fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="mat-16 push-right-xxxs">today</mat-icon>
+          {{event.start | formatDate: 'short'}}
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

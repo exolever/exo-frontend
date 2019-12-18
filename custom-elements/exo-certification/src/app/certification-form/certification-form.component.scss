@@ -1,0 +1,139 @@
+@import '~@openexo/design-system/theming';
+
+
+$field-background-color:#fbfbfb;
+$stepper-icon: #9b9b9b;
+$padding-field: 8px;
+
+a {
+  cursor: pointer;
+}
+
+input, mat-select, textarea {
+  background-color: $field-background-color;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 4px;
+  height: 38px;
+  padding: 0px 12px;
+  font-size: 12px;
+  &:focus {
+    outline: none;
+  }
+  &.mat-select{
+    border-radius: 3px;
+    padding: $padding-field;
+    margin-top: 5px;
+  }
+}
+
+textarea{
+  height: 100px;
+}
+
+.textarea-field.mat-input-element {
+  padding: $padding-field;
+}
+
+label {
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 4px;
+  padding-top: 0px;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.container-form {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  place-content: stretch flex-start;
+  align-items: stretch;
+  max-width: 100%;
+}
+
+::ng-deep.mat-step-header{
+  .mat-step-icon {
+    background-color: $stepper-icon;
+    color: white;
+    &.mat-step-icon-selected {
+      background-color: mat-color($primary);
+    }
+  }
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.mat-form-field {
+  ::ng-deep.mat-form-field-infix {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  ::ng-deep.mat-form-field-underline {
+    height: 0px;
+    .mat-form-field-ripple{
+      background-color: transparent;
+    }
+  }
+  ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-subscript-wrapper{
+    top: 75px;
+  }
+  ::ng-deep.mat-input-element {
+    margin-top: 5px;
+  }
+}
+
+.mat-error{
+  color: red;
+  font-size: 12px;
+}
+
+.flex-column-start{
+  display: flex;
+  flex-direction: column;
+  place-content: flex-start;
+  align-items: flex-start;
+}
+
+::ng-deep.mat-checkbox:not(.mat-checkbox-disabled).mat-primary .mat-checkbox-ripple .mat-ripple-element,
+::ng-deep.mat-checkbox-checked.mat-primary .mat-checkbox-background{
+  background-color: mat-color($primary);
+}
+
+::ng-deep.mat-checkbox-layout {
+  white-space: normal!important;
+}
+::ng-deep.mat-checkbox-inner-container{
+  margin-top: 5px!important;
+}
+
+table {
+  margin: 0 30px 20 30px;
+}
+
+
+td {
+  &.text-center {
+    text-align: center;
+  }
+  &.text-right {
+    text-align: right;
+  }
+  &.bold {
+    font-weight: bold;
+  }
+  &.help {
+    color: rgba(70, 70, 75, 0.75);
+    font-size: small;
+  }
+}
+
+td.border {
+  border-bottom: 1px solid #ccc;
+}
+
+tr {
+  height: 40px;
+}

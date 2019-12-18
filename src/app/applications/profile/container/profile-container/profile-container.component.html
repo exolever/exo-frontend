@@ -1,0 +1,70 @@
+<div #profileContainer class="exo-platform">
+  <div *ngIf="!(loading$ | async); else loading" class="exo-platform-light-theme">
+    <app-back-to-snippet
+      *ngIf="route.snapshot.queryParams['goBack']"
+      [priorNavigationTranslateString]="route.snapshot.queryParams['goBack']"
+      (back)="location.back()"
+      class="push-top-sm push-left"
+    ></app-back-to-snippet>
+
+    <button
+        *ngIf="showChatButton"
+        mat-flat-button
+        id="floating-chat"
+        class="push-top-sm push-right-sm"
+        appStickyOnScroll
+        (click)="openChat()"
+        [offsetTopElement]="profileContainer"
+    >
+      <mat-icon>chat</mat-icon>
+      <span fxHide.lt-sm>{{ 'ECOSYSTEM.MAILBOX.MESSAGE' | translate | uppercase }}</span>
+    </button>
+
+    <!-- picture about component -->
+    <app-picture-about
+      [profileUser]="profileUser"
+    ></app-picture-about>
+
+    <app-profile-view-section
+      *ngIf="getCanSeeVideoMe()"
+      title="{{ 'PROFILE.PLATFORM.VIDEO_ME.ABOUT' | translate }} {{ profileUser.fullName }}"
+    >
+      <div *ngIf="profileUser.isConsultant()" fxLayoutAlign="center" class="push-bottom-lg w-100">
+        <span class="body-1 foreground-secondary-text">
+          {{ 'PROFILE.JOINED_IN' | translate:{ date: profileUser.created| formatDate: 'short' } }}
+        </span>
+      </div>
+      <!-- video me component -->
+      <app-video-me fxFlex="grow" [profileUser]="profileUser"></app-video-me>
+    </app-profile-view-section>
+
+    <!-- badges -->
+    <app-profile-view-section
+      *ngIf="profileUser.isConsultant() && profileUser.badgesActivity.length"
+      title="{{ 'PROFILE.PLATFORM.BADGES.TITLE' | translate }}"
+    >
+      <app-badges [profileUser]="profileUser"></app-badges>
+    </app-profile-view-section>
+
+    <!-- my skills component -->
+    <app-my-skills
+      *ngIf="profileUser.isConsultant()"
+      [profileUser]="profileUser"
+    ></app-my-skills>
+
+    <!-- other skills component -->
+    <app-profile-view-section
+      *ngIf="profileUser.isConsultant() && skillsData.length;"
+      title="{{ 'PROFILE.PLATFORM.OTHER_SKILLS.TITLE' | translate }}"
+      subtitle="{{ 'PROFILE.PLATFORM.OTHER_SKILLS.SUBTITLE' | translate:{shortname: profileUser.fullName} }}"
+    >
+      <div fxFlex="grow" fxLayoutAlign="center">
+        <app-other-skills [skills]="skillsData"></app-other-skills>
+      </div>
+    </app-profile-view-section>
+  </div>
+</div>
+
+<ng-template #loading>
+  <app-full-screen-spinner-loader></app-full-screen-spinner-loader>
+</ng-template>

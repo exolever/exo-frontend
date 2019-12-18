@@ -1,0 +1,77 @@
+
+
+<mat-card (click)="seeDetails.emit(post.pk)" class="pointer" *ngIf="showCardWrapper; else withoutWrapper;">
+  <mat-card-content>
+    <ng-container *ngTemplateOutlet="contentSummary"></ng-container>
+  </mat-card-content>
+</mat-card>
+
+<ng-template  #withoutWrapper>
+  <div (click)="seeDetails.emit(post.pk)" class="pointer">
+    <ng-container *ngTemplateOutlet="contentSummary"></ng-container>
+  </div>
+</ng-template>
+
+<ng-template #contentSummary>
+  <div class="w-100"
+    fxLayout="row"
+    fxLayout.xxs="column"
+    fxLayoutGap.xxs="24px"
+    fxLayoutAlign="space-between start"
+    fxLayoutAlign.xxs="start stretch">
+    <exo-avatar-system
+      [name]="post.createdBy.fullName"
+      [description]="post.createdBy.projectTitle || post.createdBy.userTitle"
+      [truncateDescription]="true"
+      [truncateName]="true"
+      [connected]="post.createdBy.onLine"
+      (click)="goToProfile($event)"
+      class="pointer">
+      <exo-avatar
+        [src]="post.createdBy.profilePictures[1].url"
+        [alt]="post.createdBy.fullName"
+        [tooltip]="post.createdBy.fullName"
+      ></exo-avatar>
+    </exo-avatar-system>
+    <div fxLayout="row" fxAlign="stretch" fxLayoutAlign="end center" fxLayoutAlign.xxs="space-between center">
+      <div class="caption-1 edited">
+        {{post.modified | amTimeAgo}} <i *ngIf="post.hasBeenEdited" class="push-left-xxs">{{'FORUM.EDITED' | translate }}</i>
+      </div>
+      <ng-template #dateCreation>
+        <span  class="caption-1">{{post.modified | amTimeAgo}}</span>
+      </ng-template>
+      <!-- menu -->
+      <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="showMenu()" (click)="stopPropagation($event)">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
+  </div>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="editEmit(post.pk)">
+      <span>{{'FORUM.EDIT' | translate }}</span>
+    </button>
+    <button mat-menu-item (click)="deleteConfirmation(post.pk)">
+      <span>{{'FORUM.DELETE' | translate }}</span>
+    </button>
+  </mat-menu>
+  <h3 [ngClass]="{ 'slight-opacity': post.seen, 'unread-spot': !post.seen }" class="push-top-sm push-bottom-sm">
+    {{post.title}}
+  </h3>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div
+      fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="4px"
+      >
+        <div class="message-icon-container" fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="push-right-xxxs slight-opacity">comment</mat-icon>
+          <svg *ngIf="hasNewAnswers() && !isNew()" class="unread-spot-svg" height="10" width="10">
+            <circle class="outer" cx="5" cy="5" r="5"/>
+            <circle class="inner" cx="5" cy="5" r="4"/>
+          </svg>
+        </div>
+        <span [ngClass]="{'caption-2': hasNewAnswers() && !isNew(), 'caption-1': !hasNewAnswers() || isNew()}">
+            {{post.answers}} {post.answers, plural, =1 { {{'FORUM.COMMENT' | translate}} } other { {{'FORUM.COMMENTS' | translate}} }}
+            <span *ngIf="hasNewAnswers() && !isNew()">({{post.answersUnseen}} {{'FORUM.NEW' | translate }})</span>
+        </span>
+    </div>
+  </div>
+</ng-template>

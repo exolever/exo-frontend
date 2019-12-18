@@ -1,0 +1,23 @@
+<app-conversation-messages
+  class="push-top-sm" fxFlex="grow" fxFill
+  [conversation]="conversation"
+  [loading]="loading$ | async"
+  [replyingMessage]="replyingMessage$ | async"
+  (submit)="onSubmit($event, conversation, opportunity)"
+  (scrolled)="onScroll($event, conversation, opportunity)"
+>
+  <ng-container class="content__title">
+    <div fxLayout="column">
+      <h2>
+        {{'CONVERSATIONS.ASK_PUBLISHER' | translate}}
+      </h2>
+      <h3 class="foreground-secondary-text">
+        {{'CONVERSATIONS.QUESTIONS' | translate}}
+      </h3>
+    </div>
+    <div class="new-messages" *ngIf="conversation?.unread > 0">
+      <exo-forum-icon></exo-forum-icon>
+      <span class="push-left-xxxs body-2">{{conversation?.unread}}</span>
+    </div>
+  </ng-container>
+</app-conversation-messages>

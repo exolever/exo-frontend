@@ -1,0 +1,14 @@
+@import "variables";
+
+:host {
+  width: 100%;
+  flex: 0 1 1280px;
+  box-sizing: border-box;
+  max-width: 1280px;
+}
+
+div.divide-section {
+  border: 1px solid  mat-color($exo-grey, 900, 0.12),;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}

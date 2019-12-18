@@ -1,0 +1,40 @@
+@import "~@openexo/design-system/mixins";
+@import "~@openexo/design-system/variables";
+@import 'themes/exo-platform-light-theme';
+
+.image-empty {
+  @include retina-background-image($static-root + 'assets/empty_moments/opportunities_empty_state', 'png', 200px, 200px);
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+}
+
+mat-panel-title {
+  align-self: center;
+}
+
+.mat-expansion-panel {
+  border-radius: map-get($spaceMeasures, 'xxs');
+  box-shadow: none !important;
+  background-color: map_get($mat-light-theme-background, card-negative);
+}
+
+.mat-expansion-panel-header {
+  padding: map-get($spaceMeasures, 'xxs') map-get($spaceMeasures, 'xs');
+}
+
+::ng-deep .mat-expansion-panel-content {
+  border-top: 1px solid lightgrey;
+  .mat-expansion-panel-body {
+    padding: map-get($spaceMeasures, 'xs');
+ }
+}
+
+::ng-deep .mat-expansion-indicator {
+  margin-right: 20px;
+}
+
+.logo {
+  max-width: 48px;
+  max-height: 48px;
+}

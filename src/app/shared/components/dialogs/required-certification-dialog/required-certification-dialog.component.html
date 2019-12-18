@@ -1,0 +1,14 @@
+<div fxLayout="column" fxLayoutAlign="space-between start">
+  <div fxLayout="row">
+    <div *ngIf="image" fxHide.lt-sm class="push-right-sm">
+      <img [src]="image" class="image"/>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center start">
+      <h2>{{title}}</h2>
+      <p [innerHTML]="content" class="body-1"></p>
+    </div>
+  </div>
+  <div class="w-100 push-top-sm" fxLayout="row" fxLayoutAlign="end center">
+    <button mat-flat-button type="button" color="primary" (click)="onClose()">{{'COMMON.CLOSE' | translate }}</button>
+  </div>
+</div>

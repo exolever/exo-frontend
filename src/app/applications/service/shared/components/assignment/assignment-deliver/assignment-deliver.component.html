@@ -1,0 +1,36 @@
+<ng-container *ngIf="blocks; else loading">
+  <app-information-block *ngFor="let block of blocks; let first = first"
+    [block]="block"
+    [step]="step"
+    [assignment]="assignment"
+    [ngClass]="{ 'push-top-sm': first, 'push-top-lg': !first }"
+    class="information-block"
+    (markAllAsDone)="onMarkAllAsDone($event)"
+    (markAllAsTodo)="onMarkAllAsTodo($event)"
+    (markAsDone)="onMarkAsDone($event)"
+    (markAsTodo)="onMarkAsTodo($event)">
+  </app-information-block>
+</ng-container>
+
+<ng-template #loading>
+  <span fxLayout="row" fxLayoutAlign="center" class="push-bottom">
+    <mat-spinner [strokeWidth]="2" [diameter]="30"></mat-spinner>
+  </span>
+</ng-template>
+
+<div class="push-top push-bottom" [ngClass]="{'push-bottom-lg': assignment?.deliverables.length === 0}">
+  <app-resource-uploader (upload)="onSendToBackend($event)"></app-resource-uploader>
+</div>
+
+<span *ngIf="uploading" fxLayout="row" fxLayoutAlign="center" class="push-top-xxs">
+  <app-component-spinner-loader></app-component-spinner-loader>
+</span>
+
+<div *ngFor="let content of assignment?.deliverables; let last = last;" [ngClass]="{'push-bottom-lg': last}" class="push-top">
+  <app-resource-item
+    [showActions]="allowShowActions(content)"
+    [resource]="content"
+    [showPrivacy]="true"
+    (sendAction)="onManageActionsResource($event)"
+  ></app-resource-item>
+</div>

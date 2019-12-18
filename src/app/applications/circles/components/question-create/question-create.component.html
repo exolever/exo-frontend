@@ -1,0 +1,23 @@
+<section class="exo-platform pad" fxLayout="column" fxLayoutAlign="start start">
+  <mat-card class="w-100">
+    <mat-card-content>
+      <div class="push-top-sm">
+        <h3 class="headline push-bottom-sm">{{'ECOSYSTEM.CIRCLES.NEW_QUESTION_TITLE' | translate }} {{(circle$ | async)?.name}}</h3>
+      </div>
+      <app-write-comment
+        (saved)="onSaved($event)"
+        (cancelled)="goBack()"
+        class="w-100 inline-block"
+        [user]="user$ | async"
+        titleLabel="{{'ECOSYSTEM.CIRCLES.TITLE_LABEL' | translate }}"
+        commentLabel="{{'ECOSYSTEM.CIRCLES.COMMENT' | translate }}"
+        tagsLabel="{{'FORUM.CATEGORIES' | translate }}"
+        tagsHint="{{'FORUM.CATEGORIES_HINT' | translate }}"
+        [tagsContent]="[]"
+        saveButton="{{'ECOSYSTEM.CIRCLES.ASK_BUTTON' | translate }}"
+        cancelButton="{{'COMMON.CANCEL' | translate }}"
+        [mentionsAPI]="mentionsAPI"
+      ></app-write-comment>
+    </mat-card-content>
+  </mat-card>
+</section>

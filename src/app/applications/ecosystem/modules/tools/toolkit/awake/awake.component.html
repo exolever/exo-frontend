@@ -1,0 +1,14 @@
+<section class="push-bottom-lg push-top-lg" fxLayout="column">
+  <mat-card class="form-wrapper card-section">
+    <mat-card-content  *ngIf="allowed">
+      <section class="push-bottom-sm">
+        <span class="section push-bottom-sm"> {{'TOOLKIT.TOOLKIT' | translate}} </span>
+      </section>
+      <h1>{{'TOOLKIT.AWAKE.TITLE' | translate}}</h1>
+      <section class="push-top pad-left pad-right pad-bottom">
+        <exo-router-tabs [tabs]="tabs"></exo-router-tabs>
+        <router-outlet></router-outlet>
+      </section>
+    </mat-card-content>
+  </mat-card>
+</section>

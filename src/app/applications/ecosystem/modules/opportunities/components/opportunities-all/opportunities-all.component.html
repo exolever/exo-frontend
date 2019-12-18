@@ -1,0 +1,50 @@
+<mat-form-field floatLabel="never" class="w-100" >
+  <mat-icon matPrefix class="search-icon pad-right">search</mat-icon>
+  <input
+    matInput
+    type="text"
+    placeholder="{{'ECOSYSTEM.OPPORTUNITIES.SEARCH' | translate}}"
+    [formControl]="searchBox"
+    [value]="text$ | async"
+    #search
+  >
+  <mat-icon matSuffix class="pointer" *ngIf="searchBox.value" (click)="searchBox.setValue('')">close</mat-icon>
+</mat-form-field>
+<div *ngIf="emptyMoment$ | async">
+  <exo-empty-moment>
+    <div class="empty-message text-align-center subheading-2">
+      {{'ECOSYSTEM.OPPORTUNITIES.EMPTY_TITLE' | translate}}
+    </div>
+  </exo-empty-moment>
+</div>
+
+<div *ngIf="loading$ | async; else cards" fxLayout="row" fxLayoutAlign="center" class="w-100">
+  <app-component-spinner-loader></app-component-spinner-loader>
+</div>
+
+<ng-template #cards>
+  <section fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutAlign.lt-sm="center stretch">
+    <app-opportunities-card
+      *ngFor="let opportunity of opportunitiesList$ | async"
+      data-e2e="opportunity"
+      class="push-bottom"
+      fxLayoutAlign="stretch"
+      fxFlex.lt-sm="0 1 calc(100% - 16px)"
+      fxFlex.sm="0 1 calc(50% - 16px)"
+      fxFlex.md="0 1 calc(33% - 16px)"
+      fxFlex.gt-md="0 1 calc(25% - 16px)"
+      [opportunity]="opportunity"
+      [user]="user$ | async"
+      title="{{ 'ECOSYSTEM.OPPORTUNITIES.FOR_YOU' | translate | uppercase }}">
+    </app-opportunities-card>
+  </section>
+</ng-template>
+<mat-paginator
+  *ngIf="!(emptyMoment$ | async) && !(loading$ | async) && (totalOpportunities$ | async)"
+  class="transparent"
+  (page)="paginatorChange($event)"
+  [length]="totalOpportunities$ | async"
+  [pageSize]="pageSize$ | async"
+  [pageIndex]="pageIndex$ | async"
+  [pageSizeOptions]="[5, 15, 25]">
+</mat-paginator>

@@ -1,0 +1,86 @@
+@import 'variables';
+@import 'themes/exo-platform-light-theme';
+
+:host{
+  // Reset margins
+  p, h1, h2, h3, h4 {
+    margin: 0;
+  }
+  @media (max-width: $screen-exo-xxs) {
+    figure {
+      margin: $xxs;
+    }
+    h1 {
+      font-size: 22px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+  }
+}
+
+.dialog {
+  
+  &__actions {
+    &--learn {
+      height: 40px;
+      @media (max-width: $screen-exo-xxs) {
+        height: 20px;
+      }
+    }
+  }
+
+  &__content {
+    &:not(.one-certificate) {
+      height: 25vh;
+      @media (max-width: $screen-exo-xxs) {
+        height: 32vh;
+      }
+    }
+    &.one-certificate {
+      margin-bottom: 0px; 
+      height: 175px;
+    }
+
+    &--certificate {
+      &:not(:last-child) {
+        margin-bottom: $xs;
+      }
+      &:not(:first-child) {
+        padding-top: $sm;
+      }
+    }
+
+    &--info {
+      margin: 0 $xs;
+    }
+
+    &--link{
+      color: #24a1e3;
+    }
+
+    figure {
+      margin-top: 0;
+    }
+
+    &--image {
+      height: 150px;
+      @media (max-width: $screen-exo-xxs) {
+        height: 60px;
+      }
+    }
+
+    .step-divider {
+      color: #979797;
+      width: 90%;
+    }
+
+    .see-certificate {
+      margin-top: $xs;
+      color: mat-color($exo-blue, 500);
+    }
+  }
+}

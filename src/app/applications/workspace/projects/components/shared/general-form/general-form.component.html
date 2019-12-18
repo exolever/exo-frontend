@@ -1,0 +1,57 @@
+<form [formGroup]="form" novalidate autocomplete="off" fxLayout="column">
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.GENERIC.NAME_LABEL' | translate}}</mat-label>
+    <input matInput type="text" formControlName="name"/>
+    <mat-hint align="end">{{form.get('name').value.length}} / {{validationConfig.maxLength}}</mat-hint>
+    <mat-error>{{form.get('name').errors | humanizeFormErrors}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.GENERIC.CLIENT_LABEL' | translate}}</mat-label>
+    <input matInput type="text" formControlName="customer"/>
+    <mat-hint align="end">{{form.get('customer').value ? form.get('customer').value.length : 0 }} / {{validationConfig.maxLength}}</mat-hint>
+    <mat-error>{{form.get('customer').errors | humanizeFormErrors}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.GENERIC.DESCRIPTION_LABEL' | translate}}</mat-label>
+    <app-custom-quill-editor
+      formControlName="description"
+      [isSubmitted]="isSubmitted"
+      [maxLength]="validationConfig.maxTextAreaLength"
+    ></app-custom-quill-editor>
+    <mat-error>{{form.get('description').errors | humanizeFormErrors}}</mat-error>
+    <mat-hint align="end">{{form.get('description').value ? (form.get('description').value | striphtml).length : 0 }} / {{validationConfig.maxTextAreaLength}}</mat-hint>  
+  </mat-form-field>
+
+  <div fxLayout="row">
+    <mat-form-field fxFlex="100%" fxFlex.gt-sm="50%" appearance="fill" class="push-bottom-lg">
+      <mat-label>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.GENERIC.LOCATION_LABEL' | translate}}</mat-label>
+      <input
+        matInput
+        formControlName="location"
+        google-place
+        (onSelect)="setLocation($event)">
+      <mat-error>{{form.get('location').errors | humanizeFormErrors}}</mat-error>
+      <mat-hint align="start">{{ 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.GENERIC.LOCATION_HINT' | translate }}</mat-hint>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row">
+    <div fxFlex="100%" fxFlex.gt-sm="50%" fxLayout="column">
+      <md2-datepicker
+        class="datepicker appearance-fill pointer"
+        formControlName="start"
+        placeholder="{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.GENERIC.START_DATE_LABEL' | translate }}"
+        type="date"
+        openOnFocus="true">
+      </md2-datepicker>
+      <mat-error [@transitionHintErrorMessages]="subscriptAnimationState" *ngIf="showErrors('start')">{{form.get('start').errors | humanizeFormErrors}}</mat-error>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end" class="push-top-lg">
+    <button *ngIf="!project" mat-flat-button color="accent" type="button" (click)="goToProjectList()">{{'COMMON.CANCEL' | translate}}</button>
+    <button #saveButton mat-flat-button color="primary" type="submit" (click)="onSubmit()" class="push-left-xs">
+        {{ !project ? ('ECOSYSTEM.WORKSPACE.PROJECTS.FORM.CREATE' | translate) : ('COMMON.ACTIONS.SAVE' | translate)}}
+    </button>
+  </div>
+</form>

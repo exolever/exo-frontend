@@ -1,0 +1,17 @@
+mat-form-field {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.perfect-scrollbar {
+  max-width: 248px;
+  max-height: 786px;
+  position: relative;
+}
+
+exo-avatar-system {
+  display: block;
+  max-width: calc(100% - 8px);
+  width: calc(100% - 8px);
+}

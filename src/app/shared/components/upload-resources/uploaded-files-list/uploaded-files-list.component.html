@@ -1,0 +1,13 @@
+<mat-chip-list>
+  <div
+    *ngFor="let resource of uploadedResources; index as i"
+    [attr.class]="'chip-wrapper ' + getAttachedResourceIconAndColor(resource.mimetype).color"
+  >
+    <mat-chip [removable]="removable" (removed)="removeChipItem(i)">
+      <mat-icon>{{ getAttachedResourceIconAndColor(resource.mimetype).icon }}</mat-icon>
+      <span class="body-2">{{ resource.filename?.toLowerCase() }}</span>
+      <mat-icon *ngIf="removable" matChipRemove class="remove" (click)="onRemove(i)">cancel</mat-icon>
+    </mat-chip>
+  </div>
+</mat-chip-list>
+

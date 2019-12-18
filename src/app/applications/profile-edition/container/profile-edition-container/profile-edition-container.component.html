@@ -1,0 +1,45 @@
+<section *ngIf="!(loading$ | async); else loading" [fxFlex]="'0 1 ' + config.layoutMaxWidth">
+  <div *ngIf="route.snapshot.queryParams['goBack']" class="push-left-sm push-top-sm push-bottom-none">
+    <app-back-to-snippet
+      [priorNavigationTranslateString]="route.snapshot.queryParams['goBack']"
+      (back)="location.back()"
+    ></app-back-to-snippet>
+  </div>
+  <div class="header pad-left-sm pad-right-sm push-bottom-lg text-align-center">
+    <h1 class="w-100 push-top-none pad-top-lg">
+      {{ 'ECOSYSTEM.PROFILE.EDIT.TITLE' | translate }}
+    </h1>
+    <p class="subheading-2 foreground-secondary-text push-bottom-sm">
+      {{ 'ECOSYSTEM.PROFILE.EDIT.DESCRIPTION' | translate }}
+    </p>
+    <div class="push-bottom-lg" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="16px">
+      <button type="button" mat-flat-button color="accent" (click)="share()">
+        {{ 'ECOSYSTEM.PROFILE.EDIT.SHARE' | translate }}
+      </button>
+      <button type="button" mat-flat-button color="primary" (click)="preview()">
+        {{ 'ECOSYSTEM.PROFILE.EDIT.PREVIEW' | translate }}
+      </button>
+    </div>
+  </div>
+  <div class="pad-left-sm pad-right-sm container"
+      [ngClass.gt-sm]="['push-top-lg', 'push-bottom-lg']"
+      [ngClass.lt-md]="['push-top-sm', 'push-bottom-sm']"
+      fxLayout="row"
+      fxLayout.lt-md="row wrap"
+      fxLayoutGap.gt-sm="24px"
+  >
+    <app-profile-edition-side-navigation
+      fxFlex="1 1 296px"
+      fxFlex.lt-md="grow"
+    ></app-profile-edition-side-navigation>
+    <mat-card class="block-edition pad-sm" fxFlex="grow">
+      <mat-card-content>
+        <router-outlet></router-outlet>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
+
+<ng-template #loading>
+  <app-full-screen-spinner-loader></app-full-screen-spinner-loader>
+</ng-template>

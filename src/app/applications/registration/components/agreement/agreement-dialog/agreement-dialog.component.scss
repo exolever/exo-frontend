@@ -1,0 +1,42 @@
+@import "variables";
+
+::ng-deep .agreement-text {
+  h1, h2, h3, p {
+    color: mat-color($exo-grey, 900);
+  }
+  p {
+    font-family: HKGrotesk, sans-serif;
+    font-size: 16px !important;
+    strong {
+      font-size: 22px !important;
+    }
+  }
+}
+
+.short-height {
+  height: 40vh;
+}
+
+.download-agreement {
+  margin: 0 0 $xxs;
+  cursor: pointer;
+  @media (min-width: $screen-xs) {
+    margin: 0;
+  }
+  &__icon {
+    @media (min-width: $screen-xs) {
+      display: none;
+    }
+  }
+  &__pdf {
+    display: none;
+    @media (min-width: $screen-xs) {
+      display: block;
+    }
+  }
+
+}
+
+mat-dialog-actions {
+  margin: $xs 0 0;
+}

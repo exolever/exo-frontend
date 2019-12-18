@@ -1,0 +1,19 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+  <div [ngClass]="{'manyResourceAdd': hasManyAddConfigureComponent()}">
+    <app-add-resource *ngFor="let item of copyConfigAddResources; let i = index" 
+      [dataModelResource]=dataModelAddResource 
+      [configAddResource]=item
+      (resourceUploading)=resourceUploading($event)
+      (resourceAdded)=resourceAdded($event)
+    ></app-add-resource>
+  </div>
+  <app-list-resources
+    *ngIf="showListResources()" fxLayout="column" fxLayoutAlign="start stretch"
+    [ngClass]="{'push-top-sm': isOpenAddResource()}"
+    [dataModelResource]=dataModelListResource
+    [uploadingResourceList]=uploadingResourceList
+    [configListResources]=configListResources
+    [forceRefreshInformation]=forceRefreshInformation
+    (resourceDeleted)="undoResource($event)"
+  ></app-list-resources>
+</div>

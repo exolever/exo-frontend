@@ -1,0 +1,11 @@
+@import "variables";
+
+.input-large {
+  width: 100%;
+  @media (min-width: $screen-sm){
+    max-width: 720px;
+  }}
+
+.submit-button {
+  margin-left: auto;
+}

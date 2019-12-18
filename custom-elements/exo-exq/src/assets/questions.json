@@ -1,0 +1,478 @@
+[
+  {
+    "name":"What gives direction/sense to the organization?",
+    "section":"M",
+    "options":[
+      {
+        "value":"A Mission and Vision Statement", "pk": 0},
+      {
+        "value":"Growth technological change and competition", "pk": 1},
+      {
+        "value":"Creating value in the world", "pk": 2},
+      {
+        "value":"A purpose to transform the world ", "pk": 3}
+    ]
+  },
+  {
+    "name":"Do people and stakeholders understand the Massive Transformative Purpose <Dialog triggerComponent={<span class=\"glossary-trigger\">(MTP)</span>} /> of the organization?",
+    "section":"M",
+    "options":[
+      {
+        "value":"Not applicable (The organization does not have an <Dialog triggerComponent={<span class=\"glossary-trigger\">MTP</span>} />)", "pk": 0},
+      {
+        "value":"Not really", "pk": 0},
+      {
+        "value":"Only when explained", "pk": 0},
+      {
+        "value":"Yes, people understand it", "pk": 0}
+    ]
+  },
+  {
+    "name":"How many initiatives in the organization are connected with the <Dialog triggerComponent={<span class=\"glossary-trigger\">MTP</span>} />?",
+    "section":"M",
+    "options":[
+      {
+        "value":"Not applicable  (The organization does not have an <Dialog triggerComponent={<span class=\"glossary-trigger\">MTP</span>} />)", "pk": 0},
+      {
+        "value":"None", "pk": 0},
+      {
+        "value":"Some", "pk": 0},
+      {
+        "value":"All of them", "pk": 0}
+    ]
+  },
+  {
+    "name":"To what extent is the organization using Staff on Demand to carry out its <Dialog triggerComponent={<span class=\"glossary-trigger\">key activities</span>} />?",
+    "section":"S",
+    "options":[
+      {
+        "value":"Not applicable/Never (The organization does not use Staff on Demand)", "pk": 0},
+      {
+        "value":"Marginally (Sometimes things are outsourced)", "pk": 0},
+      {
+        "value":"Partially (Sometimes core/main activities are outsourced)", "pk": 0},
+      {
+        "value":"The majority of the key activities most of the time (e.g.: Waze, Uber)", "pk": 0}
+    ]
+  },
+  {
+    "name":"How does the organization manage or grow the participation of its Staff on Demand on its <Dialog triggerComponent={<span class=\"glossary-trigger\">key activities</span>} />?",
+    "section":"S",
+    "options":[
+      {
+        "value":"Not applicable", "pk": 0},
+      {
+        "value":"Use of social media channels", "pk": 0},
+      {
+        "value":"Use of a database and reaching out via email or any other direct channel", "pk": 0},
+      {
+        "value":"Managing involvement through a fully automated platform/marketplace (e.g.: Fivver, Lyft)", "pk": 0}
+    ]
+  },
+  {
+    "name":"How is the database of the Staff on Demand of the organization curated and classified (managed) ?",
+    "section":"S",
+    "options":[
+      {
+        "value":"Not applicable", "pk": 0},
+      {
+        "value":"Manual tagging", "pk": 0},
+      {
+        "value":"Certifications", "pk": 0},
+      {
+        "value":"Automated through customer and peer review and gamified achievements (e.g.: Kaggle, Github)", "pk": 0}
+    ]
+  },
+  {
+    "name":"To what extent does the community get involved in <Dialog triggerComponent={<span class=\"glossary-trigger\">key activities</span>} /> of the organization?",
+    "section":"C",
+    "options":[
+      {
+        "value":"Not applicable/ Never (The organization does not engage a community of fans, followers, or direct or indirect supporters)", "pk": 0},
+      {
+        "value":"Marginally (The organization has sporadically conducted some campaigns involving the community)", "pk": 0},
+      {
+        "value":"Sometimes (For example, the organization collects feedback or ideas for new products from its  community of users)", "pk": 0},
+      {
+        "value":"The majority of the key activities most of the time (e.g.: Wikipedia- the community develop its content)", "pk": 0}
+    ]
+  },
+  {
+    "name":"Does the organization leverage its community to be or act smarter and/or faster?",
+    "section":"C",
+    "options":[
+      {
+        "value":"Not applicable (The organization does have a community of fans, followers, or direct or indirect supporters)", "pk": 0},
+      {
+        "value":"Not really", "pk": 0},
+      {
+        "value":"Sometimes", "pk": 0},
+      {
+        "value":"Most of the time (e.g.: crowdsource ideas, insights and/or products, new leads, contacts, and/or whatever is possible from the community almost all the time)", "pk": 0}
+    ]
+  },
+  {
+    "name":"Does the community have an clear sense of belonging to the organization’s ecosystem/brand?",
+    "section":"C",
+    "options":[
+      {
+        "value":"Not applicable", "pk": 0},
+      {
+        "value":"Not really", "pk": 0},
+      {
+        "value":"Partially (yes, but not strongly)", "pk": 0},
+      {
+        "value":"Yes, Greatly (e.g.: the people in the community are “ambassadors” of the organization, they feel proud or enthusiastic about being part of it,  they feel represented and/or connect to the ecosystem almost daily because it represents a part of their routine (e.g.: Instagram’s users)", "pk": 0}
+    ]
+  },
+  {
+    "name":"To what extent are repeatable, time-intensive <Dialog triggerComponent={<span class=\"glossary-trigger\">key activities</span>} /> or decision-making processes automated/supported by the use of algorithms or machine learning?",
+    "section":"A",
+    "options":[
+      {
+        "value":"Not applicable", "pk": 0},
+      {
+        "value":"Marginally", "pk": 0},
+      {
+        "value":"Partially", "pk": 0},
+      {
+        "value":"The majority of the key activities (e.g. Netflix or Spotify use algorithms to make recommendations on what to watch or listen according to own preferences and other users’ activity and preferences)", "pk": 0}
+    ]
+  },
+  {
+    "name":"How are the algorithms and machine learning models fed with data?",
+    "section":"A",
+    "options":[
+      {
+        "value":"Not applicable", "pk": 0},
+      {
+        "value":"Manually (e.g.: Consultants or people hired for data collection and/or hardware owned by the organization)", "pk": 0},
+      {
+        "value":"Semi-automatically with user’s interactions and/or through infrastructure owned by a third party (with some internal curation of the data)", "pk": 0},
+      {
+        "value":"Data collection is done automatically (curation of the data is done—for example by community & crowd of experts) and use of sensors and data channels well defined and abundant)", "pk": 0}
+    ]
+  },
+  {
+    "name":"How does the use of algorithms or machine learning make the organization’s product and services stand out in the market and/or constitute a sustainable competitive advantage?",
+    "section":"A",
+    "options":[
+      {
+        "value":"Not applicable", "pk": 0},
+      {
+        "value":"Only marginally (the use is pretty standard)", "pk": 0},
+      {
+        "value":"It provides the organization a clear “unfair advantage”", "pk": 0},
+      {
+        "value":"It makes their products and services significantly better than the rest", "pk": 0}
+    ]
+  },
+  {
+    "name":"To what extent is rent or free access to third parties' assets a key resource used by the organization for conducting the key activities of the organization or create the value proposition for customers?",
+    "section":"L",
+    "options":[
+      {
+        "value":"Not applicable (All key activities are conducted using internal assets)", "pk": 0},
+      {
+        "value":"Marginally (Sometimes external assets are used, but these are not vital to the business of the organization)", "pk": 0},
+      {
+        "value":"Partially (Sometimes, the organization relies on external assets)", "pk": 0},
+      {
+        "value":"The majority of the key activities of the organization involve external assets (e.g.: Waze leverages users’ phones, Airbnb leverages users’ rooms, Wikipedia leverages contributors’  knowledge, Github leverages users’ software code)", "pk": 0}
+    ]
+  },
+  {
+    "name":"Is the increase in the capacity of service or product supply the organization and the increase in owned assets linearly correlated?",
+    "section":"L",
+    "options":[
+      {
+        "value":"Yes, absolutely . If the organization wants to increase its capacity of supply it needs to enlarge its owned assets", "pk": 0},
+      {
+        "value":"Yes, mostly. There are efficiencies of scale the organization can benefit from (e.g.: costs advantages by volume)", "pk": 0},
+      {
+        "value":"No, the organization can increase its supply most of the times without the need of buying additional assets", "pk": 0},
+      {
+        "value":"No, the organization capacity can be rapidly and significantly increased buying almost no additional assets", "pk": 0}
+    ]
+  },
+  {
+    "name":"Is the asset ownership model of the organization imposing significant limitations in its flexibility to pivot the business model?",
+    "section":"L",
+    "options":[
+      {
+        "value":"Totally", "pk": 0},
+      {
+        "value":"Significantly", "pk": 0},
+      {
+        "value":"Only partially— the organization is repurposing  most of the owned assets, or is leveraging from third-parties the assets relevant for its pivot", "pk": 0},
+      {
+        "value":"Not really, limited or no ownership over assets gives great flexibility to the organization to pivot and explore other markets", "pk": 0}
+    ]
+  },
+  {
+    "name":"Does the organization create or have effective levers (for example, gamified competition, peer pressure mechanisms, etc.) to increase emotional involvement and commitment and/or condition the level of engagement of its business stakeholders/clients?",
+    "section":"E",
+    "options":[
+      {
+        "value":"Not applicable", "pk": 0},
+      {
+        "value":"Marginally", "pk": 0},
+      {
+        "value":"Yes, somehow", "pk": 0},
+      {
+        "value":"Yes, very effective ones", "pk": 0}
+    ]
+  },
+  {
+    "name":"Is there any reputation system for customer segments and key partners in order to have them engaged and connected to the organization activity?",
+    "section":"E",
+    "options":[
+      {
+        "value":"Nothing", "pk": 0},
+      {
+        "value":"There is a way to provide feedback, but only the organization can see it.", "pk": 0},
+      {
+        "value":"There is an open reputation system that everyone can see, but the organization didn’t manage yet to have customers and key partners really engaged with it.", "pk": 0},
+      {
+        "value":"There is an open reputation system that everyone can see and works very well in keeping high levels of engagement", "pk": 0}
+    ]
+  },
+  {
+    "name":"How often do the business stakeholders of the organization evidence high levels of self-drive and motivation and/or actions that contribute to the progress of the organization?",
+    "section":"E",
+    "options":[
+      {
+        "value":"Never", "pk": 0},
+      {
+        "value":"Very rarely", "pk": 0},
+      {
+        "value":"Regularly", "pk": 0},
+      {
+        "value":"Constantly", "pk": 0}
+    ]
+  },
+  {
+    "name":"How would customers and partners value the UX (User eXperience) of the organization’s product and services?",
+    "section":"I",
+    "options":[
+      {
+        "value":"Poorly", "pk": 0},
+      {
+        "value":"The organization doesn’t have many complaints about it", "pk": 0},
+      {
+        "value":"The organization is above the average in terms of UX", "pk": 0},
+      {
+        "value":"Everyone loves using the organization’s product and services, they can’t stop using it", "pk": 0}
+    ]
+  },
+  {
+    "name":"Are the interfaces adaptive to specific profile or needs of the customer?",
+    "section":"I",
+    "options":[
+      {
+        "value":"Not applicable", "pk": 0},
+      {
+        "value":"No", "pk": 0},
+      {
+        "value":"Yes, in some parts/there is manual customization", "pk": 0},
+      {
+        "value":"Yes, always and very effectively", "pk": 0}
+    ]
+  },
+  {
+    "name":"Are business stakeholders able to connect 24/7, manage, exchange relevant information and other actions in relation to the products or services with the current interfaces the organization gives them access to?",
+    "section":"I",
+    "options":[
+      {
+        "value":"Not applicable", "pk": 0},
+      {
+        "value":"Marginally", "pk": 0},
+      {
+        "value":"Yes, in most of the cases or in most parts of the process", "pk": 0},
+      {
+        "value":"Yes, always and very effectively", "pk": 0}
+    ]
+  },
+  {
+    "name":"Does the organization have monitoring, control or reporting panels (dashboards) with relevant real-time information that empowers the decision makers of the organization to learn and make sound decisions?",
+    "section":"D",
+    "options":[
+      {
+        "value":"Not applicable (The organization does not use dashboards)", "pk": 0},
+      {
+        "value":"No, information is gathered and analyzed case by case, depending on the decision to be made", "pk": 0},
+      {
+        "value":"The organization has identified key indicators (most are on dashboards) that are updated at least every week or every other week", "pk": 0},
+      {
+        "value":"Yes, dashboards are essential parts of the organization’s operations and provide key indicators that are mostly updated in real-time, if not, daily or weekly", "pk": 0}
+    ]
+  },
+  {
+    "name":"How are the dashboards/indicators/reports being updated?",
+    "section":"D",
+    "options":[
+      {
+        "value":"Not applicable (The organization does not use dashboards)", "pk": 0},
+      {
+        "value":"Manually", "pk": 0},
+      {
+        "value":"Semi-manually", "pk": 0},
+      {
+        "value":"Automatically and in real-time (i.e. sensors, user interaction registry, etc.)", "pk": 0}
+    ]
+  },
+  {
+    "name":"Who in the organization is empowered through dashboards to act in an informed way?",
+    "section":"D",
+    "options":[
+      {
+        "value":"Not applicable (The organization does not use dashboards)", "pk": 0},
+      {
+        "value":"The CEO or Executive Team", "pk": 0},
+      {
+        "value":"The CEO, the Executive Team and middle management", "pk": 0},
+      {
+        "value":"Almost every one, dashboards are key at all levels across the organization", "pk": 0}
+    ]
+  },
+  {
+    "name":"Does the organization articulate its innovation activities as experimentation activities with specific hypotheses to be tested and feedback/insights to be gathered and lessons to be learned?",
+    "section":"X",
+    "options":[
+      {
+        "value":"Not applicable (The organization does not have an experimentation process/culture)", "pk": 0},
+      {
+        "value":"No, the organization has several innovation efforts without a structured experimentation process", "pk": 0},
+      {
+        "value":"Yes, there are several teams or projects that are structured/guided by experimentation", "pk": 0},
+      {
+        "value":"Yes, absolutely, every team within the organization is running articulated experimentation", "pk": 0}
+    ]
+  },
+  {
+    "name":"Is the organization guided by the results or insights gathered through data-based experimentation?",
+    "section":"X",
+    "options":[
+      {
+        "value":"Never", "pk": 0},
+      {
+        "value":"Very rarely", "pk": 0},
+      {
+        "value":"Regularly, data-based decisions are always more relevant than opinion-based ones", "pk": 0},
+      {
+        "value":"Constantly, there is a strong culture of trying to experiment and gather real data before making key decisions", "pk": 0}
+    ]
+  },
+  {
+    "name":"How is the organization generating, testing new initiatives, products and services?",
+    "section":"X",
+    "options":[
+      {
+        "value":"Discuss and validate inside the company", "pk": 0},
+      {
+        "value":"Hire a consultant that generates a market analysis report", "pk": 0},
+      {
+        "value":"Build quickly mockups/wireframes and test them internally", "pk": 0},
+      {
+        "value":"Build quickly prototypes and test them with early adopters", "pk": 0}
+    ]
+  },
+  {
+    "name":"Is there a culture of micromanagement within the organization?",
+    "section":"M",
+    "options":[
+      {
+        "value":"Yes, absolutely", "pk": 0},
+      {
+        "value":"Somehow yes", "pk": 0},
+      {
+        "value":"No, in most of the cases employees and teams are empowered to act with autonomy", "pk": 0},
+      {
+        "value":"Not at all, employees and teams are empowered to act with complete autonomy", "pk": 0}
+    ]
+  },
+  {
+    "name":"Does the organization have self-organizing, multi-disciplinary teams with decentralized authority?",
+    "section":"M",
+    "options":[
+      {
+        "value":"Not applicable", "pk": 0},
+      {
+        "value":"Not at all", "pk": 0},
+      {
+        "value":"Yes, there is a part of the organization working in this way", "pk": 0},
+      {
+        "value":"Yes, the organization is almost entirely working in this way", "pk": 0}
+    ]
+  },
+  {
+    "name":"Does the organization provide autonomy to customer segments and key partners to establish their own conditions to operate?",
+    "section":"M",
+    "options":[
+      {
+        "value":"Not at all", "pk": 0},
+      {
+        "value":"Not automatically, but they can negotiate it with the organization", "pk": 0},
+      {
+        "value":"Somehow yes", "pk": 0},
+      {
+        "value":"Yes, absolutely", "pk": 0}
+    ]
+  },
+  {
+    "name":"Is instant communication enabled/facilitated within the organization (instant messages, internal news feeds, etc)?",
+    "section":"O",
+    "options":[
+      {
+        "value":"Not applicable", "pk": 0},
+      {
+        "value":"No, only through emails and phone calls", "pk": 0},
+      {
+        "value":"Yes, the employees sometimes use use sometimes instant messaging and real-time collaboration tools to communicate with each other and also the business stakeholders", "pk": 0},
+      {
+        "value":"Yes, the organization uses constantly instant messaging and real-time collaboration tools to communicate with each other and also the business stakeholders", "pk": 0}
+    ]
+  },
+  {
+    "name":"Is instant communication enabled/ facilitated to connect customer segments and/or key partners among them (instant messages, internal news feeds, etc.)?",
+    "section":"O",
+    "options":[
+      {
+        "value":"Not applicable", "pk": 0},
+      {
+        "value":"Only through the organization’s staff, so the organization is always in the middle to drive these conversations", "pk": 0},
+      {
+        "value":"Yes, customer segments and key partners sometimes use instant messaging to communicate with each other and also the business stakeholders", "pk": 0},
+      {
+        "value":"Yes, the organization provides social technologies to give instant messaging and real-time collaboration tools to customer segments and key partners", "pk": 0}
+    ]
+  },
+  {
+    "name":"How does the organization implement social technologies to connect employees and/or customer segments and key partners among them?",
+    "section":"O",
+    "options":[
+      {
+        "value":"Not applicable", "pk": 0},
+      {
+        "value":"With third parties tools to cover part of the communications needs", "pk": 0},
+      {
+        "value":"With third parties tools to cover all the communication needs", "pk": 0},
+      {
+        "value":"With the organization’s own technology/platform to cover all the communication needs", "pk": 0}
+    ]
+  },
+  {
+    "name":"What’s the current business model type of the organization?",
+    "section":"B",
+    "options":[
+      {
+        "value":"Product/Service owners: The organization develops/manufactures its own products or defines/executes its own services and provide them to its clients directly. Example: BMW.", "pk": 0},
+      {
+        "value":"Distribution: The organization provides products and services of others to its clients. The organization selects the offering for its customer segments and negotiate with providers best conditions for them. Example: Walmart.", "pk": 0},
+      {
+        "value":"Platform: The organization connects producers (of product/services) with consumers (clients) using a platform in the middle, which allows to automatically balance the offer/demand taking into account preferences of clients and providers. Example: AirBnB.", "pk": 0},
+      {
+        "value":"Ecosystem/Network business model: The organization has a platform-based business model complemented with a set of entities providing additional services and products to its customers towards its purposes", "pk": 0}
+    ]
+  }
+]

@@ -1,0 +1,72 @@
+@import '~@openexo/design-system/mixins';
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/theming';
+@import '~@openexo/design-system/colors';
+
+@import "variables";
+
+:host {
+  flex: 0 1 1280px;
+  box-sizing: border-box;
+  max-width: 100%;
+  @media only screen and (min-width: $screen-lg-min) {
+    max-width: map-get($breakpoints, 'lg');
+  }
+}
+header {
+  padding: 0 16px;
+}
+
+@media (max-width: $screen-exo-xxs-max) {
+  mat-card {
+    margin: 0 16px;
+
+    mat-card-content {
+      padding: 0;
+
+      .pad-mobile {
+        padding: 24px 24px 8px 24px;
+      }
+    }
+  }
+}
+
+mat-divider {
+  margin: 0 auto;
+  display: block;
+  position: relative !important;
+}
+
+.my-jobs--container {
+  height: 100%;
+  padding: 0 16px;
+}
+
+.my-jobs--empty-moment {
+  height: 100%;
+  max-width: 384px;
+  // header push-bottom-lg
+  margin: -48px auto auto;
+  a {
+    color: mat-color($exo-blue, 700);
+  }
+}
+
+.empty-title {
+  color: mat-color($exo-grey, 900);
+}
+
+.label-mobile {
+  display: block;
+  margin-bottom: 0;
+  margin-top: 16px;
+}
+
+mat-paginator.paginator::ng-deep .mat-paginator-container {
+    background-color: #f7f7f7;
+    justify-content: center;
+  }
+
+.status-li {
+  color: mat-color($exo-teal, 700);
+}

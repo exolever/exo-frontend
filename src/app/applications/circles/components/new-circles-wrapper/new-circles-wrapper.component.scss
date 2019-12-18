@@ -1,0 +1,20 @@
+mat-form-field {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.perfect-scrollbar {
+  max-width: 248px;
+  max-height: 786px;
+  position: relative;
+}
+
+::ng-deep.ps-content {
+  margin-right: 10px;
+}
+
+.circle-logo {
+  max-height: 24px;
+  max-width: 24px;
+}

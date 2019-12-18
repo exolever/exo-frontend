@@ -1,0 +1,46 @@
+import { IUserCertificationResponse } from './../user/user-certifcation.interface';
+import { segmentUserEnum } from '../../enums';
+import { IUserAgreement } from '../../interfaces/user/user-agreement.interface';
+
+export interface UserResponseInterface {
+  aboutMe: string;
+  bioMe: string;
+  company: string;
+  consultantId: number;
+  email: string;
+  emailContact: string;
+  entryPoint: string;
+  fullName: string;
+  groups: Array<any>;
+  hubs: Array<{ name: string,  code: string }>;
+  id: string;
+  pk?: string;
+  intercomHash: string;
+  isActive: boolean;
+  isStaff: boolean;
+  isSuperuser: boolean;
+  lastLogin: string;
+  passwordUpdated: boolean;
+  phone: any;
+  platformLanguage: string;
+  profilePicture: Array<any>;
+  profilePictures: Array<any>;
+  profilePictureOrigin: string;
+  projects: { consultant: number, participant: number, total: number };
+  segment: segmentUserEnum;
+  shortMe: string;
+  shortName: string;
+  slug: string;
+  status: string;
+  location: string;
+  timezone: string;
+  token: string;
+  userPermissions: string[];
+  uuid: string;
+  userTitle: string;
+  userPosition: string;
+  certifications: IUserCertificationResponse[];
+  desiredActivities: string[];
+  userAgreements: IUserAgreement[];
+  sectionsVisited: string[];
+}

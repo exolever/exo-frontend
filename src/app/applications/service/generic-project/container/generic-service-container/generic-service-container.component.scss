@@ -1,0 +1,57 @@
+@import 'themes/exo-platform-light-theme';
+
+@import '~@openexo/design-system/colors';
+@import '~@openexo/design-system/variables';
+
+$toggle-height: 40px;
+$sidenav-width: 280px;
+
+.sticky-team-selection-bar{
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  z-index: 10;
+  width: 100%;
+}
+
+.mat-sidenav-content{
+  min-height: 100vh;
+}
+
+.circle-logo {
+  width: 90px;
+  height: $toggle-height;
+  background: url($static-root + 'assets/public/project_mobile.svg') no-repeat;
+  @media #{map-get($mediaqueries, 'gt-sm')}{
+    width: 150px;
+    height: 30px;
+    background: url($static-root + 'assets/public/logo_white.svg') no-repeat;
+  }
+}
+
+::ng-deep.mat-sidenav{
+  cursor: pointer;
+  width: $sidenav-width;
+  height: 100%;
+  .mat-drawer-inner-container {
+    a, mat-icon {
+      color: white;
+      text-decoration: none;
+    }
+    .nav-steps {
+      &.expand > * {
+        color: mat-color($exo-amber, 500);
+      }
+    }
+    .active-step {
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    .active-section {
+      color: mat-color($exo-amber, 500);
+    }
+  }
+  .lateral-menu {
+    background-color: mat-color($exo-indigo, 900);
+  }
+}

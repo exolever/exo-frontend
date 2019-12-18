@@ -1,0 +1,30 @@
+@import "~@openexo/design-system/mixins";
+@import "~@openexo/design-system/variables";
+@import "variables";
+
+:host {
+  max-width: $screen-md-min;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-bottom: map-get($spaceMeasures, 'xs');
+}
+
+mat-form-field {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.session-selection {
+  max-width: 320px;
+}
+
+.mobile-timer {
+  margin-top: -16px;
+}
+
+.notifications-box {
+  z-index: 1;
+  position: fixed;
+  right: 0;
+}

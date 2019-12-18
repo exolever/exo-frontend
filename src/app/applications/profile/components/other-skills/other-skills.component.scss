@@ -1,0 +1,23 @@
+@import 'variables';
+@import 'themes/exo-platform-light-theme.scss';
+
+:host,
+mat-tab-group {
+  width: 100%;
+  justify-content: center;
+}
+::ng-deep {
+  .mat-tab-label-content {
+    text-transform: uppercase;
+  }
+  mat-tab-header {
+    max-width: 100%;
+  }
+  .mat-tab-body-wrapper {
+    width: 100%;
+  }
+  .mat-tab-label.mat-tab-label-active {
+    color: mat-color($exo-platform-light-primary);
+    background-color: transparent !important;
+  }
+}

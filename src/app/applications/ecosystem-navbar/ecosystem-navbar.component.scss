@@ -1,0 +1,104 @@
+@import 'variables';
+@import '~@openexo/design-system/variables';
+// config
+$animation-style: .2s ease-in-out;
+
+nav.toolbar-wrapper {
+  border-bottom: 1px solid rgba(70, 70, 75, .16);
+  z-index: 13;
+  position: relative;
+  mat-toolbar {
+    justify-content: space-between;
+    height: 80px;
+    .left-items {
+      display: flex;
+      .circle-logo {
+        width: 50px;
+        height: 40px;
+        background: url($static-root + 'assets/public/imagotype.svg') no-repeat;
+        @media (min-width: $screen-sm) {
+          width: 206px;
+          height: 40px;
+          background: url($static-root + 'assets/public/openexo-logo-rgb.svg') no-repeat;
+        }
+      }
+      .selected-link {
+        margin: 0;
+      }
+    }
+    span.new-label {
+      color: white;
+      text-transform: capitalize;
+    }
+    .links-wrapper {
+      a:not(.isNew), .new-label {
+        margin-right: $md;
+      }
+    }
+  }
+}
+
+.mat-badge-content.mat-badge-content {
+  color: white;
+}
+
+.mailbox-link {
+  a {
+    color: rgba(70, 70, 75, 0.64);
+  }
+  margin-right: calc(#{map-get($componentMeasure, '1x')} / 1.5);
+  span.mat-badge-content {
+    background-color: map-get($exo-blue, 500);
+  }
+}
+
+.links-wrapper {
+  // wrapper for the dropdown links
+  &.mobile-dd {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    background: white;
+    padding-bottom: $md;
+    z-index: 7;
+    transition: all $animation-style;
+    &.show {
+      opacity: 1;
+    }
+    a, .new-label {
+      margin-top: $md;
+    }
+  }
+  a {
+    font-size: 16px;
+    line-height: 24px;
+    color: rgb(70, 70, 75);
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: $weight-regular;
+    text-decoration: none;
+    &.ecosystem-link-active {
+      font-weight: $slight-bold;
+      text-decoration: underline;
+    }
+  }
+}
+
+.fullscreen-overlay {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(100, 100, 100, .16);
+  transition: opacity $animation-style;
+  &.displayOverlay {
+    display: block;
+  }
+  &.show {
+    opacity: 1;
+  }
+}

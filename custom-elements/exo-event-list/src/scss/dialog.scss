@@ -1,0 +1,26 @@
+// Dialog
+.mat-dialog-container {
+  padding: 0px !important;
+  .mat-dialog-title {
+    margin: 0px;
+    padding: 16px;
+    height: 48px;
+    background-color: $primary-color;
+    color: white;
+    font-size: 18px;
+  }
+  .mat-dialog-content, .mat-dialog-actions {
+    margin: 0px;
+    padding: 16px;
+    overflow: initial;
+  }
+  .mat-dialog-actions{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+  }
+}
+
+.cdk-overlay-pane{
+  max-width: 100% !important;
+}

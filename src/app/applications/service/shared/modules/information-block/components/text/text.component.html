@@ -1,0 +1,5 @@
+<section>
+  <h2 *ngIf="textBlock.title">{{textBlock.title}}</h2>
+  <h3 *ngIf="textBlock.subtitle">{{textBlock.subtitle}}</h3>
+  <div [innerHTML]="textBlock.contents[0].toString() | safeHtml"></div>
+</section>

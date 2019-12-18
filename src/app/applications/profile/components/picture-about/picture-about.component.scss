@@ -1,0 +1,16 @@
+@import 'variables';
+@import 'themes/exo-platform-light-theme';
+
+/** config */
+$user-info-card-height: 88px;
+
+mat-card{
+  width: 100%;
+  @media (max-width: $screen-md-max){
+    max-width: 360px;
+  }
+}
+
+.container {
+  background: mat-color($exo-grey, 50);
+}

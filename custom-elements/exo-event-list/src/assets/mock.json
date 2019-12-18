@@ -1,0 +1,51 @@
+{
+  "count": 5,
+  "next": null,
+  "previous": null,
+  "response": [
+    {
+      "uuid": "e5f71bce-eaf3-49e3-805b-66e0090ef509",
+      "trainer": {
+        "username": "Salim Ismail",
+        "email": "salim@openexo.com",
+        "profileUrl": "https://platform.openexo.com/public/profile/salim-ismail",
+        "picture": "/media/avatars/48_48/bc018070e5933a65e17c7e2d3f5f4fc7.png"
+      },
+      "category": "O",
+      "typeEventName": "Webinar",
+      "followType": "P",
+      "followTypeName": "On Site",
+      "status": "H",
+      "name": "Future of Journalism Webinar",
+      "subTitle": null,
+      "slug": "future-of-journalism-webinar",
+      "eventImage": "https://openexo.s3.amazonaws.com/static/events_img/splash.jpg",
+      "description": null,
+      "start": "2019-12-19",
+      "end": "2019-12-19",
+      "location": "",
+      "placeId": null,
+      "country": "",
+      "url": "https://resources.openexo.com/futurejournalism",
+      "languages": "English",
+      "price": "Free",
+      "isFree": false,
+      "organizers": [],
+      "participants": [
+        {
+          "id": 2887,
+          "uuid": "d60107c9-371b-47a9-bdf1-ad68efb129d9",
+          "fullName": "Salim Ismail",
+          "userEmail": "salim@openexo.com",
+          "userTitle": "Co-Founder & Chairman at ExO Works,  Co-Founder & Chairman at OpenExO, ExO Ambassador, ExO Board Advisor, ExO Consultant, ExO Foundations, ExO Sprint Coach, ExO Trainer",
+          "thumbnail": "/media/avatars/144_144/bc018070e5933a65e17c7e2d3f5f4fc7.png",
+          "order": 0,
+          "role": "SUS",
+          "roleName": "Speaker",
+          "status": "A"
+        }
+      ]
+    }
+  ]
+}
+

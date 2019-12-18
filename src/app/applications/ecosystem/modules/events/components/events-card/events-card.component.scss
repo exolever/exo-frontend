@@ -1,0 +1,30 @@
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/theming';
+
+mat-card.event-card {
+  &:hover.current:not(.not-link) {
+    background-color: map_get($exo-grey, 50);
+  }
+  mat-card-content {
+    min-height: 320px;
+  }
+  margin-right: map-get($spaceMeasures, 'sm');
+  margin-bottom: map-get($spaceMeasures, 'xs');
+  @media #{map-get($mediaqueries, 'lt-sm')}{
+    margin-right: 0;
+  }
+
+}
+
+.event-menu {
+  margin-top: - map-get($spaceMeasures, 'xs');
+  margin-right: - map-get($spaceMeasures, 'xs');
+}
+
+.event-date {
+  color: mat-color($exo-grey, 900, 0.64);
+}
+
+.out-of-date {
+  color: mat-color($exo-grey, 900);
+}

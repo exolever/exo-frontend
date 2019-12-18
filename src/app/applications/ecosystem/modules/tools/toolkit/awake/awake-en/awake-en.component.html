@@ -1,0 +1,16 @@
+<div class="video-container push-top-lg push-bottom-lg" fxLayout="column" fxLayoutAlign="center center">
+  <div class="video-responsive">
+    <iframe allowfullscreen height="100%" src="https://player.vimeo.com/video/370205229" width="100%"></iframe>
+  </div>
+</div>
+<div class="big-body push-bottom">
+  {{'TOOLKIT.AWAKE.TABS.EN.DESCRIPTION1' | translate}}
+</div>
+<div class="big-body push-bottom-lg">
+  {{'TOOLKIT.AWAKE.TABS.EN.DESCRIPTION2' | translate}}
+</div>
+<div fxLayoutAlign="end" fxLayout="row" class="push-bottom-sm">
+  <button (click)="onDownloadPdf()" color="primary"
+          mat-flat-button>{{'TOOLKIT.AWAKE.TABS.EN.BUTTON' | translate}}</button>
+</div>
+<div class="body-1" [innerHtml]="'TOOLKIT.AWAKE.TABS.EN.FOOTER' | translate :{ url: urlResource } "></div>

@@ -1,0 +1,30 @@
+<app-overlay-template *ngIf="data.showFullScreen; else containerDialog" [title]="title" (close)="onClose()">
+  <ng-container [ngTemplateOutlet]="content"></ng-container>
+  <ng-container [ngTemplateOutlet]="actions"></ng-container>
+</app-overlay-template>
+
+<ng-template #containerDialog>
+  <div mat-dialog-title class="text-transform-capitalize">{{title}}</div>
+  <mat-dialog-content>
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </mat-dialog-content>
+  <ng-container [ngTemplateOutlet]="actions"></ng-container>
+</ng-template>
+  
+<ng-template #content>
+  <ul>
+    <li *ngFor="let participant of data.participantsList">
+      <span class="body-2">{{participant.name}}</span>: <span class="body-1">{{participant.email}}</span>
+    </li>
+  </ul>
+</ng-template>
+<ng-template #actions>
+  <mat-dialog-actions align="end">
+    <button mat-flat-button color="accent" (click)="onClose()">
+      {{ 'COMMON.ACTIONS.CANCEL' | translate }}
+    </button>
+    <button mat-flat-button color="primary" cdkFocusRegionstart (click) ="onContinue()">
+      {{ 'COMMON.ACTIONS.CONTINUE' | translate }}
+    </button>
+  </mat-dialog-actions>
+</ng-template>

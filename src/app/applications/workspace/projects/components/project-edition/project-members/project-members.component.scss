@@ -1,0 +1,11 @@
+@import '~@openexo/design-system/theming';
+
+::ng-deep.no-team {
+  color: mat-color($exo-red, 700);
+}
+
+.row-member {
+  border-bottom: 1px solid mat-color($exo-grey, 900, 0.16);
+  padding-bottom: map-get($spaceMeasures, 'xs');
+  padding-top: map-get($spaceMeasures, 'xs');
+}

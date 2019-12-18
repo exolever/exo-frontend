@@ -1,0 +1,46 @@
+<ng-container *ngIf="(opportunity$ | async) as opportunity">
+  <div
+    *ngIf="(conversations$ | async).length > 0; else emptyMoment"
+    fxLayout="row"
+    fxLayoutAlign="start start"
+    fxLayoutGap="16px"
+    fxLayout.lt-md="column"
+  >
+    <ng-container *ngIf="isSmallScreen !== undefined">
+      <app-conversation-list
+        fxFlex="1 1 300px" fxFlex.lt-md="grow" class="w-100"
+        [conversations]="conversations$ | async"
+        [selected]="conversationSelected$ | async"
+        [navToConversation]="navToConversation$ | async"
+        [smallDevices]="isSmallScreen"
+        (selectConversation)="selectConversation($event, opportunity)"
+      >
+      </app-conversation-list>
+    </ng-container>
+    <ng-container *ngIf="!isSmallScreen && conversationSelected$ | async as conversation">
+      <app-conversation-messages
+        fxFlex="grow" fxFill
+        [conversation]="conversation"
+        [loading]="loading$ | async"
+        [replyingMessage]="replyingMessage$ | async"
+        (submit)="onSubmit($event, conversation, opportunity)"
+        (scrolled)="onScroll($event, conversation, opportunity)"
+      >
+        <ng-container class="content__title">
+          <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="8px">
+            <exo-avatar-system [name]="conversation.name" class="push-bottom">
+              <exo-avatar [size]="'sm'" [src]="conversation.image" [alt]="conversation.name"></exo-avatar>
+            </exo-avatar-system>
+          </div>
+        </ng-container>
+      </app-conversation-messages>
+    </ng-container>
+  </div>
+  <ng-template #emptyMoment>
+    <exo-empty-moment>
+      <p class="empty-message subheading-2 text-align-center">
+        {{ 'ECOSYSTEM.OPPORTUNITIES.CONVERSATIONS_EMPTY' | translate }}
+      </p>
+    </exo-empty-moment>
+  </ng-template>
+</ng-container>

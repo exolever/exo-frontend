@@ -1,0 +1,76 @@
+<section [formGroup]="form">
+  <h2>{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.STEP_1.COMPENSATION' | translate}}</h2>
+  <div>
+    <mat-radio-group disableRipple="true" formControlName="typePayment">
+      <mat-radio-button color="primary" [value]="typePayments.single" class="push-right-sm big-body">{{'ECOSYSTEM.OPPORTUNITIES.CREATE.PAYMENT.SINGLE' | translate}}</mat-radio-button>
+      <mat-radio-button color="primary" [value]="typePayments.combined" class="push-right-sm big-body">{{'ECOSYSTEM.OPPORTUNITIES.CREATE.PAYMENT.COMBINED' | translate}}</mat-radio-button>
+      <mat-radio-button *ngIf="!isRequired"
+        color="primary" [value]="typePayments.toBeDefined" class="big-body">{{'ECOSYSTEM.OPPORTUNITIES.CREATE.PAYMENT.TBD' | translate}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="push-bottom-sm">
+    <mat-hint>{{ 'ECOSYSTEM.OPPORTUNITIES.CREATE.PAYMENT.HINT' | translate }}</mat-hint>
+  </div>
+  <div formArrayName="budgets" *ngIf="!isToBeDefinedPaymentSelected()">
+    <div [formGroupName]="0" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch" fxLayoutGap="24px"
+    [ngClass]="{'push-bottom-sm': isSinglePayment()}">
+      <div fxFlex="50%" fxLayout="column">
+        <mat-form-field appearance="fill" class="w-100 push-bottom-none">
+          <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.AMOUNT_LABEL' | translate}}</mat-label>
+          <input matInput type="text" formControlName="budget" />
+          <mat-error>{{form.get('budgets')['controls'][0].get('budget').errors | humanizeFormErrors}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="50%" fxLayout="column" class="w-100">
+        <ng-container *ngIf="!hasSelectedExos(); else exoTpl">
+          <mat-form-field appearance="fill" class="push-bottom-none">
+            <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.CURRENCY' | translate}}</mat-label>
+            <mat-select formControlName="currency">
+              <mat-option *ngFor="let bc of currenciesToShow | letterKeys" [value]="bc.key">
+                <div class="text-truncate"> {{ bc.value }} </div>
+              </mat-option>
+            </mat-select>
+            <mat-error>{{form.get('budgets')['controls'][0].get('currency').errors | humanizeFormErrors}}</mat-error>
+          </mat-form-field>
+        </ng-container>
+        <ng-template #exoTpl>
+          <mat-form-field appearance="fill" class="w-100">
+            <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.CURRENCY' | translate}}</mat-label>
+            <input readonly=true matInput type="text" formControlName="currency" value="{{currencyEXO}}"/>
+          </mat-form-field>
+        </ng-template>
+      </div>
+    </div>
+    <ng-container *ngIf="isCombinedPaymentSelected()">
+      <div class="big-body push-bottom-sm">{{'COMMON.AND' | translate }}</div>
+      <div [formGroupName]="1" fxLayout="row" fxLayoutAlign="start-space-between" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch" fxLayoutGap="24px">
+        <div fxFlex="50%" fxLayout="column">
+          <mat-form-field appearance="fill" class="w-100 push-bottom-none">
+            <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.AMOUNT_LABEL' | translate}} </mat-label>
+            <input matInput type="text" formControlName="budget" />
+            <mat-error>{{form.get('budgets')['controls'][1].get('budget').errors | humanizeFormErrors}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div fxFlex="50%" fxLayout="column">
+          <ng-container *ngIf="hasSelectedExos();else exoTpl2">
+            <mat-form-field appearance="fill" class="push-bottom-none">
+              <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.CURRENCY' | translate}}</mat-label>
+              <mat-select formControlName="currency">
+                <mat-option *ngFor="let bc of currenciesToShow | letterKeys" [value]="bc.key">
+                  <div class="text-truncate"> {{ bc.value }} </div>
+                </mat-option>
+              </mat-select>
+              <mat-error>{{form.get('budgets')['controls'][1].get('currency').errors | humanizeFormErrors}}</mat-error>
+            </mat-form-field>
+          </ng-container>
+          <ng-template #exoTpl2>
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.CURRENCY' | translate}}</mat-label>
+              <input readonly=true matInput type="text" formControlName="currency"  value="{{currencyEXO}}"/>
+            </mat-form-field>
+          </ng-template>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>

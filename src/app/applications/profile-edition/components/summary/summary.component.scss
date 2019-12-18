@@ -1,0 +1,26 @@
+@import "variables";
+
+:host{
+  .input-short {
+    width: 100%;
+    @media (min-width: $screen-sm){
+      max-width: 360px;
+    }
+  }
+
+  .input-large {
+    width: 100%;
+    @media (min-width: $screen-sm){
+      max-width: 720px;
+    }
+  }
+
+  .submit-button {
+    margin-left: auto;
+  }
+}
+::ng-deep {
+  mat-dialog-container {
+    border-radius: 8px !important;
+  }
+}

@@ -1,0 +1,156 @@
+<section class="about-you" *ngIf="form">
+  <div *ngIf="user && user.isConsultant()" class="video-presentation" class="push-bottom-lg">
+    <a name="fromEditVideo"></a>
+    <h3>
+      {{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.VIDEO_TITLE' | translate }}
+    </h3>
+    <p class="caption-1 push-bottom-sm">
+      {{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.VIDEO_DESCRIPTION' | translate }}
+    </p>
+    <app-profile-video [user]="user"></app-profile-video>
+  </div>
+  <form [formGroup]="form" fxLayout="column">
+    <div class="biography" formGroupName="biography" fxLayout="column">
+      <a name="fromEditBio"></a>
+      <h3>{{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.BIOGRAPHY' | translate }}</h3>
+      <p class="caption-1 push-bottom-sm">
+        {{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.BIOGRAPHY_DESCRIPTION' | translate }}
+      </p>
+      <mat-form-field appearance="fill" class="input-large">
+        <textarea
+          matInput
+          formControlName="biography"
+          #biography
+        >
+        </textarea>
+        <mat-error>{{form.get('biography').get('biography').errors | humanizeFormErrors}}</mat-error>
+        <mat-hint align="end">{{biography.value.length}} / 3500</mat-hint>
+      </mat-form-field>
+    </div>
+    <button
+      *ngIf="biographyButton"
+      mat-flat-button
+      (click)="onSubmitBiography()"
+      color="primary"
+      type="button"
+      class="submit-button push-bottom-lg"
+    >
+      {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+    </button>
+
+    <div class="social-networks" formGroupName="social" fxLayout="column">
+      <h3>{{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.SOCIAL_NETWORKS' | translate }}</h3>
+      <a name="fromEditSocial"></a>
+      <mat-form-field appearance="fill" class="input-short">
+        <mat-label>
+          {{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.WEBSITE' | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="website"
+        >
+        <mat-error>
+          {{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.WEBSITE_ERROR' | translate }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="input-short">
+        <mat-label>
+          {{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.LINKEDIN' | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="linkedin"
+        >
+        <mat-error>
+          {{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.LINKEDIN_ERROR' | translate }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="input-short">
+        <mat-label>
+          {{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.TWITTER' | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="twitter"
+        >
+        <mat-error>
+          {{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.TWITTER_ERROR' | translate }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="input-short">
+        <mat-label>
+          {{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.FACEBOOK' | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="facebook"
+        >
+        <mat-error>
+          {{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.FACEBOOK_ERROR' | translate }}
+        </mat-error>
+      </mat-form-field>
+      <button
+        *ngIf="socialNetworksButton"
+        mat-flat-button
+        (click)="onSubmitSocialNetwork()"
+        color="primary"
+        type="button"
+        class="submit-button push-bottom-lg"
+      >
+        {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+      </button>
+    </div>
+    <div class="contact-information" formGroupName="contact" fxLayout="column">
+      <a name="fromEditPhoneSkype"></a>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <h3>{{'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.CONTACT' | translate}}</h3>
+        <span class="caption-1">
+          <mat-icon class="mat-16">
+            lock
+          </mat-icon>
+          {{'ECOSYSTEM.PROFILE.EDIT.PRIVATE' | translate}}
+        </span>
+      </div>
+
+      <mat-form-field appearance="fill" class="input-short">
+        <mat-label>
+          {{'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.PHONE' | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="tel"
+          formControlName="phone"
+        >
+        <mat-error>
+          {{ 'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.PHONE_ERROR' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="input-short">
+        <mat-label>
+          {{'ECOSYSTEM.PROFILE.EDIT.ABOUT_YOU.SKYPE' | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="skype"
+        >
+      </mat-form-field>
+      <button
+        *ngIf="contactInformationButton"
+        mat-flat-button
+        (click)="onSubmitContact()"
+        color="primary"
+        type="button"
+        class="submit-button push-bottom-lg"
+      >
+        {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+      </button>
+
+    </div>
+  </form>
+</section>

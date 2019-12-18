@@ -1,0 +1,113 @@
+<app-sow-progress value=1></app-sow-progress>
+<form *ngIf="form" [formGroup]="form" novalidate autocomplete="off">
+  <section class="push-top-sm">
+    <h2>{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.STEP_1.DETAILS' | translate}}</h2>
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.STEP_1.TITLE_LABEL' | translate}}</mat-label>
+      <input matInput type="text" formControlName="title"/>
+      <mat-hint align="end">{{form.get('title').value.length}} / {{service.maxLengthForTitleEntity}}</mat-hint>
+      <mat-error>{{form.get('title').errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.STEP_1.CLIENT_LABEL' | translate}}</mat-label>
+      <input matInput type="text" formControlName="entity"/>
+      <mat-hint align="end">{{form.get('entity').value.length}} / {{service.maxLengthForTitleEntity}}</mat-hint>
+      <mat-error>{{form.get('entity').errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field hideRequiredMarker class="w-100">
+      <app-custom-quill-editor
+        formControlName="description"
+        [placeholder]="'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.STEP_1.DESCRIPTION' | translate"
+        [required]="true"
+        [isSubmitted]="isSubmitted"
+      >
+      </app-custom-quill-editor>
+      <mat-error>{{form.get('description').errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+    <app-mode-management [data]="initialData" [isRequired]="true" [isSubmitted]="isSubmitted"></app-mode-management>
+
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch" fxLayoutGap="24px" class="push-bottom-lg">
+      <div fxFlex="50%" fxLayout="column">
+        <md2-datepicker
+          class="datepicker appearance-fill"
+          formControlName="startDate"
+          placeholder="{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.STEP_1.START_LABEL' | translate }}"
+          type="date"
+          openOnFocus="true">
+        </md2-datepicker>
+        <mat-error *ngIf="service.showErrors('startDate', isSubmitted)">{{form.get('startDate').errors | humanizeFormErrors}}</mat-error>
+      </div>
+      <div fxFlex="50%" fxLayout="column" class="w-100">
+        <md2-datepicker
+          class="datepicker appearance-fill"
+          formControlName="endDate"
+          placeholder="{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.STEP_1.END_LABEL' | translate }}"
+          type="date"
+          openOnFocus="true"
+          [min]="minValueForEndDate">
+        </md2-datepicker>
+        <mat-error *ngIf="service.showErrors('endDate', isSubmitted)">{{form.get('endDate').errors | humanizeFormErrors}}</mat-error>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch" fxLayoutGap="24px">
+      <div fxFlex="50%" fxLayout="column" class="w-100">
+        <mat-form-field appearance="fill">
+          <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.DURATION_LABEL' | translate}}</mat-label>
+          <input matInput type="text" formControlName="duration"/>
+          <mat-hint align="start">{{ 'ECOSYSTEM.OPPORTUNITIES.CREATE.POSITIONS_NUMBERS_HINT' | translate }}</mat-hint>
+          <mat-error>{{form.get('duration').errors | humanizeFormErrors}}</mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill" class="w-100" fxFlex="50%">
+        <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.DURATION_UNIT_LABEL' | translate}}</mat-label>
+        <mat-select formControlName="durationUnit">
+          <mat-option *ngFor="let unit of durationUnits | keyvalue: durationUnitsOrder" [value]="unit.value">
+            {{'ECOSYSTEM.OPPORTUNITIES.CREATE.DURATION_UNITS.' + unit.value | translate}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('durationUnit').errors">{{form.get('durationUnit').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch" fxLayoutGap="24px">
+      <div fxFlex="50%" fxLayout="column">
+        <md2-datepicker
+          format="HH:mm a"
+          class="datepicker appearance-fill"
+          formControlName="startTime"
+          [placeholder]=timePickerPlaceHolder
+          type="time"
+          openOnFocus="true">
+        </md2-datepicker>
+        <mat-error *ngIf="service.showErrors('startTime', isSubmitted)">{{form.get('startTime').errors | humanizeFormErrors}}</mat-error>
+      </div>
+      <div fxFlex="50%" fxLayout="column" class="w-100">
+        <mat-form-field appearance="fill" class="autocomplete-tz">
+          <mat-label>
+            {{'COMMON.TIMEZONE' | translate }}
+          </mat-label>
+          <input matInput [matAutocomplete]="timeAutocomplete" formControlName="timeZone">
+        </mat-form-field>
+        <mat-autocomplete #timeAutocomplete aria-expanded="false">
+          <mat-option *ngFor="let timeZone of filteredTZ$ | async" [value]="timeZone">
+            {{timeZone}}
+          </mat-option>
+        </mat-autocomplete>
+      </div>
+    </div>
+  </section>
+  <app-payment-management
+    [budgets]="budgets"
+    [isRequired]="true"
+    [isSubmitted]="isSubmitted"
+  ></app-payment-management>
+  <div class="push-bottom-lg" fxLayout="row" fxLayoutAlign="end">
+    <button mat-flat-button color="accent" type="button" (click)="closeOverlay()">{{'COMMON.CANCEL' | translate}}</button>
+    <button mat-flat-button color="primary" type="submit" (click)="onSubmit($event)" class="push-left-xs">
+        {{'COMMON.ACTIONS.NEXT' | translate}}
+    </button>
+  </div>
+</form>

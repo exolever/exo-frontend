@@ -1,0 +1,16 @@
+<section class="ecosystem-opportunities--container" fxLayout="column">
+  <header class="header push-bottom-lg push-top-lg text-align-center">
+    <h1 class="w-100">{{ 'ECOSYSTEM.OPPORTUNITIES.TITLE' | translate }}</h1>
+    <p class="subheading-2 foreground-secondary-text">{{ 'ECOSYSTEM.OPPORTUNITIES.SUBTITLE' | translate }}</p>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <button mat-flat-button color="primary" (click)="onNew()">
+        {{'ECOSYSTEM.OPPORTUNITIES.NEW_BUTTON' | translate}}
+      </button>
+    </div>
+  </header>
+
+  <section class="opportunities-tabs push-top">
+    <exo-router-tabs *ngIf="tabs.length > 1" [tabs]="tabs"></exo-router-tabs>
+    <router-outlet></router-outlet>
+  </section>
+</section>

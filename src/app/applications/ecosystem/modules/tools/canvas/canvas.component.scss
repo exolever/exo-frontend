@@ -1,0 +1,33 @@
+@import "~@openexo/design-system/variables";
+
+:host {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1280px;
+}
+
+.canvas-container {
+  height: 100%;
+  background-color: #f7f7f7;
+  padding: 0 16px;
+  @media only screen and (min-width: 1280px)  {
+    padding: 0;
+  }
+  .mat-card {
+    margin: map-get($spaceMeasures, 'lg') auto;
+    max-width: map-get($componentMeasure, '20x');
+    .mat-card-content{
+      .canvas-image {
+        background: url($static-root + 'assets/landing/canvas2.png') no-repeat center;
+        background-size: contain;
+        width: 100%;
+        @media #{map-get($mediaqueries, 'lt-md')} {
+          min-height: 215px;
+        }
+      }
+      .description, .canvas-image-desktop {
+        min-width: 300px;
+      }
+    }
+  }
+}

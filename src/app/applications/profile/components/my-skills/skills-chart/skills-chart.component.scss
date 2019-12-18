@@ -1,0 +1,16 @@
+::ng-deep {
+  .polar-chart .radial-gridline-path {
+    display: none;
+    stroke-dasharray: 0 !important;
+    @media (min-width: 1280px) {
+      &:nth-child(5n +1) {
+        display: block;
+      }
+    }
+    @media (max-width: 1280px) {
+      &:nth-child(2n + 1) {
+        display: block;
+      }
+    }
+  }
+}

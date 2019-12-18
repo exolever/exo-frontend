@@ -1,0 +1,36 @@
+dist: bionic
+language: node_js
+node_js:
+  - 12
+
+env:
+  - SOURCE_BRANCH=$TRAVIS_BRANCH SOURCE_TAG=$TRAVIS_TAG $STAGE=linter
+  - SOURCE_BRANCH=$TRAVIS_BRANCH SOURCE_TAG=$TRAVIS_TAG $STAGE=tests
+  - SOURCE_BRANCH=$TRAVIS_BRANCH SOURCE_TAG=$TRAVIS_TAG $STAGE=build
+
+before_install:
+  - sudo apt-get -y install s3cmd tzdata chromium-browser
+
+install:
+  - export SOURCE_NAME=$(echo $SOURCE_BRANCH$SOURCE_TAG | sed "s/\//_/g")
+
+  - npm install
+
+  # Copy regular ts.dist to both .ts and .prod.ts (NON TAG)"
+  - echo "Copying dist -> ts..."
+  - cp src/environments/environment.ts.dist src/environments/environment.ts
+  - cp src/environments/environment.ts.dist src/environments/environment.prod.ts
+
+    # Only copy prod.ts in release (TAG)..."
+  - if [ ! -z "$BITBUCKET_TAG" ]; then cp src/environments/environment.prod.ts.dist src/environments/environment.prod.ts; fi
+  -
+  - echo "Copying and modifying files for release..."
+  - sed -i "s/<SOURCE_NAME>/$SOURCE_NAME/" src/index.html
+  - sed -i "s/<SOURCE_NAME>/$SOURCE_NAME/" src/environments/environment.ts
+  - sed -i "s/<SOURCE_NAME>/$SOURCE_NAME/" src/environments/environment.prod.ts
+
+
+script:
+  - bash build.sh $STAGE
+
+

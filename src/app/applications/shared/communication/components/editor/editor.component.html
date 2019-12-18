@@ -1,0 +1,34 @@
+<div fxLayout="row" fxLayoutAlign="space-between start" fxLayout.lt-md="column" fxLayoutAlign.lt-md="center center" fxLayoutGap="16px">
+  <exo-avatar *ngIf="user"
+              [src]="user.profilePicture"
+              [alt]="user.name"
+              [tooltip]="user.name"
+  ></exo-avatar>
+  <div class="w-100" fxLayout="column">
+    <mat-form-field class="w-100 push-bottom-none" appearance="fill">
+      <mat-label>
+        {{'CONVERSATIONS.CREATE_MESSAGE_LABEL' | translate}}
+      </mat-label>
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        [formControl]="message"
+      ></textarea>
+      <mat-error class="push-bottom">{{message.errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+    <div [ngClass]="{
+      'push-bottom-sm': resources.length,
+      'push-bottom-xxs': !resources.length,
+      'push-top-sm': message.errors !== null && resources.length }"
+    >
+      <app-uploaded-files-list [uploadedResources]="resources"></app-uploaded-files-list>
+    </div>
+    <div fxLayoutAlign="space-between start">
+      <app-filestack-attach-button (uploaded)="addResource($event)"></app-filestack-attach-button>
+      <button fxFlexAlign="end" mat-flat-button (click)="onSubmit()" class="push-bottom" color="primary" [disabled]="disabledSubmit">
+        {{'CONVERSATIONS.CREATE_MESSAGE_BUTTON' | translate | uppercase}}
+      </button>
+    </div>
+  </div>
+</div>

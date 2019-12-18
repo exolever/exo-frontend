@@ -1,0 +1,45 @@
+<app-overlay-template *ngIf="showFullScreenTitle; else filtersContent" [title]="data.title" (close)="clear()">
+  <ng-container [ngTemplateOutlet]="filtersContent"></ng-container>
+</app-overlay-template>
+
+<ng-template #filtersContent>
+  <div fxLayout="column" *ngIf="!isMobile || showFullScreenTitle">
+    <div class="filter-title" fxLayout="row" fxLayoutAlign="space-between center">
+      <p class="filters-actions section">
+        {{'ECOSYSTEM.DIRECTORY.FILTERS.FILTERS' | translate}}
+      </p>
+      <button
+        *ngIf="thereAreFiltersApplied | async"
+        class="foreground-secondary-text filters-actions__button"
+        mat-button
+        data-e2e="restore-filters-btn"
+        (click)="onCleanFilters()"
+      >
+        {{'ECOSYSTEM.DIRECTORY.FILTERS.CLEAR' | translate}}
+      </button>
+    </div>
+    <div [ngClass]="{'push-bottom': !showFullScreenTitle}">
+      <app-filter *ngFor="let filter of (filters | async)"
+        id="filter-{{filter.slug}}"
+        (optionSelected)="onUpdateFilters($event)"
+        [allowSearch]="enableSearch(filter)"
+        name="{{'MEDIA.FILTERS.TAGS.' + filter.slug | uppercase | translate}}"
+        nameFilter="{{filter.slug}}"
+        [isRadioButton]="filter.isRadioButton"
+        [options]="filter.options"
+      ></app-filter>
+    </div>
+    <div fxLayout="row" fxHide.gt-sm fxLayoutAlign="end center">
+      <button
+        mat-flat-button
+        color="primary"
+        (click)="onSubmit()"
+        class="submit-button"
+        ngClass.lt-md="push-bottom-lg"
+        data-e2e='apply-filter-mobile-btn'
+      >
+        {{'MEDIA.FILTERS.ACTION_APPLY' | translate}}
+      </button>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,78 @@
+// To define new styles for a component, we must to differenciate the part belong to the theme or other styles.
+// - Create a new folder with two separated files (if they are needed).
+//  * Component-theme.scss. Define a mixin with the styles related with the theme. If it's needed create new variable in
+//                          the foreground/background palette.
+//  * Component.scss. Other common styles independent of the theme.
+
+@import '../exo-material/bar-chart/bar-chart-theme';
+@import '../exo-material/a/a-theme';
+@import '../exo-material/chips/chips-theme';
+@import '../exo-material/colors/colors-theme';
+@import '../exo-material/datepicker/datepicker-theme';
+@import '../exo-material/highlight/highlight-theme';
+@import '../exo-material/hint/hint-theme';
+@import '../exo-material/icon/icon-theme';
+@import '../exo-material/loader/loader-theme';
+@import '../exo-material/menu/menu-theme';
+@import '../exo-material/snackbar/snackbar-theme';
+@import '../exo-material/toolbar/toolbar-theme';
+@import '../exo-material/list/list-theme';
+
+// Platform
+@import '../exo-material/a/platform/a-platform-theme.scss';
+@import '../exo-material/tabs/platform/tabs-platform';
+@import '../exo-material/chips/platform/chips-platform-theme';
+@import '../exo-material/dialog/dialog';
+@import '../exo-material/dialog/dialog-theme';
+@import '../exo-material/dialog/dialog-platform-theme';
+@import '../exo-material/sidenav/sidenav';
+@import '../exo-material/tree/tree';
+@import '../exo-material/inputs/input-theme';
+@import '../exo-material/bullet/bullet-platform-theme.scss';
+@import '../exo-material/icon/platform/icon-platform-theme';
+@import '../exo-material/toolbar/platform/toolbar-platform-theme';
+@import '../exo-material/datepicker/platform/datepicker-platform-theme';
+@import '../exo-material/radiobutton/radiobutton-theme';
+
+// Create a theme.
+@mixin exo-custom-themes($theme) {
+  @include exo-bar-chart-theme($theme);
+  @include exo-a-theme($theme);
+  @include exo-chips-theme($theme);
+  @include exo-colors-theme($theme);
+  @include exo-dialog-theme($theme);
+  @include exo-highlight-theme($theme);
+  @include exo-hint-theme($theme);
+  @include exo-icon-theme($theme);
+  @include exo-loader-theme($theme);
+  @include exo-menu-theme($theme);
+  @include exo-list-theme($theme);
+  @include exo-sidenav-theme($theme);
+  @include exo-platform-datepicker-theme($theme);
+  @include exo-snackbar-theme($theme);
+}
+
+// Mixins for the new platform. Url: (/service/:id)
+@mixin exo-platform-custom-themes($theme) {
+  //@include exo-bar-chart-theme($theme);
+  @include exo-a-theme($theme);
+  @include exo-platform-chips-theme($theme);
+  @include exo-colors-theme($theme);
+  @include exo-dialog-platform-theme($theme);
+  @include exo-highlight-theme($theme);
+  @include exo-hint-theme($theme);
+  @include exo-loader-theme($theme);
+  @include exo-menu-theme($theme);
+  @include exo-toolbar-theme($theme);
+  @include exo-list-theme($theme);
+  @include exo-tabs-platform($theme);
+  @include exo-a-platform($theme);
+  @include exo-sidenav-theme($theme);
+  @include exo-tree-theme($theme);
+  @include exo-platform-input-theme($theme);
+  @include exo-platform-bullet-theme($theme);
+  @include exo-icon-platform-theme($theme);
+  @include exo-toolbar-platform-theme($theme);
+  @include exo-snackbar-theme($theme);
+  @include exo-radiobutton-theme($theme);
+}

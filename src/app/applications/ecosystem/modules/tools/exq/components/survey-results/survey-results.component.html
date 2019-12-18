@@ -1,0 +1,103 @@
+<section *ngIf="survey$ | async as survey" class="pad-left pad-right pad-top-lg pad-bottom-lg" fxLayout="column"
+         fxLayoutAlign="start stretch">
+  <app-survey-card
+    [current]="true"
+    [survey]="survey"
+    class="push-bottom w-100"
+  ></app-survey-card>
+  <h1 class="text-align-center">
+    {{'ECOSYSTEM.EXQ.RESULTS.TITLE' | translate}}: {{survey.name }}
+  </h1>
+  <div
+    class="w-100"
+    fxLayout="row"
+    fxLayoutAlign="space-between end"
+  >
+    <div class="search" fxFlex="90">
+      <mat-form-field
+        [floatLabel]="'never'"
+        class="search-form-field w-100"
+      >
+        <mat-icon class="search-icon pad-right" matPrefix>search</mat-icon>
+        <input
+            #searchField
+            [formControl]="searchControl"
+            [value]="searchedText$ | async"
+            data-e2e="search-input"
+            matInput
+            placeholder="{{'ECOSYSTEM.EXQ.SEARCH_RESULTS' | translate}}"
+            type="text"
+        >
+        <mat-icon (click)="searchControl.reset()" *ngIf="searchField.value" class="pointer" matSuffix>close</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="results push-bottom-sm" fxFlex="none" fxHide.lt-md="true" fxLayout="row"
+         fxLayoutAlign="space-between center">
+      <p *ngIf="((totalResults$ | async) && (totalResults$ | async) > 0)"
+         class="search__results push-bottom body-1 foreground-secondary-text" i18n>
+        {{totalResults$ | async}} {totalResults$ | async, plural, =1 { {{'ECOSYSTEM.DIRECTORY.SEARCH.RESULT' | translate | lowercase}} } other { {{'ECOSYSTEM.DIRECTORY.SEARCH.RESULTS' | translate | lowercase}} }}
+      </p>
+    </div>
+  </div>
+  <div
+    *ngIf="survey.results && !survey.results.length"
+    class="subheading-2 title" data-e2e="no-results">
+    {{'ECOSYSTEM.EXQ.SEARCH.EMPTY' | translate}}
+  </div>
+  <mat-accordion class="w-100 push-bottom-xxs">
+    <mat-expansion-panel *ngFor="let result of survey?.results">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="body-2 truncate"> {{result.name}}
+          <span *ngIf="result.organization">- {{result.organization}}</span>
+        </mat-panel-title>
+        <mat-panel-description class="pad-right" fxLayout="row"
+                               fxLayoutAlign.lt-md="end"> {{result.total}} {{'ECOSYSTEM.EXQ.RESULTS.OUT_OF' | translate}}
+          100
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p><span class="body-2">{{'ECOSYSTEM.EXQ.RESULTS.EMAIL' | translate}}: </span>{{result.email}}</p>
+      <p><span class="body-2">{{'ECOSYSTEM.EXQ.RESULTS.ORGANIZATION' | translate}}: </span>{{result.organization}}</p>
+      <p><span class="body-2">{{'ECOSYSTEM.EXQ.RESULTS.INDUSTRY' | translate}}: </span>{{result.industryName}}</p>
+      <p><span class="body-2">{{'ECOSYSTEM.EXQ.RESULTS.RESULTS_PER_SECTION' | translate}}: </span></p>
+      <p class="caption-2 push-left">
+        <ng-container *ngFor="let resultPerSection of result.results">
+          <div class="push-top-sm push-bottom">
+            {{resultPerSection.section | translateSectionExq }}: <span
+            class="caption-1 push-bottom-xxs">{{resultPerSection.score}} {{'ECOSYSTEM.EXQ.RESULTS.OUT_OF' | translate}} {{resultPerSection.maxScore}}</span><br/>
+            <div class="push-left push-bottom">
+              <div *ngFor="let answer of getAnswerSet(resultPerSection.section, result.answers)"
+                   class="push-bottom-xxs push-left">
+                <span>{{answer.name}}</span>
+                <span class="weight-normal italic push-left-xxs">{{answer.value}}</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </p>
+      <div fxLayout="row" fxLayoutAlign="end">
+        <button (click)="onDelete(result)"
+                class="push-right-xxs" color="accent"
+                mat-flat-button
+                type="button"
+        >
+          {{'ECOSYSTEM.EXQ.ACTIONS.DELETE_RESULT.BUTTON' | translate}}
+        </button>
+        <button (click)="onDownloadPdf(result)"
+                color="primary" mat-flat-button
+                type="button">
+          {{'ECOSYSTEM.EXQ.RESULTS.PDF' | translate}}
+        </button>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-paginator
+    (page)="paginatorChange($event)"
+    *ngIf="(totalResults$ | async) > 0"
+    [length]="totalResults$ | async"
+    [pageIndex]="(pageIndex$ | async) -1"
+    [pageSizeOptions]="[5, 10, 15, 20, 25]"
+    [pageSize]="pageSize$ | async"
+    class="paginator"
+    data-e2e="paginator">
+  </mat-paginator>
+</section>

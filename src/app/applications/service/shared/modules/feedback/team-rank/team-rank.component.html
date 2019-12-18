@@ -1,0 +1,10 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <span class="push-right-xxxs">{{teamRating.nameTeam}}</span>
+    <div *ngFor="let value of teamRating.ratings" class="circle" [ngClass]="{'active': value >= 0 }"></div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <mat-progress-bar [value]="teamRating.average()" mode="determinate" class="push-right-sm progress-team"></mat-progress-bar>
+    <span fxFlex="34px" class="push-left-xxxs caption-1">{{teamRating.average()}}%</span>
+  </div>
+</div>

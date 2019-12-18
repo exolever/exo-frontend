@@ -1,0 +1,37 @@
+@import "variables";
+
+::ng-deep.mat-autocomplete-panel {
+  display: inline-block;
+}
+
+md-input-container {
+  margin-bottom: 0;
+}
+
+mat-expansion-panel {
+  background-color: transparent;
+  .mat-expansion-panel-header:focus,
+  .mat-expansion-panel-header:not([aria-disabled='true']):hover {
+    background-color: transparent;
+  }
+  &.mat-expansion-panel:not([class*=mat-elevation-z]){
+    box-shadow: none;
+  }
+  &[name=add-more-box] {
+    mat-expansion-panel-header {
+      padding: 0;
+      margin-top: 4px;
+    }
+    ::ng-deep.mat-expansion-panel-body {
+      padding-left: 0;
+      padding-bottom: 0;
+    }
+    box-shadow: none;
+  }
+}
+
+mat-expansion-panel-header {
+  &.search {
+    max-height: 52px;
+  }
+}

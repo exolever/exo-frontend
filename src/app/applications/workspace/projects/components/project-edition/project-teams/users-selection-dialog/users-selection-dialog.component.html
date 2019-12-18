@@ -1,0 +1,74 @@
+<app-overlay-template *ngIf="data.showFullScreen; else content" [title]="data.title" (close)="closeOverlay()">
+  <ng-container [ngTemplateOutlet]="content"></ng-container>
+</app-overlay-template>
+
+<ng-template #content>
+  <mat-dialog-content cdkFocusRegionstart class="dialog__content">
+    <h2>{{data.title}}</h2>
+    <p class="push-bottom-none">
+      {{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.SELECT_DESCRIPTION' | translate}}
+    </p>
+    <form [formGroup]="form" novalidate autocomplete="off" fxLayout="column">
+      <mat-form-field apparence="fill" class="push-top-lg">
+        <mat-select #matSelectTeam
+          [placeholder]="'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.SELECT_MEMBER.PLACEHOLDER' | translate"
+          class="push-right-xxs sort-by"
+          formControlName="team"
+        >
+          <mat-option [value]="team.pk" *ngFor="let team of teams$ | async">
+            {{team.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{form.get('team').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+      <mat-form-field floatLabel="never" class="push-right-sm w-100">
+        <mat-icon matPrefix class="search-icon pad-right">search</mat-icon>
+        <input
+          matInput
+          type="text"
+          placeholder="{{'FORUM.SEARCH' | translate}}"
+          formControlName="search"
+          #search
+        >
+        <mat-icon matSuffix class="pointer" *ngIf="search.value" (click)="form.get('search').setValue('')">close</mat-icon>
+      </mat-form-field>
+    </form>
+
+    <div *ngIf="data$ | async as data">
+      <mat-selection-list #usersList *ngIf="data.length > 0; else emptyMoment">
+        <mat-list-option *ngFor="let projectMember of data; let isLast = last"
+          color="primary"
+          [value]="projectMember.projectRoles[0]"
+        >
+          <exo-avatar-system
+            ngClass.push-bottom-sm="isLast"
+            [name]="projectMember.user?.fullName || projectMember.user?.shortName"
+            [description]="showRolName(projectMember.roles)">
+            <exo-avatar
+              [alt]="projectMember.user?.fullName || projectMember.user?.shortName"
+              [tooltip]="projectMember.user?.fullName || projectMember.user?.shortName"
+              [size]="'xs'"
+            ></exo-avatar>
+          </exo-avatar-system>
+        </mat-list-option>
+      </mat-selection-list>
+      <ng-template #emptyMoment>
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <div class="image-empty push-bottom"></div>
+          <div class="text-center subheading-2 push-bottom-none">
+            <span>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.SELECT_MEMBER.EMPTY_TITLE' | translate}}</span>
+          </div>
+          <div class="text-center push-top-none slight-opacity caption-1">
+            <span>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.SELECT_MEMBER.EMPTY_SUBTITLE' | translate}}</span>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+
+  </mat-dialog-content>
+  <mat-dialog-actions *ngIf="(data$ | async)?.length" align="end" class="dialog__actions pad-top-sm pad-bottom-sm">
+    <button mat-flat-button color="accent" type="button" (click)="closeOverlay()">{{'COMMON.ACTIONS.CANCEL' | translate}}</button>
+    <button mat-flat-button color="primary" type="button" (click)="onSave()">{{'COMMON.ACTIONS.SAVE' | translate}}</button>
+  </mat-dialog-actions>
+</ng-template>

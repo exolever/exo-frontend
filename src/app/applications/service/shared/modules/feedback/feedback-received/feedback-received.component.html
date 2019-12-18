@@ -1,0 +1,67 @@
+<section>
+  <h3>{{getTitle()}}</h3>
+  <mat-card>
+    <div class="list-box push-bottom-lg"
+         fxLayout="column">
+      <div class="list-item" fxLayout="column">
+        <div (click)="openDialog('rates')" [ngClass]="{'pointer-none': !feedback.averageRate}" class="rates pointer"
+             fxFlex="grow"
+             fxLayoutAlign="space-between center">
+          <div class="left-side" fxFlex="grow" fxLayout="row">
+            <span class="weight-bold">{{getSubtitle()}}</span>
+          </div>
+          <div *ngIf="feedback.averageRate else noData">
+            <app-material-icon-star-rating
+              [allowHalf]="true"
+              [numberOfGrades]="maxGrade"
+              [rating]="feedback.averageRate"
+              [readOnly]="true"
+              [showOnlyFilled]="true"
+              [size]="'regular'"
+              class="star-rating"
+              fxFlexAlign="center"
+              fxHide.lt-sm
+              fxLayout="row"
+            ></app-material-icon-star-rating>
+            <div fxHide.gt-xs fxLayout="row">
+              <mat-icon class="star">star</mat-icon>
+              <span fxFlexAlign="center" class="number pad-left-xxs">{{feedback.averageRate}}/{{maxGrade}}</span>
+            </div>
+          </div>
+        </div>
+        <div (click)="openDialog('feelings')" [ngClass]="{'pointer-none': !feedback.averageFeelings}"
+             class="feelings pointer" fxFlex="grow"
+             fxLayoutAlign="space-between center">
+          <div class="left-side" fxFlex="grow" fxLayout="row">
+            <span class="weight-bold">{{'SERVICE.REFLECT.RECEIVED_FEEDBACK.GENERAL_FEELING' | translate }}</span>
+          </div>
+          <div *ngIf="feedback.averageFeelings else noData" class="w-100" fxLayout="row" fxLayoutAlign="flex-end">
+            <mat-icon class="{{feelings[feedback.averageFeelings - 1].class}} material-icons">
+              {{feelings[feedback.averageFeelings - 1].icon}}
+            </mat-icon>
+            <span class="pad-left-xxs italic" fxHide.lt-sm fxLayout="column"
+                  fxLayoutAlign="center">{{('SERVICE.REFLECT.FEEDBACK.FEELING.' + feelings[feedback.averageFeelings - 1].value) | translate}}</span>
+          </div>
+        </div>
+        <div (click)="openDialog('comments')" [ngClass]="{'pointer-none': !feedback.totalComments}" class="pointer"
+             fxFlex="grow"
+             fxLayoutAlign="space-between center">
+          <div class="left-side" fxFlex="grow" fxLayout="row">
+            <span class="weight-bold"
+                  fxHide.lt-sm>{{'SERVICE.REFLECT.PERSONAL_FEEDBACK.COMMENTS_SUGGESTIONS' | translate }}</span>
+            <span class="weight-bold" fxHide.gt-xs>{{'SERVICE.REFLECT.PERSONAL_FEEDBACK.COMMENTS' | translate }}</span>
+          </div>
+          <div *ngIf="feedback.totalComments else noData" fxLayout="row">
+            <mat-icon>message</mat-icon>
+            <span class="pad-left-xxs weight-bold number" fxLayout="column"
+                  fxLayoutAlign="center">{{feedback.totalComments}}</span>
+          </div>
+        </div>
+        <ng-template #noData>
+          <span class="w-100 foreground-secondary-text" fxLayout="row"
+                fxLayoutAlign="flex-end">{{'SERVICE.REFLECT.RECEIVED_FEEDBACK.NO_DATA' | translate }}</span>
+        </ng-template>
+      </div>
+    </div>
+  </mat-card>
+</section>

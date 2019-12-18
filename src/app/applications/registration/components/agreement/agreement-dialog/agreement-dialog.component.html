@@ -1,0 +1,37 @@
+<div class="exo-platform">
+  <div *ngIf="declined; else agreement">
+    <div mat-dialog-title class="text-transform-capitalize">{{'REGISTRATION.DECLINE_AGREEMENT' | translate}}</div>
+    <mat-dialog-content fxLayout="column">
+      <div class="subheading-2 upper-first-letter">{{'REGISTRATION.SURE_DECLINE_AGREEMENT' | translate}}</div>
+      <div class="body-1 foreground-secondary-text push-bottom-sm">{{'REGISTRATION.NOT_ACCESS_EXO' | translate}}</div>
+      <div>
+        <mat-form-field fxFlex>
+          <input matInput placeholder="{{'REGISTRATION.COMMENT_US' | translate}}" #commentDecline>
+          <mat-hint align="start">{{'REGISTRATION.HELP_US' | translate}}</mat-hint>
+        </mat-form-field>
+      </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-flat-button color="accent" (click)="declined = !declined">{{'REGISTRATION.CANCEL' | translate}}</button>
+      <button mat-flat-button color="primary" id="declineAgreement" (click)="dialogRef.close({action: action.DECLINE, comment: commentDecline.value})">{{'REGISTRATION.DECLINE' | translate}}</button>
+    </mat-dialog-actions>
+  </div>
+</div>
+<ng-template #agreement>
+  <h1 mat-dialog-title class="title text-transform-capitalize">{{agreementInvitation.name}}</h1>
+  <mat-dialog-content ngClass.lt-sm="short-height">
+    <div class="agreement-text body-1" [innerHTML]="agreementInvitation.text"></div>
+  </mat-dialog-content>
+  <mat-dialog-actions class="agreement-" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" fxLayoutAlign.lt-sm="center stretch" ngClass.lt-sm="w-100">
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="start end">
+      <a target="_blank" [attr.href]="agreementInvitation.file" class="download-agreement body-1">
+        <mat-icon class="foreground-secondary-text download-agreement__icon" matTooltip="{{'TOOLTIP.DOWNLOAD' | translate}}">file_download</mat-icon>
+        <span class="download-agreement__pdf">{{'REGISTRATION.PDF' | translate}}</span>
+      </a>
+    </div>
+    <div fxLayout="row" fxLayout.lt-sm="column-reverse" fxLayoutAlign.lt-sm="start end">
+      <button mat-flat-button color="accent" (click)="declined = !declined" id="decline" ngClass.xs="push-top" ngClass.gt-xs="push-top-none">{{'REGISTRATION.DECLINE' | translate}}</button>
+      <button cdkFocusRegionstart mat-flat-button color="primary" (click)="dialogRef.close({action: action.ACCEPT})">{{'REGISTRATION.ACCEPT' | translate}}</button>
+    </div>
+  </mat-dialog-actions>
+</ng-template>

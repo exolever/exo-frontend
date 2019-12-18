@@ -1,0 +1,42 @@
+<meta name="viewport" content="width=device-width">
+<div class="wrapper">
+<!--  <div class="container-search-filters" fxLayout="column" novalidate>-->
+<!--    <div class="button-filters">-->
+<!--      <button class="button" (click)="openFilters()">-->
+<!--        FILTERS-->
+<!--        <ng-container *ngIf="counterSelectedFilters > 0">({{counterSelectedFilters}})</ng-container>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--    <exo-filters-->
+<!--      [events]="events"-->
+<!--      [selectedFilters]="selectedFilters"-->
+<!--      [languageOptions]="languageOptions"-->
+<!--      [countryOptions]="countryOptions"-->
+<!--      (selectedOptions)="selectedOptions($event)"-->
+<!--    ></exo-filters>-->
+<!--  </div>-->
+  <div class="container-events" fxLayout="row wrap" fxLayoutAlign="start center">
+    <div *ngFor="let event of events; let itEvent = index" fxFlex="304px" class="box">
+      <exo-event-card [event]=event [domain]="domain"></exo-event-card>
+    </div>
+    <exo-paginator
+      [events]="events"
+      [count]="count"
+      [page]="page"
+      [nextBtn]="!!next"
+      [prevBtn]="!!prev"
+      (prevPage)="onPrev()"
+      (nextPage)="onNext()">
+
+    </exo-paginator>
+  </div>
+</div>
+
+<div class="no-events" *ngIf="events?.length === 0" fxLayout="column" fxLayoutAlign="center center">
+  <div class="empty-moment-image"></div>
+  <div class="message">We can't seem to find any events that match your search</div>
+</div>
+
+<div *ngIf="!events">
+  <exo-loader></exo-loader>
+</div>

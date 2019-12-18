@@ -1,0 +1,28 @@
+@import "~@openexo/design-system/mixins";
+@import "~@openexo/design-system/variables";
+@import "variables";
+
+.container-feedback-message{
+  text-align: center;
+  height: 100%;
+  .feedback-message-icon {
+    &.success{
+      @include retina-background-image($static-root + 'assets/feedback_messages/success', 'png', 121px, 150px);
+      width: 121px;
+      height: 150px;
+      background-repeat: no-repeat;
+    }
+    &.successDeclined{
+      @include retina-background-image($static-root + 'assets/feedback_messages/success_decline', 'png', 121px, 152px);
+      width: 121px;
+      height: 152px;
+      background-repeat: no-repeat;
+    }
+    &.error {
+      @include retina-background-image($static-root + 'assets/feedback_messages/something_went wrong', 'png', 135px, 150px);
+      width: 135px;
+      height: 150px;
+      background-repeat: no-repeat;
+    }
+  }
+}

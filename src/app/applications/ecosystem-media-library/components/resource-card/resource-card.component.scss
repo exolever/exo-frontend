@@ -1,0 +1,52 @@
+@import "~@openexo/design-system/mixins";
+@import "~@openexo/design-system/variables";
+@import "variables";
+
+:host {
+  width: 100%;
+  height: 100%;
+  border-radius: $xxs $xxs 0 0;
+  overflow: hidden;
+  .video-card {
+    height: 100%;
+    .thumbnail-video {
+      width: 100%;
+      height: calc(100% - 144px);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      cursor: pointer;
+      &.draft-mode {
+        background-color: mat-color($foreground, 'disabled');
+        color: white;
+      }
+      div.play-button {
+        width: 48px;
+        height: 48px;
+        @include retina-background-image($static-root + 'assets/media_library/ic_play_arrow_white_48d', 'png', 48px, 48px);
+      }
+    }
+    .video-tags {
+      @include vertical-text-truncate(1);
+      min-height: 1.5em;
+      max-height: 2.5em;
+    }
+    .video-info {
+      padding-top: 8px;
+      .edit-delete-button {
+        margin-top: -8px;
+      }
+    }
+    .video-title {
+      @include vertical-text-truncate(2);
+    }
+    .video-duration {
+      &.draft-mode {
+        width: 50px;
+        background-color: mat-color($foreground, 'disabled');
+        color: transparent;
+        min-width: 36px;
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<!-- Template for SortBy filter -->
+<div fxLayout.gt-xs="row"
+     fxLayout.lt-sm="column"
+     fxLayoutAlign="space-between end"
+     fxLayoutAlign.lt-sm="space-between start"
+>
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-form-field appearance="fill">
+        <mat-select #matSelectSortBy
+                    class="push-right-xxs sort-by"
+                    [value]="selectValue$ | async"
+                    (selectionChange)="onUpdateSortBy($event)"
+        >
+          <mat-option value="name-desc">
+            {{'MEDIA.OPTIONS_SORT_BY.NAME' | translate}} A-z
+          </mat-option>
+          <mat-option value="name-asc">
+            {{'MEDIA.OPTIONS_SORT_BY.NAME' | translate}} z-A
+          </mat-option>
+          <mat-option value="created-asc">
+            {{'MEDIA.OPTIONS_SORT_BY.DATE' | translate}} asc
+          </mat-option>
+          <mat-option value="created-desc">
+            {{'MEDIA.OPTIONS_SORT_BY.DATE' | translate}} desc
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<ng-template #sortByOrderTpl let-icon="icon">
+  <button
+    mat-button
+    mat-icon-button
+    [matTooltip]="tooltipMessage(order)"
+    (click)="onChangeOrdering()">
+    <mat-icon>{{icon}}</mat-icon>
+  </button>
+</ng-template>
+
+<ng-template>
+  <ng-container *ngIf="!hasOrder()" [ngTemplateOutlet]="sortByOrderTpl" [ngTemplateOutletContext]="{icon: 'swap_vert'}">
+  </ng-container>
+  <ng-container *ngIf="orderAscending()" [ngTemplateOutlet]="sortByOrderTpl" [ngTemplateOutletContext]="{icon: 'arrow_upward'}">
+  </ng-container>
+  <ng-container *ngIf="orderDescending()" [ngTemplateOutlet]="sortByOrderTpl" [ngTemplateOutletContext]="{icon: 'arrow_downward'}">
+  </ng-container>
+</ng-template>

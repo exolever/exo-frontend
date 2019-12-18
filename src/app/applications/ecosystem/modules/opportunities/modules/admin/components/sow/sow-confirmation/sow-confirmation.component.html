@@ -1,0 +1,26 @@
+<app-sow-progress value=2></app-sow-progress>
+<exo-alert
+  [isCloseable]="true"
+  class="push-bottom push-top inline-block"
+  message="{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.STEP_2.ALERT' | translate}}"
+  closeButtonText="{{'COMMON.CLOSE' | translate}}"></exo-alert>
+<div class="push-bottom-sm push-top-sm">
+  <exo-avatar-system [name]="applicant.user.fullName" >
+    <exo-avatar size="xs" [src]="applicant.user.profilePictures[1][1]" [alt]="applicant.user.fullName"></exo-avatar>
+  </exo-avatar-system>
+</div>
+<p class="push-bottom-sm">{{'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.STEP_2.DESCRIPTION' | translate }}</p>
+<mat-form-field class="w-100">
+  <textarea
+    matTextareaAutosize
+    matAutosizeMaxRows="5"
+    [placeholder]="'ECOSYSTEM.OPPORTUNITIES.APPLICANT_DIALOG.SOW.STEP_2.PLACEHOLDER_MESSAGE' | translate"
+    matInput
+    [formControl]="message">
+  </textarea>
+</mat-form-field>
+<div class="push-bottom-lg" fxLayout="row" fxLayoutAlign="end">
+  <button mat-flat-button color="accent" type="button" (click)="preview()">{{'COMMON.BACK' | translate}}</button>
+  <button mat-flat-button color="primary" type="button" (click)="save()" class="push-left-xs">{{'COMMON.ACTIONS.CONFIRM' | translate}}</button>
+</div>
+

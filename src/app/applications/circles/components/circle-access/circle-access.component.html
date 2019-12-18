@@ -1,0 +1,37 @@
+<section class="exo-platform pad" fxLayout="column" fxLayoutAlign="start start">
+  <div class="push-top-sm push-bottom-sm text-align-center">
+    <h1 class="headline push-bottom-sm">
+      {{'ECOSYSTEM.CIRCLES.ERROR_403.JOIN_LABEL' | translate}} {{circle.name}} {{'ECOSYSTEM.CIRCLES.CIRCLE' | translate}}
+      <ng-container *ngIf="isPost">
+        {{'ECOSYSTEM.CIRCLES.ERROR_403.JOIN_TO_SEE_A_POST_LABEL' | translate}}
+      </ng-container>
+    </h1>
+    <p class="subheading-2 foreground-secondary-text">
+      {{circle.description}}
+    </p>
+  </div>
+  <mat-card fxFlexAlign="center" class="self-center">
+    <mat-card-content *ngIf="circle">
+      <div fxLayout="row" fxLayoutAlign="space-between center" class="subheading-2">
+          <div
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            class="push-right-lg"
+            [matTooltip]="circle.name"
+          >
+            <img [src]="circle.image" class="push-right-xxs circle-logo">
+            {{circle.name}}
+          </div>
+          <button
+            class="push-left-xxs"
+            mat-icon-button
+            (click)="onJoin(circle)"
+            matTooltip="{{'ECOSYSTEM.CIRCLES.JOIN_HELP' | translate}}  {{circle.name}}"
+            color="accent"
+          >
+            <mat-icon>arrow_right_alt</mat-icon>
+          </button>
+        </div>
+    </mat-card-content>
+  </mat-card>
+</section>

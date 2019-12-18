@@ -1,0 +1,21 @@
+<mat-card class="card-section">
+  <mat-card-content>
+    <h1>{{'ECOSYSTEM.EXQ.AGREEMENT.WELCOME1' | translate}} <br> {{'ECOSYSTEM.EXQ.AGREEMENT.WELCOME2' | translate}}</h1>
+    <div class="subheading-2 push-top-sm foreground-secondary-text">{{'ECOSYSTEM.EXQ.AGREEMENT.DESCRIPTION' | translate}}</div>
+    <div class="push-top-lg text-align-center pointer" (click)="goToHelpCenter()">
+      <img class="w-100" fxShow.gt-xs fxHide.lt-sm src="/assets/banners/banner-exq-help-center.png" alt="">
+      <img class="w-100" fxHide.gt-xs fxShow.lt-sm src="/assets/banners/banner-exq-help-center_mobile.png" alt="">
+    </div>
+    <div class="push-top-lg" >
+      <mat-checkbox [formControl]="acceptControl" color="primary" ></mat-checkbox>
+      <span class="push-left-xxs">
+        {{'ECOSYSTEM.EXQ.AGREEMENT.ACCEPT_CONDITIONS' | translate}}
+        <a (click)="seeExqConditions()" class="pointer">{{'ECOSYSTEM.EXQ.AGREEMENT.LINK_CONDITIONS' | translate}}</a>
+        {{'ECOSYSTEM.EXQ.AGREEMENT.AGREEMENT' | translate}}
+      </span>
+    </div>
+    <div class="push-top-lg" fxLayout="row" fxLayoutAlign="end start">
+      <button mat-flat-button color="primary" type="button" [disabled]="!acceptControl.value" (click)="acceptConditions()" class="push-left-xs">{{'ECOSYSTEM.EXQ.AGREEMENT.BUTTON' | translate}}</button>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,5 @@
+@import '~@openexo/design-system/variables';
+
+mat-divider.mat-divider {
+  margin: 0 0 map-get($spaceMeasures, 'xxs');
+}

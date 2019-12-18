@@ -1,0 +1,38 @@
+<mat-chip-list #chipList>
+  <mat-chip
+    *ngFor="let item of chipItemListToShow; let index = index;"
+    class="default text-truncate"
+    (removed)="removeChipItem(index)"
+    [removable]="removable"
+  >
+    {{ displayFn(item) }}
+    <mat-icon
+      *ngIf="removable"
+      matChipRemove
+    >
+      cancel
+    </mat-icon>
+  </mat-chip>
+  <input #inputElHTML
+    type="text"
+    class="mat-input-element mat-form-field-autofill-control"
+    fxFlex="grow"
+    (keydown.enter)="enterKeydown($event)"
+    (focus)="focused=true"
+    (focusout)="setErrorState( true )"
+    (blur)="onInputBlur($event)"
+    [disabled]="disabled"
+    (ngModelChange)="onInputChange($event)"
+    [matAutocomplete]="auto"
+    [matChipInputFor]="chipList"
+    [ngModel]="inputEl"
+    [placeholder]="placeholder"
+  />
+</mat-chip-list>
+<mat-autocomplete
+  #auto="matAutocomplete" (optionSelected)="onAutocompleteOptionSelected($event)" [displayWith]="displayFn"
+>
+  <mat-option *ngFor="let item of filterAutocompleteList" [value]="item">
+    {{ displayFn(item) }}
+  </mat-option>
+</mat-autocomplete>

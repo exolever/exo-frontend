@@ -1,0 +1,55 @@
+<div
+  class="container pad-top-xl pad-bottom-lg"
+  ngClass.lt-md="pad-right pad-left"
+  fxLayout="row wrap"
+  fxLayoutAlign="center"
+>
+  <div [fxFlex]="'0 1 ' + config.layoutMiddleWidth" fxLayout="column">
+    <div class="text-center" fxLayout="column" fxLayoutAlign="center center">
+      <exo-avatar-system [name]="profileUser.fullName" [description]="profileUser.userPosition" direction="column">
+        <exo-avatar
+          [size]="'xl'"
+          [src]="profileUser.getProfilePictureURL()"
+          [alt]="'PROFILE.PLATFORM.COMMON.PROFILE_PICTURE' | translate: { userName: profileUser.fullName }"
+        >
+        </exo-avatar>
+      </exo-avatar-system>
+
+      <div fxLayout="row wrap" fxLayoutAlign="center center" class="push-top">
+        <div fxLayout fxLayoutAlign="center center" class="foreground-secondary-text">
+          <mat-icon matTooltip="{{ 'COMMON.LOCATION' | translate }}">room</mat-icon>
+          {{ profileUser.location || ('PROFILE.PLATFORM.PICTURE_PROFILE.NO_LOCATION' | translate) }}
+        </div>
+
+        <div fxLayout fxLayoutAlign="center center" *ngIf="profileUser.isConsultant()" class="push-left-xs foreground-secondary-text">
+          <mat-icon matTooltip="{{ 'COMMON.LANGUAGES' | translate }}" matTooltipPosition="below">language</mat-icon>
+          <span class="push-left-xxxs" *ngIf="languages && languages.length; else noLanguages">
+            <span class="text-transform-capitalize"
+              *ngFor="let language of languages; let last = last"
+              [matTooltip]="language.referenceName"
+              matTooltipPosition="below"
+            >
+              {{ language?.name?.substring(0, 2) }}<span *ngIf="!last">,</span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div *ngIf="profileUser.isConsultant()" fxLayout="column" fxLayoutAlign="center center" class="w-100" >
+        <app-certifications [profileUser]="profileUser"></app-certifications>
+      </div>
+
+      <div
+        *ngIf="profileUser.isConsultant() && hasMtp()"
+        class="text-align-center subheading-2 push-top-sm"
+      >
+        "{{ profileUser.mtp }}"
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- template for no languages listed -->
+<ng-template #noLanguages>
+  <span class="push-left-xxxs">{{ ('PROFILE.PLATFORM.PICTURE_PROFILE.NO_LANGUAGES' | translate) }}</span>
+</ng-template>

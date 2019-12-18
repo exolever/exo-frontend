@@ -1,0 +1,58 @@
+@import "variables";
+
+// config
+$chip-height: 48px;
+$chip-min-w: 72px;
+$chip-max-w: 240px;
+
+mat-chip-list {
+  a {
+    max-width: 100%;
+  }
+  .chip-wrapper {
+    text-decoration: none;
+    &.default mat-icon:first-child {
+      color: mat-color($exo-grey, 900, 0.64);
+    }
+    &.purple mat-icon:first-child {
+      color: mat-color($exo-purple, 500);
+    }
+    &.blue mat-icon:first-child {
+      color: mat-color($exo-blue, 500);
+    }
+    &.amber mat-icon:first-child {
+      color: mat-color($exo-amber, 500);
+    }
+    &.red mat-icon:first-child {
+      color: mat-color($exo-red, 500);
+    }
+  }
+  mat-chip.mat-chip {
+    height: $chip-height;
+    min-width: $chip-min-w;
+    max-width: $chip-max-w;
+    background-color: white;
+    border: 1px solid mat-color($exo-grey, 100);
+    border-radius: 6em;
+    text-transform: initial;
+    padding: 0 $xs;
+    mat-icon:first-child {
+      margin-right: $xs;
+    }
+    mat-icon.remove {
+      width: 24px;
+      height: 24px;
+      font-size: 24px;
+      color: mat-color($exo-grey, 900, .64);
+      transition: opacity .2s ease-in-out;
+      &:hover {
+        color: mat-color($exo-grey, 900);
+      }
+    }
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

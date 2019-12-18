@@ -1,0 +1,124 @@
+<section class="summary" *ngIf="form">
+  <!-- anchor to center into edit section -->
+  <h3>{{ 'ECOSYSTEM.PROFILE.EDIT.SUMMARY.PERSONAL' | translate }}</h3>
+  <form [formGroup]="form" fxLayout="column">
+    <div
+      class="push-bottom-sm"
+      fxLayout="row"
+      fxLayoutAlign="center"
+      fxLayoutAlign.gt-sm="start"
+    >
+      <app-profile-pic
+        [avatar]="user?.getPicture(144)"
+        (croppedImage)="updateAvatar($event)"
+      ></app-profile-pic>
+    </div>
+    <div class="personal" formGroupName="personal" fxLayout="column">
+      <mat-form-field appearance="fill" class="input-short">
+        <mat-label>
+          {{ 'ECOSYSTEM.PROFILE.EDIT.SUMMARY.FULL_NAME' | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="full_name">
+          <mat-error>{{form.get('personal.full_name').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="input-short">
+        <mat-label>
+          {{ 'ECOSYSTEM.PROFILE.EDIT.SUMMARY.SHORT_NAME' | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="short_name">
+          <mat-error>{{form.get('personal.short_name').errors | humanizeFormErrors}}</mat-error>
+        <mat-hint>{{'ECOSYSTEM.PROFILE.EDIT.SUMMARY.SHORT_NAME_HINT' | translate}}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="input-short">
+        <mat-label>
+          {{ 'ECOSYSTEM.PROFILE.EDIT.SUMMARY.LOCATION' | translate }}
+        </mat-label>
+        <input
+          matInput
+          formControlName="location"
+          google-place
+          (onSelect)="setLocation($event)">
+        <mat-hint>{{'ECOSYSTEM.WORKSHOPS.LOCATION_HINT' | translate}}</mat-hint>
+        <mat-error>{{form.get('personal.location').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input-large" appearance="fill" *ngIf="form.get('personal.languages')">
+        <app-chips-autocomplete
+          formControlName="languages"
+          [autocompleteListItems]="languages"
+          [modelAutocompleteItem] = "languageModel"
+          [requireMatch]="true"
+          placeholder="{{ 'PROFILE.LANGUAGES' | translate }}"
+        ></app-chips-autocomplete>
+        <mat-error class="upper-first-letter">
+          {{form.get('personal.languages').errors | humanizeFormErrors}}
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        *ngIf="personalButton"
+        (click)="onSubmitPersonal()"
+        mat-flat-button
+        color="primary"
+        type="button"
+        class="submit-button push-bottom-lg"
+        [disabled]="!isValidPersonalDataForm()"
+      >
+        {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+      </button>
+    </div>
+
+    <div class="where" formGroupName="timezone" fxLayout="column">
+      <h3>{{ 'ECOSYSTEM.PROFILE.EDIT.SUMMARY.WHERE' | translate }}</h3>
+      <div>
+        <p class="caption-1">
+          {{ 'ECOSYSTEM.PROFILE.EDIT.SUMMARY.WHERE_DESCRIPTION' | translate }}
+        </p>
+      </div>
+      <mat-form-field
+        appearance="fill"
+        class="autocomplete-tz"
+        data-e2e="tz-selector"
+      >
+        <mat-label>
+          {{'ECOSYSTEM.PROFILE.EDIT.SUMMARY.NOW_IN' | translate}}
+        </mat-label>
+        <input
+          matInput
+          [matAutocomplete]="timeAutocomplete"
+          formControlName="timezone"
+        >
+      </mat-form-field>
+      <mat-autocomplete
+        #timeAutocomplete
+        aria-expanded="false"
+      >
+        <mat-option
+          *ngFor="let timeZone of filteredTz | async"
+          [value]="timeZone"
+          [attr.data-e2e]="timeZone | replace:'/':'-' | lowercase"
+        >
+          {{timeZone}}
+        </mat-option>
+      </mat-autocomplete>
+      <button
+        *ngIf="timeZoneButton"
+        (click)="onSubmitTimeZone()"
+        mat-flat-button
+        color="primary"
+        type="button"
+        class="submit-button push-bottom-lg"
+        [disabled]="!isValidTimezoneForm()"
+      >
+        {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+      </button>
+    </div>
+  </form>
+</section>

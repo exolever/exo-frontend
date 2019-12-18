@@ -1,0 +1,34 @@
+@import "variables";
+
+.menu-mobile {
+  width: 100%;
+  @media (min-width: $screen-sm){
+    width: 0;
+  }
+}
+
+.side-navigation {
+  width: 296px;
+  margin-right: 24px;
+  .container {
+    padding: 24px;
+
+    .active {
+      a {
+        text-decoration: underline;
+      }
+      mat-icon {
+        color: mat-color($exo-service-light-primary);
+      }
+    }
+
+    a.subheading-2 {
+      margin: 0;
+      text-decoration: none;
+    }
+  }
+
+  ::ng-deep .mat-list-item-content.mat-list-item-content {
+    padding: 0;
+  }
+}

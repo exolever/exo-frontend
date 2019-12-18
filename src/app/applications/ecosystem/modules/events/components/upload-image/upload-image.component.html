@@ -1,0 +1,11 @@
+<section class="push-bottom-lg">
+  <div fxLayout="column" class="push-bottom">
+    <span>{{'ECOSYSTEM.EVENTS.FORM.IMAGE_TITLE' | translate}}</span>
+    <mat-hint>{{'ECOSYSTEM.EVENTS.FORM.IMAGE_HINT' | translate}}</mat-hint>
+  </div>
+  <button *ngIf="!file; else showFile" (click)="openPicker()"
+          color="primary" mat-button type="button">{{'ECOSYSTEM.EVENTS.FORM.UPLOAD_BUTTON' | translate | uppercase}}</button>
+  <ng-template #showFile>
+    <app-uploaded-files-list [uploadedResources]="[file]" [removable]="true" (onDelete)="onDeleteResource()"></app-uploaded-files-list>
+  </ng-template>
+</section>

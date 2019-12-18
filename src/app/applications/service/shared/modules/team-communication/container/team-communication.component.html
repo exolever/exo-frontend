@@ -1,0 +1,77 @@
+<section class="team-communication exo-platform" fxLayout="column" fxLayoutAlign="start">
+  <div class="team-communication__header text-align-center">
+    <h1 class="pad-top">{{'PROJECT.TEAM_COMMUNICATION.TITLE' | translate}}</h1>
+    <div class="push-bottom-xs">
+      <a
+        *ngIf="team['zoomUrl']"
+        mat-flat-button
+        color="accent"
+        class="button-zoom"
+        href="{{team['zoomUrl']}}"
+        target="_blank">
+        {{ 'PROJECT.TEAM_COMMUNICATION.GO_TO_ZOOM' | translate }}
+      </a>
+    </div>
+  </div>
+  <!-- Team conversations -->
+
+  <ng-container *ngIf="conversations$ | async as conversations">
+    <ng-container *ngIf="!(loaded$ | async)">
+      <div *ngIf="loading$ | async" fxLayoutAlign="center center">
+        <app-component-spinner-loader></app-component-spinner-loader>
+      </div>
+    </ng-container>
+    <div *ngIf="conversations.length > 0" class="team-communication__body"
+         fxLayout="row"
+         fxLayoutAlign="start start"
+         fxLayoutGap="48px"
+         fxLayout.lt-md="column">
+      <app-conversation-list
+        fxFlex="1 1 300px" fxFlex.lt-md="grow" class="w-100"
+        [conversations]="conversations"
+        [selected]="conversationSelected$ | async"
+        [smallDevices]="smallDevices"
+        (selectConversation)="selectConversation($event)"
+      >
+      </app-conversation-list>
+      <ng-container *ngIf="!smallDevices">
+        <app-conversation-messages *ngIf="(conversationSelected$ | async) as conversation"
+                                   fxFlex="grow" fxFill
+                                   [conversation]="conversation"
+                                   [replyingMessage]="replyingMessage$ | async"
+                                   [loading]="loading$ | async"
+                                   (submit)="onSubmit($event, conversation)"
+                                   (scrolled)="onScroll($event, conversation)"
+        >
+          <ng-container class="content__title">
+            <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="8px">
+              <exo-avatar [size]="'xs'" [src]="conversation.image" [alt]="conversation.name" shape="rect"></exo-avatar>
+              <h2 class="tc__title">{{conversation.name}}</h2>
+            </div>
+            <div *ngIf="conversation.users.length > 0"
+                 class="pointer"
+                 [matMenuTriggerFor]="membersList"
+                 #clickHoverMenuTrigger="matMenuTrigger"
+            >
+              <mat-icon class="tc__members--person">person</mat-icon>{{conversation.users.length}}
+            </div>
+          </ng-container>
+          <mat-menu class="pad" #membersList="matMenu">
+            <div class="members-item" *ngFor="let member of conversation.users">
+              <exo-avatar-system class="pointer"
+                                 [name]="member.name"
+                                 [description]="member.userTitle"
+                                 (click)="goToProfile($event, member)"
+              >
+                <exo-avatar [src]="member.profilePicture"
+                            [alt]="member.name"
+                            [tooltip]="member.name"
+                ></exo-avatar>
+              </exo-avatar-system>
+            </div>
+          </mat-menu>
+        </app-conversation-messages>
+      </ng-container>
+    </div>
+  </ng-container>
+</section>

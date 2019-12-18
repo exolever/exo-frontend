@@ -1,0 +1,26 @@
+<section class="exo-platform pad" fxLayout="column" fxLayoutAlign="start start">
+  <mat-card class="w-100">
+    <mat-card-content>
+      <div class="push-top-sm push-bottom-sm">
+        <h3 class="headline push-none">{{'ECOSYSTEM.CIRCLES.EDIT_QUESTION_TITLE' | translate }}</h3>
+      </div>
+      <app-write-comment
+        *ngIf="question$ | async as question"
+        class="w-100 inline-block"
+        titleLabel="{{'ECOSYSTEM.CIRCLES.TITLE_LABEL' | translate }}"
+        [titleContent]="question.title"
+        commentLabel="{{'ECOSYSTEM.CIRCLES.COMMENT' | translate }}"
+        [commentContent]="question.description"
+        tagsLabel="{{'FORUM.CATEGORIES' | translate }}"
+        [tagsContent]="question.tags"
+        tagsHint="{{'FORUM.CATEGORIES_HINT' | translate }}"
+        saveButton="{{'COMMON.ACTIONS.SAVE' | translate }}"
+        cancelButton="{{'COMMON.CANCEL' | translate }}"
+        [resources]="question.uploadedFiles"
+        (cancelled)="onCancel($event)"
+        (saved)="onSaved($event)"
+        [mentionsAPI]="mentionsAPI"
+      ></app-write-comment>
+    </mat-card-content>
+  </mat-card>
+</section>

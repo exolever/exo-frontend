@@ -1,0 +1,81 @@
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/colors';
+
+mat-card {
+  outline: none;
+  &:hover {
+    background-color: map_get($exo-grey, 50);
+  }
+}
+
+.subject {
+  .title {
+    margin-bottom: map-get($spaceMeasures, 'xxs');
+  }
+}
+
+.new-messages {
+  position: relative;
+  &:after {
+    content: '';
+    display: inline-block;
+    width: map-get($spaceMeasures, 'xxs');
+    height: map-get($spaceMeasures, 'xxs');
+    border-radius: 50%;
+    background-color: map-get($exo-blue, 500);
+    position: absolute;
+    right: -2px;
+  }
+}
+
+.avatars {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  margin: 0 0 map-get($spaceMeasures, 'xs') map-get($spaceMeasures, 'xs');
+  .avatar {
+    margin-left: -16px;
+    position: relative;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    width: map-get($componentMeasure, '1x');
+    height: map-get($componentMeasure, '1x');
+    &.remain {
+      background-color: map-get($exo-purple, 900);
+      color: white;
+      .h-100 {
+        height: 100%;
+      }
+    }
+  }
+}
+
+mat-icon {
+  &.point-red::after {
+    content: ' ';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    margin-left: -10px;
+    border: 1px solid white;
+    background-color: map_get($exo-red, 500);
+  }
+  &.point-orange::after {
+    content: ' ';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    margin-left: -10px;
+    border: 1px solid white;
+    background-color: map_get($exo-amber, 800);
+  }
+}
+
+.disabled {
+  filter: grayscale(100%);
+  opacity: 0.64;
+}

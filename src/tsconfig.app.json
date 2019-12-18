@@ -1,0 +1,22 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./app",
+    "types": []
+  },
+  "exclude": [
+    "test.ts",
+    "app/testing/*",
+    "**/node_modules/**",
+    "**/*.spec.ts",
+    "**/*.stub.ts",
+    "**/*.stubs.ts",
+    "**/*.mock.ts",
+    "**/*.mocks.ts",
+    "**/*fake**.ts"
+  ],
+  "angularCompilerOptions": {
+    "preserveWhitespaces": true
+  }
+}

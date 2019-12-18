@@ -1,0 +1,10 @@
+<app-task-page-presentation
+  [assignment]="assignment$ | async"
+  [task]="task$ | async"
+  [step]="step$ | async"
+  [projectPk]="projectPk"
+  [teamPk]="teamPk"
+  (done)="markAsDone($event)"
+  (toDo)="markAsToDo($event)"
+>
+</app-task-page-presentation>

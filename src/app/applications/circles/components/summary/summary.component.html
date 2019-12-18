@@ -1,0 +1,40 @@
+<div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="16px" *ngIf="(circles$ | async) && !(loading$ | async); else loading">
+  <div class="w-100">
+    <mat-card *ngFor="let circle of circles$ | async" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.lt-md="start stretch" class="w-100 push-bottom-sm">
+      <div fxLayout="column" fxLayoutAlign="center center" class="pad-sm w-100 kpis" fxFlex.gt-sm="264px" fxFlexAlign.lt-md="center">
+        <img [src]="circle.image" class="logo push-right-sm">
+        <span class="title text-align-center">{{circle.name}}</span>
+        <span class="subheading-2 foreground-secondary-text" i18n>
+          {{circle.totalMembers}} {circle.totalMembers, plural, =1 { {{'ECOSYSTEM.CIRCLES.MEMBER' | translate}} } other { {{'ECOSYSTEM.CIRCLES.MEMBERS' | translate}} }}
+        </span>
+        <button mat-button color="primary" *ngIf="circle.questions.length" [routerLink]="['../',circle.slug]">
+          {{'ECOSYSTEM.CIRCLES.VIEW_ALL_POSTS' | translate | uppercase}}
+        </button>
+      </div>
+      <div class="w-100">
+        <app-post-summary *ngFor="let post of circle.questions; let isLast = last"
+          [ngClass]="{'divider': !isLast, 'pad-sm': true}"
+          [user]="user$ | async"
+          [post]="post"
+          [showCardWrapper]="false"
+          (seeDetails)="onSeeDetails(circle.slug, post.slug)"
+          (edit)="onEdit(circle.slug, post.slug)"
+          (delete)="onDelete(post.pk)"
+        ></app-post-summary>
+        <div *ngIf="!circle.questions.length" fxLayout="column" fxLayoutAlign="center center" fxFill>
+          <span class="body-1">{{'ECOSYSTEM.CIRCLES.NO_POSTS' | translate}}</span>
+          <button mat-button color="primary" routerLink="../{{circle.slug}}/create" class="push">Create new post</button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <div fxFlex.gt-sm="296px">
+    <app-circles-shortcuts [circles]="circles$ | async"></app-circles-shortcuts>
+    <app-new-circles-wrapper class="push-top inline-block w-100"></app-new-circles-wrapper>
+  </div>
+</div>
+<ng-template #loading>
+  <div fxLayoutAlign="center center">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+</ng-template>

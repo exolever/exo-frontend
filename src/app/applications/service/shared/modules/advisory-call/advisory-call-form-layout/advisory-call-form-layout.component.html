@@ -1,0 +1,19 @@
+<section class="exo-platform pad-left pad-right advisory-call-form-container" fxLayout="column" fxLayoutAlign="start start">
+  <app-back-to-snippet class="push-top-sm push-bottom-lg"
+    (back)="goBack()"
+    priorNavigationTranslateString="{{ 'PROJECT.ADVISORY_CALL.TITLE' | translate }}"
+  ></app-back-to-snippet>
+  <mat-card class="card-section w-100" *ngIf="isCreation || !(loading$ | async); else loadingTpl">
+    <mat-card-content>
+      <div class="section card-type push-bottom">
+        {{title}}
+      </div>
+      <app-advisory-call-form [opportunity] = "opportunity$ | async" [groupPk]="groupPk"></app-advisory-call-form>
+    </mat-card-content>
+  </mat-card>
+</section>
+<ng-template #loadingTpl>
+  <span fxLayout="row" fxLayoutAlign="center" class="pad-top-sm">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </span>
+</ng-template>

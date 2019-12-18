@@ -1,0 +1,100 @@
+<section class="exo-platform pad-left pad-right" fxLayout="column" fxLayoutAlign="start start" #timerFrame>
+  <app-back-to-snippet class="push-top-sm push-bottom-lg"
+    priorNavigationTranslateString="{{ 'SWARM.TITLE' | translate }}"
+    (back)="goBack($event)"
+  ></app-back-to-snippet>
+  <section
+    fxFlexAlign="end"
+    fxLayout="column"
+    fxLayoutGap="16px"
+    class="push-right-xs notifications-box"
+    appStickyOnScroll
+    [offsetTopElement]="timerFrame"
+    [classOnAbsolute]="{top: 'unset'}"
+    [classOnFixed]="{top: '16px'}">
+      <app-session-timer *ngIf="session$ | async as session"
+        inService="true"
+        [session]="session"
+        fxHide.lt-md
+        fxShow.gt-sm
+        class="push-right-xs"
+      ></app-session-timer>
+      <app-refresh-announce
+        class="push-top-xl"
+        *ngIf="showRefresh$ | async"
+        message="{{ 'SWARM.REFRESH_ANNOUNCE.NEW_UPDATES' | translate }}"
+        (refresh)="initializeData()"
+      ></app-refresh-announce>
+  </section>
+  <app-session-timer *ngIf="session$ | async as session"
+    fxFlex="100%"
+    class="w-100 mobile-timer"
+    inService="true"
+    [session]="session"
+    fxHide.gt-sm
+    fxShow.lt-md
+    isMobile="true"
+    appStickyOnScroll
+    [offsetTopElement]="timerFrame"
+    [classOnAbsolute]="{top: 'unset'}"
+    [classOnFixed]="{top: '16px' }"
+  ></app-session-timer>
+  <mat-card class="w-100">
+    <mat-card-content *ngIf="user$ | async as user">
+      <app-post-detail *ngIf="question$ | async as question"
+        [post]="question"
+        [user]="user"
+        title="{{'SWARM.QUESTION_FOR' | translate}}"
+        (favorite)="onFavoriteQuestion(question.pk, $event)"
+        (edit)="onEdit($event)"
+        (delete)="onDeleteQuestion($event)">
+      </app-post-detail>
+      <div i18n *ngIf="totalAnswers$ | async as numberAnswers" class="text-left push-top-xl title push-bottom-none">
+        {{numberAnswers}} {numberAnswers, plural, =1 { {{'FORUM.ANSWER' | translate}} } other { {{'FORUM.ANSWERS' | translate}} }}
+      </div>
+      <exo-avatar-system
+        class="push-bottom-sm inline-block push-top-xl"
+        *ngIf="question$ | async as question"
+        [name]="user.fullName"
+        [description]="user.projectTitle || user.userTitle">
+        <exo-avatar
+          [src]="user.profilePictures[1].url"
+          [alt]="user.fullName"
+          [tooltip]="user.fullName"
+        ></exo-avatar>
+      </exo-avatar-system>
+      <app-write-comment
+        class="w-100 inline-block"
+        [user]="user$ | async"
+        commentLabel="{{'PROJECT.ASK_ECOSYSTEM.COMMENT' | translate }}"
+        saveButton="{{'PROJECT.ASK_ECOSYSTEM.COMMENT_BUTTON' | translate }}"
+        (saved)="onNewAnswer($event)"
+        [mentionsAPI]="mentionsAPI"
+      ></app-write-comment>
+      <div *ngIf="loading$ | async" fxLayoutAlign="center center">
+        <app-component-spinner-loader></app-component-spinner-loader>
+      </div>
+      <app-answer *ngFor="let answer of answers$ | async"
+        class="push-top-lg inline-block w-100"
+        [canBeVoted]="answer.canVote"
+        [answer]="answer"
+        [user]="user$ | async"
+        (edit)="enableAnswerEdition($event)"
+        (delete)="onDeleteAnswer($event)"
+        (favorite)="onFavoriteAnswer(answer.pk, $event)"
+        (rating)="onRating(answer.pk, $event)"
+        [mentionsAPI]="mentionsAPI">
+      </app-answer>
+      <mat-paginator
+        *ngIf="!(emptyMoment$ | async) && !(loading$ | async) && (totalAnswers$ | async)"
+        class="transparent push-top-lg"
+        (page)="paginatorChange($event)"
+        [length]="totalAnswers$ | async"
+        [pageSize]="pageSize$ | async"
+        [pageIndex]="pageIndex$ | async"
+        [pageSizeOptions]="[5, 15, 25]">
+      </mat-paginator>
+    </mat-card-content>
+  </mat-card>
+
+</section>

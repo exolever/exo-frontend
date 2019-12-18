@@ -1,0 +1,6 @@
+@import "~@openexo/design-system/variables";
+
+.mat-dialog-actions {
+  padding-bottom: 0px;
+  padding-top: map-get($spaceMeasures, 'sm');
+}

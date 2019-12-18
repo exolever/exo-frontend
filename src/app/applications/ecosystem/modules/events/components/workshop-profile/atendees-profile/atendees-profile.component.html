@@ -1,0 +1,70 @@
+<mat-card class="push-bottom">
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <h2 class="push-none">{{'ECOSYSTEM.WORKSHOPS.ATENDEES' | translate}}</h2>
+    <div>
+      <button [matMenuTriggerFor]="addMenu" color="primary" mat-mini-fab matTooltip="Add participant">
+        <mat-icon aria-label="Add atendee button">add</mat-icon>
+      </button>
+      <mat-menu #addMenu="matMenu">
+        <button (click)="openForm()" mat-menu-item>{{'ECOSYSTEM.WORKSHOPS.ADD_ONE_ATENDEE' | translate}}</button>
+        <button (click)="openImportForm()" mat-menu-item>{{'ECOSYSTEM.WORKSHOPS.ADD_MANY_ATENDEE' | translate}}</button>
+      </mat-menu>
+      <button *ngIf="(dataSource$ | async)?.length !== 0" [matMenuTriggerFor]="sendMenu" class="push-left" color="primary"
+              mat-mini-fab matTooltip="{{'ECOSYSTEM.WORKSHOPS.SEND_DOCUMENTS' | translate}}">
+        <mat-icon aria-label="Send documents to participants button">send</mat-icon>
+      </button>
+      <mat-menu #sendMenu="matMenu">
+        <button (click)="sendCertifications()"
+                *ngIf="(dataSource$ | async)?.length !== 0"
+                mat-menu-item>
+          {{'ECOSYSTEM.WORKSHOPS.PROMPT.CERTIFICATES_TITLE' | translate}}
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+  <table *ngIf="(dataSource$ | async).length; else emptyMoment" [dataSource]="dataSource$ | async" class="w-100"
+         mat-table
+         matSort matSortActive="name" matSortDirection="asc" matSortDisableClear>
+    <!-- name Column -->
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef mat-header-cell><label class="body-2">{{'ECOSYSTEM.WORKSHOPS.NAME' | translate}}</label>
+      </th>
+      <td *matCellDef="let element" mat-cell> {{element.fullName}}</td>
+    </ng-container>
+    <!-- email Column -->
+    <ng-container matColumnDef="email">
+      <th *matHeaderCellDef mat-header-cell fxHide.lt-sm><label class="body-2">{{'ECOSYSTEM.WORKSHOPS.EMAIL' | translate}}</label>
+      </th>
+      <td *matCellDef="let element" mat-cell fxHide.lt-sm> {{element.userEmail}} </td>
+    </ng-container>
+
+    <!-- actions Column -->
+    <ng-container matColumnDef="actions">
+      <th *matHeaderCellDef mat-header-cell>
+        <div *ngIf="(dataSource$ | async)?.length as counter" class="kpi-participants w-100 text-right" i18n>
+          {counter, plural, =1 {1 participant} other {{{counter}} participants}}
+        </div>
+      </th>
+      <td *matCellDef="let element" class="text-right" mat-cell>
+        <button [matMenuTriggerFor]="participantMenu" mat-icon-button>
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #participantMenu="matMenu">
+          <button (click)="openForm(element)" mat-menu-item>Edit</button>
+          <button (click)="delete(element)" mat-menu-item>Delete</button>
+          <button (click)="sendCertification(element)" mat-menu-item>Send certificate</button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+  </table>
+  <ng-template #emptyMoment class="push-bottom-sm">
+    <div class="push-bottom-lg">
+      <h2 class="text-align-center push-top-lg">{{'ECOSYSTEM.WORKSHOPS.EMPTY_PARTICIPANTS_1' | translate}}</h2>
+      <div
+        class="body-1 text-align-center push-bottom-lg">{{'ECOSYSTEM.WORKSHOPS.EMPTY_PARTICIPANTS_2' | translate}}</div>
+    </div>
+  </ng-template>
+</mat-card>

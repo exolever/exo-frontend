@@ -1,0 +1,9 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+  <button mat-icon-button color="primary" (click)="back.emit(true)">
+    <mat-icon class="mat-16" aria-label="Back to previous button">arrow_back</mat-icon>
+  </button>
+  <span class="subheading-2 text-truncate push-bottom-none push-left-xxs">
+    {{ 'PROFILE.PLATFORM.BACK_BUTTON.BACK_TO' | translate | uppercase }}
+    {{ priorNavigationTranslateString | uppercase }}
+  </span>
+</div>

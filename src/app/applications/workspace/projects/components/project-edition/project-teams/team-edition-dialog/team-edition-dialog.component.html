@@ -1,0 +1,37 @@
+<app-overlay-template *ngIf="data.showFullScreen; else content" [title]="data.title" (close)="closeOverlay()">
+  <ng-container [ngTemplateOutlet]="content"></ng-container>
+</app-overlay-template>
+
+<ng-template #content>
+  <mat-dialog-content cdkFocusRegionstart class="dialog__content">
+    <h2>{{data.title}}</h2>
+    <form [formGroup]="form" novalidate autocomplete="off" fxLayout="column">
+      <mat-form-field class="w-100">
+        <input matInput
+          [placeholder]="'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.NAME_PLACEHOLDER' | translate"
+          formControlName="name"
+        >
+        <mat-error>{{form.get('name').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+      <mat-form-field apparence="fill">
+        <mat-select #matSelectSortBy
+          [compareWith]="equalStreams"
+          [placeholder]="'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.TEAMS.STREAM_PLACEHOLDER' | translate"
+          class="push-right-xxs sort-by"
+          formControlName="stream"
+        >
+          <mat-option [value]="stream" *ngFor="let stream of streams$ | async">
+            {{stream.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{form.get('stream').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+    </form>
+
+
+  </mat-dialog-content>
+  <mat-dialog-actions align="end" class="dialog__actions">
+    <button mat-flat-button color="accent" type="button" (click)="closeOverlay()">{{'COMMON.ACTIONS.CANCEL' | translate}}</button>
+    <button mat-flat-button color="primary" type="submit" (click)="onSave()">{{'COMMON.ACTIONS.SAVE' | translate}}</button>
+  </mat-dialog-actions>
+</ng-template>

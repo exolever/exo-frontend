@@ -1,0 +1,33 @@
+@import 'themes/exo-platform-light-theme';
+
+.framer-card {
+  background-color: map-get($mat-light-theme-background, activities);
+  mat-slider {
+    margin: 0;
+    &.mtp ::ng-deep {
+      .mat-slider.mat-slider-thumb-label-showing,
+      .mat-slider-thumb-container,
+      .mat-slider-thumb-label,
+      .mat-slider-track-fill,
+      .mat-slider-thumb {
+        background-color: mat-color($exo-grey, 500);
+      }
+    }
+    &.scale ::ng-deep {
+      .mat-slider.mat-slider-thumb-label-showing,
+      .mat-slider-thumb-container,
+      .mat-slider-thumb-label,
+      .mat-slider-track-fill,
+      .mat-slider-thumb {
+        background-color: map-get($mat-light-theme-background, activities-icon-active);
+      }
+    }
+    &.mat-slider-min-value ::ng-deep {
+      .mat-slider-thumb {
+        background-color: map-get($mat-light-theme-foreground, 'slider-min');
+      }
+    }
+  }
+}
+
+

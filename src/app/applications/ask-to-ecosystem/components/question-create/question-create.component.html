@@ -1,0 +1,26 @@
+<section class="exo-platform pad-left pad-right" fxLayout="column" fxLayoutAlign="start start">
+  <app-back-to-snippet class="push-top-sm push-bottom-lg"
+    (back)="goBack()"
+    priorNavigationTranslateString="{{ 'PROJECT.ASK_ECOSYSTEM.TITLE' | translate }}"
+  ></app-back-to-snippet>
+  <mat-card class="w-100">
+    <mat-card-content>
+      <div class="push-top-sm push-bottom-sm">
+        <h3 class="headline push-none">{{'PROJECT.ASK_ECOSYSTEM.NEW_QUESTION_TITLE' | translate }}</h3>
+      </div>
+      <app-write-comment
+        (saved)="onSaved($event)"
+        (cancelled)="goBack()"
+        class="w-100 inline-block"
+        [user]="user$ | async"
+        titleLabel="{{'PROJECT.ASK_ECOSYSTEM.TITLE_LABEL' | translate }}"
+        commentLabel="{{'PROJECT.ASK_ECOSYSTEM.COMMENT_ASK' | translate }}"
+        tagsLabel="{{'FORUM.CATEGORIES' | translate }}"
+        tagsHint="{{'FORUM.CATEGORIES_HINT' | translate }}"
+        [tagsContent]="[]"
+        saveButton="{{'PROJECT.ASK_ECOSYSTEM.ASK_BUTTON' | translate }}"
+        cancelButton="{{'COMMON.CANCEL' | translate }}"
+      ></app-write-comment>
+    </mat-card-content>
+  </mat-card>
+</section>

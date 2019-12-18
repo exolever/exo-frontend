@@ -1,0 +1,19 @@
+@import '~@openexo/design-system/variables';
+
+:host {
+  // I have to use $breakpoints instead of $componentMeasure because noone suits it (1280px)
+  flex: 0 1 map-get($breakpoints, 'md');
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+  @media #{map-get($mediaqueries, 'gt-md')} {
+    max-width: map-get($breakpoints, 'md');
+    padding: 0;
+  }
+ 
+}
+.opportunity-container, .opportunity-loader{
+  margin: map-get($componentMeasure, '1x') 0;
+  padding: 0 map-get($componentMeasure, '0.3x');
+}
+

@@ -1,0 +1,31 @@
+<div class="score-wrapper background">
+  <div class="center">
+    <div class="vert-center">
+      <div class="logo"></div>
+      <div class="circle-wrapper">
+        <h1 *ngIf="showResults else sent" class="w-100">{{translations.result1}}</h1>
+        <ng-template #sent>
+          <h1 class="w-100">{{translations.sentResults}}</h1>
+        </ng-template>
+        <circle-progress
+          *ngIf="showResults"
+          [animationDuration]="800"
+          [animation]="true"
+          [percent]="score"
+          [radius]="30"
+          [showSubtitle]="false"
+          [showUnits]="false"
+          [titleFontSize]="5"
+          [title]="printTitle(score)"
+          class="flex circle-progress"
+        ></circle-progress>
+      </div>
+
+      <div class="button-group">
+        <button (click)="reload()" color="primary" mat-flat-button>
+          {{translations.tryAgain}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

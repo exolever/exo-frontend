@@ -1,0 +1,29 @@
+@import "variables";
+
+// config
+$top-bar-height: 80px;
+
+.exo-platform {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: white;
+  .top-bar {
+    height: $top-bar-height;
+  }
+}
+
+.login {
+  min-height: calc(100vh - #{$top-bar-height});
+}
+
+form.border {
+  border-bottom: 1px solid mat-color($exo-grey, A400);
+}
+
+.sign-up-link {
+  margin-top: -16px;
+  z-index: 2
+}

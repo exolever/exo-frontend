@@ -1,0 +1,50 @@
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/colors';
+@import '~@openexo/design-system/theming';
+
+mat-card {
+  min-height: 270px;
+
+  .title {
+    min-height: 32px;
+  }
+}
+
+.disabled {
+  filter: grayscale(100%);
+  opacity: 0.64;
+}
+
+.job-menu {
+  margin: -16px -16px 0 0;
+}
+
+mat-icon {
+
+  &.red, &.orange {
+    &::after {
+      content: ' ';
+      width: map-get($spaceMeasures, 'xxs');
+      height: map-get($spaceMeasures, 'xxs');
+      border-radius: 50%;
+      display: inline-block;
+      position: absolute;
+      margin-left: -10px;
+      border: 1px solid white;
+    }
+  }
+
+  &.orange::after {
+    background-color: map-get($exo-amber, 800);
+  }
+}
+
+.icon {
+  color: mat-color($exo-grey, 900, 0.64);
+}
+hr {
+  border-top-color: map-get($mat-light-theme-foreground, dividers);
+}
+.title {
+  margin-bottom: 0;
+}

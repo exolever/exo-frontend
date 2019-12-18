@@ -1,0 +1,19 @@
+<ng-container *ngIf="blocks; else loading">
+  <app-information-block *ngFor="let block of blocks; let first = first"
+    [block]="block"
+    [step]="step"
+    [assignment]="assignment"
+    [ngClass]="{ 'push-top-sm': first, 'push-top-lg': !first }"
+    class="information-block"
+    (markAllAsDone)="onMarkAllAsDone($event)"
+    (markAllAsTodo)="onMarkAllAsTodo($event)"
+    (markAsDone)="onMarkAsDone($event)"
+    (markAsTodo)="onMarkAsTodo($event)">
+  </app-information-block>
+</ng-container>
+
+<ng-template #loading>
+  <span fxLayout="row" fxLayoutAlign="center" class="push-bottom">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </span>
+</ng-template>

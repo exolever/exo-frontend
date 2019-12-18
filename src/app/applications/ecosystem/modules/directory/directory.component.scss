@@ -1,0 +1,82 @@
+@import '~@openexo/design-system/variables';
+@import 'variables';
+
+:host {
+  width: 100%;
+}
+
+.ecosystem-directory {
+  background-color: #f7f7f7;
+  min-height: 90vh;
+  .layout-container {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+
+    .header, .directory-list {
+      padding: 0 16px;
+      @media only screen and (min-width: 1280px)  {
+        padding: 0;
+      }
+    }
+
+    .search {
+      @media only screen and (max-width: 960px) {
+        width: 100%;
+      }
+    }
+
+    .search__results {
+      margin-right: map-get($spaceMeasures, 'sm');
+    }
+
+    .results {
+      @media only screen and (max-width: 960px) {
+        width: 100%;
+      }
+    }
+
+    .filter-mobile {
+      width: 80%;
+      margin-bottom: 20px;
+      @media only screen and (max-width: $screen-sm) {
+        width: 100%;
+      }
+    }
+
+    mat-form-field {
+      margin: 0;
+      width: 100%;
+    }
+
+    .filters {
+      max-width: 300px;
+    }
+  }
+}
+
+.bullet {
+  padding: 4px 10px;
+}
+
+/** invite modal stuff */
+.mobile-top-modal {
+  overflow: hidden;
+  border-radius: map-get($spaceMeasures, 'xxs');
+  margin-bottom: map-get($spaceMeasures, 'sm');
+  app-invite-modal {
+    margin: 0 auto;
+  }
+}
+
+mat-expansion-panel {
+  background: map-get($mat-blue-gray, 50);
+  mat-expansion-panel-header.mobile-invite {
+    padding: map-get($spaceMeasures, 'xs') !important;
+    margin: 0;
+  }
+}
+
+::ng-deep.mat-form-field {
+  margin-bottom: 0;
+}

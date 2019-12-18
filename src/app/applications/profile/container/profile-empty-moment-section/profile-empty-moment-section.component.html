@@ -1,0 +1,17 @@
+<section fxLayout="column"
+         fxLayoutAlign="center center"
+         class="pad-top-lg pad-bottom-lg alternate-background"
+>
+  <img [src]="img.src" [alt]="img.alt">
+  <h1 class="headline top-margin text-align-center"
+      ngClass.lt-md="pad-left-sm pad-right-sm"
+  >{{ title }}</h1>
+  <h3 class="subheading-2 top-margin foreground-secondary-text text-align-center"
+      ngClass.lt-md="pad-left-sm pad-right-sm"
+  >{{ subtitle }}</h3>
+  <div *ngIf="privateLock" fxLayoutAlign="center center" class="push-bottom">
+    <mat-icon class="private-icon">lock</mat-icon>
+    <p class="caption-1 push-none">{{ 'PROFILE.PLATFORM.PRIVATE' | translate }}</p>
+  </div>
+  <ng-content></ng-content>
+</section>

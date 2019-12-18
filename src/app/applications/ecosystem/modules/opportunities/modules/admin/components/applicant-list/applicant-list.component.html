@@ -1,0 +1,72 @@
+<ng-container *ngIf="opportunity; else emptyMoment">
+  <mat-card *ngIf="opportunity.applicants.length > 0; else emptyMoment">
+    <mat-card-content>
+      <mat-list role="list" class="pad-top-none">
+        <ng-container *ngFor="let applicant of opportunity.applicants; let isLast = last">
+          <mat-list-item role="listitem" class="applicant-item pointer" (click)="viewApplicant(applicant)">
+            <div class="applicant body-1 w-100" fxLayout="row" fxLayoutAlign="start center" >
+              <exo-avatar-system fxFlex.lt-sm="50%" fxFlex.gt-xs="33%" [name]="applicant.user.fullName" [truncateName]="true">
+                <exo-avatar size="xs" [src]="applicant.user.profilePictures[1][1]" [alt]="applicant.user.fullName"></exo-avatar>
+              </exo-avatar-system>
+              <div fxFlex.lt-sm="35%" fxFlex.gt-xs="33%" class="text-align-center">
+                <span *ngIf="applicant.isRequested()" fxShow.gt-xs fxHide.lt-sm>{{ 'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.STATUS.SENT' | translate }}</span>
+                <span *ngIf="applicant.isRejected()" class="pretty-label red caption-2">{{ 'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.STATUS.DISCARDED' | translate }}</span>
+                <span
+                  *ngIf="applicant.isSelected() || applicant.isFeedbackInvolved() || applicant.isCompleted()"
+                  class="pretty-label green caption-2"
+                >
+                  {{ 'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.STATUS.SELECTED' | translate }}
+                </span>
+              </div>
+              <div fxFlex.lt-sm="15%" fxFlex.gt-xs="33%" class="actions" fxLayout="row" fxLayoutAlign="end center">
+                <ng-container *ngIf="applicant.isRequested();else showConditionalMenuTpl">
+                  <ng-container *ngTemplateOutlet="applicantMenuTpl; context: { $implicit: applicant }"></ng-container>
+                </ng-container>
+                <ng-template #showConditionalMenuTpl>
+                  <ng-container *ngTemplateOutlet="applicantMenuTpl; context: { $implicit: applicant }"></ng-container>
+                </ng-template>
+              </div>
+            </div>
+          </mat-list-item>
+          <mat-divider *ngIf="opportunity.applicants.length > 1 && !isLast" class="mat-divider-custom"></mat-divider>
+        </ng-container>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+<ng-template #emptyMoment>
+  <exo-empty-moment>
+    <p class="empty-message subheading-2 text-align-center">
+      {{ 'ECOSYSTEM.OPPORTUNITIES.APPLICANTS_EMPTY' | translate }}
+    </p>
+  </exo-empty-moment>
+</ng-template>
+
+<!-- template for the applicant menu -->
+<ng-template #applicantMenuTpl let-applicant>
+  <button mat-icon-button matTooltip="{{'TOOLTIP.AVAILABLE_ACTIONS' | translate }}" [matMenuTriggerFor]="menu" (click)="stopPropagation($event)">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" x-position="before" (closed)="onMenuClosed()">
+    <button mat-menu-item (click)="viewSow(applicant)" *ngIf="applicant.isSelected()">
+      <span>{{'ECOSYSTEM.OPPORTUNITIES.ACTIONS.VIEW_SOW' | translate}}</span>
+    </button>
+    <ng-container *ngIf="applicant.haveAvailableActions()">
+      <button mat-menu-item (click)="openSow(applicant, true)" *ngIf="applicant.canEditAssociatedSow()" >
+        <span>{{'ECOSYSTEM.OPPORTUNITIES.ACTIONS.EDIT_SOW' | translate}}</span>
+      </button>
+      <button mat-menu-item (click)="openSow(applicant, false)" *ngIf="applicant.canBeSelected()">
+        <span>{{'ECOSYSTEM.OPPORTUNITIES.ACTIONS.SELECT' | translate}}</span>
+      </button>
+      <button mat-menu-item (click)="onReject(applicant)" *ngIf="applicant.canBeRejected()">
+        <span>{{'ECOSYSTEM.OPPORTUNITIES.ACTIONS.DECLINE' | translate}}</span>
+      </button>
+    </ng-container>
+    <button mat-menu-item (click)="onConversation(applicant)">
+      <span>{{'ECOSYSTEM.OPPORTUNITIES.ACTIONS.GO_CONVERSATION' | translate}}</span>
+    </button>
+    <button mat-menu-item (click)="viewApplicant(applicant)">
+      <span>{{'ECOSYSTEM.OPPORTUNITIES.ACTIONS.VIEW_DETAILS' | translate}}</span>
+    </button>
+  </mat-menu>
+</ng-template>

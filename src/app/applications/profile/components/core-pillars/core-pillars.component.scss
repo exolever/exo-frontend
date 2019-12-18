@@ -1,0 +1,27 @@
+@import "variables";
+
+// config
+$card-width: 299px;
+$card-heigth: 230px;
+$icon-container-size: 96px;
+
+mat-card {
+  width: $card-width;
+  height: $card-heigth;
+  box-shadow: none !important;
+
+  .icon-background {
+    background-color: mat-color($exo-blue, 50);
+    width: $icon-container-size;
+    height: $icon-container-size;
+    border-radius: 100%;
+    mat-icon {
+      width: $icon-container-size / 2;
+      height: $icon-container-size / 2;
+      font-size: $icon-container-size / 2;
+      line-height: $icon-container-size / 2;
+      color: mat-color($exo-blue, 500);
+    }
+  }
+}
+

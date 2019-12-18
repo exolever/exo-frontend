@@ -1,0 +1,20 @@
+@import 'themes/exo-platform-dark-theme';
+@import '~@openexo/design-system/variables';
+
+:host {
+  width: 100%;
+}
+
+.assignment-header {
+  background-color: map-get($mat-dark-theme-background, service-header-assignments);
+  color: map-get($mat-dark-theme-foreground, service-header-assignments);
+  padding: map-get($spaceMeasures, 'xs') map-get($spaceMeasures, 'xs') 0 map-get($spaceMeasures, 'xs');
+  &__container {
+    margin-top: map-get($spaceMeasures, 'xs');
+  }
+}
+
+.assignment-body {
+  max-width: map-get($componentMeasure, '20x');
+  margin: 0 auto;
+}

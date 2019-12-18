@@ -1,0 +1,72 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+  <div *ngIf="project"
+       class="push-right-xxs"
+       fxLayout="column"
+       fxLayoutAlign="start end"
+  >
+    <p class="caption-2 push-bottom-xxxs">{{project.name}}</p>
+    <p class="caption-1 push-none">{{userRoles }}</p>
+  </div>
+  <exo-avatar
+    #clickHoverMenuTrigger="matMenuTrigger"
+    [item]="user"
+    [matMenuTriggerFor]="snippetMenu"
+    class="pointer"
+  >
+  </exo-avatar>
+</div>
+<mat-menu #snippetMenu="matMenu" class="profileMenu">
+  <button (click)="viewProfile()"
+          *ngIf="user.getIsActive()"
+          data-e2e="user-profile"
+          mat-menu-item
+  >
+    <mat-icon matTooltip="{{'TOOLTIP.VIEW_PROFILE' | translate}}">account_circle</mat-icon>
+    <span class="body-2">{{'HEADER.PROFILE' | translate}}</span>
+  </button>
+
+  <button (click)="viewAccountSettings()"
+          *ngIf="user.getIsActive()"
+          data-e2e="account-settings"
+          mat-menu-item
+  >
+    <mat-icon matTooltip="{{'TOOLTIP.ACCOUNT_SETTINGS' | translate}}">settings</mat-icon>
+    <span class="body-2">{{'HEADER.SETTINGS' | translate}}</span>
+  </button>
+
+  <ng-container *ngIf="campaigns$ | async as campaigns">
+    <button
+      (click)="viewCampaigns()"
+      *ngIf="campaigns.length > 0 && user.getIsActive() && (user.isConsultant() || user.isStaff || user.isSuperuser)"
+      mat-menu-item
+    >
+      <mat-icon matTooltip="{{'TOOLTIP.CAMPAIGNS' | translate}}">
+        import_contacts
+      </mat-icon>
+      <span class="body-2">{{'HEADER.CAMPAIGNS' | translate}}</span>
+    </button>
+  </ng-container>
+  <mat-divider class="push-bottom-none"></mat-divider>
+  <button
+    (click)="viewMyProjects()"
+    mat-menu-item
+  >
+    <mat-icon matTooltip="{{'TOOLTIP.MY_PROJECTS' | translate}}">work</mat-icon>
+    <span class="body-2">{{'HEADER.MY_PROJECTS' | translate}}</span>
+  </button>
+  <ng-container>
+    <button
+      (click)="viewMyEvents()"
+      mat-menu-item
+    >
+      <mat-icon matTooltip="{{'HEADER.MY_EVENTS' | translate}}">event</mat-icon>
+      <span class="body-2">{{'HEADER.MY_EVENTS' | translate}}</span>
+    </button>
+  </ng-container>
+  <mat-divider></mat-divider>
+  <button (click)="logout()" data-e2e="logout" mat-menu-item>
+    <mat-icon matTooltip="{{'TOOLTIP.LOGOUT' | translate}}">power_settings_new</mat-icon>
+    <span class="body-2">{{'HEADER.LOGOUT' | translate}}</span>
+  </button>
+
+</mat-menu>

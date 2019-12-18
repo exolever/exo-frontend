@@ -1,0 +1,43 @@
+@import "~@openexo/design-system/mixins";
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/theming';
+@import "variables";
+
+
+:host {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1280px;
+}
+
+.empty-moment {
+  max-width: 384px;
+  margin: -72px auto auto;
+}
+
+header {
+  padding: 0 map-get($spaceMeasures, 'xs');
+}
+
+hr {
+  border-top-color: rgba(70, 70, 75, 0.16);
+}
+
+.location {
+  color: mat-color($exo-grey, 900, 0.64)
+}
+
+.dates {
+  color: mat-color($exo-grey, 900, 0.75)
+}
+
+.paginator {
+  ::ng-deep .mat-paginator-container {
+    background-color: #f7f7f7;
+    justify-content: center;
+  }
+
+  ::ng-deep .mat-paginator-page-size-select{
+    width: 60px;
+  }
+}

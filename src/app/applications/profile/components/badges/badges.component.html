@@ -1,0 +1,63 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <h3 class="subheading-2 foreground-secondary-text push-bottom text-align-center" fxLayout="column" fxLayoutAlign="center center" i18n>
+    {
+      totalBadgesActivity,
+      plural,
+        =1 { {{'PROFILE.PLATFORM.BADGES.SUBTITLE' | translate: {fullName: profileUser.fullName} }} }
+        other { {{'PROFILE.PLATFORM.BADGES.SUBTITLE_PLURAL' | translate: {fullName: profileUser.fullName, value: totalBadgesActivity} }} }
+    }
+  </h3>
+  <app-badges-chart [badges]="badgesToDisplay" class="push-bottom-sm"></app-badges-chart>
+  <div fxLayout="row wrap" class="push-bottom-sm" fxLayoutAlign="start" fxLayoutAlign.lt-sm="center">
+    <div
+      *ngFor="let badge of badges; let index=index"
+      class="push-bottom-sm badge-container pointer"
+      fxLayoutAlign="start center"
+      [ngClass]="{'push-right-sm': (index + 1) % 4 !==0}"
+      fxFlex="0 1 calc(25% - 24px)"
+      [ngClass.md]="{'push-right-sm': (index + 1) % 3 !==0}"
+      fxFlex.md="0 1 calc(33% - 24px)"
+      [ngClass.sm]="{'push-right-sm': (index + 1) % 2 !==0}"
+      fxFlex.sm="0 1 calc(50% - 24px)"
+      [ngClass.lt-sm]="{'push-right-sm': false}"
+      fxFlex.lt-sm="0 1 calc(100% - 24px)"
+      (click)="goToDetail(badge)"
+    >
+      <div
+        [ngClass]="badge.category.toString() | lowercase"
+        class="initials-container"
+        fxLayout="row" fxLayoutAlign="center center" fxFlex="48px"
+        [ngStyle]="{'background-color': getCategoryColor(badge.category)}">
+        <span
+          class="title push-bottom-none initials"
+          [matTooltip]="roleEnum.toString(badge.role)"
+          matTooltipPosition="below"
+        >
+          {{getInitials(badge)}}
+        </span>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="start stretch" class="push-left-xxs w-100">
+        <div class="badge-context" fxLayout="row" fxLayoutAlign="space-between start">
+          <div class="caption foreground-secondary-text">
+            {{'PROFILE.PLATFORM.BADGES.CATEGORY.' + badge.category  | translate}}
+          </div>
+          <div *ngIf="badge.num > 1" class="counter mini-caption">{{badge.num}}x</div>
+        </div>
+        <div
+          class="badge-role body-2"
+          [matTooltip]="roleEnum.toString(badge.role)"
+          matTooltipPosition="below"
+          exoLineClamp [lines]="1">
+            {{roleEnum.toString(badge.role)}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <h3
+    *ngIf="badgesToDisplay.length > sliceItems"
+    class="pointer text-decoration-underline"
+    (click)="showMoreBadges()"
+  >
+    {{collapse ? ('PROFILE.PLATFORM.BADGES.SHOW_MORE' | translate) : ('PROFILE.PLATFORM.BADGES.SHOW_LESS' | translate) }}
+  </h3>
+</div>

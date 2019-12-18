@@ -1,0 +1,22 @@
+@import "~@openexo/design-system/variables";
+
+.accordion-feedback .mat-expansion-panel-header {
+  padding: map-get($spaceMeasures, 'xs') map-get($spaceMeasures, 'sm');
+}
+
+.accordion-feedback .mat-expansion-panel {
+  border-radius: map-get($spaceMeasures, 'xxs');
+}
+
+.mat-expansion-panel-header-description, .mat-expansion-panel-header-title {
+  align-items: center;
+}
+
+.rating-average {
+  margin-left: auto;
+  padding-top: 8px;
+}
+
+.rating-average-span {
+  padding-top: 8px;
+}

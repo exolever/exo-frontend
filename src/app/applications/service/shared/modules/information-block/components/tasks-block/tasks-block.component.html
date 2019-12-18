@@ -1,0 +1,22 @@
+<h2 fxLayout="row" fxLayoutAlign="space-between center">
+  {{ taskBlock.title ? taskBlock.title : 'SERVICE.TASKS.TITLE' | translate }}
+  <span *ngIf="!hasAllDone"
+        (click)='onMarkAllAsDone(taskBlock.contents)'
+        class="icon-svg pointer tasks-pending"
+        matTooltip="{{ 'SERVICE.TASKS.MARK_ALL_DONE' | translate }}"></span>
+  <span *ngIf="hasAllDone"
+        (click)='onMarkAllAsTodo(taskBlock.contents)'
+        class="icon-svg pointer tasks-done"
+        matTooltip="{{ 'SERVICE.TASKS.MARK_ALL_TODO' | translate }}"></span>
+</h2>
+
+<mat-divider class="pad-top"></mat-divider>
+<div fxLayout="column">
+  <app-task-item-list *ngFor="let task of taskBlock.contents; let last = last"
+                      [task]="task"
+                      (onMarkAsDone)="onMarkAsDone($event)"
+                      (onMarkAsToDo)="onMarkAsToDo($event)"
+                      [ngClass]="{'push-bottom': !last}"
+  >
+  </app-task-item-list>
+</div>

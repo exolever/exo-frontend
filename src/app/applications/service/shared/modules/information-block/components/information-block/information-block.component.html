@@ -1,0 +1,28 @@
+<ng-container [ngSwitch]="block.type">
+  <app-tasks-block *ngSwitchCase="informationBlockEnum.Task"
+    [taskBlock]="block"
+    [step]="step"
+    [assignment]="assignment"
+    [hasAllDone]="hasAllDone()"
+    (markAllAsDone)="onMarkAllAsDone($event)"
+    (markAllAsTodo)="onMarkAllAsTodo($event)"
+    (markAsDone)="onMarkAsDone($event)"
+    (markAsTodo)="onMarkAsTodo($event)">
+  </app-tasks-block>
+
+  <app-advices-block *ngSwitchCase="informationBlockEnum.Advice" [advicesBlock]="block">
+  </app-advices-block>
+
+  <ng-container *ngSwitchCase="informationBlockEnum.Video">
+    <h2 *ngIf="block.title">{{block.title}}</h2>
+    <h3 *ngIf="block.subtitle">{{block.subtitle}}</h3>
+    <app-service-video  [embed]="true" [video]="block.contents[0]">
+    </app-service-video>
+  </ng-container>
+
+  <app-resource-block *ngSwitchCase="informationBlockEnum.Resource" [resourceBlock]="block">
+  </app-resource-block>
+
+  <app-service-text *ngSwitchCase="informationBlockEnum.Text" [textBlock]="block">
+  </app-service-text>
+</ng-container>

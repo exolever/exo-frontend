@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="img-avatar" [ngStyle]="{'background-image': avatar ? 'url(' + avatar + ')' : 'none' }"  >
+    <input id="custom-input" type="file" (change)="fileChangeListener($event)" accept="image/*" #customInput>
+  </div>
+
+  <div class="action-pictures" fxLayout="row" fxLayoutAlign="space-around center">
+    <mat-icon
+      (click)="changePicture()"
+      class="mat-24 change-picture"
+      matTooltip="{{'TOOLTIP.CHANGE_PICTURE' | translate}}"
+    >
+      camera_alt
+    </mat-icon>
+  </div>
+</div>

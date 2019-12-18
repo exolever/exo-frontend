@@ -1,0 +1,64 @@
+<div fxLayoutAlign="center center" class="login">
+  <div fxLayout="row wrap" fxLayoutAlign="center start" [fxFlex]="'0 1 ' + config.layoutMaxWidth">
+    <div
+      fxLayoutAlign="center"
+      fxFlex="grow"
+      ngClass.gt-sm="push-bottom-sm"
+      ngClass.lt-sm="pad-top"
+      data-e2e="page-title">
+      <h2 class="title">{{ 'PUBLIC.SIGN_UP_LOW' | translate }}</h2>
+    </div>
+    <app-alert *ngIf="showAlert"
+               [message]="userMessage"
+               typeAlert=error
+    ></app-alert>
+    <form [formGroup]="signupForm"
+          fxLayout="row wrap"
+          fxFlex="grow"
+          (ngSubmit)="onSubmit()"
+          ngClass.lt-sm="pad-right pad-left"
+    >
+      <mat-form-field color="primary" fxFlex="grow" appearance="fill">
+        <mat-label>
+          {{'PUBLIC.SIGN_UP_EMAIL' | translate }}
+        </mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+        >
+        <mat-error align="start">
+          {{signupForm.get('email').errors| humanizeFormErrors}}
+        </mat-error>
+      </mat-form-field>
+      <show-hide-password fxFlex="grow">
+        <mat-form-field color="primary" fxFlex="grow" appearance="fill">
+          <mat-label>
+            {{'PUBLIC.PASSWORD' | translate }}
+          </mat-label>
+          <input
+            #showHideInput
+            matInput
+            type="password"
+            formControlName="password"
+          >
+          <mat-error align="start">
+            {{signupForm.get('password').errors| humanizeFormErrors}}
+          </mat-error>
+        </mat-form-field>
+      </show-hide-password>
+      <div fxFlex="grow" fxLayoutAlign="center" class="push-bottom-sm">
+        <button
+          mat-flat-button
+          type="submit"
+          color="primary"
+        >
+          {{'PUBLIC.SIGN_UP' | translate }}
+        </button>
+      </div>
+    </form>
+    <a class="body-1" color="primary" routerLink="{{ goToLogin() }}">
+      {{'PUBLIC.ALREADY_HAVE_ACCOUNT' | translate }}
+    </a>
+  </div>
+</div>

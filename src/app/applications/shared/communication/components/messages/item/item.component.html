@@ -1,0 +1,31 @@
+<div fxLayout="column" fxLayoutAlign="start start" class="item-container" [ngClass]="{ 'group': message.mustGroup }">
+  <div *ngIf="message.showLabelNewMessages" class="new-messages body-2" fxLayout="row" fxLayoutAlign="space-evenly center">
+    <span>{{ 'PROJECT.TEAM_COMMUNICATION.ITEM.NEW' | translate | uppercase }}</span>
+    <mat-icon class="new-messages__icon">arrow_downward</mat-icon>
+  </div>
+  <div *ngIf="!message.mustGroup" [fxLayout]="direction(message.isYour)" fxLayoutAlign="start" fxLayoutGap="16px"
+       class="w-100 push-bottom-xxs"
+  >
+    <ng-container *ngIf="message.isYour; else otherUsers">
+      <exo-avatar [src]="message.user.profilePicture"
+                  [alt]="message.user.name"
+                  [tooltip]="message.user.name"
+      ></exo-avatar>
+    </ng-container>
+    <ng-template #otherUsers>
+      <exo-avatar-system [name]="message.user.name" [description]="message.user.userTitle">
+        <exo-avatar [src]="message.user.profilePicture"
+                    [alt]="message.user.name"
+                    [tooltip]="message.user.name"
+        ></exo-avatar>
+      </exo-avatar-system>
+    </ng-template>
+  </div>
+  <div [ngClass]="['box', 'w-100', 'box-' + direction(message.isYour)]">
+    <div class="message-item">
+      <div class="mat-body push-bottom-xxs line-breaker">{{message.message}}</div>
+      <app-display-attached *ngIf="message.files && message.files.length > 0" [resources]="message.files"></app-display-attached>
+      <span class="caption-1 foreground-secondary-text">{{ message.created | amTimeAgo }}</span>
+    </div>
+  </div>
+</div>

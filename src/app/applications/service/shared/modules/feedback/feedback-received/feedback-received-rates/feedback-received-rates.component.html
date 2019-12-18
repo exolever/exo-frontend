@@ -1,0 +1,80 @@
+<section>
+  <div fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="space-between">
+      <h2 class="push-none" fxLayout="column" fxLayoutAlign="center" mat-dialog-title>{{getTitle()}}</h2>
+      <div (click)="onClose()" class="push-left-sm pointer">
+        <mat-icon>clear</mat-icon>
+      </div>
+    </div>
+    <div class="push-top-sm push-bottom-sm" fxLayout="row" fxLayoutAlign="space-between">
+      <h3 *ngIf="showLink(); else noLink"
+          class="push-none">{{'SERVICE.REFLECT.RECEIVED_FEEDBACK.HEAD_COACH_ABOUT' | translate }}
+        <span (click)="navigateToProfile(team.coachSlug)" class="pointer link">{{team.coachName}}</span>
+        {{'SERVICE.REFLECT.RECEIVED_FEEDBACK.HEAD_COACH_ABOUT_END' | translate }}
+      </h3>
+      <ng-template #noLink>
+        <h3 class="push-none">{{getSubtitle()}}</h3>
+      </ng-template>
+      <div class="push-left-sm" fxLayout="column" fxLayoutAlign="flex-end">
+        <app-material-icon-star-rating
+          [allowHalf]="true"
+          [numberOfGrades]="5"
+          [rating]="feedback.averageRate"
+          [readOnly]="true"
+          [showOnlyFilled]="true"
+          [size]="'regular'"
+          class="star-rating"
+          fxFlexAlign="center"
+          fxHide.lt-sm
+        ></app-material-icon-star-rating>
+        <div fxHide.gt-xs fxLayout="row">
+          <mat-icon class="star">star</mat-icon>
+          <span class="grey pad-left-xxs" fxFlexAlign="center">{{feedback.averageRate}}/{{maxGrade}}</span>
+        </div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-dialog-content class="pad-bottom-sm">
+      <div class="push-top-sm" fxLayout="column" fxLayoutGap="24px">
+        <div *ngFor="let reviewer of feedback.results" class="item pad-sm" fxFlex="grow"
+             fxLayoutAlign="space-between center">
+          <div fxLayout="row" fxLayout.lt-sm="column">
+            <exo-avatar-system
+              [name]="reviewer.fullName"
+            >
+              <exo-avatar [alt]="reviewer.thumbnail"
+                          [size]="'xs'"
+                          [src]="reviewer.thumbnail"
+                          [tooltip]="reviewer.fullName"
+              ></exo-avatar>
+            </exo-avatar-system>
+            <div fxFlexAlign="start" fxLayout="row" [ngClass.xs]="{'push-left': true}">
+            <span [ngClass.gt-xs]="{'push-left-xxs': true}"
+                  [ngClass.xs]="{'push-left': true}"
+                  class="grey">{{'SERVICE.REFLECT.RECEIVED_FEEDBACK.RATED' | translate }}</span>
+            </div>
+          </div>
+          <div class="right-side" fxFlexAlign="start" fxLayout="column">
+            <div>
+              <app-material-icon-star-rating
+                [allowHalf]="true"
+                [numberOfGrades]="maxGrade"
+                [readOnly]="true"
+                [showOnlyFilled]="true"
+                [size]="'regular'"
+                class="star-rating"
+                fxFlexAlign="center"
+                fxHide.lt-sm
+                rating="{{reviewer.rate}}"
+              ></app-material-icon-star-rating>
+              <div fxHide.gt-xs fxLayout="row">
+                <mat-icon class="star">star</mat-icon>
+                <span class="grey pad-left-xxs" fxFlexAlign="center">{{reviewer.rate}}/{{maxGrade}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-dialog-content>
+  </div>
+</section>

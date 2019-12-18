@@ -1,0 +1,127 @@
+@import "variables";
+
+@mixin flex-row-center{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  place-content: center;
+}
+
+.wrapper{
+  width: 100%;
+}
+
+.container-events {
+  margin: 0 auto;
+}
+
+@media #{$one-card} {
+  .container-events, .container-search-filters {
+    max-width: 302px;
+    place-content: flex-start center;
+  }
+  .search{
+    width:282px;
+  }
+  .search-button, .filters{
+    display: none;
+  }
+  .search-icon, .button-filters {
+    width: calc(100% - 20px);
+    @include flex-row-center;
+  }
+  .box {
+    margin-right: 0;
+  }
+}
+@media #{$two-cards} {
+  .container-events, .container-search-filters {
+    max-width: 632px;
+  }
+  .search-icon, .button-filters{
+    display: none;
+  }
+  .button-filters{
+    display: none !important;
+  }
+  .search-button{
+    @include flex-row-center;
+  }
+  .box:nth-child(2n) {
+    margin-right: 0;
+  }
+}
+
+@media #{$three-cards} {
+  .container-events, .container-search-filters {
+    max-width: 960px;
+  }
+  .filters {
+    display: flex;
+    flex-direction: row;
+    place-content: space-between;
+    align-items: flex-start;
+  }
+  .search-icon, .button-filters{
+    display: none;
+  }
+  .search-button{
+    @include flex-row-center;
+  }
+  .box:nth-child(3n) {
+    margin-right: 0;
+  }
+}
+
+.box {
+  border-radius: 8px;
+  height: 350px;
+  box-shadow: 0 2px 8px 0 rgba(70, 70, 75, 0.32);
+  margin-bottom: 24px;
+  margin-right: 24px;
+}
+
+.container-search-filters {
+  margin:0 auto 30px auto;
+}
+.button-filters, .clear-results {
+  margin-top: 20px;
+}
+
+.search, .filters, .clear-results {
+  width: calc(100% - 20px);
+}
+
+.button-filters button {
+  width: 100%;
+}
+
+.search-input {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  color: $accent-color;
+}
+.search-button, .search-icon {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.clean-search {
+  margin: auto 0 auto -45px;
+  font-size: 15px;
+  padding: 0 12px;
+  color:$grey-text-color;
+}
+.no-events {
+  font-size: 20px;
+  color: $grey-text-color;
+  .message {
+    margin-top:34px;
+    text-align: center;
+  }
+}
+

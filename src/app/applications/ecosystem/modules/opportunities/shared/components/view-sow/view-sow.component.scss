@@ -1,0 +1,11 @@
+@import 'themes/exo-platform-light-theme';
+
+.mark-text{
+  color: mat-color($exo-indigo, 900);
+}
+
+a {
+  &:focus {
+    outline: none;
+  }
+}

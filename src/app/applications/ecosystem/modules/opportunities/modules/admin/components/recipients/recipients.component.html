@@ -1,0 +1,40 @@
+<div [ngClass]="{'push-bottom': alert.showMessage}">
+  <exo-alert
+    #alert
+    [message]="'ECOSYSTEM.OPPORTUNITIES.RECIPIENTS_HELP' | translate"
+    [isCloseable]="true"
+    [closeButtonText]="'COMMON.CLOSE' | translate"
+    typeAlert="info"
+  ></exo-alert>
+</div>
+<mat-card>
+  <mat-card-content>
+    <mat-list role="list" class="pad-top-none">
+      <ng-container *ngFor="let recipient of opportunity.recipients; let isLast = last">
+        <mat-list-item role="listitem" class="recipient-item">
+          <div class="recipient body-1 w-100" fxLayout="row" fxLayoutAlign="start center" >
+            <div [fxFlex.lt-sm]="'recipient.hasApplied() ? 50%: 85%'" [fxFlex.gt-xs]="'recipient.hasApplied() ? 33%: 66%'">
+              <exo-avatar-system [name]="recipient.fullName" [truncateName]="true">
+                <exo-avatar size="xs" [src]="recipient.profilePictures[1][1]" [alt]="recipient.fullName"></exo-avatar>
+              </exo-avatar-system>
+            </div>
+            <div fxFlex.lt-sm="35%" fxFlex.gt-xs="33%" *ngIf="recipient.hasApplied()" class="text-align-center">
+              <span class="pretty-label dark-blue caption-2">{{'ECOSYSTEM.OPPORTUNITIES.APPLIED' | translate | uppercase}}</span>
+            </div>
+            <div fxFlex.lt-sm="15%" fxFlex.gt-xs="33%" class="actions" fxLayout="row" fxLayoutAlign="end center">
+              <button mat-icon-button matTooltip="{{'TOOLTIP.AVAILABLE_ACTIONS' | translate}}" [matMenuTriggerFor]="menu" (click)="stopPropagation($event)">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" x-position="before" (closed)="onMenuClosed()">
+                <button mat-menu-item (click)="onConversation(recipient)">
+                  <span>{{'ECOSYSTEM.OPPORTUNITIES.ACTIONS.GO_CONVERSATION' | translate}}</span>
+                </button>
+              </mat-menu>
+            </div>
+          </div>
+        </mat-list-item>
+        <mat-divider *ngIf="opportunity.recipients.length > 1 && !isLast" class="mat-divider-custom"></mat-divider>
+      </ng-container>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

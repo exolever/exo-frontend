@@ -1,0 +1,44 @@
+<mat-form-field floatLabel="never" class="w-100" >
+  <mat-icon matPrefix class="search-icon pad-right">search</mat-icon>
+  <input
+    matInput
+    type="text"
+    placeholder="{{'ECOSYSTEM.OPPORTUNITIES.SEARCH' | translate}}"
+    [formControl]="searchPublishedByYouBox"
+    [value]="textPublishedByYou$ | async"
+    #search
+  >
+  <mat-icon matSuffix class="pointer" *ngIf="searchPublishedByYouBox.value" (click)="searchPublishedByYouBox.setValue('')">close</mat-icon>
+</mat-form-field>
+<div *ngIf="emptyMoment$ | async">
+  <exo-empty-moment *ngIf="emptyMoment$ | async">
+    <div class="empty-message text-align-center subheading-2">
+      {{'ECOSYSTEM.OPPORTUNITIES.EMPTY_TITLE' | translate}}
+    </div>
+  </exo-empty-moment>
+</div>
+
+<div *ngIf="loading$ | async; else cards" fxLayout="row" fxLayoutAlign="center" class="w-100">
+  <app-component-spinner-loader></app-component-spinner-loader>
+</div>
+
+<ng-template #cards>
+  <section class="push-bottom" fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutAlign.lt-sm="center stretch">
+    <app-opportunity-card-by-you
+      *ngFor="let opportunity of opportunitiesByYou$ | async"
+      [opportunity]="opportunity"
+      class="push-bottom-sm w-100"
+    ></app-opportunity-card-by-you>
+  </section>
+
+  <mat-paginator
+    *ngIf="!(emptyMoment$ | async) && !(loading$ | async) && (totalOpportunitiesPublishedByYou$ | async)"
+    class="transparent"
+    (page)="paginatorChange($event)"
+    [length]="totalOpportunitiesPublishedByYou$ | async"
+    [pageSize]="pageSizePublishedByYou$ | async"
+    [pageIndex]="pageIndexPublishedByYou$ | async"
+    [pageSizeOptions]="[5, 15, 25]">
+  </mat-paginator>
+
+</ng-template>

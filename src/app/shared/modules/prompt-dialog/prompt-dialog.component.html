@@ -1,0 +1,20 @@
+<div mat-dialog-title *ngIf="data.title">{{data.title}}</div>
+<mat-dialog-content *ngIf="data.messages || data.extraHTML" cdkFocusRegionstart>
+  <p *ngFor="let message of data.messages" class="body-1">{{message}}</p>
+  <div *ngIf="data.extraHTML" [innerHTML]="data.extraHTML"></div>
+  <ng-container *ngIf="data.textArea">
+    <mat-form-field class="push-top push-bottom-none w-100">
+      <textarea
+        matTextareaAutosize
+        matAutosizeMaxRows="{{data.textArea.maxRows || 5 }}"
+        placeholder="{{data.textArea.placeholder}}"
+        matInput
+        [formControl]="textAreaField"></textarea>
+      <mat-error>{{textAreaField.errors | humanizeFormErrors }}</mat-error>
+    </mat-form-field>
+  </ng-container>
+</mat-dialog-content>
+<mat-dialog-actions [ngClass]="{'reduced-margin': data.textArea}">
+  <button mat-flat-button color="accent" type="button" [mat-dialog-close]="false" *ngIf="data.secondaryButton" >{{data.secondaryButton}}</button>
+  <button mat-flat-button color="primary" type="button" *ngIf="data.primaryButton" (click)="primaryAction()" >{{data.primaryButton}}</button>
+</mat-dialog-actions>

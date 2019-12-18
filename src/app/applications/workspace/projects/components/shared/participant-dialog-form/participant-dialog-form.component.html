@@ -1,0 +1,62 @@
+<app-overlay-template *ngIf="data.showFullScreen; else containerDialog" [title]="data.title" (close)="onClose()">
+  <ng-container [ngTemplateOutlet]="content"></ng-container>
+  <ng-container [ngTemplateOutlet]="actions"></ng-container>
+</app-overlay-template>
+
+<ng-template #containerDialog>
+  <div mat-dialog-title class="text-transform-capitalize">{{data.title}}</div>
+  <mat-dialog-content>
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </mat-dialog-content>
+  <ng-container [ngTemplateOutlet]="actions"></ng-container>
+</ng-template>
+
+
+<ng-template #content>
+  <form [formGroup]="form" novalidate autocomplete="off" fxLayout="column">
+    <mat-form-field appearance="fill"  fxFlex="100%">
+      <mat-label>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.TEAM_LABEL' | translate}}</mat-label>
+      <mat-select formControlName="teams" multiple>
+        <mat-option *ngFor="let team of allTeams" [value]="team">
+          <div class="text-truncate"> {{ team.name }} </div>
+        </mat-option>
+      </mat-select>
+      <mat-error>{{form.get('teams').errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+    <h3 *ngIf="!data.member">{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.ONE_PARTICIPANT_TITLE' | translate}}</h3>
+    <ng-container *ngIf="!data.member || data.member.canEditUserDataForParticipants()">
+      <mat-form-field appearance="fill" fxFlex="100%">
+        <mat-label>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.USER_NAME_LABEL' | translate}}</mat-label>
+        <input matInput type="text" formControlName="name"/>
+        <mat-hint align="end">{{form.get('name')?.value?.length}} / {{validationConfig.maxLength}}</mat-hint>
+        <mat-error>{{form.get('name').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex="100%">
+        <mat-label>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.USER_EMAIL_LABEL' | translate}}</mat-label>
+        <input matInput type="text" formControlName="email"/>
+        <mat-error>{{form.get('email').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+    </ng-container>
+    <ng-container *ngIf="!data.member">
+      <h3 >{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.SEVERAL_PARTICIPANTS.TITLE' | translate}}</h3>
+      <p>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.SEVERAL_PARTICIPANTS.DESCRIPTION' | translate}}
+        <a href="{{fileExample}}" target="_blank">{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.SEVERAL_PARTICIPANTS.EXAMPLE' | translate}}</a>
+      </p>
+      <div class="push-top-xxs">
+        <button type="button" (click)="onClickUploadFile()" mat-button color="primary">{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.SEVERAL_PARTICIPANTS.UPLOAD_BUTTON' | translate}}</button>
+      </div>
+    </ng-container>
+  </form>
+</ng-template>
+<ng-template #actions>
+  <mat-dialog-actions align="end">
+    <button mat-flat-button color="accent" (click)="onClose()">
+      {{ 'COMMON.ACTIONS.CANCEL' | translate }}
+    </button>
+    <button mat-flat-button color="primary" cdkFocusRegionstart type="submit" (click) ="onSave()">
+      {{ 'COMMON.ACTIONS.SAVE' | translate }}
+    </button>
+  </mat-dialog-actions>
+</ng-template>
+
+

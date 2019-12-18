@@ -1,0 +1,168 @@
+@import "variables";
+@import "~@openexo/design-system/mixins";
+@import 'themes/exo-platform-light-theme';
+@import 'themes/exo-platform-dark-theme';
+
+:host {
+  justify-content: center;
+
+  .chart-help-container:nth-of-type(1) {
+    // Important need because library remove em from size.
+    left: calc(50% - 3em) !important;
+  }
+
+  .chart-container {
+    position: relative;
+    height: 666px;
+    app-skills-chart, .image-container {
+      position: absolute;
+    }
+    // Just to keep compatibility with the design
+    exo-avatar {
+      ::ng-deep img {
+        width: 122px;
+        height: 122px;
+      }
+    }
+    .circle-container,
+    .circle-container-tablet {
+      position: relative;
+      p {filter: grayscale(100%);
+      }
+      .exoattr-tooltip {
+        display: inline-flex;
+        margin-left: 3px;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3em;
+        min-width: 20px;
+        height: 20px;
+        color: mat-color($exo-grey, 900);
+        background-color: map_get($mat-light-theme-foreground, divider);
+        &.first {
+          margin-right: .3em !important;
+        }
+        &.right {
+          color: white;
+          background-color: mat-color($exo-blue, 500);
+        }
+        &.left {
+          margin-right: .3em !important;
+          color: white;
+          background-color: mat-color($exo-red, 500);
+        }
+      }
+    }
+    .circle-container {
+      @include on-circle($item-count: 11, $circle-size: 599px, $item-size: 8em);
+    }
+    .circle-container-tablet {
+      @include on-circle($item-count: 11, $circle-size: 422px, $item-size: 8em);
+    }
+  }
+  .align-right {
+    text-align: right;
+  }
+  .title-below {
+    border-top: 1px solid rgba(70, 70, 75, 0.16);
+    &:first-child {
+      padding: 1em 0 1em 3em;
+    }
+    &:last-child {
+      padding: 1em 3em 1em 0;
+    }
+    .title-red {
+      color: mat-color($exo-red, 500);
+    }
+    .title-blue {
+      color: mat-color($exo-blue, 500);
+    }
+  }
+}
+
+div.point-bars {
+  border-radius: 1em;
+  height: 9px;
+  width: 88px;
+  overflow: hidden;
+  background-color: rgba(70, 70, 75, .04);
+  .marked {
+    height: 100%;
+    &:first-child {
+      background-color: mat-color($exo-purple, 100);
+    }
+    &:nth-child(2) {
+      background-color: mat-color($exo-purple, 200);
+
+    }
+    &:nth-child(3) {
+      background-color: mat-color($exo-purple, 300);
+
+    }
+    &:nth-child(4) {
+      background-color: mat-color($exo-purple, 400);
+
+    }
+    &:last-child {
+      background-color: mat-color($exo-purple, 500);
+    }
+  }
+  .red {
+    height: 100%;
+    &:first-child {
+      background-color: mat-color($exo-red, 100);
+    }
+    &:nth-child(2) {
+      background-color: mat-color($exo-red, 200);
+
+    }
+    &:nth-child(3) {
+      background-color: mat-color($exo-red, 300);
+
+    }
+    &:nth-child(4) {
+      background-color: mat-color($exo-red, 400);
+
+    }
+    &:last-child {
+      background-color: mat-color($exo-red, 500);
+    }
+  }
+  .blue {
+    height: 100%;
+    &:first-child {
+      background-color: mat-color($exo-blue, 100);
+    }
+    &:nth-child(2) {
+      background-color: mat-color($exo-blue, 200);
+
+    }
+    &:nth-child(3) {
+      background-color: mat-color($exo-blue, 300);
+
+    }
+    &:nth-child(4) {
+      background-color: mat-color($exo-blue, 400);
+
+    }
+    &:last-child {
+      background-color: mat-color($exo-blue, 500);
+    }
+  }
+}
+
+
+/** colors */
+.private-icon {
+  font-size: 1.1em;
+  margin-right: .3em;
+}
+
+/** forced margins, defined this way bc theme overrides with !important */
+.top-margin {
+  margin-top: $xs;
+}
+.bottom-margin {
+  margin-bottom: $xs;
+}

@@ -1,0 +1,20 @@
+:host {
+  display: block;
+}
+
+
+::ng-deep div.html-content {
+  * {
+    white-space: pre-wrap;
+    word-break: break-word;
+    & img {
+      max-width: 100%;
+    }
+  }
+
+  // Reset design system margins to show in the same format that quill-editor work.
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+
+}

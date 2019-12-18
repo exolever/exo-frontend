@@ -1,0 +1,32 @@
+@import 'themes/exo-platform-light-theme';
+
+.container-personal-rating-kpi {
+  position: relative;
+  .personal-rating-kpi {
+    position: absolute;
+    font-size: 24px;
+    left: calc(50% - 18px) ;  // TODO use the right font-size from typographies
+    bottom: calc(50% - (24px / 2));
+    &.disabled {
+      color: map-get($exo-platform-light-theme-foreground, dividers);
+    }
+  }
+}
+
+.pie{
+  &.disabled ::ng-deep circle {
+    stroke: map-get($exo-platform-light-theme-foreground, dividers);
+  }
+  &.active {
+    margin-top: -100%;
+  }
+}
+
+.team-ranking {
+  height: 100%;
+
+  .team-ranking--footer {
+    margin-top: auto;
+  }
+
+}

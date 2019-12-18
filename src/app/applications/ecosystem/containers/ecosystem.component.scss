@@ -1,0 +1,10 @@
+.ecosystem-container {
+  display: flex;
+  min-height: 96vh;
+  flex-direction: column;
+
+  .content {
+    background-color: #f7f7f7;
+    flex: 1;
+  }
+}

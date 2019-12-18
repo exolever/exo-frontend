@@ -1,0 +1,58 @@
+<div *ngIf="!resource.isError()"
+     fxLayout="row wrap"
+     fxLayoutAlign="start start"
+     class="video-card"
+>
+  <div *ngIf="!resource.isDraft(); else commingSoon"
+       fxLayout="column"
+       fxLayoutAlign="center center"
+       fxFlex="grow"
+       class="thumbnail-video"
+       (click)="onShow()"
+       [ngStyle]="{'background-image': 'url(' + resource.thumbnail + ')'}"
+  >
+    <div class="play-button"></div>
+  </div>
+  <div fxFlex="grow">
+    <div
+      class="video-info"
+      fxLayout="row"
+      fxLayoutAlign="space-between start"
+    >
+      <span fxFlex="grow" class="video-title body-2">{{resource.name}}</span>
+      <span class="video-duration body-1 push-left-xxxs caption-1" [class.draft-mode]="resource.isDraft()">
+        {{resource.duration | formatDurationTime }}
+      </span>
+      <button *ngIf="canEditVideo() || canDeleteVideo()"
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        matTooltip="{{'TOOLTIP.AVAILABLE_ACTIONS' | translate }}"
+        [matTooltipDisabled]="tooltipDisabled"
+        class="edit-delete-button"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" x-position="before" (closed)="onMenuClosed()">
+        <button *ngIf="canEditVideo()" mat-menu-item (click)="onEdit()">
+          <mat-icon class="mat-18">edit</mat-icon>
+          <span>{{'MEDIA.EDIT' | translate}}</span>
+        </button>
+        <button *ngIf="canDeleteVideo()" mat-menu-item (click)="onDelete()">
+          <mat-icon class="mat-18">delete</mat-icon>
+          <span>{{'MEDIA.DELETE' | translate}}</span>
+        </button>
+      </mat-menu>
+    </div>
+    <!-- TODO: create a logic to hide the tabs when overflow and put them in a tooltip -->
+    <mat-chip-list class="video-tags push-top">
+      <mat-chip *ngFor="let tag of resource.tags">{{tag.name}}</mat-chip>
+    </mat-chip-list>
+  </div>
+</div>
+
+<!-- auxiliary templates -->
+<ng-template #commingSoon>
+  <div fxLayout="column" fxLayoutAlign="start end" class="thumbnail-video draft-mode">
+    <label fxFlexAlign="end" class="pad body-2 text-uppercase">{{'MEDIA.AVAILABLE_SOON' | translate}}</label>
+  </div>
+</ng-template>

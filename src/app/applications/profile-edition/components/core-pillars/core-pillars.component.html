@@ -1,0 +1,23 @@
+<section class="core-pillars" *ngIf="user">
+  <app-toggle-form
+    [form]="form"
+    [list]="pillarsList"
+    (submitted)="onSubmit()"
+    (onToggleItem)="toggleItem()"
+  >
+    <h3>
+      {{ 'ECOSYSTEM.PROFILE.EDIT.PILLARS.TITLE' | translate }}
+    </h3>
+    <p class="private caption-1">
+      <mat-icon class="mat-16">
+        lock
+      </mat-icon>
+      {{ 'ECOSYSTEM.PROFILE.EDIT.PRIVATE' | translate }}
+    </p>
+    <div class="push-bottom-sm description">
+      <p class="caption-1">
+        {{ 'ECOSYSTEM.PROFILE.EDIT.PILLARS.DESCRIPTION' | translate }}
+      </p>
+    </div>
+  </app-toggle-form>
+</section>

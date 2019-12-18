@@ -1,0 +1,32 @@
+@import '~@openexo/design-system/mixins';
+@import '~@openexo/design-system/variables';
+
+:host {
+  max-width: map-get($breakpoints, 'sm');
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-bottom: map-get($spaceMeasures, 'xs');
+}
+.team-communication {
+  width: 100%;
+  max-width: 960px;
+  padding: map-get($componentMeasure, '1x') 0;
+  @media #{map-get($mediaqueries, 'gt-sm')} {
+    width: 70vw;
+  }
+
+  .button-zoom {
+    padding-top: 6px;
+  }
+}
+
+.tc__members--person {
+  vertical-align: bottom;
+}
+
+.members-item {
+  &:not(:last-child) {
+    margin-bottom: map-get($spaceMeasures, 'xs');
+  }
+}

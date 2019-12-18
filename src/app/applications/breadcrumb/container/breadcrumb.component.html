@@ -1,0 +1,23 @@
+<ng-container
+  *ngIf="breadCrumb$ | async as breadcrumb"
+>
+  <section
+    *ngIf="breadcrumb.length > 0"
+    class="breadcrumb exo-platform"
+  >
+    <nav class="breadcrumb--nav body-2 foreground-secondary-text">
+      <!-- Truncate string break routerLink in Firefox browser. -->
+      <a
+        *ngFor="let crumb of breadcrumb; let last = last"
+        class="subheading-2 text-transform-capitalize"
+        queryParamsHandling="merge"
+        appTruncateString="60"
+        [ngClass]="{ 'current-step': last }"
+        [routerLink]="crumb.url"
+        [browsers]='["Chrome"]'
+      >
+        {{crumb.label}}
+      </a>
+    </nav>
+  </section>
+</ng-container>

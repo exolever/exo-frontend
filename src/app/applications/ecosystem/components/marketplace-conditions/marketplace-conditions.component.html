@@ -1,0 +1,28 @@
+<mat-card class="card-section">
+  <mat-card-content>
+    <h1 class="text-align-center">{{'ECOSYSTEM.OPPORTUNITIES.MARKETPLACE_CONDITIONS.WELCOME' | translate}}</h1>
+
+    <div class="video-container push-top-lg" fxLayout="column" fxLayoutAlign="center center">
+      <div class="video-responsive">
+        <iframe width="100%" height="100%" src="https://player.vimeo.com/video/348313736" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="subheading-2 push-top-sm foreground-secondary-text text-align-center">{{'ECOSYSTEM.OPPORTUNITIES.MARKETPLACE_CONDITIONS.DESCRIPTION' | translate}}</div>
+    <div class="push-top-lg text-align-center pointer" (click)="goToHelpCenter()">
+      <img class="w-100" fxShow.gt-xs fxHide.lt-sm src="/assets/banners/banner-marketplace-help-center.png" alt="">
+      <img class="w-100" fxHide.gt-xs fxShow.lt-sm src="/assets/banners/banner-marketplace-help-center_mobile.png" alt="">
+    </div>
+    <div class="push-top-lg" >
+      <mat-checkbox [formControl]="acceptControl" color="primary" ></mat-checkbox>
+      <span class="push-left-xxs">
+        {{'ECOSYSTEM.OPPORTUNITIES.MARKETPLACE_CONDITIONS.ACCEPT_CONDITIONS' | translate}}
+        <a (click)="seeMarketplaceConditions()" class="pointer">{{'ECOSYSTEM.OPPORTUNITIES.MARKETPLACE_CONDITIONS.LINK_CONDITIONS' | translate}}</a>
+        {{'ECOSYSTEM.OPPORTUNITIES.MARKETPLACE_CONDITIONS.AGREEMENT' | translate}}
+      </span>
+    </div>
+    <div class="push-top-lg" fxLayout="row" fxLayoutAlign="end start">
+      <button mat-flat-button color="primary" type="button" [disabled]="!acceptControl.value" (click)="acceptConditions()" class="push-left-xs">{{'ECOSYSTEM.OPPORTUNITIES.MARKETPLACE_CONDITIONS.GO_TO' | translate}}</button>
+    </div>
+  </mat-card-content>
+</mat-card>

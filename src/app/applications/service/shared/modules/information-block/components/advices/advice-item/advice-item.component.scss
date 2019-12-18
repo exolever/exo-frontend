@@ -1,0 +1,11 @@
+@import 'themes/exo-platform-dark-theme';
+
+.advice-icon {
+  border-radius: 50%;
+  min-width: 27px;
+  height: 27px;
+  line-height: 27px;
+  text-align: center;
+  color: map-get($mat-dark-theme-foreground, text);
+  background-color: map-get($mat-dark-theme-background, feeling-buttons);
+}

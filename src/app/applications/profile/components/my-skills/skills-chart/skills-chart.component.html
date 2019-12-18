@@ -1,0 +1,11 @@
+<div style="position: relative">
+  <ngx-charts-polar-chart
+    *ngIf="chartData"
+    [curve]="curve"
+    [scheme]="colorScheme"
+    [results]="chartData"
+    [view]="[chartSize, chartSize]"
+    [tooltipDisabled]="false"
+    [yAxisMinScale]="5"
+  ></ngx-charts-polar-chart>
+</div>

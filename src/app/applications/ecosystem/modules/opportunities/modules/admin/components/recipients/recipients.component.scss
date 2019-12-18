@@ -1,0 +1,11 @@
+@import '~@openexo/design-system/variables';
+
+.mat-list-item {
+  &.recipient-item {
+    padding: map-get($spaceMeasures, xxs) 0;
+  }
+}
+
+.mat-card-content {
+  padding: 0;
+}

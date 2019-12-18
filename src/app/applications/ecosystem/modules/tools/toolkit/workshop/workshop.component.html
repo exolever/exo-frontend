@@ -1,0 +1,34 @@
+<section class="push-bottom-lg push-top-lg" fxLayout="column">
+  <mat-card class="push-bottom-lg card-section">
+    <mat-card-content *ngIf="allowed">
+      <section class="push-bottom-sm">
+      <span class="section"> {{'TOOLKIT.TOOLKIT' | translate}} </span>
+      </section>
+      <h1>
+        {{'TOOLKIT.WORKSHOP.TITLE' | translate}}
+      </h1>
+      <app-resource-item *ngFor="let resource of documents" [resource]="resource" class="push"></app-resource-item>
+
+      <p class="mat-body">{{'TOOLKIT.WORKSHOP.LOGISTICS' | translate}}</p>
+      <ul class="mat-body">
+        <li>
+          {{'TOOLKIT.WORKSHOP.L1' | translate}}
+        </li>
+        <li>
+          {{'TOOLKIT.WORKSHOP.L2' | translate}}
+        </li>
+      </ul>
+
+      <p class="mat-body">{{'TOOLKIT.WORKSHOP.MATERIALS' | translate}}</p>
+      <ul class="mat-body">
+        <li>{{'TOOLKIT.WORKSHOP.M1' | translate}}</li>
+        <li>{{'TOOLKIT.WORKSHOP.M2' | translate}}</li>
+        <li>{{'TOOLKIT.WORKSHOP.M3' | translate}}</li>
+        <li>{{'TOOLKIT.WORKSHOP.M4' | translate}}</li>
+        <li>{{'TOOLKIT.WORKSHOP.M5' | translate}}</li>
+        <li>{{'TOOLKIT.WORKSHOP.M6' | translate}}</li>
+      </ul>
+      <app-resource-item *ngFor="let resource of materials" [resource]="resource" class="push"></app-resource-item>
+    </mat-card-content>
+  </mat-card>
+</section>

@@ -1,0 +1,142 @@
+<div *ngIf="isValidSlug && checkedSlug" [formGroup]="form" class="wrapper">
+  <div *ngIf="showIntro">
+    <exq-intro (clickAction)="onStart()" [lang]="lang"></exq-intro>
+  </div>
+  <form *ngIf="!showIntro" [formGroup]="form">
+    <div *ngIf="stepList" class="header flex">
+      <circle-progress
+        [animation]="true"
+        [percent]="(selectedIdx/stepList.length)*100"
+        [radius]="30"
+        [showSubtitle]="false"
+        [showUnits]="false"
+        [titleFontSize]="10"
+        [title]="printTitle(selectedIdx)"
+        class="flex circle-progress"
+      ></circle-progress>
+      <div class="flex column label-step">
+        <h2 *ngIf="stepList[selectedIdx] as step else lastStep" class="flex-end bold">
+          {{translations[step.section]}}
+        </h2>
+        <h3 *ngIf="stepList[selectedIdx+1] as nextStep" class="flex-end">
+          {{translations.nextStep}}: {{translations[nextStep.section]}}
+        </h3>
+        <ng-template #lastStep>
+          <h2 class="flex-end bold">
+            {{translations.userInfo}}
+          </h2>
+        </ng-template>
+      </div>
+    </div>
+    <mat-horizontal-stepper #stepper (selectionChange)="setAsDone($event)" *ngIf="stepList" formArrayName="steps"
+                            linear>
+      <mat-step *ngFor="let step of stepList; let i = index" [completed]="false" [formGroupName]="i"
+                [stepControl]="steps.get([i])">
+        <div *ngFor="let question of step.questions" class="quest-wrapper flex">
+          <div class="quest-title flex">
+            <p>{{question.name}}</p>
+          </div>
+          <div class="flex radio-wrapper">
+            <mat-radio-group class="flex column" formControlName="{{question.pk}}">
+              <mat-radio-button *ngFor="let answer of question.options" [value]="answer.pk"
+                                class="margin-bottom-xs">{{answer.value}}</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div class="flex footer">
+          <div class="hide-mobile logo-wrapper">
+            <span class="brand">Powered by </span>
+            <div class="brand-logo"></div>
+          </div>
+          <div class="flex button-group">
+            <button (click)="goToTop()"
+                    [disabled]="steps.get([i]).invalid"
+                    class="btn-space hide-desktop"
+                    color="primary"
+                    mat-flat-button
+                    matStepperNext>
+              {{translations.nextBtn}}
+            </button>
+            <button (click)="goToTop()" *ngIf="i" class="btn-space" color="accent" mat-flat-button matStepperPrevious>
+              {{translations.backBtn}}
+            </button>
+            <button (click)="goToTop()"
+                    [disabled]="steps.get([i]).invalid"
+                    class="btn-space hide-mobile"
+                    color="primary"
+                    mat-flat-button
+                    matStepperNext>
+              {{translations.nextBtn}}
+            </button>
+          </div>
+          <div class="hide-desktop logo-wrapper">
+            <span class="brand">Powered by </span>
+            <div class="brand-logo"></div>
+          </div>
+        </div>
+      </mat-step>
+      <mat-step [completed]="false">
+        <form [formGroup]="form" class="container-form">
+          <mat-form-field>
+            <label>{{translations.nameLbl}}<span class="required">*</span></label>
+            <input formControlName="name" matInput required>
+          </mat-form-field>
+          <mat-form-field>
+            <label>{{translations.emailLbl}}<span class="required">*</span></label>
+            <input formControlName="email" matInput required>
+          </mat-form-field>
+          <mat-form-field>
+            <label>{{translations.orgLbl}}</label>
+            <input formControlName="organization" matInput>
+          </mat-form-field>
+          <mat-form-field>
+            <label>{{translations.industryLbl}}<span class="required">*</span></label>
+            <mat-select formControlName="industry">
+              <mat-option *ngFor="let industry of industries" [value]="industry.pk">
+                {{industry.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="flex footer">
+            <div class="hide-mobile logo-wrapper">
+              <span class="brand">Powered by</span>
+
+              <div class="brand-logo"></div>
+            </div>
+            <div class="flex button-group">
+              <button (click)="onSubmit()" [disabled]="(!form.valid || submitted) && !checkedAgreement"
+                      class="btn-space hide-desktop"
+                      color="primary"
+                      mat-flat-button type="submit">
+                {{translations.sendBtn}}
+              </button>
+              <button (click)="stepper.reset(); onReset()" class="btn-space reset hide-mobile" color="primary"
+                      mat-button>{{translations.resetBtn}}</button>
+              <button (click)="goToTop()" class="btn-space" color="accent" mat-flat-button
+                      matStepperPrevious>{{translations.backBtn}}</button>
+              <button (click)="onSubmit()" [disabled]="(!form.valid || submitted) && !checkedAgreement"
+                      class="btn-space hide-mobile"
+                      color="primary"
+                      mat-flat-button type="submit">
+                {{translations.sendBtn}}
+              </button>
+              <button (click)="stepper.reset(); onReset()" class="btn-space reset hide-desktop" color="primary"
+                      mat-button>{{translations.resetBtn}}</button>
+            </div>
+            <exq-agreement (change)="onCheck($event)" [lang]="lang" class="hide-desktop"></exq-agreement>
+            <div class="logo-wrapper hide-desktop">
+              <span class="brand">Powered by</span>
+              <div class="brand-logo"></div>
+            </div>
+          </div>
+          <exq-agreement (change)="onCheck($event)" [lang]="lang" class="hide-mobile"></exq-agreement>
+          <exq-score *ngIf="submitted" [lang]="lang" [score]="total" [showResults]="showResults"></exq-score>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </form>
+</div>
+
+<div *ngIf="!isValidSlug && checkedSlug">
+  <h1>{{translations.invalidURL}}</h1>
+</div>

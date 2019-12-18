@@ -1,0 +1,37 @@
+<mat-form-field appearance="fill" class="input-autocomplete push-none">
+  <mat-label>
+    {{ 'ECOSYSTEM.PROFILE.EDIT.EXPERTISE_AREAS.START_TYPING' | translate }}
+  </mat-label>
+  <input
+    matInput
+    [formControl]="autocompleteControl"
+    [matAutocomplete]="auto"
+  >
+</mat-form-field>
+<mat-autocomplete #auto="matAutocomplete">
+  <mat-option
+    #option
+    *ngFor="let item of filteredItems | async"
+    [value]="item"
+    (onSelectionChange)="selectedOption($event)"
+    [disabled]="addedPreviously(item)"
+  >
+    <span>{{ item.name }}</span>
+    <span *ngIf="option.disabled" class="caption-1">&nbsp;{{'COMMON.ADDED' | translate}}</span>
+  </mat-option>
+</mat-autocomplete>
+
+<div *ngFor="let item of selectedItems">
+  <ng-container [ngTemplateOutlet]="itemTpl" [ngTemplateOutletContext]="{item: item}"></ng-container>
+</div>
+
+<!-- Template for card of experience -->
+<ng-template #itemTpl let-item="item">
+  <div class="item-card">
+    <div fxLayout="row" class="push-bottom-xxs" fxLayoutAlign="space-between center">
+      <p class="body-2 push-none">{{item.name}}</p>
+      <mat-icon (click)="removeItem(item)" class="pointer" matTooltip="{{'TOOLTIP.REMOVE' | translate}}">close</mat-icon>
+    </div>
+    <app-select-level [item]="item" (submitLevel)="change()" ></app-select-level>
+  </div>
+</ng-template>

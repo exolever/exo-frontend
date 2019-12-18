@@ -1,0 +1,23 @@
+@import "variables";
+@import "~@openexo/design-system/variables";
+
+:host {
+  font-family: $font-family-text;
+  .logo {
+    margin-left: 30px;
+    width: 112px;
+    background: url($static-root + 'assets/public/project_mobile.svg') no-repeat;
+  }
+
+  .main-container {
+    padding: 30px;
+    div {
+      &.title{
+        font-weight: $weight-light;
+      }
+      &.subtitle {
+        margin-top: 40px;
+      }
+    }
+  }
+}

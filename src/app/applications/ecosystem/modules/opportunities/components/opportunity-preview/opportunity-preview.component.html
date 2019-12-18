@@ -1,0 +1,12 @@
+<app-overlay-template [title]="data.title" (close)="closeOverlay()">
+  <app-data-opportunity [opportunity]="data.opportunity" [isPreview]="true"></app-data-opportunity>
+
+  <div class="push-top-sm push-bottom-xs" fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px">
+    <button type="button" mat-flat-button color="accent" (click)="closeOverlay()">
+      {{'ECOSYSTEM.OPPORTUNITIES.PREVIEW.BACK' | translate }}
+    </button>
+    <button type="submit" mat-flat-button color="primary" (click)="confirm()">
+      {{'ECOSYSTEM.OPPORTUNITIES.PREVIEW.CONFIRM' | translate }}
+    </button>
+  </div>
+</app-overlay-template>

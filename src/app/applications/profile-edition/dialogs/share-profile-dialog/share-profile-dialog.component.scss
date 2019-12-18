@@ -1,0 +1,13 @@
+@import "variables";
+
+mat-form-field {
+  margin: 0;
+}
+hr {
+  color: mat-color($mat-gray, 900, 0.16);
+  margin-bottom: 1.33em;
+}
+
+.copy-clipboard {
+  padding-bottom: 1.34375em; // Same padding-bottom than mat-form-field-wrapper to align vertical with the input.
+}

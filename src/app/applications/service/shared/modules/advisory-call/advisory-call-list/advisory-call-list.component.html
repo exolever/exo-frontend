@@ -1,0 +1,81 @@
+<ng-container *ngIf="isGenericProjectDraft();else advisoryCallTpl">
+  <section class="advisory-call-container exo-platform pad">
+      <div class="container" fxLayout="column" fxLayoutAlign="space-around center">
+        <h1 class="pad-top">
+          {{ 'PROJECT.ADVISORY_CALL.ADVISOR_REQUEST' | translate }}
+        </h1>
+        <div class="empty-moment">
+          <div class="image pad-bottom"></div>
+          <div class="text-align-center foreground-secondary-text">
+            <div class="headline pad">
+              {{'PROJECT.ADVISORY_CALL.UNAVAILABLE_SECTION' | translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+</ng-container>
+<ng-template #advisoryCallTpl>
+  <section class="advisory-call-container exo-platform pad">
+    <div class="container" fxLayout="column" fxLayoutAlign="space-around center">
+      <h1 class="pad-top">
+        {{ 'PROJECT.ADVISORY_CALL.ADVISOR_REQUEST' | translate }}
+      </h1>
+      <h3 class="foreground-secondary-text">
+        {{getRemaining()}}/{{totalAdvisoryCall}} {{'PROJECT.ADVISORY_CALL.TICKETS_REMAINING' | translate}}
+      </h3>
+      <div class="push-top push-bottom-sm">
+        <button
+          *ngIf="getRemaining() > 0"
+          mat-flat-button
+          color="primary"
+          (click)="onNewRequest()"
+        >
+          {{ 'PROJECT.ADVISORY_CALL.NEW_REQUEST' | translate}}
+        </button>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center" *ngIf="loading$ | async">
+        <app-component-spinner-loader></app-component-spinner-loader>
+      </div>
+
+      <div *ngIf="emptyMoment$ | async" class="empty-moment">
+        <div class="image pad-bottom"></div>
+        <div class="text-align-center foreground-secondary-text">
+          <div class="headline pad">
+            {{'PROJECT.ADVISORY_CALL.START_REQUESTING_TICKETS' | translate}}
+          </div>
+          <div class="body-1">
+            {{'PROJECT.ADVISORY_CALL.HOW_WORKS' | translate}}
+          </div>
+          <div fxLayout="column" class="body-1">
+            <div>1. {{'PROJECT.ADVISORY_CALL.EMPTY_MOMENT.TIP_1' | translate}}</div>
+            <div>2. {{'PROJECT.ADVISORY_CALL.EMPTY_MOMENT.TIP_2' | translate}}</div>
+            <div>3. {{'PROJECT.ADVISORY_CALL.EMPTY_MOMENT.TIP_3' | translate}}</div>
+            <div>4. {{'PROJECT.ADVISORY_CALL.EMPTY_MOMENT.TIP_4' | translate}}</div>
+            <div>5. {{'PROJECT.ADVISORY_CALL.EMPTY_MOMENT.TIP_5' | translate}}</div>
+            <div>6. {{'PROJECT.ADVISORY_CALL.EMPTY_MOMENT.TIP_6' | translate}}</div>
+          </div>
+        </div>
+      </div>
+
+      <section class="push-bottom w-100" fxLayout="row wrap" fxLayoutAlign="start stretch" fxLayoutAlign.lt-sm="center stretch">
+        <app-opportunity-card-by-you
+          *ngFor="let opportunity of opportunities$ | async"
+          [opportunity]="opportunity"
+          class="push-bottom-sm w-100"
+        ></app-opportunity-card-by-you>
+      </section>
+
+      <mat-paginator
+        *ngIf="!(emptyMoment$ | async) && !(loading$ | async) && (totalOpportunities$ | async)"
+        class="transparent"
+        (page)="paginatorChange($event)"
+        [length]="totalOpportunities$ | async"
+        [pageSize]="pageSize$ | async"
+        [pageIndex]="pageIndex$ | async"
+        [pageSizeOptions]="[5, 15, 25]">
+      </mat-paginator>
+    </div>
+  </section>
+</ng-template>

@@ -1,0 +1,55 @@
+<form [formGroup]="form" novalidate>
+  <mat-form-field class="w-100" *ngIf="titleLabel">
+    <input matInput
+      autocomplete="off"
+      placeholder="{{titleLabel}}"
+      formControlName="title"
+    >
+    <mat-error>{{form.get('title').errors | humanizeFormErrors}}</mat-error>
+    <mat-hint align="end">{{form.get('title')?.value?.length}} / {{validationConfig.maxLength}}</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field class="w-100" [hideRequiredMarker]="true">
+    <app-custom-quill-editor
+      formControlName="comment"
+      [isSubmitted]="isSubmitted"
+      [required]="true"
+      [placeholder]="commentLabel"
+      [mentionsAPI]="mentionsAPI"
+    ></app-custom-quill-editor>
+    <mat-error>{{form.get('comment').errors | humanizeFormErrors}}</mat-error>
+    <mat-hint align="start" class="mat-hint custom-hint" *ngIf="mentionsAPI">
+      {{'FORUM.EDITOR_HINT' | translate}}
+    </mat-hint>
+  </mat-form-field>
+
+  <mat-form-field class="w-100 push-bottom" *ngIf="tagsContent">
+    <app-chips-autocomplete
+      formControlName="tags"
+      placeholder="{{tagsLabel}}"
+      [autocompleteListItems]="allKeywords | async"
+      [modelAutocompleteItem] = "keywordModel"
+      [required]="false"
+      [requireMatch]="true"
+    ></app-chips-autocomplete>
+    <mat-hint align="start">{{ tagsHint }}</mat-hint>
+  </mat-form-field>
+
+  <app-uploaded-files-list *ngIf="resources?.length > 0" [uploadedResources]="resources" class="inline-block push-bottom">
+  </app-uploaded-files-list>
+
+  <div class="push-bottom"
+    fxLayout="row" fxLayoutAlign="space-between center"
+    fxLayout.xxs="column" fxLayoutAlign.xxs="start stretch"
+    fxLayoutGap="16px">
+    <app-filestack-attach-button (uploaded)="onNewUpload($event)"></app-filestack-attach-button>
+    <div fxlayout="row" fxLayoutAlign="end start" fxLayoutGap="16px">
+      <button type="button" mat-flat-button color="accent" *ngIf="cancelButton" (click)="onCancel()">
+        {{ cancelButton }}
+      </button>
+      <button type="button"  mat-flat-button color="primary" (click)="onSubmit()">
+        {{ saveButton }}
+      </button>
+    </div>
+  </div>
+</form>

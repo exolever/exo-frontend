@@ -1,0 +1,36 @@
+<div (click)="goToMoreInfo()" [ngClass]="{'pointer': hasMoreInfo()}" class="event-card" fxLayout="column">
+  <div [ngClass]="{'past': isPastEvent(event.start)}"
+       [ngStyle]="{'background-image': 'url(' + event.eventImage + ')'}" class="image-author {{event.category}}"
+       fxFlex="144px">
+    <div fxLayoutAlign="end end">
+      <div *ngIf="isFree(event)" class="free"><span>{{translations.free}}</span></div>
+    </div>
+  </div>
+  <div class="event-information" fxFlex="100%" fxLayout="column" fxLayoutAlign="space-between start">
+    <div>
+      <div>
+        <div [lines]="2" class="name" exoLineClamp title="{{event.name}}">{{event.name}}</div>
+      </div>
+      <div class="author-name">{{translations.hosted}}
+        <span (click)="openProfile($event)">
+              {{getTrainer().username}}
+            </span>
+      </div>
+      <div>
+        <div class="event-type">{{event.typeEventName}}</div>
+      </div>
+    </div>
+    <div>
+      <div class="event-w">
+        <i class="material-icons">today</i>
+        {{event.start | date: 'dd MMMM yyyy'}}
+      </div>
+      <div class="event-w text-truncate">
+        <i class="material-icons">location_on</i>
+        <ng-container *ngIf="event.followType !== 'V'">{{event.location}}</ng-container>
+        <ng-container *ngIf="event.followType === 'S'"> | {{event.followTypeName}}</ng-container>
+        <ng-container *ngIf="event.followType === 'V'">{{event.followTypeName}}</ng-container>
+      </div>
+    </div>
+  </div>
+</div>

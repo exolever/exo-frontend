@@ -1,0 +1,132 @@
+<div *ngIf="hasExoAttributesSetup()"
+     fxLayout="column"
+     fxLayoutAlign="center center"
+     class="pad-top-lg pad-bottom-lg alternate-background"
+>
+  <h1 fxLayoutAlign="center" class="headline bottom-margin">
+    {{ 'PROFILE.PLATFORM.MY_SKILLS.TITLE' | translate }}
+  </h1>
+  <h3 fxLayoutAlign="center"
+     class="subheading-2 push-none foreground-secondary-text text-align-center pad-left-sm pad-right-sm pad-bottom-sm"
+  >
+    {{ 'PROFILE.PLATFORM.MY_SKILLS.SUBTITLE' | translate: { userName: profileUser.fullName } }}
+  </h3>
+  <div fxLayout="row wrap" fxLayoutAlign="center">
+    <section
+      class="container"
+      fxLayout="row wrap"
+      [fxFlex]="'1 1 ' + config.layoutMaxWidth"
+      fxFlex.lt-lg="grow"
+    >
+      <div fxHide.lt-md fxLayoutAlign="center center" fxFlex="grow" class="push-bottom-sm">
+        <div
+          fxLayoutAlign="center center"
+          class="chart-container"
+        >
+          <app-skills-chart [profileUser]="profileUser"></app-skills-chart>
+          <div class="image-container" fxLayoutAlign="center center">
+            <exo-avatar
+              [src]="profileUser.getPicture(144)"
+              [alt]="'PROFILE.PLATFORM.COMMON.PROFILE_PICTURE' | translate: { userName: profileUser.fullName }"
+              size="xl"
+            >
+            </exo-avatar>
+          </div>
+          <div ngClass.gt-md='circle-container'
+               ngClass.lt-lg='circle-container-tablet'
+          >
+            <div class="chart-help-container" *ngFor="let label of valueLabels; let i=index" [fxLayout]="(i === 0 || i > 5) ? 'row-reverse' : 'row'">
+              <p class="body-2 push-none">{{label}} </p>
+              <app-chart-help-popover [label]="label" [positionInList]="i"></app-chart-help-popover>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxHide.lt-md
+           fxLayout="row"
+           fxLayoutAlign="center center"
+           fxFlex="grow"
+           class="foreground-secondary-text-text"
+      >
+        <div fxFlexAlign="end"
+             class="align-right title-below"
+             ngClass.gt-md="push-right-lg"
+             ngClass.lt-lg="push-right-sm"
+        >
+          <h2 class="title title-red">IDEAS</h2>
+          <h3 class="body-2 foreground-secondary-text">{{ 'PROFILE.PLATFORM.MY_SKILLS.IDEAS_DESC' | translate }}</h3>
+        </div>
+        <div fxFlexAlign="start"
+             class="title-below"
+             ngClass.gt-md="push-left-lg"
+             ngClass.lt-lg="push-left-sm"
+        >
+          <h2 class="title title-blue">SCALE</h2>
+          <h3 class="body-2 foreground-secondary-text">{{ 'PROFILE.PLATFORM.MY_SKILLS.SCALE_DESC' | translate }}</h3>
+        </div>
+      </div>
+      <div fxHide.gt-sm fxLayout="column">
+        <div
+           fxLayout="row wrap"
+           fxFlex="grow"
+           class="pad-left-sm pad-right-sm"
+        >
+          <p fxFlex="grow" class="push-none body-2">{{formattedMTP?.name}}</p>
+          <div fxLayout fxLayoutAlign="start center" fxFlex="grow" class="point-bars push-top-xxs push-bottom">
+            <div fxFlex="1 1 20%" [ngClass]="{ 'marked': formattedMTP?.level > 0 }"></div>
+            <div fxFlex="1 1 20%" [ngClass]="{ 'marked': formattedMTP?.level > 1 }"></div>
+            <div fxFlex="1 1 20%" [ngClass]="{ 'marked': formattedMTP?.level > 2 }"></div>
+            <div fxFlex="1 1 20%" [ngClass]="{ 'marked': formattedMTP?.level > 3 }"></div>
+            <div fxFlex="1 1 20%" [ngClass]="{ 'marked': formattedMTP?.level > 4 }"></div>
+          </div>
+        </div>
+        <div
+          fxLayout="column"
+          class="pad-left-sm pad-right-sm"
+        >
+          <h2 class="title title-red text-align-center">IDEAS</h2>
+          <h3 class="body-2 foreground-secondary-text text-align-center">
+            {{ 'PROFILE.PLATFORM.MY_SKILLS.IDEAS_DESC' | translate }}
+          </h3>
+          <div
+               *ngFor="let idea of formattedInternalExoAttributes"
+               fxLayout="row wrap"
+               fxFlex="grow"
+          >
+            <p class="push-none body-2">{{idea.name}}</p>
+            <div fxLayout fxLayoutAlign="start center" fxFlex="grow" class="point-bars push-top-xxs push-bottom">
+              <div fxFlex="1 1 20%" [ngClass]="{ 'red': idea.level > 0 }"></div>
+              <div fxFlex="1 1 20%" [ngClass]="{ 'red': idea.level > 1 }"></div>
+              <div fxFlex="1 1 20%" [ngClass]="{ 'red': idea.level > 2 }"></div>
+              <div fxFlex="1 1 20%" [ngClass]="{ 'red': idea.level > 3 }"></div>
+              <div fxFlex="1 1 20%" [ngClass]="{ 'red': idea.level > 4 }"></div>
+            </div>
+          </div>
+        </div>
+        <div
+          fxLayout="column"
+          class="pad-left-sm pad-right-sm"
+        >
+          <h2 class="title title-red text-align-center">SCALE</h2>
+          <h3 class="body-2 foreground-secondary-text text-align-center">
+            {{ 'PROFILE.PLATFORM.MY_SKILLS.SCALE_DESC' | translate }}
+          </h3>
+          <div
+            *ngFor="let scale of formattedExternalExoAttributes"
+            fxLayout="row wrap"
+            fxFlex="grow"
+          >
+            <p class="push-none body-2">{{scale.name}}</p>
+            <div fxLayout fxLayoutAlign="start center" fxFlex="grow" class="point-bars push-top-xxs push-bottom">
+              <div fxFlex="1 1 20%" [ngClass]="{ 'blue': scale.level > 0 }"></div>
+              <div fxFlex="1 1 20%" [ngClass]="{ 'blue': scale.level > 1 }"></div>
+              <div fxFlex="1 1 20%" [ngClass]="{ 'blue': scale.level > 2 }"></div>
+              <div fxFlex="1 1 20%" [ngClass]="{ 'blue': scale.level > 3 }"></div>
+              <div fxFlex="1 1 20%" [ngClass]="{ 'blue': scale.level > 4 }"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

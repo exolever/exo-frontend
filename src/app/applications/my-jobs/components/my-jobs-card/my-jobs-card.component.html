@@ -1,0 +1,82 @@
+<mat-card (click)="canRedirect() ? goTo(job.url) : null" [ngClass]="{pointer: canRedirect()}"
+          class="w-100 pointer exo-platform push-bottom">
+  <mat-card-content [ngClass]="{disabled: job.isFinished()}" fxLayout="column" fxFlex="grow">
+    <!-- card title -->
+    <div fxLayout="row" fxLayoutAlign="space-between start" class="title">
+      <span [lines]="1" class="section card-type" exoLineClamp>
+        {{job.role.name}}
+      </span>
+      <div *ngIf="canRedirect()" class="job-menu" fxLayout="row" fxLayoutAlign="center center">
+        <button
+          (click)="stopPropagation($event)"
+          [matMenuTriggerFor]="actionsMenu"
+          class="push-left-sm menu-actions"
+          mat-icon-button
+        >
+          <mat-icon class="icon">more_vert</mat-icon>
+        </button>
+        <mat-menu #actionsMenu="matMenu">
+          <button
+            (click)="goTo(job.url)"
+            mat-menu-item>{{'ECOSYSTEM.MY_JOBS.ACTIONS.' + job.category.code | translate}}
+          </button>
+          <button
+            (click)="goTo(job.zoomUrl)" *ngIf="job.zoomUrl"
+            mat-menu-item>{{'ECOSYSTEM.MY_JOBS.ACTIONS.ZOOM' | translate}}
+          </button>
+        </mat-menu>
+      </div>
+    </div>
+    <!-- pretty labels-->
+    <div class="push-bottom-xxs" fxLayout="row" fxLayoutGap="8px">
+      <span *ngIf="job.isRunning()"
+            class="pretty-label blue caption-2 push-right-xxs">{{'ECOSYSTEM.MY_JOBS.STATUS.IN' | translate | uppercase }}</span>
+      <span *ngIf="job.isLive()"
+            class="pretty-label green caption-2 push-right-xxs">{{'ECOSYSTEM.MY_JOBS.STATUS.LI' | translate | uppercase }}</span>
+      <span *ngIf="job.isFinished()"
+            class="pretty-label grey caption-2 push-right-xxs">{{'ECOSYSTEM.MY_JOBS.STATUS.CO' | translate | uppercase }}</span>
+    </div>
+    <!-- info-->
+    <div fxLayout="column" fxLayoutAlign="space-between start" fxFlex="grow">
+      <div>
+        <div class="subheading-2 title">
+          <span [lines]="2" exoLineClamp>
+            {{job.title}}
+          </span>
+        </div>
+        <!-- event type -->
+        <div class="body-2 foreground-secondary-text push-bottom-xxs">
+          {{job.category.name}}
+        </div>
+      </div>
+      <div class="w-100">
+        <hr class="w-100 push-top-none push-bottom">
+        <div fxLayout="row" fxLayoutAlign="start">
+          <!-- Date -->
+          <div class="push-bottom-xxs push-right caption-1 foreground-secondary-text" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="mat-24 push-right-xxxs">today</mat-icon>
+            {{job.start | formatDate: 'short'}}
+          </div>
+          <!-- project state -->
+          <div *ngIf="job.isProject()" class="push-right push-bottom-xxs caption-1 foreground-secondary-text" fxLayout="row"
+               fxLayoutAlign="start center">
+            <mat-icon class="mat-24 push-right-xxxs">map</mat-icon>
+            <strong>
+              {{job.statusDetail}}
+            </strong>
+          </div>
+          <!-- Due Date -->
+          <div *ngIf="job.canShowTime()" class="push-bottom-xxs caption-1 foreground-secondary-text" fxLayout="row"
+               fxLayoutAlign="start center">
+            <mat-icon [ngClass]="{'orange': job.isToday()}" class="mat-24 push-right-xxxs">watch_later</mat-icon>
+            <div *ngIf="job.isToday()"
+                 class="caption-1 text-truncate pad-right-xxxs foreground-secondary-text">{{'ECOSYSTEM.MY_JOBS.TODAY' | translate}}</div>
+            <div *ngIf="job.isTomorrow()"
+                 class="caption-1 text-truncate pad-right-xxxs foreground-secondary-text">{{'ECOSYSTEM.MY_JOBS.TOMORROW' | translate}}</div>
+            <div class="caption-1">{{job.start.format('h:mm a')}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

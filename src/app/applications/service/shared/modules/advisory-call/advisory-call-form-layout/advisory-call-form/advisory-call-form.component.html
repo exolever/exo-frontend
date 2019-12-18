@@ -1,0 +1,135 @@
+<form [formGroup]="form" novalidate autocomplete="off">
+  <h1>
+    {{ opportunity ? ('PROJECT.ADVISORY_CALL.EDIT_TITLE' | translate) : 'PROJECT.ADVISORY_CALL.NEW_TITLE' | translate}}
+  </h1>
+
+  <section class="push-top-lg">
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.PROJECT_LABEL' | translate}}</mat-label>
+      <input matInput type="text" formControlName="title"/>
+      <mat-hint align="end">{{form.get('title').value.length}} / {{maxLengthForTitle}}</mat-hint>
+      <mat-error>{{form.get('title').errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field hideRequiredMarker class="w-100">
+      <app-custom-quill-editor
+        formControlName="description"
+        [placeholder]="'ECOSYSTEM.OPPORTUNITIES.CREATE.DESCRIPTION' | translate"
+        [required]="true"
+        [isSubmitted]="isSubmitted"
+      >
+      </app-custom-quill-editor>
+      <mat-error>{{form.get('description').errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-100 push-bottom" hideRequiredMarker>
+      <app-chips-autocomplete
+        formControlName="keywords"
+        placeholder="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.KEYWORDS' | translate }}"
+        [buttonRef]="saveButton"
+        [autocompleteListItems]="allKeywords$ | async"
+        [modelAutocompleteItem] = "keywordModel"
+      ></app-chips-autocomplete>
+      <mat-error>
+        {{ form.get('keywords').errors | humanizeFormErrors }}
+      </mat-error>
+      <mat-hint align="start">{{ 'ECOSYSTEM.OPPORTUNITIES.CREATE.KEYWORDS_HINT' | translate }}</mat-hint>
+    </mat-form-field>
+
+    <div class="push-bottom-lg">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <app-filestack-attach-button (uploaded)="addResource($event)"></app-filestack-attach-button>
+        <label class="push-left">{{'ECOSYSTEM.OPPORTUNITIES.CREATE.ATTACH' | translate}}</label>
+      </div>
+      <div *ngIf="form.get('files').value.length" class="push-top-xs">
+        <app-uploaded-files-list [uploadedResources]="form.get('files').value">
+        </app-uploaded-files-list>
+      </div>
+    </div>
+    <app-target-management
+      [opportunity]="opportunity"
+    ></app-target-management>
+
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" fxLayoutAlign.lt-md="start stretch">
+      <mat-form-field appearance="fill" class="w-100" fxFlex="0 1 calc(50% - 12px)">
+        <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.POSITIONS_NUMBERS' | translate}}</mat-label>
+        <input matInput type="text" formControlName="numPositions"/>
+        <mat-hint align="start">{{ 'ECOSYSTEM.OPPORTUNITIES.CREATE.POSITIONS_NUMBERS_HINT' | translate }}</mat-hint>
+        <mat-error>{{form.get('numPositions').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" fxLayoutAlign.lt-md="start stretch" class="push-bottom-lg">
+      <div fxFlex="50%" fxLayout="column" class="w-100">
+        <md2-datepicker
+          class="datepicker appearance-fill"
+          formControlName="deadlineDate"
+          placeholder="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.DEADLINE_LABEL' | translate }}"
+          type="date"
+          [min]="today"
+          openOnFocus="true">
+        </md2-datepicker>
+        <mat-hint align="start">{{ 'ECOSYSTEM.OPPORTUNITIES.CREATE.DEADLINE_HINT' | translate }}</mat-hint>
+        <mat-error *ngIf="showErrors('deadlineDate', isSubmitted)" class="push-top-xxs push-left-xxs">
+          {{form.get('deadlineDate').errors | humanizeFormErrors}}
+        </mat-error>
+      </div>
+    </div>
+
+    <section *ngIf="isOpen()">
+      <h2 class="title-help-icon">
+        {{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.TITLE' | translate}}
+      </h2>
+      <div fxLayout="row" fxLayoutAlign="start start" fxLayoutAlign.lt-md="start stretch">
+        <mat-form-field appearance="fill" fxFlex="0 1 calc(50% - 24px)" fxFlex.lt-md="0 1 calc(100% - 24px)">
+          <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.REQUIRED_CERTIFICATION.LABEL' | translate}}</mat-label>
+          <mat-select formControlName="certification">
+            <mat-option *ngFor="let certification of filteredCertifications" [value]="certification.code">
+              {{certification.name}}
+            </mat-option>
+          </mat-select>
+          <mat-hint>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.REQUIRED_CERTIFICATION.HINT' | translate}}</mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="certifiedPeople" class="push-bottom-lg">
+        <exo-alert
+          message="{{certifiedPeople.count}} {{'ECOSYSTEM.OPPORTUNITIES.CREATE.JOB_DETAILS.MEMBERS_ABLE_TO_APPLY' | translate}}"
+          [isCloseable]="true"
+          [closeButtonText]="'COMMON.CLOSE' | translate "
+          typeAlert="success"
+        ></exo-alert>
+      </div>
+    </section>
+    <app-languages-management [opportunity]="opportunity" [isSubmitted]="isSubmitted"></app-languages-management>
+    <app-mode-management [data]="opportunity"></app-mode-management>
+  </section>
+  <section>
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start start" fxLayoutAlign.lt-md="start stretch" class="push-bottom-lg">
+      <div fxFlex="0 1 calc(50% - 12px)" fxLayout="column" class="w-100">
+        <md2-datepicker
+          class="datepicker appearance-fill"
+          formControlName="startDate"
+          placeholder="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.START_LABEL' | translate }}"
+          type="date"
+          [min]="startMinValue"
+          openOnFocus="true">
+        </md2-datepicker>
+        <mat-hint align="start">{{ 'ECOSYSTEM.OPPORTUNITIES.CREATE.START_HINT' | translate }}</mat-hint>
+        <mat-error *ngIf="showErrors('startDate', isSubmitted)" class="push-top-xxs push-left-xxs">
+          {{form.get('startDate').errors | humanizeFormErrors}}
+        </mat-error>
+      </div>
+    </div>
+  </section>
+  <app-questions-management
+    [questions]="opportunity?.questions"
+  ></app-questions-management>
+  <div fxLayout="row" fxLayoutAlign="end" class="push-top-lg">
+    <button mat-flat-button color="accent" type="button" (click)="goBack()">{{'COMMON.CANCEL' | translate}}</button>
+    <button #saveButton mat-flat-button color="primary" type="submit" (click)="onSubmit()" class="push-left-xs">
+      <ng-container *ngIf="opportunity;else createButtonsTpl">{{'COMMON.ACTIONS.SAVE' | translate}}</ng-container>
+      <ng-template #createButtonsTpl>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.PREVIEW' | translate}}</ng-template>
+    </button>
+  </div>
+</form>

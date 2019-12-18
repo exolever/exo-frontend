@@ -1,0 +1,59 @@
+<section class="directory-team exo-platform" fxLayout="column" fxLayoutAlign="start center">
+  <h1 class="headline pad-top">{{'PROJECT.DIRECTORY' | translate}}</h1>
+  <h3 class="subtitle foreground-secondary-text pad-bottom-sm">
+    {{'PROJECT.DIRECTORY_SUBTITLE' | translate }}
+  </h3>
+  <div class="w-100" fxLayout="row" fxLayoutAlign="space-between start" fxLayout.lt-sm="column">
+    <mat-form-field floatLabel="never" fxFlex="grow" class="push-right w-100" >
+      <mat-icon matPrefix class="search-icon pad-right">search</mat-icon>
+      <input
+        matInput
+        type="text"
+        placeholder="{{'PROJECT.DIRECTORY_SEARCHER' | translate}}"
+        [formControl]="searchBox"
+        [value]="text$ | async"
+        #search
+      >
+      <mat-icon matSuffix class="pointer" *ngIf="searchBox.value" (click)="searchBox.setValue('')">close</mat-icon>
+    </mat-form-field>
+    <div class="pad-bottom-sm" fxFlex.gt-xs="100px">
+        <p class="caption-1 foreground-secondary-text" *ngIf="(members$ | async) as members">
+          {{members.length}} {
+            members.length, plural, 
+            =1 { {{'PROJECT.DIRECTORY_PERSON' | translate | lowercase}} }
+            other { {{'PROJECT.DIRECTORY_PEOPLE' | translate | lowercase}} 
+          }}
+        </p>
+    </div>
+  </div>
+  <div *ngIf="(members$ | async) as members; else loadingTpl" class="pad-bottom-sm">
+    <section class="cards" fxLayout="row wrap"
+      fxLayoutAlign="start center"
+      fxLayoutAlign.lt-lg="center stretch"
+      fxLayoutGap.gt-xs="12px"
+    >
+      <app-member-card
+        *ngFor="let member of members"
+        [item]="deserializerItemCard(member)">
+        <div class="extraIcons ecosystem-member" *ngIf="belongEcosystem(member)" matTooltip="{{ 'ECOSYSTEM.DIRECTORY.CARD.ECOSYSTEM_MEMBER' | translate }}"></div>
+      </app-member-card>
+    </section>
+    <mat-paginator
+      data-e2e="paginator"
+      *ngIf="(totalMembers$ | async) > 0"
+      class="people-paginator"
+      (page)="paginatorChange($event)"
+      [length]="totalMembers$ | async"
+      [pageSize]="pageSize$ | async"
+      [pageIndex]="(pageIndex$ | async) -1"
+      [pageSizeOptions]="[5, 10, 15, 20, 25]">
+    </mat-paginator>
+  </div>
+  
+  <ng-template #loadingTpl>
+    <div layout="row" fxLayoutAlign="center" class="push-top-sm">
+      <app-component-spinner-loader></app-component-spinner-loader>
+    </div>
+  </ng-template>
+  
+</section>

@@ -1,0 +1,27 @@
+<div mat-dialog-title>
+  <span *ngIf="!form.get('id').value; else updateTitle">{{'ECOSYSTEM.WORKSHOPS.TITLE_ADD' | translate}}</span>
+  <ng-template #updateTitle>{{'ECOSYSTEM.WORKSHOPS.TITLE_UPDATE' | translate}}</ng-template>
+</div>
+<form [formGroup]="form" novalidate>
+  <mat-dialog-content>
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>{{'ECOSYSTEM.WORKSHOPS.NAME_LABEL' | translate}}</mat-label>
+      <input matInput type="text" formControlName="fullName"/>
+      <mat-error>{{form.get('fullName').errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>{{'ECOSYSTEM.WORKSHOPS.EMAIL' | translate}}</mat-label>
+      <input matInput type="text" formControlName="userEmail"/>
+      <mat-error>{{form.get('userEmail').errors | humanizeFormErrors}}</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-flat-button color="accent" type="button" [mat-dialog-close]="true">{{'COMMON.CANCEL' | translate}}</button>
+    <button mat-flat-button type="button" [disabled]="!form.valid" (click)="onSubmit()" color="primary">
+      <label *ngIf="!form.get('id').value; else updateLabel">{{'ECOSYSTEM.WORKSHOPS.ADD' | translate}}</label>
+      <ng-template #updateLabel>{{'ECOSYSTEM.WORKSHOPS.SAVE' | translate}}</ng-template>
+    </button>
+  </mat-dialog-actions>
+
+</form>

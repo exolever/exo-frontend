@@ -1,0 +1,63 @@
+@import "variables";
+
+@mixin flex-row-space-between-start{
+  display: flex;
+  flex-direction: row;
+  place-content: space-between;
+  align-items: flex-start;
+}
+
+@media #{$one-card} {
+  .filters:not(.in-dialog){
+    display: none;
+  }
+  .in-dialog{
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+@media #{$two-cards} {
+  .filters {
+    width: 100%;
+    @include flex-row-space-between-start;
+    flex-flow: row wrap;
+  }
+  ngx-select-dropdown{
+    width: 48%;
+  }
+}
+@media #{$three-cards} {
+  .filters {
+    @include flex-row-space-between-start;
+  }
+  ngx-select-dropdown{
+    width: 23%;
+  }
+}
+ngx-select-dropdown, .clear-results {
+  margin-top: 24px;
+}
+ngx-select-dropdown::ng-deep {
+.ngx-dropdown-container {
+  margin-top: 24px;
+}
+
+}
+
+//:not(.in-dialog){
+//  &.filters, .clear-results {
+//    width: calc(100% - 24px);
+//  }
+//}
+
+
+.clear-filters{
+  color: $accent-color;
+  text-decoration: underline;
+}
+
+.total-results {
+  margin-left: 10px;
+  color: $grey-text-color;
+}

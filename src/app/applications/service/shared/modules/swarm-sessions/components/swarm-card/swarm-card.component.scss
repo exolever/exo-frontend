@@ -1,0 +1,27 @@
+@import "variables";
+
+// config
+$card-width: 216px;
+$card-height: 248px;
+$graphics-size: 72px;
+
+mat-card {
+  padding: $sm;
+  width: $card-width;
+  height: $card-height;
+  ::ng-deep {
+    .title {
+      color: mat-color($exo-service-light-primary);
+    }
+    .image {
+      border-radius: 100%;
+      width: $graphics-size;
+    }
+    .icon-session {
+      height: $graphics-size;
+    }
+    .actions p {
+      color: mat-color($exo-grey, 900, .64);
+    }
+  }
+}

@@ -1,0 +1,68 @@
+<h2 class="title-help-icon">
+  {{ 'ECOSYSTEM.WORKSPACE.PROJECTS.EDIT.NAVIGATION.SETTINGS' | translate }}
+  <app-help-popover
+    [htmlContent]="'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.HELP' | translate"
+  ></app-help-popover>
+</h2>
+<p>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.DESCRIPTION' | translate}}</p>
+<form [formGroup]="form" novalidate autocomplete="off" fxLayout="column">
+  <app-toggle-item
+    [item]="{name: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_DIRECTORY.NAME' | translate, description: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_DIRECTORY.DESC' | translate, icon: 'contacts'}"
+    [status]="form.get('directoryEnabled').value"
+    (toggle)="onToggle($event, form.get('directoryEnabled'))"
+  >
+  </app-toggle-item>
+
+  <app-toggle-item
+    [item]="{name: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_COMMUNICATION.NAME' | translate, description: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_COMMUNICATION.DESC' | translate, icon: 'forum'}"
+    [status]="form.get('teamCommunicationsModuleEnabled').value"
+    (toggle)="onToggle($event, form.get('teamCommunicationsModuleEnabled'))"
+  >
+  </app-toggle-item>
+
+  <app-toggle-item
+    [item]="{name: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_ADVISORY_CALL.NAME' | translate, description: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_ADVISORY_CALL.DESC' | translate, icon: 'phone'}"
+    [status]="form.get('ticketsModuleEnabled').value"
+    (toggle)="onToggle($event, form.get('ticketsModuleEnabled'))"
+  >
+    <div class="extra-information push-top caption-1 foreground-secondary-text" *ngIf="form.get('ticketsModuleEnabled').value" fxLayout="row" fxLayoutAlign="start center" >
+      {{advisoryCallDescription}}
+      <button mat-button color="primary" (click)="onClickEditAdvisoryCallSettings()">{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_ADVISORY_CALL.SETTINGS.EDIT' |translate}}</button>
+    </div>
+  </app-toggle-item>
+
+  <app-toggle-item
+    [item]="{name: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_QUIZ.NAME' | translate, description: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_QUIZ.DESC' | translate, icon: 'check'}"
+    [status]="form.get('quizesEnabled').value"
+    (toggle)="onToggle($event, form.get('quizesEnabled'))"
+  >
+  </app-toggle-item>
+
+  <app-toggle-item
+    [item]="{name: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_FEEDBACK.NAME' | translate, description: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_FEEDBACK.DESC' | translate, icon: 'feedback'}"
+    [status]="form.get('feedbackEnabled').value"
+    (toggle)="onToggle($event, form.get('feedbackEnabled'))"
+  >
+  </app-toggle-item>
+
+  <h2>{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.COMING_SOON' | translate}}</h2>
+
+  <app-toggle-item
+    [item]="{name: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_ASK.NAME' | translate, description: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_ASK.DESC' | translate, icon: 'record_voice_over'}"
+    [status]="form.get('askEcosystemEnabled').value"
+    [disabled]="true"
+    (toggle)="onToggle($event, form.get('askEcosystemEnabled'))"
+  >
+  </app-toggle-item>
+
+  <app-toggle-item
+    [item]="{name: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_SWARM.NAME' | translate, description: 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.SETTINGS.ENABLE_SWARM.DESC' | translate, icon: 'group_work'}"
+    [status]="form.get('swarmSessionsModuleEnabled').value"
+    [disabled]="true"
+    (toggle)="onToggle($event, form.get('swarmSessionsModuleEnabled'))"
+  >
+  </app-toggle-item>
+
+</form>
+
+

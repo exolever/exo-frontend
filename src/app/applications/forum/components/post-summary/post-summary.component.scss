@@ -1,0 +1,32 @@
+@import "variables";
+
+.unread-spot {
+  display: flex;
+  align-items: flex-start;
+  &::before {
+    content: '';
+    width: 9px;
+    min-width: 9px;
+    height: 9px;
+    margin-top: 9px;
+    margin-right: $xxs;
+    border-radius: 100%;
+    background-color: mat-color($exo-blue, 500);
+    display: inline-flex;
+  }
+}
+
+.message-icon-container {
+  position: relative;
+  .unread-spot-svg {
+    top: -2px;
+    right: 1px;
+    position: absolute;
+    .inner {
+      fill: mat-color($exo-blue, 500);
+    }
+    .outer {
+      fill: #FFF;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@import '~@angular/material/theming';
+@import '~@openexo/design-system/theming';
+@import 'variables';
+@import 'exo-default-theme';
+@import 'exo-platform-light-theme';
+@import 'exo-platform-dark-theme';
+@import 'all-exo-theme';
+
+// Custom light theme;
+// TODO: delete once old tool is deleted
+@include angular-material-theme($exo-default-theme);
+@include exo-custom-themes($exo-default-theme);
+
+.exo-platform {
+  @include angular-material-theme($light-theme);
+  @include exo-platform-custom-themes($exo-platform-light-theme);
+
+  .exo-platform-dark-theme {
+    @include angular-material-theme($exo-platform-dark-theme);
+    @include exo-platform-custom-themes($exo-platform-dark-theme);
+  }
+}

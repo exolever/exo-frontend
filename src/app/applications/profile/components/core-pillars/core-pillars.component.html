@@ -1,0 +1,34 @@
+<div *ngIf="selectedExoPillars.length"
+     fxLayout="row wrap"
+     fxLayoutAlign="center center"
+>
+  <h1 fxLayoutAlign="center" fxFlex="1 0 100%" class="headline">
+    {{ 'PROFILE.PLATFORM.PILLARS.TITLE' | translate }}
+  </h1>
+  <div
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    fxFlex="grow"
+    class="push-bottom"
+  >
+    <mat-icon class="private-icon">lock</mat-icon>
+    <p class="caption-1 push-none">{{ 'PROFILE.PLATFORM.PRIVATE' | translate }}</p>
+  </div>
+  <div
+    fxLayout="row wrap"
+    fxLayout.lt-md="column"
+    fxLayoutAlign="center"
+    fxLayoutGap="24px"
+  >
+    <mat-card *ngFor="let pillar of selectedExoPillars">
+      <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <div class="icon-background push-bottom"
+        fxLayoutAlign="center center">
+          <mat-icon>{{ pillar.icon }}</mat-icon>
+        </div>
+        <h2 class="title">{{ pillar.name  | translate }}</h2>
+        <div class="caption">{{ pillar.descriptionProfile | translate }}</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

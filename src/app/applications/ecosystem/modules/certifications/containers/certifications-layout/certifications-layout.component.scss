@@ -1,0 +1,14 @@
+@import "variables";
+
+:host {
+  max-width: $screen-lg-min;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.cert-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}

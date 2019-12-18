@@ -1,0 +1,21 @@
+<div mat-dialog-title class="text-transform-capitalize">{{ 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.STEPS.EDIT.TITLE' | translate }}</div>
+<mat-dialog-content class="dialog__content">
+  <form [formGroup]="form" novalidate autocomplete="off" fxLayout="column">
+    <md2-datepicker
+      class="datepicker appearance-fill"
+      formControlName="startDate"
+      placeholder="{{'ECOSYSTEM.OPPORTUNITIES.CREATE.START_LABEL' | translate }}"
+      type="date"
+      openOnFocus="true">
+    </md2-datepicker>
+    <mat-error [@transitionHintErrorMessages]="subscriptAnimationState" *ngIf="showErrors('startDate')">{{form.get('startDate').errors | humanizeFormErrors}}</mat-error>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end" class="dialog__actions">
+  <button mat-flat-button color="accent" mat-dialog-close>
+    {{ 'COMMON.ACTIONS.CANCEL' | translate }}
+  </button>
+  <button mat-flat-button color="primary" cdkFocusRegionstart (click) ="onSave()">
+    {{ 'COMMON.ACTIONS.SAVE' | translate }}
+  </button>
+</mat-dialog-actions>

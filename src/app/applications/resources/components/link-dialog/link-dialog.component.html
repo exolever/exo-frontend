@@ -1,0 +1,21 @@
+<form [formGroup]="linkForm">
+  <h1 mat-dialog-title class="text-transform-capitalize">{{'RESOURCES.LINK_LOWER' | translate }}</h1>
+  <mat-dialog-content cdkFocusRegionstart>
+    <div fxLayout="column" fxLayoutAlign="start stretch">
+      <mat-form-field>
+        <input matInput placeholder="{{'RESOURCES.TEXT_TO_DISPLAY' | translate }}" formControlName="name" #nameInput>
+        <mat-error>{{linkForm.get('name').errors | humanizeFormErrors}}</mat-error>
+        <mat-hint align="end">{{nameInput.value.length}} / 50</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <input class="not-transform-text" matInput type="url" placeholder="{{'RESOURCES.LINK_TO' | translate }}" formControlName="link">
+        <mat-error>{{linkForm.get('link').errors | humanizeFormErrors}}</mat-error>
+        <mat-hint class="not-transform-text">http ://example.com</mat-hint>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-flat-button color="accent" mat-dialog-close>{{'RESOURCES.CANCEL' | translate }}</button>
+    <button mat-flat-button color="primary" type="submit" (click)="onSubmit()"> {{'RESOURCES.ADD' | translate }} </button>
+  </mat-dialog-actions>
+</form>

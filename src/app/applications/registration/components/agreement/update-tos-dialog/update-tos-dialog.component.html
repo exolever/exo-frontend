@@ -1,0 +1,46 @@
+<div class="headline text-transform-capitalize">{{'UPDATE_TOS.TITLE' | translate}}</div>
+<mat-dialog-content>
+  <div class="body-1 pad-bottom-sm">{{'UPDATE_TOS.PARAGRAPH1' | translate}}</div>
+    <div class="subheading-2 push-bottom-xxs">
+      <span class="weight-bold">{{'UPDATE_TOS.TERMS_OF_SERVICE' | translate}}</span>
+    </div>
+    <nav class="pad-bottom-sm">
+      <a
+        class="body-2 text-decoration-none"
+        [attr.href]="agreementInvitation.file"
+        target="_blank">
+        {{getFilename( agreementInvitation.file )}}
+      </a>
+    </nav>
+    <div class="subheading-2 push-bottom-xxs">
+      <span class="weight-bold">{{'UPDATE_TOS.AGREEMENT' | translate}}</span>
+    </div>
+    <nav class="pad-bottom-sm">
+      <a
+        class="body-2 text-decoration-none pad-bottom-sm"
+        href="https://s3.amazonaws.com/sandboxexolever/static/agreement/ExOLeverConsultingAgreementv1.pdf"
+        target="_blank">
+        ExOLeverConsultingAgreementv1.pdf
+      </a>
+    </nav>
+  <div class="body-1 push-bottom">{{'UPDATE_TOS.PARAGRAPH2' | translate}}</div>
+</mat-dialog-content>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+  <div fxLayout="row" class="foreground-secondary-text">
+    <a target="_blank" [attr.href]="agreementInvitation.file" class="download-agreement">
+      <button mat-icon-button matTooltip="{{'TOOLTIP.DOWNLOAD' | translate}}">
+        <mat-icon>file_download</mat-icon>
+      </button>
+    </a>
+    <span class="body-1" fxFlexAlign="center" fxHide.lt-sm="true">{{'REGISTRATION.PDF' | translate}}</span>
+  </div>
+  <div fxLayout="row" fxLayoutGap="16px">
+    <button mat-flat-button color="accent" (click)="goToLogin()">{{'UPDATE_TOS.CANCEL' | translate}}</button>
+    <button cdkFocusRegionstart
+            mat-flat-button
+            color="primary"
+            (click)="dialogRef.close({action: action.ACCEPT})">
+      {{'UPDATE_TOS.ACCEPT' | translate}}
+    </button>
+  </div>
+</mat-dialog-actions>

@@ -1,0 +1,7 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="container-feedback-message">
+  <div class="feedback-message-icon {{imageFeedback}}"></div>
+  <div *ngIf="title" class="headline pad-top pad-bottom text-transform-capitalize">{{title}}</div>
+  <div *ngIf="subtitle" class="body-1 foreground-secondary-text upper-first-letter">{{subtitle}}</div>
+  <div *ngIf="body" class="body-1 push-top-lg" [innerHTML]="body"></div>
+  <button *ngIf="buttonText" class="push-top-lg" mat-flat-button color="primary" (click)="onClick()">{{buttonText}}</button>
+</div>

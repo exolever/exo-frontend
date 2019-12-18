@@ -1,0 +1,29 @@
+<div class="intro-wrapper background">
+  <div class="center">
+    <div class="vert-center">
+      <div class="logo"></div>
+      <h1 class="w-100">{{translations.introHeading}}</h1>
+      <p class="subheading-2 foreground-secondary-text">{{translations.introP1}}</p>
+      <p class="subheading-2 foreground-secondary-text">{{translations.introP2}}</p>
+      <div class="actions">
+        <div class="button-group">
+          <button (click)="onStart()" color="primary" mat-flat-button>
+            {{translations.startBtn}}
+          </button>
+        </div>
+        <div class="lang push-top">
+          <mat-form-field>
+            <mat-select [formControl]="language" (selectionChange)="onLanguageChange($event)">
+              <mat-option [value]="'en'">
+                English
+              </mat-option>
+              <mat-option [value]="'es'">
+                Español
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

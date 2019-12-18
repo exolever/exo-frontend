@@ -1,0 +1,34 @@
+<div class="canvas-container">
+  <div class="pad-left pad-right pad-top-lg pad-bottom-lg" fxLayout="column" fxLayoutAlign="start stretch">
+    <h1 class="text-align-center">
+      {{'TOOLKIT.TITLE' | translate}}
+    </h1>
+    <h3 class="subheading-2 foreground-secondary-text text-align-center">
+      {{'TOOLKIT.SUBTITLE' | translate}}
+    </h3>
+    <div class="push-top-xl" fxLayout="column" fxLayoutGap="24px">
+      <div fxLayout.gt-sm="row" fxLayoutGap="24px">
+        <mat-card class="card-section w-100">
+          <div class="w-100 pad-sm h-100" fxLayout="column" fxLayoutAlign="space-between">
+            <h2 class="push-bottom-none" fxFlexAlign.lt-md="center">{{'TOOLKIT.AWAKE.TITLE' | translate}}</h2>
+            <div class="body-1 description push-top-sm">
+              {{'TOOLKIT.AWAKE.DESCRIPTION' | translate}}<br/>
+            </div>
+            <button (click)="onAwake()" class="push-top" color="primary" fxFlexAlign="end"
+                    mat-button>{{'TOOLKIT.ACCESS' | translate}}</button>
+          </div>
+        </mat-card>
+        <mat-card class="card-section w-100">
+          <div class="w-100 pad-sm" fxLayout="column" fxLayoutAlign="between">
+            <h2 class="push-bottom-none" fxFlexAlign.lt-md="center">{{'TOOLKIT.WORKSHOP.TITLE' | translate}}</h2>
+            <div class="body-1 description push-top-sm">
+              {{'TOOLKIT.WORKSHOP.DESCRIPTION' | translate}}<br/>
+            </div>
+            <button (click)="onWorkshop()" class="push-top" color="primary" fxFlexAlign="end"
+                    mat-button>{{'TOOLKIT.ACCESS' | translate}}</button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

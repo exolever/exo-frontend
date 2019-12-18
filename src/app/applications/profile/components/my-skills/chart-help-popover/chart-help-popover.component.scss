@@ -1,0 +1,21 @@
+@import 'variables';
+
+.mat-card {
+  padding: 24px;
+  width: 300px;
+  .mat-card-content {
+    padding: 24px 0;
+  }
+}
+
+.grey {
+  color: mat-color($exo-grey, 500);
+}
+
+.red {
+  color: mat-color($exo-red, 500);
+}
+
+.blue {
+  color: mat-color($exo-blue, 500);
+}

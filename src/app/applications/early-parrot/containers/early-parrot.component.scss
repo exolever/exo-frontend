@@ -1,0 +1,51 @@
+@import "variables";
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/colors';
+
+:host {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1280px;
+}
+
+// Sizing from parrot's documentation
+@media (min-width: 576px) {
+  .epWrapper {
+    padding-bottom: 56.25%; /* 16:9 */
+  }
+}
+
+@media (max-width: 577px) {
+  .epWrapper {
+    height: 900px
+  }
+}
+
+.epWrapper {
+  position: relative;
+}
+
+.epWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.campaign-item {
+  padding-right: map-get($spaceMeasures, 'xs');
+}
+
+.nav-title {
+  margin: 0;
+}
+
+.selected {
+  .mat-list-item {
+    text-decoration: underline;
+  }
+  .icon-item {
+    color: $purple-primary-text;
+  }
+}

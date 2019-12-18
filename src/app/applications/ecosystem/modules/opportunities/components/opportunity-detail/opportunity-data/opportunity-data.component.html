@@ -1,0 +1,99 @@
+<h1>
+  {{opportunity.subject}}
+</h1>
+<div fxLayout="row" fxLayoutAlign="space-between">
+  <exo-avatar-system *ngIf="opportunity.requestedBy"
+                 [name]="opportunity.requestedBy.user.fullName"
+                 [description]="opportunity.requestedBy.user.userTitle"
+                 [truncateName]="true"
+                 [truncateDescription]="true"
+  >
+    <exo-avatar [src]="opportunity.requestedBy.user.profilePictures[1][1]"
+                [alt]="opportunity.requestedBy.user.fullName"
+                [tooltip]="opportunity.requestedBy.user.fullName"
+    ></exo-avatar>
+  </exo-avatar-system>
+  <div fxLayout="row" class="caption-1">
+    <span [ngClass]="{'push-right': opportunity.hasBeenEdited}" class="foreground-secondary-text no-wrap push-left">
+      {{opportunity.created | amTimeAgo}}
+    </span>
+    <span *ngIf="opportunity.hasBeenEdited" class="foreground-secondary-text italic">
+      {{'ECOSYSTEM.OPPORTUNITIES.EDITED' | translate}}
+    </span>
+  </div>
+</div>
+<!-- Status information and help -->
+<div *ngIf="showLabel()" class="push-top-sm">
+  <div fxLayout="row" fxLayoutGap="8px">
+    <span class="pretty-label dark-blue caption-2 push-right-xxs" *ngIf="showAppliedLabel()">{{'ECOSYSTEM.OPPORTUNITIES.APPLIED' | translate | uppercase }}</span>
+    <span class="pretty-label green caption-2 push-right-xxs" *ngIf="showSelectedLabel()">{{'ECOSYSTEM.OPPORTUNITIES.SELECTED' | translate | uppercase }}</span>
+    <span class="pretty-label red caption-2 push-right-xxs" *ngIf="showNotSelectedLabel()">{{'ECOSYSTEM.OPPORTUNITIES.NOT_SELECTED' | translate | uppercase }}</span>
+    <span class="pretty-label purple caption-2 push-right-xxs" *ngIf="showForYouLabel()">{{'ECOSYSTEM.OPPORTUNITIES.FOR_YOU' | translate | uppercase }}</span>
+    <span class="pretty-label grey caption-2 push-right-xxs" *ngIf="opportunity.isClosed()">{{'ECOSYSTEM.OPPORTUNITIES.CLOSED' | translate | uppercase }}</span>
+  </div>
+</div>
+
+<div *ngIf="opportunity.isClosed()" class="push-top-sm">
+  <exo-alert
+    [isCloseable]="true"
+    [message]="getClosedMessage()"
+    closeButtonText="{{'COMMON.CLOSE' | translate}}"
+  ></exo-alert>
+</div>
+
+<div *ngIf="showAdvisorCallGuidelines()" class="push-top-sm">
+  <exo-alert
+    [isCloseable]="true"
+    [message]=getAdvisorCallGuidelinesMessage()
+    closeButtonText="{{'COMMON.CLOSE' | translate}}"
+  ></exo-alert>
+</div>
+
+<div class="push-top-sm">
+  <app-badgets-opportunity-info [opportunity]="opportunity" [showId]="showId()" class="push-top"></app-badgets-opportunity-info>
+</div>
+
+<p *ngIf="opportunity.description" class="description line-breaker" [innerHTML]="opportunity.description"></p>
+
+<!-- Attached files -->
+<div *ngIf="opportunity.files.length > 0" class="push-top-sm">
+  <app-display-attached [resources]="opportunity.files"></app-display-attached>
+</div>
+
+<p class="push-top-sm"><b>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.KEYWORDS_LABEL' | translate}}:</b></p>
+<mat-chip-list>
+  <mat-chip *ngFor="let tag of opportunity.keywords" disableRipple="true" class="default">{{ tag.name }}</mat-chip>
+</mat-chip-list>
+
+<ng-container *ngIf="opportunity.mainLanguage">
+  <p class="push-top-sm"><b>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.LANGUAGES_LABEL' | translate}}:</b></p>
+  <mat-chip-list>
+    <mat-chip disableRipple="true" class="default">
+      {{ opportunity.mainLanguage.name }}
+    </mat-chip>
+    <mat-chip *ngIf="opportunity.secondaryLanguage" disableRipple="true" class="default">
+      {{ opportunity.secondaryLanguage.name }}
+    </mat-chip>
+  </mat-chip-list>
+</ng-container>
+
+<div *ngIf="showRecipients()" class="push-top-sm">
+  <p><b>{{'ECOSYSTEM.OPPORTUNITIES.CREATE.RECIPIENTS' | translate}}:</b></p>
+  <app-ecosystem-searcher
+    [consultants]="opportunity.recipients"
+    [isReadOnly]="true"
+  >
+  </app-ecosystem-searcher>
+</div>
+
+<div class="push-top-sm">
+  <a
+    *ngIf="opportunity.myApplicant!"
+    href="javascript:void(0)"
+    (click)="openDetails(opportunity.myApplicant)"
+  >
+    {{'ECOSYSTEM.OPPORTUNITIES.VIEW_APPLICANT' | translate}}
+  </a>
+<div>
+
+

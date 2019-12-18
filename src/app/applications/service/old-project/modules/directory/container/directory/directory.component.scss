@@ -1,0 +1,56 @@
+@import '~@openexo/design-system/mixins';
+@import '~@openexo/design-system/variables';
+
+.directory-team {
+  margin: 0 auto;
+  text-align: center;
+  padding: 16px 0 16px 24px;
+  max-width: 1280px;
+  width: calc(100% - 24px);
+
+  .button-select {
+    width: 206px;
+    height: 60px;
+    padding: 12px;
+    cursor: pointer;
+
+    color: #46464b;
+    background: rgba(70, 70, 75, 0.08);
+    border-color: transparent;
+    border-bottom: 2px solid rgba(70, 70, 75, 0.42);
+    border-radius: 6px;
+
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1.125;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    text-transform: unset;
+  }
+
+  .subtitle {
+    margin: 0;
+  }
+
+  .number-people {
+    align-self: flex-start;
+  }
+
+  ::ng-deep.ecosystem-lever-members {
+    position: absolute;
+    left: 24px;
+    top: 24px;
+  }
+  ::ng-deep.ecosystem-member {
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    @include retina-background-image($static-root + 'assets/directory/ecosystemMember', 'png', 30px, 30px)
+  }
+
+  ::ng-deep.lever-member {
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    @include retina-background-image($static-root + 'assets/directory/openExOMember', 'png', 30px, 30px)
+  }
+}

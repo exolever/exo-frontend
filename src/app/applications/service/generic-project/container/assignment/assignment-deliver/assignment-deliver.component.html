@@ -1,0 +1,14 @@
+<app-assignment-deliver
+  [step]="step$ | async"
+  [role]="role$ | async"
+  [assignment]="assignment$ | async"
+  [blocks]="blocks$ | async"
+  [uploading]="uploading$ | async"
+  (sendToBackend)="sendToBackend($event)"
+  (markAsTodo)="onMarkAsTodo($event)"
+  (markAsDone)="onMarkAsDone($event)"
+  (markAllAsTodo)="onMarkAllAsTodo($event)"
+  (markAllAsDone)="onMarkAllAsDone($event)"
+  (manageDeliverable)="onManageDeliverable($event)"
+  >
+</app-assignment-deliver>

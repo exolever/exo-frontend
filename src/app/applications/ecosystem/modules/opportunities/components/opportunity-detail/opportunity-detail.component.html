@@ -1,0 +1,41 @@
+<ng-container *ngIf="(loading$ | async); else opportunityBlock">
+  <div fxLayout="row" fxLayoutAlign="center">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+</ng-container>
+<ng-template #opportunityBlock>
+  <ng-container *ngIf="user$ | async as user">
+    <section fxLayout="column" *ngIf="opportunity$ | async as opportunity">
+      <mat-card class="card-section">
+        <mat-card-content>
+          <div *ngIf="opportunity.exoRole" class="section primary-color push-bottom-sm">
+            {{ opportunity.getRoleName() }}
+          </div>
+          <app-data-opportunity [opportunity]="opportunity"></app-data-opportunity>
+          <div *ngIf="hasSow(opportunity)"  class="push-top">
+            <a (click)="viewSow(opportunity)" class="pointer">
+              {{'ECOSYSTEM.OPPORTUNITIES.SOW' | translate}}
+            </a>
+          </div>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
+          <ng-container *ngIf="!opportunity.myApplicant">
+            <button
+              *ngFor="let action of opportunity.actions"
+              mat-flat-button
+              color="primary"
+              (click)="doAction(user, opportunity, action)"
+              [disabled]="opportunity.isClosed()"
+            >
+              {{'ECOSYSTEM.OPPORTUNITIES.ACTIONS.' + action | translate}}
+            </button>
+          </ng-container>
+        </mat-card-actions>
+      </mat-card>
+      <section class="opportunities-tabs push-top-lg" fxLayout="column">
+        <exo-router-tabs *ngIf="tabs.length > 1" [tabs]="tabs"></exo-router-tabs>
+        <router-outlet></router-outlet>
+      </section>
+    </section>
+  </ng-container>
+</ng-template>

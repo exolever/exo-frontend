@@ -1,0 +1,16 @@
+<div class="survey-wrapper">
+  <div fxLayout="column" fxLayoutAlign="start stretch" class="pad-left pad-right pad-top-lg pad-bottom-lg">
+    <h1 class="text-align-center">
+      {{'ECOSYSTEM.EXQ.TITLE' | translate}}
+    </h1>
+    <p class="subheading-2 foreground-secondary-text text-align-center">{{'ECOSYSTEM.EXQ.DESCRIPTION1' | translate}}</p>
+    <p class="subheading-2 foreground-secondary-text text-align-center">{{'ECOSYSTEM.EXQ.DESCRIPTION2' | translate}}</p>
+    <div class="push-bottom-xl" fxLayout="row" fxLayoutAlign="center center">
+      <button color="primary" mat-flat-button [routerLink]="newSurveyAddress">
+        <mat-icon>add</mat-icon>
+        <span>{{'ECOSYSTEM.EXQ.NEW_BUTTON' | translate}}</span>
+      </button>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

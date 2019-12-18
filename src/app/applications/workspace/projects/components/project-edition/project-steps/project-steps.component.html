@@ -1,0 +1,25 @@
+<div>
+  <h2 class="title-help-icon">
+    {{ 'ECOSYSTEM.WORKSPACE.PROJECTS.EDIT.NAVIGATION.STEPS' | translate }}
+    <app-help-popover
+      [htmlContent]="'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.STEPS.HELP' | translate"
+    ></app-help-popover>
+  </h2>
+  <div *ngIf="loading$ | async; else stepsData" fxLayoutAlign="center center">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+  <ng-template #stepsData>
+    <div *ngFor="let step of steps$ | async" class="row-step" fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxFlex="grow" [ngClass]="{'isCurrentStep': step.current}">
+        <span fxFlex="50%">{{step.name}}</span>
+        <span fxFlex="50%">{{step.start | formatDate:'short' }} - {{step.end | formatDate:'short'}}</span>
+      </div>
+      <button [matMenuTriggerFor]="stepMenu" mat-icon-button fxFlex="48px" matTooltip="{{'TOOLTIP.AVAILABLE_ACTIONS' | translate }}">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #stepMenu="matMenu">
+        <button mat-menu-item (click)="onEdit(step)">{{'COMMON.ACTIONS.EDIT' | translate | titlecase}}</button>
+      </mat-menu>
+    </div>
+  </ng-template>
+</div>

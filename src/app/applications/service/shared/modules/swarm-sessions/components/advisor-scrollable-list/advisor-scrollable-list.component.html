@@ -1,0 +1,134 @@
+<perfect-scrollbar
+  class="perfect-scrollbar ps-show-always"
+  [fxFlex]="'0 1 ' + config.layoutMiddleWidth"
+  [config]="{suppressScrollX: false}"
+>
+  <div *ngIf="selectedSession"
+    class="scroll-menu pad-top pad-bottom push-bottom-lg"
+    fxLayout="row"
+    fxLayoutGap="24px"
+    fxLayout.lt-md="column"
+    fxLayoutAlign.lt-md="start center">
+    <!--general info next session card-->
+    <app-swarm-card>
+      <div fxLayoutAlign="center" fxFlex="grow" class="title push-bottom">
+        <p class="title section">
+          {{ ('SWARM.CARD.' + (sessionStatus.sessionExpiredDaysAgo(selectedSession) ? 'DATETIME' : 'INFO')) | translate }}
+        </p>
+      </div>
+      <div
+        fxLayoutAlign="center"
+        fxFlex="grow"
+        class="icon-session push-bottom"
+        [ngClass]="{ 'slight-opacity': sessionStatus.isSessionExpired(selectedSession) }"
+      >
+        <div *ngIf="showTime(); else hourglass">
+          <svg xmlns="http://www.w3.org/2000/svg" width="54" height="61" viewBox="0 0 54 61">
+            <g fill="none" fill-rule="evenodd">
+              <path d="M-9-3h72v72H-9z"/>
+              <g fill="#46464B" fill-rule="nonzero">
+                <path d="M48 12.09H6v6.045h42z" opacity=".3"/>
+                <path d="M6 60.45h42c3.3 0 6-2.72 6-6.045V12.09c0-3.325-2.7-6.045-6-6.045h-3V0h-6v6.045H15V0H9v6.045H6c-3.33 0-5.97 2.72-5.97 6.045L0 54.405c0 3.325 2.67 6.045 6 6.045zm0-42.315V12.09h42v6.045H6zm0 6.045h42v30.225H6V24.18z"/>
+                <path d="M27 33.248h15v15.113H27z"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <ng-template #hourglass>
+          <div class="hourglass-icon-container">
+            <mat-icon class="hourglass">hourglass_empty</mat-icon>
+            <svg class="unread-spot-svg" height="18" width="18">
+              <circle class="outer" cx="9" cy="9" r="9"/>
+              <circle [ngClass]="{
+                  'half-passed': sessionStatus.isMoreThanHalfSessionPassed(selectedSession),
+                  'about-to-finish': sessionStatus.isAboutToExpireSession(selectedSession)
+                }"
+                class="inner" cx="9" cy="9" r="7" />
+            </svg>
+          </div>
+        </ng-template>
+      </div>
+      <div *ngIf="!sessionStatus.isSessionExpired(selectedSession) || sessionStatus.sessionExpiredDaysAgo(selectedSession, 1); else sessionFinished"
+           fxFlex="grow"
+           class="info"
+      >
+        <div *ngIf="!sessionStatus.isSessionStarted(selectedSession); else sessionJustFinished"
+             fxLayout="column"
+             fxLayoutAlign="start center"
+        >
+          <p class="body-2 text-align-center">
+            {{ sessionStatus.isSwarmToday(selectedSession) ? ('SWARM.TODAY' | translate) : startDateTime }}
+          </p>
+          <p class="caption-1 text-align-center">{{ timeRange }}</p>
+        </div>
+        <ng-template #sessionJustFinished>
+          <div *ngIf="sessionStatus.sessionExpiredDaysAgo(selectedSession, 1); else sessionStartedText"
+               fxLayout="column"
+               fxLayoutAlign="start center"
+          >
+            <p class="body-2 text-align-center">
+              {{ sessionStatus.isSwarmToday(selectedSession) ? ('SWARM.JUST_FINISHED' | translate) : startDateTime }}
+            </p>
+            <p class="caption-1 text-align-center">{{ timeRange }}</p>
+          </div>
+        </ng-template>
+        <ng-template #sessionStartedText>
+          <p class="body-2 text-align-center">
+            <span *ngIf="sessionStatus.isAboutToExpireSession(selectedSession); else halfway">
+              {{('SWARM.FINISH_SOON') | translate}}
+            </span>
+            <ng-template #halfway>
+              <span *ngIf="sessionStatus.isMoreThanHalfSessionPassed(selectedSession); else started">
+                {{('SWARM.HALFWAY') | translate}}
+              </span>
+            </ng-template>
+            <ng-template #started>
+              <span>{{('SWARM.ONGOING') | translate}}</span>
+            </ng-template>
+          </p>
+          <p class="caption-1 text-align-center">{{ timeRange }}</p>
+        </ng-template>
+      </div>
+    </app-swarm-card>
+
+    <!--advisors related with next session-->
+    <app-swarm-card *ngFor="let advisor of advisors"
+                    (click)="navigationService.goToProfile(advisor.slug, 'SWARM.TITLE')"
+                    class="scrollmenu-item pointer">
+      <div fxLayoutAlign="center" fxFlex="grow" class="title push-bottom">
+        <p class="section">{{ 'SWARM.CARD.ADVISOR' | translate }}</p>
+      </div>
+      <div fxLayoutAlign="center" fxFlex="grow" class="image push-bottom">
+        <img class="image" [src]="advisor?.profilePictures[2]?.url" width="72" height="72" />
+      </div>
+      <div fxLayoutAlign="center" fxFlex="grow" class="info push-bottom-xxxs">
+        <p class="body-2">{{ advisor.fullName }}</p>
+      </div>
+      <div fxLayoutAlign="center" fxFlex="grow" class="actions">
+        <p class="caption-1 text-align-center">
+          {{advisor.roles}}
+        </p>
+      </div>
+    </app-swarm-card>
+  </div>
+
+</perfect-scrollbar>
+
+<ng-template #lessThan24hFinished>
+  <div fxFlex="grow" class="info">
+    <p class="body-2 text-align-center">
+      {{ 'SWARM.CARD.DATETIME' | translate }}
+    </p>
+  </div>
+</ng-template>
+
+<ng-template #sessionFinished>
+  <div *ngIf="sessionStatus.sessionExpiredDaysAgo(selectedSession, 1); else lessThan24hFinished"
+       fxFlex="grow"
+       class="info"
+  >
+    <p class="body-2 text-align-center">
+      {{ 'SWARM.SESSION_END' | translate }}
+    </p>
+  </div>
+</ng-template>

@@ -1,0 +1,32 @@
+@import 'themes/exo-platform-light-theme';
+
+.levels {
+  &:first-child, &:last-child {
+    border-radius: 13px;
+  }
+}
+
+.levels-vote {
+  height: 24px;
+  cursor: pointer;
+  background-color: map-get($mat-light-theme-background, input-background);
+  &.beginner {
+    border-radius: 13px 0 0 13px;
+    &.selected {
+      background-color: map-get($mat-light-theme-background, beginner);
+    }
+  }
+
+  &.intermediate {
+    &.selected {
+      background-color: map-get($mat-light-theme-background, intermediate);
+    }
+  }
+
+  &.advanced {
+    border-radius: 0 13px 13px 0;
+    &.selected {
+      background-color: map-get($mat-light-theme-background, advanced);
+    }
+  }
+}

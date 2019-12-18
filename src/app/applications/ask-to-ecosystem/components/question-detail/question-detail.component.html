@@ -1,0 +1,58 @@
+<section class="exo-platform pad-left pad-right" fxLayout="column" fxLayoutAlign="start start">
+  <app-back-to-snippet class="push-top-sm push-bottom-lg"
+    (back)="goBack()"
+    priorNavigationTranslateString="{{ 'PROJECT.ASK_ECOSYSTEM.TITLE' | translate }}"
+  ></app-back-to-snippet>
+  <mat-card class="w-100">
+    <mat-card-content *ngIf="user$ | async as user">
+      <app-post-detail *ngIf="question$ | async as question"
+        [post]="question"
+        [user]="user"
+        title="{{ 'PROJECT.ASK_ECOSYSTEM.QUESTION_FOR' | translate }}"
+        (favorite)="onFavoriteQuestion(question.pk, $event)"
+        (edit)="onEdit($event)"
+        (delete)="onDeleteQuestion($event)">
+      </app-post-detail>
+      <div i18n *ngIf="totalAnswers$ | async as numberAnswers" class="text-left push-top-xl title push-bottom-none">
+        {{numberAnswers}} {numberAnswers, plural, =1 { {{'FORUM.ANSWER' | translate}} } other { {{'FORUM.ANSWERS' | translate}} }}
+      </div>
+      <exo-avatar-system
+        class="push-bottom-sm inline-block push-top-xl"
+        *ngIf="question$ | async as question"
+        [name]="user.fullName"
+        [description]="user.userTitle">
+        <exo-avatar
+          [src]="user.profilePictures[1].url"
+          [alt]="user.fullName"
+          [tooltip]="user.fullName"
+        ></exo-avatar>
+      </exo-avatar-system>
+      <app-write-comment
+        class="w-100 inline-block"
+        [user]="user$ | async"
+        commentLabel="{{'PROJECT.ASK_ECOSYSTEM.COMMENT' | translate }}"
+        saveButton="{{'PROJECT.ASK_ECOSYSTEM.COMMENT_BUTTON' | translate }}"
+        (saved)="onNewAnswer($event)"
+      ></app-write-comment>
+      <app-answer *ngFor="let answer of answers$ | async"
+        class="push-top-lg inline-block w-100"
+        [canBeVoted]="answer.canVote"
+        [answer]="answer"
+        [user]="user$ | async"
+        (edit)="enableAnswerEdition($event)"
+        (delete)="onDeleteAnswer($event)"
+        (rating)="onRating(answer.pk, $event)">
+      </app-answer>
+      <mat-paginator
+        *ngIf="!(emptyMoment$ | async) && !(loading$ | async)"
+        class="transparent push-top-lg"
+        (page)="paginatorChange($event)"
+        [length]="totalAnswers$ | async"
+        [pageSize]="pageSize$ | async"
+        [pageIndex]="pageIndex$ | async"
+        [pageSizeOptions]="[5, 15, 25]">
+      </mat-paginator>
+    </mat-card-content>
+  </mat-card>
+
+</section>

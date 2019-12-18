@@ -1,0 +1,25 @@
+@import "variables";
+
+// config
+  $snippet-size: 25px;
+  $padding: 0 10px;
+  $background: mat-color($background, 'exo-bullet');
+
+span.bullet {
+  background-color: $background;
+  height: $snippet-size;
+  line-height: $snippet-size;
+  border-radius: $snippet-size;
+  padding: $padding;
+}
+
+.exo-platform {
+  .filters {
+    span.bullet {
+      /* TODO: Refactor this to get color from theme */
+      background-color: #6f23ff;
+      color: white;
+      font-size: 14px;
+    }
+  }
+}

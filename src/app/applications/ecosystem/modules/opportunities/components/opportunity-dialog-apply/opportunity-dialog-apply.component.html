@@ -1,0 +1,79 @@
+<h2 mat-dialog-title>
+  {{'ECOSYSTEM.OPPORTUNITIES.APPLY_DIALOG.TITLE' | translate}}
+</h2>
+<mat-dialog-content *ngIf="data.opportunity as opportunity" >
+  <perfect-scrollbar class="perfect-scrollbar with-actions ps-show-always">
+    <div fxLayout="row" fxLayoutAlign="start center" class="profile-info pad-bottom">
+        <exo-avatar-system *ngIf="userLogged"
+          [name]="userLogged.fullName"
+          [description]="userLogged.userTitle"
+          [truncateDescription]="true"
+        >
+          <exo-avatar [src]="userLogged.getPicture(144)"
+                [alt]="userLogged.fullName"
+                [tooltip]="userLogged.fullName"
+          ></exo-avatar>
+        </exo-avatar-system>
+    </div>
+    <div class="profile-alert pad-bottom-sm">
+      <exo-alert 
+        [message]="'ECOSYSTEM.OPPORTUNITIES.APPLY_DIALOG.PROFILE_SHARED' | translate"
+        [actionButtonText]="'ECOSYSTEM.OPPORTUNITIES.APPLY_DIALOG.PROFILE_EDIT' | translate"
+        typeAlert="info"
+        (sendAction)="editProfile()"
+      ></exo-alert>
+      <div class="push-top">
+        <mat-hint>* {{'ECOSYSTEM.OPPORTUNITIES.APPLY_DIALOG.PROFILE_OWNER' | translate}} <span class="body-2">{{opportunity.requestedBy.user.fullName}}</span></mat-hint>
+      </div>
+    </div>
+    <form [formGroup]="form">
+      <mat-form-field class="w-100 push-bottom-xxs" appearance="fill">
+        <mat-label>
+          {{'ECOSYSTEM.OPPORTUNITIES.APPLY_DIALOG.FIT_OPPORTUNITY' | translate}}
+        </mat-label>
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          formControlName="comment"
+          #opportunityArea
+        ></textarea>
+        <mat-error>{{form.get('comment').errors | humanizeFormErrors}}</mat-error>
+        <mat-hint align="end">{{opportunityArea.value.length}} / {{maxLengthOpportunityApply}}</mat-hint>
+      </mat-form-field>
+      <h3 *ngIf="hasQuestions()">{{'ECOSYSTEM.OPPORTUNITIES.APPLY_DIALOG.QUESTIONNAIRE' | translate}}</h3>
+      <div *ngFor="let question of data.opportunity.questions; let i = index" class="push-bottom-sm">
+        <ng-container [ngTemplateOutlet]="questionTpl" 
+          [ngTemplateOutletContext]="{question: question, control: form.get(question.id.toString())}";
+        ></ng-container>
+      </div>
+      <mat-form-field *ngIf="hasQuestions() > 0" class="w-100" appearance="fill">
+        <mat-label>
+          {{'ECOSYSTEM.OPPORTUNITIES.APPLY_DIALOG.QUESTIONS_INFORMATION' | translate}}
+        </mat-label>
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          formControlName="questionsExtraInfo"
+          #questionsExtraInfoArea
+        ></textarea>
+        <mat-error>{{form.get('questionsExtraInfo').errors | humanizeFormErrors}}</mat-error>
+        <mat-hint align="end">{{questionsExtraInfoArea.value.length}} / {{validationConfig.maxLength}}</mat-hint>
+      </mat-form-field>
+    </form>
+  </perfect-scrollbar>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button color="accent" mat-flat-button mat-dialog-close>{{'ECOSYSTEM.OPPORTUNITIES.APPLY_DIALOG.BUTTON_CANCEL' | translate}}</button>
+  <button color="primary" mat-flat-button (click)="submitApply()">{{'ECOSYSTEM.OPPORTUNITIES.APPLY_DIALOG.BUTTON_APPLY' | translate}}</button>
+</mat-dialog-actions>
+
+<ng-template #questionTpl let-control="control" let-question="question" >
+  <div class="body-1 push-bottom-xs">{{question.title}}</div>
+  <mat-radio-group [formControl]="control"  name="{{question.id}}" >
+    <mat-radio-button color="primary" value="true" class="push-right-sm">{{'COMMON.YES' | translate}}</mat-radio-button>
+    <mat-radio-button color="primary" value="false">{{'COMMON.NO' | translate}}</mat-radio-button>
+    <mat-error class="push-top-xxs" *ngIf="showQuestionsErrors" [@transitionHintErrorMessages]="'enter'">{{control.errors | humanizeFormErrors}}</mat-error>
+  </mat-radio-group>
+</ng-template>

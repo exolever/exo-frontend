@@ -1,0 +1,3014 @@
+{
+  "ACCESSIBILITY": {
+    "ALT_ATTRIBUTES": {
+      "THUMBNAIL": "video thumbnail"
+    }
+  },
+  "ACCOUNTS": {
+    "8CHARACTERS": "La contraseña debe tener al menos 8 caracteres",
+    "AGREEMENTS": "Acuerdos",
+    "AGREEMENTS_OUTDATED": "Vencido(s)",
+    "CANCEL": "Cancelar",
+    "CHANGE": "Cambiar",
+    "CHANGEEMAIL": "Cambiar dirección de correo",
+    "CHANGEPASSWORD": "Cambiar contraseña",
+    "CHANGE_LANGUAGE": "Cambiar idioma",
+    "CHANGE_PASSWORD": "Cambiar contraseña",
+    "EMAIL": "Correo asociado a tu cuenta",
+    "LANGUAGES": {
+      "ENGLISH": "Inglés",
+      "HINT": "El idioma en el que verás OpenExO",
+      "LANGUAGE": "Idioma",
+      "LANGUAGE_CHANGED": "Se ha editado el idioma seleccionado",
+      "PLACEHOLDER": "Tu idioma",
+      "SPANISH": "Español"
+    },
+    "NEW_EMAIL": "Nuevo correo",
+    "NEW_PASSWORD": "Nueva contraseña",
+    "SAVE": "Guardar",
+    "SAVE_CHANGES": "Guardar cambios",
+    "SETTINGS": "Ajustes"
+  },
+  "BROWSER_VERSION": {
+    "TITLE": "Your current browser may lead to a poor navigation experience",
+    "MESSAGE": "In order to enjoy an optimal navigation experience, we recommend you to use the last version of one of the following browsers",
+    "DESCRIPTION": "<p><a target='_blank' href={{url}}>Upgrade your browser</a>.</p>"
+  },
+  "CERTIFICATES": {
+    "CERTIFIED_IN": "Certified",
+    "DIALOG": {
+      "CONSULTANTS": {
+        "EXQ_TITLE": "Become a Certified ExO Consultant",
+        "EXQ_DESCRIPTION": "You need to have the ExO Consultant Certification if you want access to the ExQ tool."
+      },
+      "ACTIONS": {
+        "CLOSE": "OK",
+        "LEARN_MORE": "Learn mode"
+      },
+      "SEE_CERTIFICATE": "See certificate",
+      "TITLE": "ExO Certifications"
+    }
+  },
+  "COMMON": {
+    "ACTIONS": {
+      "ACCEPT": "Aceptar",
+      "CANCEL": "CANCEL",
+      "CLOSE": "CLOSE",
+      "CONFIRM": "Confirm",
+      "COPY": "Copy",
+      "DECLINE": "Decline",
+      "DELETE": "delete",
+      "EDIT": "edit",
+      "NEXT": "Next",
+      "SAVE": "Save"
+    },
+    "ADDED": "Added",
+    "ADVISORS_SUPPORT": "ADVISORS SUPPORT",
+    "ADVISOR_REQUEST": "Advisor Request",
+    "AGO": "ago",
+    "AND": "And",
+    "ASK": "ask",
+    "AT": "at",
+    "BACK": "back",
+    "BEGIN": "Begin",
+    "BY": "by",
+    "CANCEL": "Cancel",
+    "CHAT": "Chat",
+    "CLOSE": "Close",
+    "COACH_CONNECTION": "COACH CONNECTION",
+    "CONNECTOR": "and",
+    "COPIED_CLIPBOARD": "Copied to clipboard!",
+    "COUNTRY": "Country",
+    "DELETE": "Delete",
+    "DISCUSSION_FORUM": "DISCUSSION FORUM",
+    "DONE": "Done",
+    "ERRORS": {
+      "GENERIC": "Something was wrong",
+      "REQUEST_NOT_SENT": "Sorry, your request could not be sent"
+    },
+    "FOOTER": "Transforming the world for a better future - OpenExO® 2018 | 2019",
+    "GOT_IT": "Got it",
+    "GO_TO_COMMUNITY": "Go to Community",
+    "HELLO": "Hello, {{name}}",
+    "HOUR": "Hour",
+    "HOURS": "Hours",
+    "LANGUAGES": "Languages",
+    "LIKE": "Marks as favorite",
+    "LOCATION": "Location",
+    "ME": "me",
+    "MEETING_ROOM": "MEETING ROOM",
+    "MONTHS": {
+      "0": "January",
+      "1": "February",
+      "2": "March",
+      "3": "April",
+      "4": "May",
+      "5": "June",
+      "6": "July",
+      "7": "August",
+      "8": "September",
+      "9": "October",
+      "10": "November",
+      "11": "December"
+    },
+    "NEW": "new",
+    "NO": "No",
+    "ONLINE": "Online",
+    "OPENEXO": "OpenExO",
+    "OPTIONAL": "Opcional",
+    "OR": "or",
+    "OTHER": "Other",
+    "PEOPLE": "People",
+    "PERSON": "person",
+    "PERSONAL_WEBSITE": "Personal Website",
+    "POST": "Post",
+    "PROFILE": "Profile",
+    "PROJECT": "Project",
+    "PROJECT_DIRECTORY": "Project Directory",
+    "REFRESH_PAGE": "Refresh page",
+    "ROLE": "Role",
+    "SEND": "Send",
+    "SHARE": "Share",
+    "SINCE": "Since",
+    "START_TYPING": "Start typing",
+    "TBD": "To be defined",
+    "TEAM": "Team",
+    "THANKS": "Thank you",
+    "TIMEZONE": "Time zone",
+    "TRY_AGAIN": "Try again",
+    "UNLIKE": "Unmark as favorite",
+    "UPLOAD_FILE": "Upload file",
+    "YES": "Yes",
+    "YOU": "You"
+  },
+  "COMPLETE_PROFILE": {
+    "DIALOG": {
+      "APPLY": "Apply today",
+      "BUTTON": "COMPLETE PROFILE",
+      "CANVAS": "The ExO Canvas",
+      "CERTIFICATE_APPLY": "Apply",
+      "CERTIFICATION": "Certification",
+      "CERTIFICATION_LABEL": "Do you want to transform the World? Start your certification journey today!",
+      "COACH": "ExO Sprint Coach",
+      "CONSULTANT": "ExO Consultant",
+      "FOUNDATIONS": "ExO Foundations",
+      "LABEL2": "Welcome to the community, we're so glad you're joining us!",
+      "LABEL_P1": "Check out",
+      "LABEL_P2": "this help article",
+      "LABEL_P3": "that indicates how to complete your profile.",
+      "LEARN_MORE": "Learn more",
+      "RESOURCE_LABEL": "To add extra value to you our new community member we want to make the following available to you:",
+      "START_NOW": "Start now",
+      "START_NOW_EN": "Start now in english",
+      "START_NOW_ES": "Start now in spanish",
+      "SUMMARY": "Exponential Transformation Summary",
+      "TEXT": "Members with detailed profiles have a greater chance of meeting new people in the transformation community.",
+      "TITLE": "You're joining a community of thought leaders, disruption specialists, entrepreneurs and exponential tech specialists. Let's get your profile filled out so you can start attracting the community you want to connect with."
+    }
+  },
+  "CONSENT": {
+    "DESCRIPTION": "We are very proud of all the great professionals who make up the OpenExO family and we want the world to know. For this reason, we would like to ask your permission in order to be able to use your image, name and your profile information from the community for marketing and communication purposes. Please click on the button below to either grant or deny permission to use your name and image.",
+    "GO_TO_OPENEXO": "Go to openexo",
+    "QUESTION": "Do you grant permission to OpenExO to use, reproduce and communicate your name, profile information from the community and images of you in OpenExO publications, including but not limited to OpenExO's website, social media sites and promotional and marketing materials?",
+    "THANK_MESSAGE": "We really appreciate your response. Let's keep growing together!",
+    "TITLE": "Consent to use name, images and profile information",
+    "TITLE_THANKS": "Thank you!"
+  },
+  "CONSULTANT": {
+    "STATUS": {
+      "ACTIVE": "Active",
+      "CERTIFIED": "Certified",
+      "INACTIVE": "Inactive",
+      "PENDING": "Pending"
+    }
+  },
+  "CONVERSATIONS": {
+    "ASK_PUBLISHER": "Need more info about this opportunity?",
+    "CONVERSATION": "Conversation",
+    "CONVERSATIONS": "Chats",
+    "CREATE_MESSAGE_BUTTON": "Enviar",
+    "CREATE_MESSAGE_LABEL": "Escribe un mensaje",
+    "CREATE_MESSAGE_TOAST_SUCCESS": "Question published",
+    "LOADED_MESSAGE_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+    "MESSAGES_TITLE_DIALOG": "Back to the opportunity",
+    "QUESTIONS": "Send a message to the opportunity creator with your questions",
+    "TALK_WITH": "Conversation with "
+  },
+  "CORE": {
+    "BROWSER_NOT_SUPPORTED": "Browser not supported",
+    "BROWSER_NOT_SUPPORTED_CHROME": "Chrome 49 or higher",
+    "BROWSER_NOT_SUPPORTED_DESC": "OpenExO does not support the browser you are using. To use our application please switch to a supported browser.",
+    "BROWSER_NOT_SUPPORTED_FIREFOX": "Firefox 50 or higher",
+    "BROWSER_NOT_SUPPORTED_IE": "Edge 14 or higher",
+    "BROWSER_NOT_SUPPORTED_OPERA": "Opera 43 or higher",
+    "BROWSER_NOT_SUPPORTED_SAFARI": "Safari 10 or higher",
+    "CONTENT_DELETED": "It seems that the post you're trying to access no longer exists.",
+    "CONTENT_DELETED_DESCRIPTION": "We can take you back to Circles so you can explore other great posts.",
+    "CONTENT_DELETED_REDIRECT": "BACK TO CIRCLES",
+    "DOWNLOAD": "Download",
+    "HOME": "Home",
+    "NOT_FOUND": "Not found :/",
+    "PAGE_NOT_EXIST": "The page you're looking for doesn't exist",
+    "PAGE_NOT_EXIST_HELP": "Here is a little map that might help you get back on track",
+    "SUPPORTED_BROWSERS_VERSIONS": "Supported browsers & versions",
+    "ERROR_410": {
+      "TITLE": "This {{entity}} is gone :/",
+      "DESCRIPTION": "You tried to view an {{entity}} that was deleted and will most likely never come back",
+      "GO_BACK": "Go back",
+      "ENTITIES": {
+        "CIRCLE": "circle",
+        "OPPORTUNITY": "opportunity",
+        "POST": "post",
+        "GENERIC": "page"
+      }
+    }
+  },
+  "DASHBOARD": {
+    "DIRECTORY": {
+      "CERTIFIED": "Certified",
+      "FILTERS": {
+        "ACTION_APPLY": "Apply filters",
+        "ACTION_CLEAR": "Clear",
+        "ATTRIBUTES": "ExO Attributes",
+        "ATTRIBUTES_TITLE": "ExO Attributes",
+        "CERTIFICATIONS": "Certifications",
+        "FILTERS": "Filter by",
+        "INDUSTRIES": "ExO Industries",
+        "INDUSTRIES_TITLE": "ExO Industries",
+        "LANGUAGES": "Languages",
+        "LANGUAGES_TITLE": "Languages",
+        "LOCATION": "Location",
+        "LOCATION_TITLE": "Location",
+        "RESTORE": "Restore",
+        "ROLES": "ExO Roles",
+        "SEARCH": "Buscar",
+        "SEARCH_MORE": "Search more...",
+        "SKILLS": "Skills and Technologies",
+        "STAFF": "Staff",
+        "TITLE_DIALOG": "Filter results"
+      },
+      "FILTER_FAB": "Filter",
+      "INVITE_ASIDE": {
+        "ENTITY_BUTTON": "Entity",
+        "INDIVIDUAL_BUTTON": "Individual",
+        "MAIN": "Do you want to recommend anyone to OpenExO Community?",
+        "MAIN1": "Do you want to recommend anyone to join the",
+        "MAIN2": "ExO Community?",
+        "TITLE": "RECOMMENDATIONS"
+      },
+      "OPTIONS_SORT_BY": {
+        "ACTIVE_STATUS": "Active status",
+        "ACTIVITY": "Activity",
+        "FULL_NAME": "Full name",
+        "JOINING_DATE": "Newest members",
+        "LOCATION": "Location",
+        "NUMBER_OF_PROJECTS": "Number of projects"
+      },
+      "SEARCH": {
+        "EMPTY": "No members match your search",
+        "HELP": "Buscar",
+        "NUM_RESULT": "Result",
+        "NUM_RESULTS": "Results"
+      },
+      "SORT_BY": "Sort by",
+      "SORT_BY_TOOLTIP": {
+        "ASC": "Ascending, A -> Z",
+        "DESC": "Descending, Z -> A"
+      }
+    },
+    "FORUM": {
+      "LATEST_POSTER": "Latest poster",
+      "LINK_TO_FORUM": "Go to forum",
+      "TITLE": "Latest discussions"
+    },
+    "LAYOUT": {
+      "DIRECTORY_TAB_TITLE": "Directorio",
+      "MEDIA_TAB_TITLE": "Media",
+      "OPPORTUNITIES_TAB_TITLE": "Opportunities",
+      "PROJECTS_TAB_TITLE": "Projects"
+    },
+    "OPPORTUNITIES": {
+      "ACTION": {
+        "ACCEPT": "Accept",
+        "ADVISOR_EVALUATE": "Evaluate",
+        "APPLY_OPEN_TICKET": "Apply",
+        "CLAIM_SESSION": "Claim your session",
+        "COACH_CONFIRM": "Coach Confirmation",
+        "DECLINE": "Decline",
+        "DISMISS": {
+          "ACTION1": "Dismiss",
+          "ACTION2": "Dismiss",
+          "ACTION3": "Did not occur",
+          "MESSAGE1": "You are about to discard your response to this request",
+          "MESSAGE2a": "You are about to cancel your session scheduled with Team",
+          "MESSAGE2b": "We will cancel the session and inform the team.",
+          "MESSAGE3": "Did this session occur on",
+          "TITLE1": "Dismiss response",
+          "TITLE2": "Dismiss session",
+          "TITLE3": "Did not occur"
+        },
+        "EDIT": "Edit",
+        "IT_DID_NOT_HAPPEN": "Didn't happen",
+        "RECOMMEND": "Recommend Someone",
+        "REMOVE": "Dismiss",
+        "RESPONDING": "Responding",
+        "RESULT": {
+          "CLAIM_SESSION": "Session claimed",
+          "CONFIRMATION_SENT": "Confirmation sent",
+          "REQUEST_ACCEPTED": "Request accepted",
+          "REQUEST_CANCELED": "Request canceled",
+          "REQUEST_DECLINED": "Request declined"
+        },
+        "SEND": "Send",
+        "SESSION": "Session",
+        "TEAM_DIDNT_ATTEND": "I did not attend",
+        "TEAM_GIVE_FEEDBACK": "Evaluate"
+      },
+      "CLAIM_SESSION_DIALOG": {
+        "ACTION": "SEND",
+        "MESSAGE": "An email will be sent to the team coach to speed up the verification process so the recommendation is to use this functionality at least 2 or 3 days after the session.",
+        "TITLE": "Claim your session"
+      },
+      "COMMENTS": "{{counter}} Comments",
+      "DETAIL": {
+        "DETAIL": {
+          "REQUESTED_BY": "Requested",
+          "RESPONSES": "Responses",
+          "TITLE": "Details"
+        },
+        "DIALOG_TITLE": "Dialog",
+        "FEEDBACK_TITLE": "Session Feedback",
+        "HELP": {
+          "ADVISOR_CONFIRM": {
+            "SENT_FEEDBACK": "Your Feedback"
+          },
+          "COMPLETED": {
+            "EVALUATE": "Evaluate this session.",
+            "EVALUATE_COMMENT": "Write a comment (optional)",
+            "EVALUATE_HELP_FILL": "Help us improve the experience by sending your feedback",
+            "EVALUATE_HELP_VIEW": "See the team's feeback after evaluating your experience!",
+            "SUMMARY": "Please confirm the session so your payment can be issued."
+          },
+          "EVALUATED": {
+            "HELP": "To issue payment and grant your badge, the team verification is needed. If after some days your session has not been verified, you can claim your session, so that the team coach will be notified to verify it.",
+            "SUMMARY": "Team verification still pending."
+          },
+          "PENDING": {
+            "SUGGESTION": "Please let the team know if you are interested as soon as possible",
+            "SUMMARY": "Congrats! You were requested as an ExO Advisor."
+          },
+          "REMOVED": {
+            "CLAIM_SESSION": "If the session took place, you can claim it to the team coach",
+            "CLICK_BUTTON": "Click on the button to",
+            "COMMENT_FROM_TEAM": "Comments from the team",
+            "SUMMARY": "Team disconfirmed the session."
+          },
+          "SCHEDULED": "Session scheduled for",
+          "VERIFIED": {
+            "INVOICE_INFO": "Send your invoice to",
+            "SUMMARY": "Verified! Your payment will be issued."
+          }
+        },
+        "LINK_TO_ZOOM": "Go to Zoom",
+        "RECOMMENDATION_SENT": "Recommendation sent",
+        "RESPONSE_TITLE": "Your Response",
+        "TEAM_FEEDBACK_TITLE": "Team feedback about the session. ",
+        "TIMEZONE": "Timezone"
+      },
+      "EMPTY": {
+        "NO_OPPORTUNITIES": "You haven't responded to any opportunities yet",
+        "SUGGESTION": "Find opportunities"
+      },
+      "ERRORS": {
+        "ERROR_EVALUATE_SESSION": "Please evaluate the session"
+      },
+      "FIND_OPPORTUNITIES": "Find new opportunities",
+      "LINK_TO_DETAIL": "open",
+      "MODIFIED_BY": "by",
+      "MODIFIED_BY_YOURSELF": "You",
+      "REQUIRED_ACTION": "Action needed",
+      "STATUS": {
+        "ACCEPTED": "Accepted",
+        "ADVISOR_CONFIRMED": "Confirmed",
+        "APPLICANT_CONFIRMED": "Evaluated",
+        "APPLICANT_REMOVED": "Canceled",
+        "APPLICANT_SELECTED": "Past session",
+        "CANCELED": "Canceled",
+        "COMPLETED": "Confirmation needed",
+        "DECLINED": "Declined",
+        "DRAFTED_ADVISOR": "Open",
+        "PENDING": "You were requested",
+        "REJECTED": "Closed",
+        "REMOVED": "Canceled",
+        "REQUESTED": "Responded to",
+        "SCHEDULED": "Session set",
+        "SENT": "Responded to",
+        "VERIFIED": "Verified"
+      },
+      "SUMMARY": {
+        "NEEDED_BY": "Action needed by",
+        "SCHEDULED_FOR": "Scheduled for",
+        "SESSION_AT": "Session at"
+      }
+    },
+    "PROJECTS": {
+      "EMPTY": {
+        "NO_PROJECTS": "You haven't been on an ExO project yet",
+        "SUGGESTION": "Get involved in an ExO project by participating in a delivery role."
+      },
+      "ERROR": "Error",
+      "ERRORS": "Errors",
+      "LINK_TO_FORUM": "Forum",
+      "LINK_TO_PROJECT": "Project",
+      "NO_DATE": "Date not set",
+      "STATUS": {
+        "COMING": "Coming soon",
+        "COMPLETE": "Complete",
+        "HAPPENING": "Happening now",
+        "NOT_AVAILABLE_FUTURE": "Not available yet",
+        "NOT_AVAILABLE_PAST": "Access unavailable",
+        "NOT_SUPPORTED": "Previous to OpenExO"
+      },
+      "TITLE": "Your projects"
+    }
+  },
+  "DIALOGS": {
+    "DECLINE_TICKET": "Decline request",
+    "DELETED_FILE": "Deleted:",
+    "EMAIL_CHANGED_SUCCESSFULLY": "Email changed successfully",
+    "FILE_LARGER": "File size larger than",
+    "PASSWORD_CHANGED_SUCCESSFULLY": "Password changed successfully",
+    "PICTURE_UPDATED": "Looking good, feeling good!",
+    "PROFILE_UPDATED": "Profile updated.",
+    "RECOMMEND_SOMEONE": "Recommend someone",
+    "RECOMMEND_SOMEONE_QUESTION": "Would you like to <a class=\"onClick pointer\">recommend someone</a>?",
+    "RESPONDING": "Responding: ",
+    "RESPONSE_SENT": "Response sent",
+    "SOMETHING_WRONG": "Something went wrong and we couldn't update your profile",
+    "SUMMARIES": "'s quick bio",
+    "SUMMARY": "quick Bio",
+    "VIDEO_UPDATED": "Love your video!"
+  },
+  "ECOSYSTEM": {
+    "ACCOUNT": {
+      "ACCOUNT": "Cuenta",
+      "AGREEMENTS": "Agreements",
+      "CHANGE_EMAIL": "Cambiar correo",
+      "CONTRACTING_CAPTION": "The information is used by OpenExO for any invoices and future agreements",
+      "CONTRACTING_FORM": {
+        "ADDRESS": "Address",
+        "ADDRESS_HINT": "Address, zip code city, country. (e.g. 309 Lindsay Road, NW10 London, UK)",
+        "COMPANY_NAME": "Company Name",
+        "COMPANY_NAME_HINT": "If you are representing another legal entity",
+        "CONTRACTING_SUBTITLE": "This section is optional. If you'd like to work on OpenExO transformation projects, this information will be used for agreements (to protect your work and client materials) and invoicing.",
+        "CONTRACTING_TITLE": "Contracting / Invoicing Information",
+        "LEGAL_NAME": "Full Legal Name",
+        "SUMMARY_SUBTITLE": "Take an active role transforming others.",
+        "SUMMARY_TITLE": "Working Together",
+        "TAX_ID": "Tax ID"
+      },
+      "DESCRIPTION": "Cambia los ajustes de tu cuenta y accede a toda la información sobre tu contrato",
+      "EMAIL_CAPTION": "Correo electrónico y contraseña",
+      "LANGUAGE_CAPTION": "The language OpenExO is displayed",
+      "SETTINGS": "Settings"
+    },
+    "ANNOUNCEMENTS": {
+      "CREATE_NEW": "New Announcement",
+      "POST_TITLE": "Announcements Circle",
+      "SUBTITLE": "This is a community news space where OpenExO sends information to all ExO Community members on updates, new releases, events, and experiments"
+    },
+    "BOOKS": {
+      "BOOK_1": {
+        "DESCRIPTION": "Overcome your organizational immune system and become a thriving Exponential Organization.",
+        "TITLE": "Exponential Transformation"
+      },
+      "BOOK_2": {
+        "DESCRIPTION": "A guide to navigating the shifting business environment due to the introduction and proliferation of exponential technologies",
+        "TITLE": "Exponential Organizations"
+      },
+      "DOWNLOADS": "Download the Summary",
+      "LANGUAGES": {
+        "DUTCH": "Dutch",
+        "ENGLISH": "English",
+        "GERMAN": "German",
+        "PORTUGUESE": "Portuguese",
+        "SPANISH": "Spanish"
+      },
+      "ORDER_COPY": "Order your copy",
+      "SUBTITLE": "All the official OpenExO books",
+      "TITLE": "Books",
+      "VISIT_WEBSITE": "Visit the Website"
+    },
+    "BREADCRUMBS": {
+      "ANNOUNCEMENTS": {
+        "CREATE": "New Announcement",
+        "LIST": "Announcements Circle"
+      },
+      "CIRCLES": {
+        "CREATE": "Create topic",
+        "LIST": "Circles Topics list",
+        "TITLE": "Circles"
+      },
+      "DIRECTORY": "Directorio",
+      "EVENTS": {
+        "CREATE": "Create event",
+        "EDIT": "Edit event",
+        "INFO": "Info",
+        "MATERIALS": "Materials",
+        "PARTICIPANTS": "Participants",
+        "PROMOTE": "Promote",
+        "TITLE": "Events"
+      },
+      "EXQ": {
+        "CREATE": "Create Survey",
+        "EDIT": "Edit Survey",
+        "FILL_SURVEY": "Fill the survey",
+        "RESULTS": "Results",
+        "TITLE": "ExQ"
+      },
+      "JOBS": {
+        "LIST": "Questions list",
+        "TITLE": "Jobs"
+      },
+      "MEDIA": "Media",
+      "OPPORTUNITIES": "Marketplace",
+      "QUESTIONS": " Questions from Participants Circle",
+      "WORKSHOPS": {
+        "CREATE": "New",
+        "TITLE": "MY WORKSHOPS"
+      }
+    },
+    "CAMPAIGNS": {
+      "EMPTY_MOMENT": "There are no referral info yet",
+      "SUBTITLE": "Share referrals links and get rewarded",
+      "NAV": "Campaigns",
+      "TITLE": "Referral"
+    },
+    "CANVAS": {
+      "DESCRIPTION": "With the ExO Canvas you will:",
+      "DESCRIPTION_2": " - Understand your Massive Transformative Purpose",
+      "DESCRIPTION_3": " - Discover the ExO Attributes and learn how to apply them",
+      "DESCRIPTION_4": " - Develop your strategy to become an ExO",
+      "DOWNLOAD": "Download",
+      "SUBTITLE": "The guide used by visionaries, innovators, top executives and entrepreneurs to create Exponential Organizations.",
+      "TITLE": "ExO Canvas"
+    },
+    "CERTIFICATIONS": {
+      "ASTERISK": "*ExO Foundations is a prerequisite to get your ExO Consultant Certification",
+      "IN_PROGRESS": "In progress",
+      "KNOW_MORE": "Know more",
+      "REQUESTED": "Requested",
+      "START": "Starting on ",
+      "START_FOUNDATIONS": "Start Foundations",
+      "SUBTITLE1": "Do you want to transform the world? Get certified and start helping",
+      "SUBTITLE2": "organizations and individuals move towards a better future!",
+      "TITLE": "Start your certification journey!"
+    },
+    "CIRCLES": {
+      "ACTIONS": {
+        "EDIT_CIRCLE": "Edit circle",
+        "LEAVE_CIRCLE": "Leave circle",
+        "NEW_POST": "New post"
+      },
+      "ALERT_LEAVE_CIRCLE": {
+        "ACTION": "Leave",
+        "MESSAGE": "Are you sure you want to leave this circle?"
+      },
+      "ASK_BUTTON": "POST",
+      "CIRCLE": "Circle",
+      "CIRCLES": "Circles",
+      "CIRCLES_DISCOVERY": "New circles to join",
+      "COMMENT": "What do you think?",
+      "COMMENT_BUTTON": "comment",
+      "CREATE_CIRCLE": {
+        "CATEGORIES_HINT": "Start typing to select categories",
+        "CATEGORIES_LABEL": "Categories",
+        "DESCRIPTION_LABEL": "Description",
+        "LOGO_LABEL": "Change the logo",
+        "NAME_LABEL": "Name",
+        "NEW": "New circle",
+        "TITLE": "Create a new circle in the Community"
+      },
+      "CREATE_NEW": "New Post",
+      "CREATE_QUESTION_OK": "Post created!",
+      "DELETE_QUESTION_OK": "Post deleted!",
+      "DIALOG": {
+        "BOOK": {
+          "BUY": "or you can buy the book directly ",
+          "BUY_LINK": "here",
+          "DOWNLOAD": "Download summary",
+          "SUBTITLE1": "You're about to learn the key aspects on how to evolve organizations to navigate industry",
+          "SUBTITLE2": "disruption and change the world for the better. Your exponential journey starts today!",
+          "TITLE": "Your book summary is awaiting!"
+        },
+        "CANVAS": {
+          "DOWNLOAD": "Download ExO Canvas",
+          "SUBTITLE1": "Embark on a new path and leave traditional models behind. This is the guide that will help you",
+          "SUBTITLE2": "learn how to apply new organizational techniques and accelerating technologies to create",
+          "SUBTITLE3": "Exponential Organizations. Start scaling ideas",
+          "TITLE": "Your ExO Canvas is ready!"
+        },
+        "CERTIFICATIONS": {
+          "ASTERISK": "*ExO Foundations is a prerequisite to get your ExO Consultant Certification",
+          "GO_TO_PROJECT": "Go to project",
+          "IN_PROGRESS": "In progress",
+          "KNOW_MORE": "Know more",
+          "REQUESTED": "Required",
+          "START": "Starting on ",
+          "START_FOUNDATIONS": "Start Foundations",
+          "SUBTITLE1": "Do you want to transform the world? Get certified and start helping",
+          "SUBTITLE2": "organizations and individuals move towards a better future!",
+          "TITLE": "Start your certification journey!"
+        },
+        "REQUIRED_CERT": {
+          "PARAGRAPH1": "In order to access this circle you need to have completed the {{certifName}} Certification.",
+          "PARAGRAPH2": "Why not starting right away? Get certified now!"
+        }
+      },
+      "EDIT_QUESTION_OK": "Post updated",
+      "EDIT_QUESTION_TITLE": "Edit post",
+      "EMPTY_SUBTITLE": "Ask experts about challenging topics or gather feedback on your progress.",
+      "EMPTY_SUBTITLE_SEARCH": "Why don't you be the first?",
+      "EMPTY_TITLE": "Pregunta lo que siempre has querido saber",
+      "EMPTY_TITLE_SEARCH": "Looks like no one has written a post on that topic",
+      "FEED": "Circle feed",
+      "JOIN": {
+        "MESSAGE": {
+          "CEA": "<p>You need to have the ExO Ambassador Certification if you want to belong to this circle.</p><p>ExO Ambassadors promote the ExO brand, methodologies, books and related services, organize meetups and local events, and essentially help bring ExO to markets.</p><p>Click in the following link if you want to <a target='_blank' href={{url}}>know more about how to become an ExO Ambassador</a>.</p>",
+          "CSC": "<p>You need to have the ExO Sprint Coach Certification if you want to belong to this circle.</p><p>A Certified ExO Sprint Coach is an individual that has completed the OpenExO Certification Level 3 and works with team to implement the ExO model and ExO Sprint methodology.</p><p>Click in the following link if you want to know more about <a target='_blank' href={{url}}>how to become a Certified ExO Sprint Coach</a>.</p>",
+          "CCO": "<p>You need to have the ExO Consultant Certification if you want to belong to this circle.</p><p>A Certified ExO Consultant is an individual that has completed the OpenExO Certification Level 2 and wants to consult with organisations about using the ExO Model.</p><p>Click in the following link if you want to know more about <a target='_blank' href={{url}}>how to become a Certified ExO Consultant</a>.</p>",
+          "CFO": "<p>You need to have the ExO Foundations Certification if you want to belong to this circle.</p><p>Someone who complete this certification has completed the OpenExO Certification Level 1 and understand the broader context of exponential technologies, their impact on modern organizations, the origins of the ExO Movement and an overview of the ExO Model.</p><p><a target='_blank' href={{url}}>Take this 1-day free course</a> and get your ExO Foundations Certification.</p>",
+          "CTR": "<p>You need to have the ExO Trainer Certification if you want to belong to this circle.</p><p>A Certified ExO Trainer is an individual that has completed the Workshop trainer certification and therefore is able to run ExO workshops where participants receive OpenExO attendance certificates.</p><p>Click in the following link if you want to know more about <a target='_blank' href={{url}}>how to become a Certified ExO Trainer</a>.</p>"
+        },
+        "TITLE": {
+          "CEA": "Become an ExO Ambassador",
+          "CSC": "Become a Certified ExO Sprint Coach",
+          "CCO": "Become a Certified ExO Consultant",
+          "CFO": "Complete the Certified ExO Foundations",
+          "CTR": "Become a Certified ExO Trainer"
+        }
+      },
+      "JOIN_HELP": "Click to join in ",
+      "ERROR_403": {
+        "JOIN_LABEL": "Join",
+        "JOIN_TO_SEE_A_POST_LABEL": " in ordert to see a post"
+      },
+      "MEMBER": "member",
+      "MEMBERS": "members",
+      "NEW_CIRCLES_EMPTY": "There are not more circles",
+      "NEW_CIRCLES_HELP": "Search...",
+      "NEW_QUESTION_TITLE": "New Post in ",
+      "NO_POSTS": "There is no post yet",
+      "POST_TITLE": "Circles Posts List",
+      "QUESTION_FOR": "Post",
+      "SEARCH_MEMBERS": {
+        "CIRCLE_USERS": "Circle Community",
+        "EMPTY": "Looks like there's no one with that name in this Circle",
+        "HELP": "Buscar",
+        "MEMBER": "member",
+        "MEMBERS": "members",
+        "PROFESSIONAL": "professional",
+        "PROFESSIONALS": "professionals",
+        "SEE_LESS": "See less",
+        "SEE_MORE": "See more"
+      },
+      "SNACKBAR": {
+        "LEAVE_SUCCESS": "You left the circle"
+      },
+      "SUMMARY": "Circles",
+      "SUMMARY_SUBTITLE": "Share your knowledge, consult with other professionals and keep up to date in your Circles",
+      "SUMMARY_TITLE": "Circles",
+      "TITLE_LABEL": "Title",
+      "UPDATE_CIRCLE": "Update ",
+      "VIEW_ALL_POSTS": "view all posts",
+      "WRONG": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+      "YOUR_CIRCLES": "Circles you're in"
+    },
+    "COMMUNICATION": {
+      "CONVERSATIONS_EMPTY": "There are no conversations yet",
+      "MESSAGES_EMPTY": "There are no message yet"
+    },
+    "DIRECTORY": {
+      "EVERYBODY": "Todos los miembros",
+      "CARD": {
+        "ECOSYSTEM_MEMBER": "OpenExO Community Member",
+        "OPENEXO_MEMBER": "OpenExO Team",
+        "TEAMS": "Teams"
+      },
+      "DESCRIPTION": "Find and contact with the best professionals for your project",
+      "FILTERS": {
+        "CLEAR": "Clear all",
+        "FILTERS": "Filters"
+      },
+      "SEARCH": {
+        "EMPTY": "No results match your search",
+        "HELP": "Search people",
+        "RESULT": "Result",
+        "RESULTS": "Results"
+      },
+      "TITLE": "Community"
+    },
+    "EVENTS": {
+      "CANCEL": "CANCEL",
+      "CARD": {
+        "DELETE": "Delete",
+        "EDIT": "Edit",
+        "EMPTY": "It seems there are no events listed right now, why don’t you create your own one?"
+      },
+      "CREATE": "CREATE",
+      "DIALOG": {
+        "CREATE": {
+          "MESSAGE": "This event will be immediately displayed on the OpenExO website. Do you want to publish it?",
+          "TITLE": "The event is ready to be published"
+        },
+        "DELETE": {
+          "MESSAGE": "If you delete this event, it will no longer be visible on the OpenExO website and it won’t be possible to restore it. Do you want to delete it?",
+          "TITLE": "Delete Event"
+        },
+        "SAVE": {
+          "MESSAGE": "The changes applied on this event will be immediately displayed on the OpenExO website. Do you want to publish it? ",
+          "TITLE": "Publish Event"
+        }
+      },
+      "EXPIRATION_BOX": "You can create events free of charge until April 15",
+      "FORM": {
+        "DESCRIPTION_PLACEHOLDER": "Title",
+        "DESCRIPTION_TITLE": "Details",
+        "EDIT": "Edit",
+        "END_LABEL": "End date",
+        "FORM_TITLE_CREATE": "Create Event",
+        "FORM_TITLE_EDIT": "Edit Event",
+        "FORM_TYPE": "EVENTS",
+        "FREE_EVENT": "Free Event",
+        "LANGUAGE_HINT": "Start typing to select a language from the list",
+        "LANGUAGE_PLACEHOLDER": "Language",
+        "LANGUAGE_TITLE": "Language",
+        "LOCATION_HINT": "Start typing to select a location from the list",
+        "LOCATION_PLACEHOLDER": "Location",
+        "PRESENCE_PLACEHOLDER": "Format",
+        "PRESENCE_TYPES": {
+          "P": "On site",
+          "S": "On site + Streaming",
+          "V": "Virtual"
+        },
+        "PREVIEW": "Preview",
+        "PRICE_TITLE": "Price",
+        "PROMOTION_BOX": "You can leave this field empty or add your site so the event cards can direct to it when clicked. If your event is a workshop, you can create a promotional landing page with us and the event cards will direct to it when clicked.",
+        "PROMOTION_PLACEHOLDER": "Web Address (optional)",
+        "PROMOTION_SUBTITLE": "Do you want to add a promotion website for the event?",
+        "PROMOTION_TITLE": "Promotional Website",
+        "PUBLISH": "Publish",
+        "SPEAKERS_BOX": "Search for speakers and add them to your event. The main speaker will be displayed on the event card. You can change the main speaker by dragging and dropping another one.",
+        "SPEAKERS_TITLE": "Speakers",
+        "START_LABEL": "Start date",
+        "TYPE_PLACEHOLDER": "Event",
+        "TYPE_TITLE": "Type",
+        "UPDATE": "Update",
+        "UPLOAD_BUTTON": "Upload Image"
+      },
+      "NEW_BUTTON": "NEW EVENT",
+      "PREVIEW_CARD": {
+        "PREVIEW": "Preview",
+        "HOSTED": "Hosted by ",
+        "IMAGE_TITLE": "Add an image for the event preview",
+        "IMAGE_HINT": "Recommended size 1280x720 (16:9)",
+        "IMAGE_BUTTON": "Upload Image"
+      },
+      "PROMOTE_EXPERIENCE": "To promote your event, we encourage you to use the desktop version as it will provide a better experience.",
+      "PROMPT": {
+        "BACK": "BACK",
+        "CANCEL": "CANCEL",
+        "NAVIGATE_MESSAGE": "If you cancel now, you will navigate and lose all your changes.",
+        "NAVIGATE_TITLE": "Do you really want to leave without saving changes?",
+        "PUBLISH": "PUBLISH",
+        "SAVE": "SAVE",
+        "YES": "Yes"
+      },
+      "SAVE": "SAVE",
+      "SEE_ALL_BUTTON": "SEE ALL EVENTS",
+      "SUBTITLE": "Create, edit and manage all your events here.",
+      "TABS": {
+        "EVENT_INFO": "Workshop info",
+        "MATERIALS": "Materials",
+        "PARTICIPANTS": "Participants",
+        "PROMOTE": "Promote",
+        "SPEAKERS": "Speakers"
+      },
+      "TITLE": "Events",
+      "TOAST": {
+        "ADD_EVENT_FAIL": "Something went wrong and the event couldn't be published",
+        "ADD_EVENT_SUCCESS": "The event has been published",
+        "DELETE_EVENT_FAIL": "Something went wrong and the event couldn't be deleted",
+        "DELETE_EVENT_SUCCESS": "The event has been deleted",
+        "UPDATE_EVENT_FAIL": "Something went wrong and the event couldn't be published",
+        "UPDATE_EVENT_SUCCESS": "The event has been published"
+      },
+      "TYPES": {
+        "B": "ExO Book launch",
+        "S": "ExO Summit",
+        "T": "ExO Talk",
+        "W": "ExO Workshop"
+      }
+    },
+    "EXQ": {
+      "ACTIONS": {
+        "DELETE_SURVEY": "Delete Survey",
+        "DELETE_RESULT": {
+          "BUTTON": "Delete Results"
+        }
+      },
+      "AGREEMENT": {
+        "ACCEPT_CONDITIONS": "I accept the terms in the ",
+        "AGREEMENT": "agreement",
+        "BUTTON": "Go To ExQ Dashboard",
+        "DESCRIPTION": "Take the survey to get a score that will help you find out how exponential your organization is and how much room there is to keep growing.",
+        "LINK_CONDITIONS": "ExQ Survey Conditions ",
+        "WELCOME1": "ExQ Survey: The way to measure",
+        "WELCOME2": "how exponential your organization is"
+      },
+      "CARD": {
+        "CSV": "Download CSV",
+        "DELETE": "Delete",
+        "EDIT": "Edit",
+        "EMPTY": "You have not created any survey yet",
+        "FILL_SURVEY": "Fill the survey",
+        "PREVIEW": "Preview",
+        "REPLIES": "Number of replies",
+        "SHARE": "Share",
+        "SHOW_RESULTS": "Show results",
+        "START": "Start date"
+      },
+      "DESCRIPTION1": "The tool used by visionaries, innovators, top executives and entrepreneurs to determine how exponential an organization is.",
+      "DESCRIPTION2": "Create new surveys and get results.",
+      "DIALOGS": {
+        "DELETE_RESULT": {
+          "BUTTON": "Delete Results",
+          "TITLE": "Do you want to delete the survey results?",
+          "MESSAGE_1": "If you delete the survey results it won't be possible to recover them."
+        },
+        "DELETE": {
+          "TITLE": "Do you want to delete the survey?",
+          "MESSAGE_1": "If you delete the survey it won't be possible to recover it."
+        },
+        "SHARE": {
+          "BODY": "Anyone with this link can fill this ExQ Survey",
+          "INPUT_PLACEHOLDER": "Link",
+          "TITLE": "Share this ExQ Survey"
+        }
+      },
+      "FORM": {
+        "ACTIONS": {
+          "CREATE": "Create",
+          "SAVE": "Save"
+        },
+        "CREATE": "Create survey",
+        "EDIT": "Edit survey",
+        "PLACEHOLDER": {
+          "LANGUAGE": "Language",
+          "NAME": "Name",
+          "SEND_RESULTS": "Send results by email",
+          "SHOW_RESULTS": "Show results in the screen",
+          "SLUG": "Slug",
+          "SLUG_ERROR": "Only lower case (a-z), numbers and dash (-)"
+        }
+      },
+      "NEW_BUTTON": "New ExQ survey",
+      "RESULTS": {
+        "EMAIL": "Email",
+        "INDUSTRY": "Industry",
+        "NAME": "Name",
+        "ORGANIZATION": "Organization",
+        "OUT_OF": "out of",
+        "PDF": "Download PDF",
+        "RESULTS_PER_SECTION": "Results per section",
+        "TITLE": "Survey results for",
+        "TOTAL_SCORE": "Total"
+      },
+      "SEARCH": {
+        "EMPTY": "No results match your search",
+        "PLACEHOLDER": "Buscar"
+      },
+      "SEARCH_RESULTS": "Search results",
+      "SECTION": {
+        "ALGORITHMS_DATA": "Algorithms",
+        "AUTONOMY": "Autonomy",
+        "BUSINESS_MODEL": "Bussiness model",
+        "COMMUNITY_CROUD": "Community & Crowd",
+        "DASHBOARDS": "Dashboards",
+        "ENGAGEMENT": "Engagement",
+        "EXPERIMENTATION": "Experimentation",
+        "INTERFACES": "Interfaces",
+        "LEVERAGED_ASSETS": "Leveraged assets",
+        "MTP": "MTP",
+        "SOCIAL": "Social",
+        "STAFF_ON_DEMAND": "Staff on demand"
+      },
+      "TITLE": "ExQ Dashboard",
+      "TOAST": {
+        "ADD_SURVEY_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "ADD_SURVEY_SUCCESS": "Survey created successfully",
+        "DELETE_SURVEY_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "DELETE_SURVEY_SUCCESS": "Survey deleted successfully",
+        "DELETE_RESULT_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "DELETE_RESULT_SUCCESS": "Result deleted successfully",
+        "GET_SURVEY_RESULT_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "LOADING_SURVEYS_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "SELECT_SURVEY_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "UPDATE_SURVEY_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "UPDATE_SURVEY_SUCCESS": "Survey edited successfully"
+      }
+    },
+    "FIRST_LEVEL_CERTIFICATION": {
+      "DESCRIPTION": "Click on the below button to access the ExO Foundations Certification Course.  Learn the essentials of the ExO Model and how to craft your personal MTP in this 10-video series and complete a quiz to demonstrate your knowledge to get certified.",
+      "EXO_FOUNDATIONS": "ExO Foundations Certification",
+      "START_NOW_EN": "Start now in english",
+      "START_NOW_ES": "Start now in spanish",
+      "TITLE": "ExO Foundations Certification"
+    },
+    "MAILBOX": {
+      "EMPTY_MOMENT": "There are no conversations yet",
+      "MESSAGE": "Message",
+      "TITLE": "Messaging"
+    },
+    "MY_JOBS": {
+      "ACTIONS": {
+        "FA": "FastTrack",
+        "SP": "View Project",
+        "SW": "Join Session",
+        "TI": "View Ticket",
+        "ZOOM": "Go to Zoom"
+      },
+      "EMPTY_SUBTITLE": "Browse ",
+      "EMPTY_SUBTITLE_LINK": "current opportunities",
+      "EMPTY_TITLE": "Looks like you aren't involved in any transformation project.",
+      "LABEL": {
+        "FINISHED": "Finished"
+      },
+      "FOR": "for",
+      "STATUS": {
+        "UP": "Unstarted",
+        "CO": "Finished",
+        "LI": "Live",
+        "IN": "In progress",
+        "UN": "Unknown"
+      },
+      "SUBTITLE": "Manage all your jobs are doing and see all your jobs for the future.",
+      "TITLE": "My Jobs",
+      "TITLE_DATE": "Start Date",
+      "TITLE_INFO": "More Info",
+      "TITLE_NAME": "Role and Project Name",
+      "TITLE_STATUS": "Status",
+      "TODAY": "Today",
+      "TOMORROW": "Tomorrow"
+    },
+    "NAVBAR": {
+      "BOOKS": "Books",
+      "CERTIFICATIONS": "Certifications",
+      "CIRCLES": "Circles",
+      "COMMUNITY": "Community",
+      "COMMUNITY_CALENDAR": "Community calendar",
+      "ECOSYSTEM": "Ecosystem",
+      "EVENTS": "Events",
+      "EXO_CANVAS": "ExO Canvas",
+      "EXQ": "ExQ Dashboard",
+      "JOBS": "My Jobs",
+      "LABEL_NEW": "New",
+      "MEDIA_LIBRARY": "Media Library",
+      "OPPORTUNITIES": "Marketplace",
+      "RESOURCES": "Resources",
+      "SHARED": "Shared folder",
+      "TOOLS": "Herramientas"
+    },
+    "OPPORTUNITIES": {
+      "ACCEPTED": "Accepted",
+      "VIEW_APPLICANT": "View my application details",
+      "ACTIONS": {
+        "APPLY_OPEN": "Apply",
+        "ASSIGN": "Assign",
+        "CLOSE": "Close",
+        "DECLINE": "Reject",
+        "DELETE": "Delete",
+        "EDIT": "Edit",
+        "EDIT_SOW": "Edit Job Brief",
+        "GO_CONVERSATION": "Chat",
+        "SELECT": "Select",
+        "SESSION": "Session",
+        "VIEW_DETAILS": "View details",
+        "VIEW_SOW": "View Job Brief"
+      },
+      "APPLICANT": "Applicant",
+      "APPLICANTS": {
+        "ALL": "All Candidates",
+        "ASSIGNED": "Applicant assigned",
+        "ASSIGN_TITLE": "Assign this Opportunity!",
+        "CLOSE": "Close opportunity",
+        "CLOSE_CONFIRM_ERROR": "Error closing opportunity",
+        "CLOSE_CONFIRM_SUCCESS": "Opportunity closed",
+        "ENCOURAGE": "Encourage Community members to apply",
+        "MEMBERS_APPLIED": "There are {{number}} Community members interested in the opportunity",
+        "MEMBER_APPLIED": "There is a Community member interested in the opportunity",
+        "PLURAL_ASSIGNED": "Applicants assigned",
+        "STATUS": {
+          "DISCARDED": "REJECTED",
+          "SELECTED": "SELECTED",
+          "SENT": "Waiting for your decision"
+        },
+        "TITLE": "Applicants",
+        "WAITING": "Waiting for Applicants"
+      },
+      "APPLICANTS_EMPTY": "Encourage Community members to apply",
+      "APPLICANT_DIALOG": {
+        "ACTIONS": {
+          "GO_TO_CONVERSATION": "Chat",
+          "SELECT": "Select"
+        },
+        "APPLICANT_ANSWER": "Applicant's answer",
+        "ARE_SURE": "Are you sure you want to close this Opportunity?",
+        "CLOSE": "Close",
+        "CONFIRM": "Applicant Confirmation",
+        "CONFIRM_ACTION": "Confirm",
+        "CONFIRM_CLOSE_OPPORTUNITY": "Closing this Opportunity will send an email to all non-selected applicants informing them that this process has been closed",
+        "FAIL": "Applicant couldn't be selected",
+        "QUESTIONNAIRE": "Screening Questions",
+        "QUESTION_EXTRA_INFORMATION": "Anything else you would like to add?",
+        "REJECT": "Reject",
+        "REJECT_CONFIRM": "Application rejected",
+        "SEE_PROFILE": "View Profile",
+        "SELECT_CONFIRM": "Applicant selected",
+        "SOW": {
+          "DIALOG_TITLE_CREATION": "Job Brief",
+          "DIALOG_TITLE_EDITION": "Job Brief Edit",
+          "PROGRESS": "Step {{step}}/2",
+          "PROGRESS_CONFIRM": "Job Brief Completion",
+          "PROGRESS_FORM": "Job Brief Form",
+          "STEP_1": {
+            "AMOUNT_LABEL": "Amount",
+            "CLIENT_LABEL": "Client (Optional)",
+            "COMPENSATION": "Compensation",
+            "CONFERENCIE_URL": "Add conferencing",
+            "CURRENCY": "Currency",
+            "DESCRIPTION": "Description",
+            "DETAILS": "Transformation Project Details",
+            "END_LABEL": "End date",
+            "LOCATION_HINT": "Start typing to select a location from the list",
+            "LOCATION_LABEL": "Location",
+            "MODALITIES": {
+              "TBD": "To be defined",
+              "ONLINE": "Online",
+              "ON_SITE": "On site"
+            },
+            "NEEDS": "Team",
+            "PAYMENT": {
+              "TBD": "To be defined",
+              "COMBINED": "Combined payment units",
+              "SINGLE": "Single payment unit",
+              "HINT": "You can state remuneration in EUR, USD or combine one of these two currencies with EXOS"
+            },
+            "START_LABEL": "Start date",
+            "START_TIME_LABEL": "Start time",
+            "TEAM": "Team",
+            "TITLE_LABEL": "Title"
+          },
+          "STEP_2": {
+            "ALERT": "Make sure to get in touch with your selected advisor via email/platform chat to confirm the final time, conference details and provide any additional context needed for the success of the call.",
+            "DESCRIPTION": "The Job Brief will be shared with the applicant. You can add a personal message if you wish.",
+            "PLACEHOLDER_MESSAGE": "Add a message (optional)"
+          }
+        },
+        "START_CONVERSATION": "Start conversation",
+        "TITLE": "Applicant Details"
+      },
+      "REOPEN_CONFIRM_ERROR": "Error reopening opportunity",
+      "REOPEN_CONFIRM_SUCCESS": "Opportunity reopened",
+      "REOPEN_DIALOG": {
+        "REOPEN": "Reopen",
+        "DESCRIPTION": "Change the application deadline so your opportunity appears in the marketplace again. You will be able to edit it and apply any changes you want.",
+        "TITLE": "Reopen the opportunity"
+      },
+      "APPLIED": "Applied",
+      "APPLY_DIALOG": {
+        "BUTTON_APPLY": "Apply",
+        "BUTTON_CANCEL": "Cancel",
+        "FIT_OPPORTUNITY": "Why do you think you are the right person for this Transformation Project?",
+        "PROFILE_EDIT": "Edit profile",
+        "PROFILE_OWNER": "Your OpenExO Profile will be shared with",
+        "PROFILE_SHARED": "Your public OpenExO Profile will be shared with the project manager and the client. This can be a good moment to polish  it up and make you shine!",
+        "QUESTIONNAIRE": "Screening Questions",
+        "QUESTIONS_INFORMATION": "Anything else you would like the poster to know about? (Optional)",
+        "SNACKBAR": {
+          "SUCCESS": "Applied successfully"
+        },
+        "TITLE": "Apply for this opportunity"
+      },
+      "CLOSED": "Closed",
+      "CLOSED_MESSAGES": {
+        "SELECTED": "This opportunity is already closed. You have been selected. You can keep using the chat to talk to the requester about this job's details.",
+        "REJECTED": "This opportunity is already closed. You were not selected this time. You can keep using the chat to talk to the requester.",
+        "OTHER": "This opportunity is already closed. Sorry, you cannot apply now."
+      },
+      "TARGETED": "Targeted",
+      "CLOSE_DIALOG": {
+        "BUTTON_APPLY": "Confirm",
+        "BUTTON_CANCEL": "Cancel",
+        "MESSAGE_PLACEHOLDER": "Add message (optional)",
+        "SUBTITLE": "Both applicants and members you chatted with about this opportunity will be notified via email. You can add a message if you wish.",
+        "TITLE": "Do you want to close this opportunity?"
+      },
+      "CONFIRMATION_DIALOG": {
+        "DESCRIPTION": "A notification email with your decision will be sent",
+        "PLACEHOLDER_MESSAGE": "Add a message (optional)",
+        "REJECTED": {
+          "INFORMATION_BOX": "If you change your mind, you still have the option to select rejected applicants before closing the opportunity",
+          "TITLE": "Are you sure you want to reject this applicant?",
+          "WARNING_BOX": "One or more applicants you want to reject are currently selected for this opportunity"
+        },
+        "SELECTED": {
+          "INFORMATION_BOX": "If you change your mind, before you close the opportunity you still have the option to reject selected applicants and open the position again",
+          "TITLE": "Are you sure you want to select this applicant?",
+          "WARNING_BOX": "One or more applicants you want to select have been previously rejected for this opportunity"
+        }
+      },
+      "CONFIRMED": "Confirmed",
+      "CONVERSATION": "Conversation",
+      "CONVERSATIONS": "Conversations",
+      "CONVERSATIONS_EMPTY": "There are no conversations yet",
+      "ID": "ID",
+      "RECIPIENTS_HELP": "Once the recipients of the opportunity apply, they will be transferred to the applicants section.",
+      "CREATE": {
+        "AGREEMENT": {
+          "LINK": "ExO Marketplace Conditions",
+          "PART_1": "You can check the",
+          "PART_2": "again."
+        },
+        "AMOUNT_LABEL": "Amount",
+        "BREADCRUMB": "New opportunity",
+        "BUDGET": "Propose a budget?",
+        "BUDGET_LABEL": "Budget",
+        "CONFERENCIE_URL": "Add conferencing (Optional)",
+        "CREATE": "Create",
+        "CURRENCY": "Currency",
+        "CUSTOM_ROL_LABEL": "Define Custom Role",
+        "DEADLINE_LABEL": "Deadline Date",
+        "DESCRIPTION": "Description",
+        "DURATION_LABEL": "Duration",
+        "DURATION_UNIT_LABEL": "Duration unit",
+        "DURATION_UNITS": {
+          "T": "Minute",
+          "H": "Hour",
+          "D": "Day",
+          "W": "Week",
+          "M": "Month"
+        },
+        "DURATION_UNITS_PLURAL": {
+          "T": "Minutes",
+          "H": "Hours",
+          "D": "Days",
+          "W": "Weeks",
+          "M": "Months"
+        },
+        "ENTITY_LABEL": "Client (Optional)",
+        "ENTITY_LABEL_TOOLTIP": "Client",
+        "FAIL": "Opportunity couldn't be posted",
+        "HELP": {
+          "REQUIREMENTS": "You have the option to ask applicants up to 3 questions to check if they meet the requirements for this Opportunity. These questions will be compulsory for them and must be answered with “Yes” or “No.” For every application, you will receive a notification with the applicant's responses",
+          "TRANSFORMATION_PROJECT": "Give a clear and short title to your Transformation Project and include the client's name to help applicants easily identify what the Opportunity is about",
+          "TARGET": "Decide if you want to share this opportunity with the whole community or just with specific members."
+        },
+        "JOB_DETAILS": {
+          "TITLE": "Job Details",
+          "MEMBERS_ABLE_TO_APPLY": "community members will be able to apply to the opportunity",
+          "PROJECT_TYPE": {
+            "LABEL": "Project/Event type",
+            "HELP": "You can visit our <a target='_blank' href='https://help.openexo.com/en/articles/3468015-project-types'>help Center</a> to have a deeper understanding on what Job details entails and to find out how to make the most out of it.",
+            "HELP_TITLE": "Types of project",
+            "HINT": "This field will define the available options in the “Role requested“ field",
+            "OTHER_LABEL": "Add your project type"
+          },
+          "ROLE_REQUESTED": {
+            "LABEL": "Role requested",
+            "HELP": "You can visit our  <a target='_blank' href={{url}}>help center</a> to have a deeper understanding on what Job details entails and to find out how to make the most out of it.",
+            "HELP_TITLE": "Types of role",
+            "HINT": "This field will define the available options in the “Minimum required certification“ field. Depending on the requested role, different community members will receive the opportunity",
+            "OTHER_LABEL": "Add your role requested"
+          },
+          "REQUIRED_CERTIFICATION": {
+            "LABEL": "Minimum required certification",
+            "HINT": "Depending on the certification requirements you select, different community members will receive the opportunity"
+          }
+        },
+        "PROJECT_LABEL_TOOLTIP": "Project",
+        "TARGET_HINT": "Select targeted if you want to share this opportunity only with one or several members in particular",
+        "KEYWORDS": "Categories",
+        "KEYWORDS_HINT": "Start typing to select categories from the list or create new ones that match your purpose",
+        "KEYWORDS_LABEL": "Categories",
+        "LANGUAGE_LABEL": "Language",
+        "LANGUAGES_LABEL": "Languages",
+        "LANGUAGE_ALTERNATIVE_LABEL": "Alternative language",
+        "LOCATION_HINT": "Start typing to select a location from the list",
+        "LOCATION_LABEL": "Location (Optional)",
+        "LOCATION_LABEL_TOOLTIP": "Location",
+        "MODALITIES": {
+          "TBD": "To be defined",
+          "ONLINE": "Online",
+          "ON_SITE": "On site"
+        },
+        "RECIPIENTS": "Recipients",
+        "TARGET_EMPTY_MOMENT": "Select at least one recipient",
+        "TARGET_LABEL": {
+          "OPENED": "Opened",
+          "TARGETED": "Targeted"
+        },
+        "TARGET_PLACE_HOLDER": "Start typing to choose recipients",
+        "PAYMENT": {
+          "COMBINED": "Combined payment units",
+          "SINGLE": "Single payment unit"
+        },
+        "POSITIONS_NUMBERS": "Available positions",
+        "POSITIONS_NUMBERS_HINT": "Insert a number",
+        "PREVIEW": "Preview",
+        "PROJECT_LABEL": "Title",
+        "PROJECT_TITLE": "Transformation Project Details",
+        "QUESTION": "Question",
+        "QUESTIONS_ALERT": "These questions will be compulsory for applicants and must be answered with 'Yes' or 'No'.",
+        "QUESTION_LABEL": "Do you want to ask a question? (Optional)",
+        "REQUIREMENT_FORM": "Screening Questions",
+        "SEE_OPPORTUNITY": "View opportunity",
+        "START_LABEL": "Start Date",
+        "START_HINT": "The job will start on this date",
+        "SUCCESS": "Opportunity published",
+        "TITLE": "New Opportunity",
+        "WHAT_ABOUT": "What's this about?",
+        "WHEN_AND_DURATION": "Start date and duration",
+        "DURATION_PENDING": "To be determined"
+      },
+      "DECLINED": "Declined",
+      "DELETE_DIALOG": {
+        "FAIL": "¡Ups! Se ha producido un error...",
+        "MESSAGE_1": "All information will be lost, including conversations.",
+        "MESSAGE_2": "All applicants and conversation participants will receive an update email.",
+        "PLACEHOLDER": "Add a message (optional)",
+        "SUCCESS": "Opportunity deleted",
+        "TITLE": "Are you sure you want to delete this opportunity?"
+      },
+      "DISCARDED_CALL": "Discarded call",
+      "EDIT": {
+        "BREADCRUMB": "Edit opportunity",
+        "EXIT_WITHOUT_SAVE": {
+          "LEAVE": "Leave",
+          "MESSAGE": "All changes will be lost",
+          "STAY": "Stay",
+          "TITLE": "Are you sure you want to leave?"
+        },
+        "FAIL": "¡Ups! Se ha producido un error...",
+        "NOTIFICATION_DIALOG": {
+          "MESSAGE": "Notification emails will be sent to non-discarded applicants and conversation participants",
+          "NOT_SEND": "Don't send",
+          "PLACEHOLDER": "Add a message (optional)",
+          "SEND": "Send",
+          "TITLE": "Would you like to notify others of these changes?"
+        },
+        "SECTION_TITLE": "Edit opportunity",
+        "SEE_DETAILS": "See opportunity",
+        "SUCCESS": "Changes saved",
+        "TITLE": "Edit Opportunity"
+      },
+      "EDITED": "Edited",
+      "EMPTY_TITLE": "We could not find any matches for your search",
+      "FAIL_LOADING": "The content you are trying to access it's been deleted",
+      "FEEDBACK": {
+        "ALERT_ADMIN": "",
+        "ALERT_APPLICANT": "The system is a double-blind, which means that the feedback won't be visible until both parties provide it for each other.",
+        "CLOSE": "Close",
+        "FEEDBACK_END_30_DAYS": "This is how the client rated your work:",
+        "EMPTY_MOMENT": "No feedback added",
+        "APPLICANT_EMPTY_MOMENT": "You should apply before you be able give Feedback.",
+        "CLIENT": "Client Feedback",
+        "BRIEF": {
+          "SUBTITLE": {
+            "CONSULTANT": "The briefing and context were clear and my questions were well answered",
+            "CLIENT": "Provided clear and relevant content and answered questions well"
+          },
+          "TITLE": {
+            "CONSULTANT": "Preparation",
+            "CLIENT": "Content"
+          }
+        },
+        "COLLABORATION": {
+          "TITLE": "Collaboration",
+          "SUBTITLE": "Punctuality, availability & coordination"
+        },
+        "COMMUNICATION": {
+          "TITLE": "Communication",
+          "SUBTITLE": "Convenience, logistics & technical issues"
+        },
+        "FORM": {
+          "CANCEL": "Cancel",
+          "CONFIRM": "Confirm",
+          "FEEDBACK_CLIENT": "Feedback on Client",
+          "FEEDBACK_CONSULTANT": "Feedback on Consultant",
+          "MORE_INFO": "Add more info",
+          "RECOMMENDATION": {
+            "HIGHLY_RECOMMEND": "Highly recommend",
+            "NOT_RECOMMEND": "Not recommend",
+            "SUBTITLE": {
+              "CLIENT": "How likely is it you would recommend {{name}}'s service to a friend or colleague?",
+              "CONSULTANT": "Please rate your experience interacting with this company/client"
+            },
+            "TITLE": "Recommendation level"
+          },
+          "REVIEW": "Add review (optional)",
+          "STATUS": {
+            "SUCCESSFUL": "Successfully done",
+            "TITLE": "Project Status",
+            "UNCOMPLETED": "Not completed"
+          }
+        },
+        "NO_FEEDBACK": "No Feedback",
+        "NO_FEEDBACK_TOOLTIP": "Didn't provide feedback on time",
+        "RATE": "RATE",
+        "REVIEW": "Review",
+        "SENT": "Feedback Sent",
+        "TITLE": "Feedback",
+        "WAITING": "Waiting for feedback"
+      },
+      "FOR": "for",
+      "FOR_YOU": "For you",
+      "MARKETPLACE_CONDITIONS": {
+        "ACCEPT_CONDITIONS": "I accept the terms in the ",
+        "AGREEMENT": "agreement",
+        "DESCRIPTION": "Choose your own transformation adventure: discover amazing professionals to help you with your project or be the amazing professional helping others.",
+        "DOWNLOAD": "Download",
+        "GO_TO": "Go to Marketplace",
+        "HELP_CENTER": "Need more details? Check our Help Center",
+        "LINK_CONDITIONS": "ExO Marketplace Conditions ",
+        "SIGNED": "Agreement signed",
+        "WELCOME": "Welcome to the Marketplace: where transformation happens"
+      },
+      "NEED_CERTIFICATE": {
+        "MESSAGE": {
+          "CSC": "<p>You need to have the ExO Sprint Coach Certification to apply for this opportunity.</p><p>A Certified ExO Sprint Coach is an individual that has completed the OpenExO Certification Level 3 and works with team to implement the ExO model and ExO Sprint methodology.</p><p>Click in the following link if you want to know more about <a target='_blank' href={{url}}>how to become a Certified ExO Sprint Coach</a>.</p>",
+          "CCO": "<p>You need to have the ExO Consultant Certification to apply for this opportunity.</p><p>A Certified ExO Consultant is an individual that has completed the OpenExO Certification Level 2 and wants to consult with organisations about using the ExO Model.</p><p>Click in the following link if you want to know more about <a target='_blank' href={{url}}>how to become a Certified ExO Consultant</a>.</p>",
+          "CFO": "<p>You need to have the ExO Foundations Certification to apply for this opportunity.</p><p>A Certified Foundations is an individual that has completed the OpenExO Certification Level 1 and understand the broader context of exponential technologies, their impact on modern organizations, the origins of the ExO Movement and an overview of the ExO Model.</p><p><a target='_blank' href={{url}}>Take this 1-day free course</a> and become a Certified ExO Advisor.</p>",
+          "CTR": "<p>You need to have the ExO Trainer Certification to apply for this opportunity.</p><p>A Certified ExO Trainer is an individual that has completed the Workshop trainer certification and therefore is able to run ExO workshops where participants receive OpenExO attendance certificates.</p><p>Click in the following link if you want to know more about <a target='_blank' href={{url}}>how to become a Certified ExO Trainer</a>.</p>"
+        },
+        "TITLE": {
+          "CSC": "Become a Certified ExO Sprint Coach",
+          "CCO": "Become a Certified ExO Consultant",
+          "CFO": "Become a Certified ExO Foundations",
+          "CTR": "Become a Certified ExO Trainer"
+        }
+      },
+      "NEW": "NEW",
+      "NEW_APPLICANT": "New applicant",
+      "NEW_APPLICANTS": "New applicants",
+      "NEW_BUTTON": "NEW OPPORTUNITY",
+      "NEW_MESSAGE": "New message",
+      "NEW_MESSAGES": "New messages",
+      "NOT_SELECTED": "Not selected",
+      "OPEN_CALL": " Open call",
+      "OPPORTUNITIES": "Marketplace",
+      "OPPORTUNITY": "OPPORTUNITY",
+      "POSITION": "Position",
+      "POSITIONS": "Positions",
+      "PREVIEW": {
+        "BACK": "Back",
+        "CONFIRM": "Confirm",
+        "TITLE": "Opportunity Preview"
+      },
+      "RATE": "Opportunity Rate",
+      "REJECTED": "REJECTED",
+      "SELECTED": "Selected",
+      "SHOW_LESS": "Show less",
+      "SHOW_MORE": "Show more",
+      "SOW": "View Job Brief",
+      "SUBTITLE": "Connecting amazing professionals with unique transformation opportunities",
+      "TABS": {
+        "ALL": "All opportunities",
+        "APPLICANTS": "Applicants",
+        "CONVERSATIONS": "Chats",
+        "PUBLISHED_YOU": "Managed by you",
+        "FEEDBACK": "Feedback",
+        "CHAT": "Chat"
+      },
+      "TITLE": "Marketplace",
+      "TOOLTIP": {
+        "DEADLINE": "Deadline",
+        "APPLICANTS": "Applicants",
+        "MESSAGES": "Messages",
+        "ID": "Opportunity ID"
+      },
+      "VIEW_SOW": {
+        "AMOUNT": "Amount",
+        "CLIENT": "Client",
+        "COMPENSATION_SECTION": "Compensation",
+        "DESCRIPTION": "Description",
+        "END_DATE": "End date",
+        "LOCATION": "Location",
+        "ONLINE": "Online",
+        "PAYABLE_AMOUNT": "Payable",
+        "PROJECT_SECTION": "Transformation Project Details",
+        "ROLE": "Role",
+        "START_DATE": "Start date",
+        "START_TIME": "Start time",
+        "CONFERENCIE_URL": "Conferencing Details",
+        "SUBJECT": "Title",
+        "TITLE": "Job Brief"
+      },
+      "WAITING_SET_SESSION": "Waiting for project approval",
+      "YOU_WERE_REQUESTED": "You were requested",
+      "ADVISOR_CALL_GUIDELINES": {
+        "LANGUAGES": {
+          "SPANISH": "Spanish",
+          "ENGLISH": "English"
+        },
+        "REQUESTER": "Guidelines to be a great Advisor.",
+        "APPLICANT": "Guidelines to create an opportunity in order to get a good Advisor."
+      }
+    },
+    "PROFILE": {
+      "ACCOUNT": {
+        "ADVISOR_SELECTED": " Recibir un correo si eres seleccionado como ExO Advisor para una Swarm Session",
+        "MENTION_NOTIFICATION": "Recibir un correo cuando otro usuario te mencione en un círculo",
+        "NEW_ANNOUNCEMENT": "Recibir un correo cuando haya noticias de OpenExO",
+        "NEW_ANSWER": "Recibir un correo cada vez que haya una nueva respuesta a una pregunta mía",
+        "NEW_COMMENT": "Recibir un correo cada vez que haya un nuevo comentario de algún miembro de mi equipo",
+        "NEW_OPEN_OPPORTUNITY": "Recibir un correo cuando haya una nueva oportunidad para toda la comunidad",
+        "NEW_OPEN_TICKET": "Recibir un correo cuando haya una nueva oportunidad para una Advisory Call",
+        "NEW_POST": "Recibir un correo cuando haya un nuevo tema en cualquiera de tus círculos",
+        "NEW_QUESTION_FROM_PROJECT": "Recibir un correo cuando haya una nueva pregunta abierta en proyectos en curso",
+        "NEW_REPLY": "Recibir un correo cada vez que haya una respuesta a un comentario mío",
+        "NOTIFICATION": "Notificaciones",
+        "NOTIFICATION_DESCRIPTION": "Indica las notificaciones que te gustaría recibir",
+        "REMINDER_ONE_HOUR_BEFORE": "Recibir un correo de recordatorio para la Swarm Session con una hora de antelación",
+        "REMINDER_TOMORROW": "Recibir un correo de recordatorio para la Swarm Session con un día de antelación",
+        "SESSION_SUMMARY": "Recibir un correo de resumen de la Swarm Session una vez concluida",
+        "WEEKLY_UPDATE": "Recibir un boletín semanal con todo lo acontecido en tus círculos"
+      },
+      "DIALOGS": {
+        "SHARE": {
+          "BODY": "Cualquiera con este enlace puede ver tu perfil",
+          "COPY_BUTTON": "Copiar enlace",
+          "DONE": "Cerrar",
+          "INPUT_PLACEHOLDER": "Enlace",
+          "TITLE": "Compartir tu perfil de OpenExO"
+        }
+      },
+      "EDIT": {
+        "TITLE": "Perfil de usuario",
+        "DESCRIPTION": "Aquí puedes editar el contenido que compartes con la comunidad y con todo el mundo",
+        "SHARE": "Compartir",
+        "PREVIEW": "Vista previa",
+        "ABOUT_YOU": {
+          "BIOGRAPHY": "Biografía",
+          "BIOGRAPHY_DESCRIPTION": "La biografía es donde puedes compartir tu marca personal, tu propuesta de valor, tus destrezas y el tipo de desafíos que te apasionan y por qué. Sugerencia: Comparte en uno o dos párrafos los motivos que te diferencian del resto en tu sector, tus logros profesionales y lo que más te gusta de tu trabajo.",
+          "BIOGRAPHY_TOAST": "Biografía cambiada con éxito",
+          "CONTACT": "Información de contacto",
+          "EMAIL": "Correo",
+          "EMAIL_ERROR": "Introduce un correo válido",
+          "FACEBOOK": "Facebook",
+          "FACEBOOK_ERROR": "Parece que está URL no es válida",
+          "LINKEDIN": "LinkedIn",
+          "LINKEDIN_ERROR": "Parece que está URL no es válida",
+          "PHONE": "Número de teléfono",
+          "PHONE_ERROR": "Hay uno o más caracteres no permitidos para teléfonos móviles",
+          "SHARE_VIDEO": "Compartir vídeo",
+          "SKYPE": "Usuario de Skype",
+          "SOCIAL_NETWORKS": "Redes sociales",
+          "TWITTER": "Twitter",
+          "TWITTER_ERROR": " Parece que está URL no es válida",
+          "VIDEO_DESCRIPTION": " Al contar tu historia en vídeo puedes atraer a más gente y transmitir tu carisma. Sugerencia: Haz un vídeo de 60 a 120 segundos, preséntate con claridad y establece contacto visual con la cámara mientras compartes tus destrezas.",
+          "VIDEO_TITLE": "Presentación en vídeo",
+          "WEBSITE": "Página web",
+          "WEBSITE_ERROR": "Parece que está URL no es válida"
+        },
+        "ATTRIBUTES": {
+          "IDEAS": {
+            "DESCRIPTION": "Utilizamos el acrónimo IDEAS para los cinco atributos internos. Descubre más sobre estos atributos y selecciona tu grado de experiencia.",
+            "TITLE": "IDEAS - Atributos para acceder a la abundancia"
+          },
+          "MTP": {
+            "DESCRIPTION": "Las siglas MTP hacen referencia al propósito transformador masivo. ¿Cuánta experiencia tienes en este atributo?",
+            "MTPDESIGN": "Diseño del MTP",
+            "TITLE": "MTP - Un principio enormemente inspirador enfocado al cambio"
+          },
+          "SCALES": {
+            "DESCRIPTION": "Utilizamos el acrónimo SCALE para los cinco atributos externos. Selecciona tu grado de experiencia",
+            "TITLE": "SCALE - Atributos para gestionar la abundancia"
+          }
+        },
+        "EXPERTISE_AREAS": {
+          "ADVANCED": "Puedo aconsejar y educar a otros al respecto",
+          "BEGINNER": "Conocimientos teóricos",
+          "EXPERTISE": "Metodologías",
+          "INDUSTRIES": "Industrias",
+          "INTERMEDIATE": "Tengo experiencia a la hora de implementar",
+          "START_TYPING": "Empieza a escribir",
+          "TECHNOLOGIES": "Tecnologías exponenciales"
+        },
+        "GUARD": {
+          "DESCRIPTION": "Guardar o no, esa es la cuestión.",
+          "DISCARD": "No guardar",
+          "SAVE": "Guardar cambios",
+          "TITLE": "Has aplicado cambios en tu perfil"
+        },
+        "INTERESTS": {
+          "AGREEMENTS": "By selecting this interest you are accepting our Advising Agreement",
+          "DESCRIPTION": "Selecciona tus intereses dentro de la comunidad OpenExO",
+          "DOWNLOAD": "Download PDF",
+          "TITLE": "Intereses"
+        },
+        "NAVIGATION": {
+          "ABOUT_YOU": "Sobre tí",
+          "CORE_PILLARS": "Comunidades principales",
+          "EXO_FRAMER": "Destrezas de atributos ExO",
+          "INTERESTS": "Intereses",
+          "OTHER_SKILLS": "Áreas de especialización",
+          "PURPOSE": "Tu propósito",
+          "SUMMARY": "Datos personales",
+          "TITLE_SECTION": "Selecciona para editar"
+        },
+        "PILLARS": {
+          "DESCRIPTION": "La Comunidad OpenExO sirve a tres comunidades de de clientes principales: organizaciones, instituciones y personas. Indícanos para qué comunidades creas mayor valor exponencial y así podremos informarte de proyectos relevantes para ti.",
+          "TITLE": "Comunidades principales"
+        },
+        "PRIVATE": "Privado para ti",
+        "PURPOSE": {
+          "DESCRIPTION": "Comparte tu propósito para que la gente sepa qué te apasiona y por qué te levantas cada día de la cama. O, si te sientes cómodo, comparte tu propósito transformador masivo. Sugerencia: Resume en una sola frase el valor que creas en el mundo y para quién.",
+          "TITLE": "Tu propósito",
+          "TOAST":"¡Buen propósito!"
+        },
+        "SUBMIT_BUTTON": "Guardar",
+        "SUMMARY": {
+          "FULL_NAME": "Nombre completo",
+          "LOCATION": "Ubicación",
+          "NOW_IN": "Ubicación",
+          "PERSONAL": "Datos personales",
+          "SHORT_NAME": "Nombre preferido",
+          "SHORT_NAME_HINT": "El nombre que quieres usar en la plataforma",
+          "WHERE": "Zona horaria actual",
+          "WHERE_DESCRIPTION": "¿Viajas y cambias de zona horaria? Haz saber a la comunidad cuándo pueden contactarte"
+        }
+      }
+    },
+    "QUESTIONS": {
+      "POST_TITLE": "Questions from Participants Circle",
+      "SUBTITLE": "This is a private group where ExO Community members interested in consulting can help current ExO Transformation Project teams with their questions. Feel free to answer the questions you are most comfortable addressing"
+    },
+    "WORKSHOPS": {
+      "ADD": "ADD",
+      "ADD_JOIN_1": "Add a button to allow the public to sign up for this workshop. To use this function, you must first publish your Workshop",
+      "ADD_JOIN_2": " landing page",
+      "ADD_MANY_ATENDEE": "Batch import participants",
+      "ADD_ONE_ATENDEE": "Add new participant",
+      "ADD_SUBTITLE": "Add a new workshop to your OpenExO history",
+      "ATENDEES": "Participants",
+      "BACK": "Back",
+      "CANCEL": "CANCEL",
+      "CHOSE_TEMPLATE": "This is how your workshop will be displayed",
+      "COMMENTS_HINT": "Tell us anything else you consider important",
+      "COMMENTS_LABEL": "Comments",
+      "CREATE": "CREATE",
+      "DOMAIN_HINT": "To help publicize your event you can personalize the workshop landing page URL and share it with your social networks",
+      "DOMAIN_LABEL": "Promote your Workshop",
+      "EMAIL": "Email",
+      "EMPTY_PARTICIPANTS_1": "Looking for your participants?",
+      "EMPTY_PARTICIPANTS_2": "Promote your workshop and watch this space fill up!",
+      "EMPTY_SPEAKERS": "No speakers selected for the workshop",
+      "END_HINT": "Final day for the workshop",
+      "END_LABEL": "End date",
+      "FILE_ATTENDEES": "You can import multiple participants from a CSV file (comma delimited file converted from a spreadsheet program) by selecting the file and importing, ex: ",
+      "LOCATION_HINT": "Empieza a escribir para seleccionar una ubicación",
+      "LOCATION_LABEL": "Location",
+      "MATERIALS": "Files & Documents",
+      "NAME": "Name",
+      "NAME_HINT": "Name for the workshop",
+      "NAME_LABEL": "Name",
+      "PROMPT": {
+        "BACK": "BACK",
+        "CANCEL": "CANCEL",
+        "CERTIFICATES_TITLE": "Send certificate to all participants?",
+        "CERTIFICATE_TITLE": "Send certificate to the participant?",
+        "DELETE": "DELETE",
+        "DELETE_MESSAGE": "Once you hit delete there's no turning back",
+        "DELETE_TITLE": "Delete this participant?",
+        "FEEDBACK_TITLE": "Send survey to all participants?",
+        "NAVIGATE_MESSAGE": "If you cancel now, you will navigate and lose all your changes.",
+        "NAVIGATE_TITLE": "Do you really want to leave without saving changes?",
+        "PUBLISH": "PUBLISH",
+        "SAVE": "SAVE",
+        "SEND": "SEND",
+        "WEBSITE_MESSAGE": "Press publish and your landing page will be live.",
+        "WEBSITE_TITLE": "This workshop looks amazing!",
+        "YES_CLOSE": "Yes, close",
+        "YES_INFORM": "Yes, inform"
+      },
+      "SAVE": "SAVE",
+      "SECTIONS_HINT": "Your workshop design comes with preset category sections. You can customize these, add additional sections or delete them.",
+      "SECTIONS_LABEL": "Define Workshop Sections",
+      "SEND_DOCUMENTS": "Send documents to participants",
+      "SEND_FEEDBACKS": "Send survey to all participants",
+      "SHARE_AND_PROMOTE": "Share, and promote, the workshop in your Social Networks",
+      "SIGNED_UP": "Signed up",
+      "SPEAKERS": "These speakers will have their bios automatically included in the workshop landing page.",
+      "START_HINT": "First day for the workshop",
+      "START_LABEL": "Start date",
+      "THEME_LABEL": "Select Workshop Landing Page Design",
+      "TITLE_ADD": "Add a new participant",
+      "TITLE_IMPORT": "Batch import participants",
+      "TITLE_UPDATE": "Edit participant information",
+      "TOAST": {
+        "ADD_EVENT_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "ADD_EVENT_SUCCESS": "Workshop added",
+        "CERTIFICATE_PARTICIPANT_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "CERTIFICATE_PARTICIPANT_SUCCESS": "Certificate sent",
+        "CREATE_PARTICIPANTS_SUCCESS": "Participant added",
+        "CREATE_PARTICIPANT_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "DELETE_PARTICIPANT_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "DELETE_PARTICIPANT_SUCCESS": "Participant deleted",
+        "GET_PARTICIPANTS_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "LOADING_EVENT_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "SELECT_EVENT_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "SELECT_LANDING_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "SEND_CERTIFICATES_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "SEND_CERTIFICATES_SUCCESS": "Documents sent",
+        "SEND_FEEDBACKS_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "SEND_FEEDBACKS_SUCCESS": "Surveys sent",
+        "SET_JOIN_FEATURE_FAIL": "¡Ups! Se ha producido un error.¡Inténtalo de nuevo!",
+        "SET_JOIN_FEATURE_SUCCESS": "Landing page updated",
+        "UPDATE_EVENT_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "UPDATE_EVENT_SUCCESS": "Workshop updated",
+        "UPDATE_LANDING_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "UPDATE_LANDING_SUCCESS": "Website published!",
+        "UPDATE_PARTICIPANTS_SUCCESS": "Participant updated",
+        "UPDATE_PARTICIPANT_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "UPLOAD_PARTICIPANTS_FAIL": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!",
+        "UPLOAD_PARTICIPANTS_SUCCESS": "Participants added"
+      },
+      "UPDATE": "UPDATE",
+      "UPDATE_LANDING_FAIL": "Something went wrong with the website. Contact with OpenExO support.",
+      "UPDATE_LANDING_SUCCESS": "The website has been published with the changes!",
+      "UPDATE_WORKSHOP_FAIL": "Something went wrong with the workshop. Contact with OpenExO support.",
+      "UPDATE_WORKSHOP_SUCCESS": "The workshop has been updated",
+      "WEBSITE_PARAGRAPH_1": "You can promote your workshop on the OpenExO Workshop Calendar page: ",
+      "WEBSITE_PARAGRAPH_2": "To do this you will need to create a Workshop landing page."
+    },
+    "WORKSPACE": {
+      "PROJECTS": {
+        "ACTIONS": {
+          "D": "Delete",
+          "E": "Edit",
+          "FINISH": "Finish",
+          "L": "Launch",
+          "LAUNCH": "Launch",
+          "PROFILE": "View summary",
+          "START": "Start"
+        },
+        "ALERT_PROFILE": "This is how a supervisor sees your project info. You can edit it at any time.",
+        "CREATE": {
+          "NEED_CERTIFICATE": {
+            "MESSAGE": {
+              "CSC": "<p>You need to have the ExO Sprint Coach Certification to create a new project.</p><p>A certified ExO Sprint Coach works together with teams to implement the ExO Model and the ExO Sprint Methodology.</p><p>Click in the following link if you want to know more about <a target='_blank' href={{url}}>becoming a certified ExO Sprint Coach</a>.</p>"
+            },
+            "TITLE": {
+              "CSC": "Become a Certified ExO Sprint Coach"
+            }
+          },
+          "SECTION": "My projects",
+          "SUCCESS": "Project created successfully",
+          "TITLE": "New ExO Sprint"
+        },
+        "CREATE_NEW": "New ExO Sprint",
+        "DELETE_MESSAGE": "All related info will be lost together with the members in it.",
+        "DELETE_OK": "Project deleted succesfully",
+        "DELETE_TITLE": "Do you really want to delete",
+        "EDIT": {
+          "GUARD": {
+            "DESCRIPTION": "All info will be lost.",
+            "LEAVE": "Leave",
+            "STAY": "Stay",
+            "TITLE": "Are you sure you want to leave without creating your ExO Sprint?"
+          },
+          "NAVIGATION": {
+            "GENERAL": "General",
+            "MEMBERS": "Users",
+            "SETTINGS": "Settings",
+            "STEPS": "Weeks",
+            "TEAMS": "Teams"
+          },
+          "SUCCESS": "Changed saved successfully",
+          "SUCCESS_STEP": "Changed saved successfully"
+        },
+        "EMPTY_SUBTITLE": "Use the button above to create a new project and make it a reality with the help of the ExO Community",
+        "EMPTY_TITLE": "There are no projects yet",
+        "FORM": {
+          "CREATE": "Create ExO Sprint",
+          "GENERIC": {
+            "CLIENT_LABEL": "Client (Optional)",
+            "DESCRIPTION_LABEL": "Description (Optional)",
+            "HELP": "Visit our <a target='_blank' href='http://help.openexo.com/en/articles/3421445-how-to-create-an-exo-sprint'>Help Center</a> to know more about this",
+            "LOCATION_HINT": "Start typing to select a location from the list",
+            "LOCATION_LABEL": "Location",
+            "NAME_LABEL": "Name",
+            "START_DATE_LABEL": "Start Date",
+            "SUBTITLE": "Give your ExO Sprint a title, add a client and share a description with the basic details of the project."
+          },
+          "SEARCH": "Search",
+          "SETTINGS": {
+            "COMING_SOON": "Coming Soon",
+            "DESCRIPTION": "Below you can find a set of modules which you can enable/deactivate depending on your needs. Some of them are currently under development and will be available soon.",
+            "ENABLE_ASK": {
+              "DESC": "Allow participants to ask questions to the ExO Community",
+              "NAME": "Ask the Ecosystem"
+            },
+            "ENABLE_COMMUNICATION": {
+              "DESC": "Allow participants to communicate inside the platform",
+              "NAME": "Team Communication"
+            },
+            "ENABLE_DIRECTORY": {
+              "DESC": "Allow participants to search for and see other participants",
+              "NAME": "Directory"
+            },
+            "ENABLE_FEEDBACK": {
+              "DESC": "Allow users to give feedback about the ExO Sprint",
+              "NAME": "Feedback"
+            },
+            "ENABLE_QUIZ": {
+              "DESC": "Allow users to evaluate themselves on each phase of the sprint",
+              "NAME": "Evaluation"
+            },
+            "ENABLE_SWARM": {
+              "DESC": "Enable swarm sessions for the ExO Sprint",
+              "NAME": "Swarm Sessions"
+            },
+            "HELP": "Visit our <a target='_blank' href='http://help.openexo.com/en/articles/3467894-customizing-an-exo-sprint'>Help Center</a> to know more about this",
+            "SUCCESS": "Settings saved!"
+          },
+          "STEPS": {
+            "ACTIONS": "Actions",
+            "EDIT": {
+              "TITLE": "Edit step"
+            },
+            "END": "End",
+            "HELP": "Visit our <a target='_blank' href='http://help.openexo.com/en/articles/3467821-scheduling-exo-sprint-s-weeks'>Help Center</a> to know more about this",
+            "NAME": "Name",
+            "START": "Start"
+          },
+          "TEAMS": {
+            "ADD_TEAM": "Add team",
+            "ADD_TITLE": "Create a new team",
+            "CORE": "Core",
+            "DELETE_MESSAGE": "All related info will be lost together with the members in it.",
+            "DELETE_TITLE": "Do you really want to delete",
+            "DESCRIPTION": "Add and manage the different teams that will be participating in your project.",
+            "EDGE": "Edge",
+            "EDIT_COLLABORATOR_TITLE": "Edit collaborator",
+            "EDIT_PARTICIPANT_TITLE": "Edit participant",
+            "EDIT_TITLE": "Edit team",
+            "EMPTY_SUBTITLE": "Use the button above to add a new team that will help you bring your project forward",
+            "EMPTY_TITLE": "There are no teams yet",
+            "HELP": "Visit our <a target='_blank' href='http://help.openexo.com/en/articles/3455865-how-to-create-and-configure-teams-in-an-exo-sprint'>Help Center</a> to know more about this",
+            "MEMBER_ACTIONS": {
+              "E": "Edit",
+              "R": "Edit",
+              "S": "Unselect",
+              "T": "Edit",
+              "V": "Move to"
+            },
+            "NAME_PLACEHOLDER": "Team Name",
+            "NO_MEMBERS": "There aren't any members yet",
+            "SELECT_DESCRIPTION": "You can search for participants and collaborator without a team and assign this one",
+            "SELECT_MEMBER": {
+              "EMPTY_SUBTITLE": "Please, modify your search to find people for your team",
+              "EMPTY_TITLE": "No people match with your search",
+              "PLACEHOLDER": "Team to assign people"
+            },
+            "SELECT_MEMBERS": "SELECT MEMBERS",
+            "SELECT_TITLE": "Select members",
+            "STREAM_PLACEHOLDER": "Stream",
+            "TEAM_ACTIONS": {
+              "D": "Delete",
+              "E": "Edit",
+              "P": "Select members"
+            },
+            "TOASTS": {
+              "DELETE": "Team deleted succesfully",
+              "EDIT": "Team edited succesfully",
+              "MOVE_USER": "Changed team for user",
+              "SELECT_PEOPLE": "Member added succesfully",
+              "UNSELECT_USER": "The user is unassigned",
+              "WRONG": "Oops! Something went wrong. Try again!"
+            },
+            "UNSELECT_USER_MESSAGE": "The member will still be part of the project but this change could impact the development of the ExO Sprint.",
+            "UNSELECT_USER_TITLE": "Are you sure you want to remove this member from the team?"
+          },
+          "USERS": {
+            "COLLABORATOR_HINT": "Start typing to select a collaborator from our community",
+            "COLLABORATOR_LABEL": "Select a collaborator",
+            "CREATE_COLLABORATOR_SUCCESS": "User added succesfully",
+            "CREATE_EXO_COLLABORATOR": "Add Collaborator",
+            "CREATE_EXO_PARTICIPANT": "Add participant",
+            "CREATE_PARTICIPANT_SUCCESS": "User added succesfully",
+            "DELETE_SUCCESS": "User deleted succesfully",
+            "DESCRIPTION_WARNING_DELETE": "All related info will be lost and he/she will leave the team.",
+            "EDIT_COLLABORATOR_SUCCESS": "Collaborator edited successfully",
+            "EDIT_EXO_COLLABORATOR": "Edit Collaborator",
+            "EDIT_EXO_PARTICIPANT": "Edit participant",
+            "EDIT_PARTICIPANT_SUCCESS": "Participant edited successfully",
+            "EMPTY_SUBTITLE": "You need to add users before assigning them a team. Use the buttons above to add collaborators or participants.",
+            "EMPTY_TITLE": "This project doesn't have any users yet",
+            "HELP": "Visit our <a target='_blank' href='http://help.openexo.com/en/articles/3455260-adding-participants-and-collaborators-to-an-exo-sprint'>Help Center</a> to know more about this",
+            "NO_TEAM_SELECTED": "No team assigned",
+            "ONE_PARTICIPANT_TITLE": "One participant at a time",
+            "ROLE_HELP_DESCRIPTION": "Visit our <a target='_blank' href='http://help.openexo.com/en/articles/3455275-roles-in-an-exo-sprint'>Help Center</a> to know more about this",
+            "ROLE_HELP_TITLE": "About roles",
+            "ROLE_HINT": "Available roles will depend on the selected collaborator's certificate",
+            "ROLE_LABEL": "Role/s",
+            "SEVERAL_PARTICIPANTS": {
+              "DESCRIPTION": "Upload a CSV file with the name and email of all the participants you want to add.",
+              "EXAMPLE": "View example.",
+              "TITLE": "Or multiple participants at once",
+              "UPLOAD_BUTTON": "Choose file"
+            },
+            "SUBTITLE": "Select the participants and collaborators you would like to have in your project.",
+            "TEAMS_HINT": "Teams available only for Coaches",
+            "TEAM_LABEL": "Team/s (Optional)",
+            "TEAM_NAME_LABEL": "Team name",
+            "TEAM_SECTION": "Team",
+            "TEAM_STREAM_LABEL": "Stream of team",
+            "TITLE_WARNING_DELETE": "Do you really want to delete this user?",
+            "UPLOAD_PARTICIPANTS": {
+              "ERROR": {
+                "DESCRIPTION": "Make sure you upload a CSV file.",
+                "EXAMPLE": "View example",
+                "TITLE": "The uploaded format doesn't seem to be valid",
+                "UPLOAD_BUTTON": "Upload"
+              },
+              "INFO": {
+                "NO_TEAMS": "You will add the following participants",
+                "ONE_TEAM": "You will add the following participants into the team",
+                "SEVERAL_TEAMS": "You will add the following participants into the teams"
+              }
+            },
+            "USER_EMAIL_LABEL": "Email",
+            "USER_NAME_LABEL": "User name",
+            "WARNING_NO_TEAM": "Some members haven't been assigned a team yet and won't be able to participate in the project.",
+            "WRONG": "Oops! Something went wrong. Try again!"
+          }
+        },
+        "PREVIEW": "Preview",
+        "PROJECTS_SEARCH": "Projects",
+        "PROJECT_SEARCH": "Project",
+        "PUBLISH": {
+          "ACTION": "PUBLISH",
+          "MESSAGE1": "Info will be public and every added user will be notified via email.",
+          "MESSAGE2": "You can also add a personal message if you wish.",
+          "PLACEHOLDER": "Your message (optional)",
+          "TITLE": "Do you want to publish this project?"
+        },
+        "PUBLISH_OK": "Project published successfully",
+        "SORT_BY": {
+          "DATE": "Date",
+          "STATUS": "Status"
+        },
+        "STATUS": {
+          "DRAFT": "Draft",
+          "FINISHED": "Closed",
+          "STARTED": "Active",
+          "WAITING": "Waiting"
+        },
+        "SUBTITLE": "Create and manage your own ExO Projects and get help from the ExO Community",
+        "TITLE": "My projects",
+        "TOOLTIPS": {
+          "CLIENT": "Client",
+          "CURRENT_STEP": "Current step",
+          "LOCATION": "Location",
+          "START_DATE": "Start date"
+        },
+        "WRONG": "Oops! Something went wrong. Try again!"
+      }
+    }
+  },
+
+  "FORUM": {
+    "ANSWER": "answer",
+    "ANSWERS": "answers",
+    "CANCEL": "Cancel",
+    "CATEGORIES": "Categories",
+    "CATEGORIES_HINT": "Start typing to select categories",
+    "COMMENT": "comentario",
+    "COMMENTS": "comentarios",
+    "DELETE": "Delete",
+    "DELETE_TITLE": "Are you sure you want to delete this question?",
+    "DELETE_TITLE_ANSWER": "¿Seguro que quieres eliminar esta pregunta?",
+    "EDIT": "Edit",
+    "EDITED": "Edited",
+    "EDITOR_HINT": "You can mention platform members typing '@' followed by their user name",
+    "GO_THERE": "GO THERE",
+    "LEAVE": "LEAVE",
+    "LEAVE_POST_FORM": "Are you sure you want to leave?",
+    "LOSE_CHANGES": "Changes will be lost",
+    "NEW": "new",
+    "POSTS_SEARCH": "posts match your search",
+    "POST_SEARCH": "post matches your search",
+    "QUESTIONS_SEARCH": "questions match your search",
+    "QUESTION_SEARCH": "question matches your search",
+    "SEARCH": "Buscar",
+    "STAY": "STAY",
+    "VOTE": "vote",
+    "VOTES": "votes"
+  },
+  "GUARDS": {
+    "CANDEACTIVATE": {
+      "BODY": "If you exit now, you will lose all your Question's content",
+      "EXIT": "exit",
+      "GO_BACK": "go back",
+      "LEAVE": "leave",
+      "LEAVE_MESSAGE": "All changes will be lost.",
+      "LEAVE_TITLE": "Are you sure you want to leave?",
+      "STAY": "stay",
+      "SWARM": {
+        "COMPOSER": {
+          "EXIT": "leave",
+          "GO_BACK": "stay",
+          "TITLE": "Are you sure you want to leave without finishing your question?",
+          "TITLE_EDIT": "Are you sure you want to leave without finishing your  question edit?"
+        }
+      },
+      "TITLE": "Do you really want to exit?"
+    }
+  },
+  "HEADER": {
+    "CAMPAIGNS": "REFERRAL",
+    "LOGOUT": "CERRAR SESIÓN",
+    "PROFILE": "PERFIL DE USUARIO",
+    "SETTINGS": "AJUSTES"
+  },
+  "MATERIAL": {
+    "PAGINATOR": {
+      "ITEMS_PER_PAGE": "Artículos por página:",
+      "NEXT_PAGE": "Página siguiente",
+      "PREVIOUS_PAGE": "Página anterior"
+    }
+  },
+  "MEDIA": {
+    "ADD_RESOURCE": "Add resource",
+    "AVAILABLE_SOON": "Available soon",
+    "DELETE": "Delete",
+    "DELETE_DIALOG": {
+      "ACTION": "Delete",
+      "MESSAGE": "Are you sure to delete this video?",
+      "TITLE": "Delete Video"
+    },
+    "DELETE_FILE_PROMPT": {
+      "TITLE": "Are you sure you want to delete this file?"
+    },
+    "ECOSYSTEM": {
+      "ADD": "Add video",
+      "CLEAR": "CLEAR ALL",
+      "FILTERS": "Filters",
+      "LIBRARY": "Mediateca",
+      "RESULT": "Resultado",
+      "RESULTS": "Resultados",
+      "SUBTITLE": "Todos los recursos multimedia disponibles"
+    },
+    "EDIT": "Edit",
+    "FILTERS": {
+      "ACTION_APPLY": "Apply filters",
+      "ACTION_CLEAR": "Clear",
+      "APPLY_FILTERS": "Apply filters",
+      "FILTERS": "Filter by",
+      "FILTER_FAB": "Filter",
+      "RESTORE": "Restore",
+      "TAGS": {
+        "ALL": "All",
+        "EXO-ATTRIBUTES": "ExO Attributes",
+        "INDUSTRIES": "Industries",
+        "STATUS": "Status",
+        "TECHNOLOGIES": "Technologies"
+      }
+    },
+    "FORM": {
+      "CANCEL": "Cancel",
+      "DELETE_SUCCESS": "Your video has been deleted",
+      "DESCRIPTION_HINT": "Add a brief description of the video content",
+      "DESCRIPTION_PLACEHOLDER": "Description",
+      "EDIT": "Save",
+      "HUBS": "Hubs",
+      "LINK_HINT": "Add proper URL",
+      "LINK_PLACEHOLDER": "Link",
+      "ORIGIN_OWN": "Own videos",
+      "ORIGIN_PUBLIC": "Public videos",
+      "SELECT_HUBS": "Please select the type hub or hubs where you gonna see the video",
+      "SELECT_PROJECT_TYPE": "Please select the type of project or projects where you gonna see the video",
+      "TAGS_PLACEHOLDER": "Add possible tags which describe the video",
+      "TITLE_FORM": "Add new video",
+      "TITLE_FORM_EDITION": "Edit video",
+      "TITLE_PLACEHOLDER": "Name",
+      "TYPE_OF_PROJECT": "Type of project",
+      "UPDATE_SUCCESS": "Your video has been updated",
+      "UPLOAD": "Upload",
+      "UPLOAD_SUCCESS": "Your video is going to be uploaded. You will be notified when it will be ready",
+      "UPLOAD_SUCCESS_INTERNAL": "Your video"
+    },
+    "MESSAGES": {
+      "UPLOAD_ERROR": "Something went wrong uploading your video",
+      "UPLOAD_SUCCESS": "Your video is ready"
+    },
+    "OPTIONS_SORT_BY": {
+      "DATE": "Fecha",
+      "NAME": "Nombre"
+    },
+    "OVERLAY": {
+      "BUTTON_CLOSE": "Close",
+      "CATEGORIES": "Categories"
+    },
+    "RESOURCES": {
+      "TOOLS": {
+        "TITLE": "Herramientas"
+      }
+    },
+    "SEARCH": {
+      "EMPTY": "No hay vídeos que encajen con tu búsqueda",
+      "HELP": "Buscar",
+      "NUM_RESULT": "resource",
+      "NUM_RESULTS": "resources"
+    },
+    "SORT_BY": "Mostrar como",
+    "SORT_BY_TOOLTIP": {
+      "ASC": "Ascendente, A -> Z",
+      "DESC": "Descendente, Z -> A"
+    }
+  },
+  "MESSAGES": {
+    "CHANGE_PASS": "and change your password.",
+    "EMAIL": "Email",
+    "EMAIL_DISCARDED": "Email discarded",
+    "GO_TO_SETTINGS": "Please go to Account Settings",
+    "PENDING_PASS": "Your password is pending to be set",
+    "REMOVE": "remove this email",
+    "RESEND": "Resend verification",
+    "UNRECOGNIZED_CODE": "There is an issue regarding your session's status. Please contact our support team.",
+    "UNVERIFIED": "is still unverified",
+    "VERIFICATION_SENT": "Verification sent",
+    "YOUREMAIL": "Your login email"
+  },
+  "NOTIFICATION": {
+    "CLOSE": "Close",
+    "UPDATED": "Information was updated"
+  },
+  "POPOVER": {
+    "TITLE": "What's this about?"
+  },
+  "PROFILE": {
+    "ACRONYM_IDEAS": "We use the acronym IDEAS for the five internal attributes",
+    "ACRONYM_SCALE": "We use the acronym SCALE for the five external attributes",
+    "ADDWANTED": "Add your interests",
+    "ADD_AVAILABILITY": "Add availability",
+    "ADD_MTP": "Add your MTP.",
+    "ADD_YOUR_LEVEL": "Add your level",
+    "ADVISING": "Advising",
+    "ALGORITHMS": "Algorithms",
+    "ALGORITHMS_DESCRIPTION": "Algorithms are sets of instructions that can automate any task or solve a specific problem. Ex: using Artificial Inteligence and Intelligent Algorithms to leverage the massive amount of data that current and emerging technology gives you the ability to capture.",
+    "AREAS": "Core pillars",
+    "ASSESSMENT": "ExO Assessment",
+    "ASTRONAUT": "Astronaut, Spaceships, Aerospace",
+    "AUTONOMY": "Autonomy",
+    "AUTONOMY_DESCRIPTION": "Autonomy refers to using self-organized diversly specialized teams that opperate independently with decentralized authority.",
+    "AVAILABILITY": {
+      "DAILY": "Daily",
+      "FULLTIME": "Full-time",
+      "MONTHLY": "Monthly",
+      "WEEKLY": "Weekly"
+    },
+    "AVAILABILITY_EXO_PROJECTS": "What's your availability for ExO projects? Full or part time?",
+    "JOINED_IN": "Joined OpenExO in {{date}}",
+    "BASED_IN": "Based in",
+    "BIO_250CHARS": "Briefly summarize your bio (no more than 100 words).",
+    "CHANGES": "changes",
+    "CHANGES_MADE": "Changes made in your profile",
+    "CHANGE_TIME_ZONE": "Change time zone",
+    "COACHING": "Coaching",
+    "COMMUNITY_CROWD": "Community & Crowd",
+    "COMMUNITY_CROWD_DESCRIPTION": "Community and Crowd is the large global group of enthusiasts passionate about your MTP who contribute their time and expertise helping you to rapidly generate, test and ideate ideas.",
+    "CONFIRM": "Confirm",
+    "CONNECT_FB": "CONNECT WITH FACEBOOK",
+    "CONNECT_LINKEDIN": "CONNECT WITH LINKEDIN",
+    "CONNECT_MEDIUM": "CONNECT WITH MEDIUM",
+    "CONNECT_TWITTER": "CONNECT WITH TWITTER",
+    "CONTACT": "Contact",
+    "CURRENT_TIME_ZONE": "Zona horaria actual",
+    "CUSTOM_PASSWORD": "You won't be able to login through LinkedIn if you disconnect this account",
+    "DASHBOARDS": "Dashboards",
+    "DASHBOARDS_DESCRIPTION": "Dashboards are at-a-glance panels to monitor real-time metrics on your organization.",
+    "DESIRED": "Desired Activities",
+    "DESIRED_ACTIVITIES": "Desired Activities",
+    "DISCARD": "Do you want to discard the changes?",
+    "DISCARD_BTN": "Discard",
+    "DISCARD_CHANGES_BT": "Discard changes",
+    "DISCONNECT": "Disconnect",
+    "DISCONNECTION": "Disconnection",
+    "DISCONNECT_SOCIAL_NETWORK": "This will remove your account(s) from OpenExO. You can re-connect this at any time.",
+    "ECOSYSTEM": {
+      "BACK_TO_PROFILE": "Back to profile"
+    },
+    "EDIT_PROFILE": "Edit Profile",
+    "EMAIL": "email",
+    "EMPTY": {
+      "AREAS": {
+        "LINK": "Select core pillars",
+        "MESSAGE": "This helps us match you with the right projects"
+      },
+      "EXPERTISE": {
+        "MESSAGE": "Add or search areas of expertise"
+      },
+      "INDUSTRY": {
+        "MESSAGE": "Add industries"
+      },
+      "SNACKBARS": {},
+      "TECHNOLOGY": {
+        "MESSAGE": "Add technologies"
+      }
+    },
+    "EMPTY_MOMENT_ABOUT_ME": "Tell us briefly who you are",
+    "EMPTY_MOMENT_BIO_ME": "Tell us who you are",
+    "EMPTY_MOMENT_LINK_ABOUT_ME": "Add your quick bio",
+    "EMPTY_MOMENT_LINK_BIO_ME": "Add your full profile",
+    "ENGAGEMENT": "Engagement",
+    "ENGAGEMENT_DESCRIPTION": "Engagement is the use of techniques to capture and hold the interest of your customers, crowd and community. Ex. Digital reputation systems, games and incentive prizes.",
+    "EXOATRIBUTES": "ExO Attributes",
+    "EXO_AREAS": {
+      "INSTITUTIONS": "Institutions",
+      "INSTITUTIONS_DESCRIPTION": "Institutions refers to city and government run operations and services in the public sector such as education, transportation, health and infrastructure. Select this option if you are focused on Social Transformation.",
+      "INSTITUTIONS_PROFILE": "Social Transformation",
+      "ORGANIZATIONS": "Organizations",
+      "ORGANIZATIONS_DESCRIPTION": "Organizations refers to businesses, departments, and any defined entity that is governed by a shared purpose. Select this option if you are focused on Business Transformation.",
+      "ORGANIZATIONS_PROFILE": "Business Transformation",
+      "PEOPLE": "People",
+      "PEOPLE_DESCRIPTION": "People refers to the diverse group of leaders and individuals who are noticing the changes taking place in the world and want help adapting to these changes. Select this option if you are focused on delivering Personal Transformation, helping others with their growth.",
+      "PEOPLE_PROFILE": "Delivering personal growth"
+    },
+    "EXO_PROJECTS_PARTICIPATION": "ExO Projects Participation",
+    "EXPERIENCE_HELPING": "How experienced are you in helping others to find their own?",
+    "EXPERIMENTS": "Experiments",
+    "EXPERIMENTS_DESCRIPTION": "Experimentation refers building a cultural tolerance for risk-taking and failure through the continual testing of hypothesis, tweaking of processes and taking controlled risks to learn the best way to continue evolving. This allows you to make adjustments before significant time and expense has been incurred on a given path.",
+    "EXPERTISE": "Expertise in",
+    "EXPERTISE_AREAS": "Which of the following areas do you have expertise in?",
+    "EXPERTISE_EXOATRIBUTES": "What's your ExO Attribute expertise?",
+    "EXPERTISE_TITLE": "Expertise",
+    "FB_PROFILE": "Your Facebook profile will be shared with the OpenExO community. We will never post to Facebook or message your friends without your permission",
+    "FIX_IT": "Fix it",
+    "FREQUENCY": "Frequency",
+    "FULL_BIO": "Full Profile",
+    "FULL_BIO_OPT": "Full Profile (optional)",
+    "FULL_NAME": "Full name",
+    "GASTRONOMY": "Gastronomy",
+    "GO_TO_PROFILE": "Go to profile",
+    "HEADLINE": "Headline",
+    "HEADS_UP": "Heads-up",
+    "HOUR": "hour",
+    "HOURS": "hours",
+    "IDEAS": "IDEAS",
+    "IDEAS_PLUS": "IDEAS. Attributes for managing abundance",
+    "IN": "in",
+    "INDUSTRIES": "Industries",
+    "INDUSTRY_EXPERIENCE_TITLE": "Industry Experience",
+    "INTERFACES": "Interfaces",
+    "INTERFACES_DESCRIPTION": "Interfaces are where a person communicates with the operating system and where the code-based internal connections your systems have with external systems take place through application programming interfaces (API).",
+    "LANGUAGES": "Languages",
+    "LANGUAGES_KNOWN": "Which languages do you feel comfortable working in?",
+    "LANGUAGES_LEVEL": "Currently we are only considering languages for professional purposes. We might add different levels for future versions.",
+    "LEVELS": {
+      "KEYWORD": {
+        "HIGH": "Advanced",
+        "LOW": "Beginner",
+        "MEDIUM": "Intermediate"
+      }
+    },
+    "LEVERAGED": "Leveraged Assets",
+    "LEVERAGED_DESCRIPTION": "Leveraged Assets is based on the concept of accessing, rather than owning, physical property. Renting, accessing or sharing assets - even those that are mission critical - allow an organization to stay nimble and unencumbered.",
+    "LINKEDIN": "Your LinkedIn profile will be shared with the OpenExO community. You will also be able to log into OpenExO with your LinkedIn credentials",
+    "LOCATION": "Where you are based. Type at least 3 characters to start a search.",
+    "LOCATION_QUESTION": "Where are you based?",
+    "LOCATION_TITLE": "Location",
+    "MEDIUM": "Your Medium profile will be shared with the OpenExO community",
+    "MENU": {
+      "ACTIVITIES": "Desired activities",
+      "AREAS": "Core pillars",
+      "ATTRIBUTES": "ExO attributes",
+      "AVAILABILITY": "Time availability",
+      "BASIC_INFORMATION": "Basic information",
+      "BIO": "Quick Bio & Full Profile",
+      "EXPERTISE": "Expertise",
+      "INDUSTRIES": "Industries",
+      "LANGUAGES": "Languages",
+      "MTP": "MTP",
+      "SKILLS": "Skills",
+      "TECHNOLOGIES": "Technologies"
+    },
+    "MORE_BIO": "Tell us more about yourself here",
+    "MPT_DESIGN": "MTP Design",
+    "MPT_EXO": "Every ExO needs an MTP. This describes how the world will be different if you succeed. It's your reason why, the transformational North Star you are aiming for. It should feel almost impossible to achieve (otherwise it may not be big enough). Radical transformation is the name of the game.",
+    "MPT_FULL_TITLE": "The Massive Transformative Purpose",
+    "MTP": "MTP Implementation",
+    "MTP_ABOUT": "What do you know about MTP",
+    "MTP_DESCRIPTION": "A Massive Transformative Purpose (MTP) is a statement about the change in the world that you wish to eventually achieve that will not be accomplished in the short term. Ex: Tesla's MTP is to accelerate the world's transition to sustainable energy",
+    "MTP_MASTERY": "MTP mastery",
+    "MTP_OF": "'s MTP",
+    "MTP_PERSONAL": "Do you have a personal MTP?",
+    "MTP_PLACEHOLDER": "What is your personal MTP?",
+    "MTP_TITLE": "MTP",
+    "NEED_TO_SET_PASSWORD_DESC": "You will no longer be able to login through LinkedIn once you disconnect. You will receive an email to set your password",
+    "NEED_TO_SET_PASSWORD_TITLE": "You'll need to set a password",
+    "NONE": "None",
+    "NOW_IN": "Now in",
+    "ONLINE_FOOTPRINT": "Do you have an online footprint?",
+    "ONLYVISIBLE": "Only visible to ExO Staff",
+    "ORGANIZATIONS": "organizations",
+    "PERSONAL": "Personal",
+    "PERSONAL_LINK": "Your personal link",
+    "PERSONAL_WEBSITE": "Your personal website",
+    "PHONE_NUMBER": "Your contact phone number",
+    "PHONE_NUMBER_TITLE": "Phone number",
+    "PLATFORM": {
+      "BACK_BUTTON": {
+        "BACK_TO": "Volver al",
+        "PROJECT_DIRECTORY": "directorio",
+        "TICKET_DETAIL": "Ticket Detail"
+      },
+      "CERTIFICATIONS": {
+        "OTHER": "Other certifications",
+        "PUBLIC_TITLE": "Certifications",
+        "SUBTITLE": "Every time you obtain a certification, it will be displayed on your profile. You haven't completed all levels yet? Now's a good time to start!",
+        "TITLE": "The ExO Certification Journey",
+        "FAQ": "Questions? Visit FAQ",
+        "NEXT_PROGRAMS": "Next programs",
+        "FOUNDATION": {
+          "TITLE": "ExO Foundations",
+          "DESCRIPTION": "Get started by learning the foundations of the ExO Model and unlock access to our marketplace to exchange knowledge and participate in ExO projects."
+        },
+        "CONSULTANT": {
+          "TITLE": "ExO Consultant",
+          "DESCRIPTION": "Master the ExO model and get access to the Exponential Quotient Assessment, helping your clients to score themselves and identify where the biggest opportunities for exponential growth lie."
+        },
+        "COACH": {
+          "TITLE": "ExO Sprint Coach",
+          "DESCRIPTION": "Take your knowledge to the next level and become an expert in the ExO Sprint transformation process in order to run ExO Sprints for your clients with the help of online tools and content."
+        }
+      },
+      "COMMON": {
+        "CONNECT": "CONNECT",
+        "EDIT": "EDIT",
+        "LOCATION": "Location",
+        "NON_VALIDATED": "These skills are not validated by OpenExO",
+        "PROFILE_PICTURE": "{{userName}}'s profile picture"
+      },
+      "CONTACT_INFO": {
+        "ADD_PHONE": "ADD PHONE",
+        "ADD_SKYPE": "ADD SKYPE"
+      },
+      "MY_DESIRED": {
+        "EMPTY_BUTTON": "CHOOSE INTERESTS",
+        "EMPTY_SUBTITLE": "Select the interests that motivate you to be part of the OpenExO Community to get a certification and find new jobs.",
+        "EMPTY_TITLE": "What interests you?",
+        "INTERESTS": "Interests",
+        "REQUIRE_CERT": "This role will require certification"
+      },
+      "MY_SKILLS": {
+        "EMPTY_BUTTON": "CHOOSE SKILLS",
+        "EMPTY_SUBTITLE": "Some aim to transform the planet, others just an industry. But transformation is the name of the game. In what attributes do you get to transform?",
+        "EMPTY_TITLE": "What are your strengths?",
+        "IDEAS_DESC": "Acronym for the five internal attributes for managing abundance",
+        "SCALE_DESC": "Acronym for the five external attributes for accessing abundance",
+        "SUBTITLE": "{{userName}}'s self-evaluated MTP Design and ExO Attributes understanding and abilities",
+        "TITLE": "ExO Attribute Skills"
+      },
+      "OTHER_SKILLS": {
+        "EMPTY_MOMENT_BUTTON": "CHOOSE OTHER SKILLS",
+        "EMPTY_MOMENT_SUBTITLE": "Select the interests that motivate you to be a part of the OpenExO Community and those you'd like to reach for in the future.",
+        "EMPTY_MOMENT_TITLE": "What skills do you have?",
+        "SUBTITLE": "Select the tabs below to learn about {{shortname}}'s self-evaluated areas of expertise.",
+        "TITLE": "Areas of expertise"
+      },
+      "PICTURE_PROFILE": {
+        "ALL_ROLES": "All roles",
+        "CERTIFICATES": "Certifications",
+        "COMMENT_PLACEHOLDER": "Message (optional)",
+        "CONNECT_WITH": "Connect with {{userName}}",
+        "EMPTY_WHERE_NOW_ME": "Where are you now?",
+        "EMPTY_WHERE_NOW_PUBLIC": "Location not set",
+        "NO_LANGUAGES": "No languages were selected",
+        "NO_LOCATION": "Location not defined",
+        "PARTICIPANT": "Participant member",
+        "WHERE_NOW": "Now in"
+      },
+      "PILLARS": {
+        "EMPTY_BUTTON": "CHOOSE CORE PILLARS",
+        "EMPTY_SUBTITLE": "Do you feel inspired to offer your talents for Business Transformation, Social Transformation, Personal Transformation or a mix of these?",
+        "EMPTY_TITLE": "Who do you prefer to work with?",
+        "TITLE": "Core pillars"
+      },
+      "PRIVATE": "Private for you",
+      "PURPOSE": {
+        "EMPTY_MOMENT_BUTTON": "ANNOUNCE MY PURPOSE",
+        "EMPTY_MOMENT_SUBTITLE": "Purpose gives us direction, it motivates us, gives reason for our existence. What are you waiting for?",
+        "EMPTY_MOMENT_TITLE": "We need to have a purpose in our lives",
+        "TITLE": "Purpose"
+      },
+      "VIDEO_ME": {
+        "ABOUT": "About",
+        "ADD_SOCIAL": "add web/social media",
+        "ECOSYSTEM_WANTS": "The community wants to know about you",
+        "EMPTY_MOMENT_BUTTON": "WRITE ABOUT ME",
+        "EMPTY_MOMENT_SOCIAL": "No social networks added",
+        "EMPTY_MOMENT_SUBTITLE": "Write your description here and talk about you. If you aren't a shy person, you can record a video as well ;P",
+        "EMPTY_MOMENT_TITLE": "The community wants to get to know you",
+        "NO_VIDEO": "You don't have a video",
+        "READ_LESS": "read less",
+        "READ_MORE": "read more",
+        "SUGGEST_UPLOAD": "If you aren't a shy person, you can record a video about you and upload it",
+        "SUGGEST_WRITE": "Write your description here and talk about you",
+        "UPLOAD_VIDEO": "Upload video",
+        "WRITE": "WRITE ABOUT ME"
+      },
+      "BADGES": {
+        "TITLE": "Activity",
+        "SUBTITLE_PLURAL": "{{fullName}} has participated in up to {{value}} ExO activities.",
+        "SUBTITLE": "{{fullName}} has participated in 1 ExO activity.",
+        "SHOW_LESS": "See less badges",
+        "SHOW_MORE": "See more badges",
+        "CATEGORY": {
+          "CC": "Community",
+          "FA": "Fastrack",
+          "SP": "ExO Sprint",
+          "SU": "ExO Summit",
+          "SW": "Swarm Session",
+          "WO": "ExO Workshop",
+          "TA": "Keynote Presentation",
+          "DS": "Disruption Session",
+          "AC": "Advisor Call",
+          "CP": "Certification Program",
+          "OT": "Other"
+        },
+        "ROLE": {
+          "M": "Head Coach",
+          "X": "Coach",
+          "S": "Awake Speaker",
+          "I": "Align Trainer",
+          "C": "Advisor",
+          "D": "Disruptor",
+          "DS": "Disruptor Speaker",
+          "SA": "Sprint Admin",
+          "SC": "Sprint Contributor",
+          "UR": "Sprint Participant",
+          "T": "Workshop Trainer",
+          "SW": "Workshop Speaker",
+          "A": "Team Leader",
+          "B": "Team Member",
+          "E": "Curator",
+          "H": "Co-Curator",
+          "J": "Solution Accelerator",
+          "F": "Observer",
+          "G": "Local Team Member",
+          "CSC": "Collaborator",
+          "CSS": "Speaker",
+          "CSF": "Facilitator",
+          "CSO": "Organizer",
+          "CWA": "Advisor",
+          "CCC": "Content Creator",
+          "CCB": "Community Builder",
+          "EF": "Advisor",
+          "EC": "Consultant",
+          "CMO": "Other"
+        },
+        "ROLE_DESCRIPTION": {
+          "CCC": "Content Creator is a member of the community that has created ExO content to add value to the world.",
+          "CCB": "The Community Builder is a community member that invites people to join the community."
+        }
+      }
+    },
+    "PREFERED_EMAIL": "Your preferred contact email",
+    "PREFERED_NAME": "The name you would like us to use publicy across the platform",
+    "PREFERED_NAME_HINT": "The name you would like us to use publicy across the platform",
+    "PROFILE": "Quick Bio",
+    "PROFILE_SUMMARY": "Quick Bio (optional)",
+    "PURPOSE": "2-4 words describing you. Make it awesome!",
+    "SAVE_CHANGES": "You have made changes to your profile. Be sure to save them before you go back",
+    "SAVE_CHANGES_BT": "Save",
+    "SAVE_CHANGES_BTN": "Save changes",
+    "SCALE": "SCALE",
+    "SCALE_PLUS": "SCALE. Acronym for the five external attributes for accessing abundance",
+    "SELECT": "Select them",
+    "SELECT_ACTIVITIES": "Select the activities that motivate you to be part of the community",
+    "SELECT_FREQUENCY": "Please select frequency and drag the slider to the value closest to your availability",
+    "SELECT_LANGUAGES": "Select at least one language",
+    "SET_BACK_REQUEST": {
+      "ALERT": "This will remove any previous information, so please be sure before proceeding.",
+      "FORM": {
+        "PLACEHOLDER_ADVISOR": "Advisor (optional)",
+        "PLACEHOLDER_DUE_DATE": "Needed by"
+      },
+      "MESSAGE": "You are about to change the session status"
+    },
+    "SLIDER_SC_0": "0/5 New. Have not read about it",
+    "SLIDER_SC_1": "1/5 Beginner. Read about it",
+    "SLIDER_SC_2": "2/5 Elementary. Studied it",
+    "SLIDER_SC_3": "3/5 Intermediate. Implemented it once or twice",
+    "SLIDER_SC_4": "4/5 Advanced. Have implemented it several times",
+    "SLIDER_SC_5": "5/5 Thought leader",
+    "SOCIAL": "Social Technologies",
+    "SOCIAL_DESCRIPTION": "Social technologies are the tools for communicating that allow your community of employees, staff on demand, clients and others to connect quickly and easily for faster decision making and learning.",
+    "SOCIAL_MEDIA": "Social Media",
+    "SOCIAL_NETWORK_EMPTY": "Add your sites and social media profiles",
+    "SPEAKS": "Speaks",
+    "STAFF": "Staff on Demand",
+    "STAFF_DESCRIPTION": "Staff on demand refers to making use of external workers hired on an as-needed basis to access the most talented workforce possible. Responsibilities can range from extremely simple tasks to very complex work, and can even include mission critical processes.",
+    "STORY": "Summarize your story",
+    "SUCCESS_CONNECT": "Email sent to {{user}}",
+    "SUGGESTED": "Suggested activities...",
+    "TECHNOLOGIES": "ExP Technologies",
+    "TIMEZONE_HINT": "Sharing your time zone will let others contact you at the right time",
+    "TIME_AVAILABILITY": "Time Availability",
+    "TIME_AVAILABILITY_MUCH": "How much time would you like to dedicate to ExO Projects?",
+    "TITLE_BIO": "Full Profile",
+    "TITLE_SUMMARY": "Quick Bio",
+    "TRAVELLING": "Letting us know where you are when travelling will help others know when they can contact you",
+    "TWITTER_PROFILE": "Your Twitter profile will be shared with the OpenExO community. We will never post to Twitter or message your connections without your permission",
+    "USERNAME": "Write your username",
+    "WEBSITE": "Website",
+    "WELCOME": "Welcome to the OpenExO community! Help us understand the kinds of engagements and activities you'd like to do as a member.",
+    "WHICH_INNOVATION_EXPERTISE": "Which of these areas of innovation do you have expertise in?",
+    "WHY_HERE": "Why are you here?",
+    "WRITE_HEADLINE": "Write a headline",
+    "WRITE_SOMETHING": "Write something short but meaningful."
+  },
+  "PROJECT": {
+    "1HR_SESSION": "1hr session with an ExO Advisor",
+    "ADVISORY_CALL": {
+      "ADVISOR_REQUEST": "Advisor request",
+      "EDIT_TITLE": "Edit request",
+      "EMPTY_MOMENT": {
+        "TIP_1": "You send a request to either a specific collaborator or all of them in our community.",
+        "TIP_2": "Wait for applications.",
+        "TIP_3": "Select an applicant",
+        "TIP_4": "Agree on the date, time and how to connect",
+        "TIP_5": "Enjoy the session",
+        "TIP_6": "Send your feedback"
+      },
+      "HOW_WORKS": "How does it work?",
+      "NEW_REQUEST": "New Request",
+      "NEW_TITLE": "New request",
+      "REQUEST": "Request",
+      "START_REQUESTING_TICKETS": "Start using your tickets to request ExO Advisors",
+      "TICKETS_REMAINING": "tickets remaining",
+      "TITLE": "Requests",
+      "UNAVAILABLE_SECTION": "This section will be available once the project is published"
+    },
+    "ADVISOR_SESSIONS": "Advisor sessions are one of the most valuable parts of a Sprint",
+    "ASK_ECOSYSTEM": {
+      "ALL_QUESTIONS": "Todas las preguntas de tu equipo a la comunidad",
+      "ASK_BUTTON": "PREGUNTAR",
+      "BACK_TO": "Volver a",
+      "CANCEL": "CANCELAR",
+      "COMMENT": "¿Qué opinas al respecto?",
+      "COMMENT_ASK": "¿Qué quieres preguntar?",
+      "COMMENT_BUTTON": "COMENTAR",
+      "CREATE_ANSWER_FAIL": "¡Ups! Se ha producido un error...",
+      "CREATE_ANSWER_OK": "Respuesta creada",
+      "CREATE_BUTTON": "PREGUNTA ALGO",
+      "CREATE_QUESTION_FAIL": "¡Ups! Se ha producido un error...",
+      "CREATE_QUESTION_OK": "Pregunta publicada con éxito",
+      "DELETE_ANSWER_FAIL": "¡Ups! Se ha producido un error...",
+      "DELETE_ANSWER_OK": "Respuesta eliminada",
+      "DELETE_QUESTION_DELETE": "¡Ups! Se ha producido un error...",
+      "DELETE_QUESTION_OK": "Pregunta eliminada",
+      "EDIT": "EDITAR",
+      "EDIT_QUESTION": "Editar pregunta",
+      "EDIT_QUESTION_FAIL": "¡Ups! Se ha producido un error...",
+      "EDIT_QUESTION_OK": "Pregunta editada",
+      "EDIT_QUESTION_TITLE": "Editar pregunta para la comunidad",
+      "EMPTY_SUBTITLE": "Comparte tus dudas con la comunidad o pide feedback sobre tu progreso",
+      "EMPTY_SUBTITLE_SEARCH": "¿Qué tal si preguntas tú antes que nadie?",
+      "EMPTY_TITLE": "Pregunta y resuelve tus dudas",
+      "EMPTY_TITLE_SEARCH": "Parece que nadie ha preguntado sobre ese tema aún",
+      "INTRODUCTION": "Este es tu portal de acceso a los conocimientos de la Comunidad OpenExO, formada por líderes de opinión, coaches de innovación, especialistas en disrupción, fundadores de startups y visionarios tecnológicos. Comparte tus dudas sobre cualquier tema o pide feedback sobre tu progreso.",
+      "LOADING_QUESTIONS_FAIL": "¡Ups! Se ha producido un error...",
+      "LOAD_ANSWERS_FAIL": "¡Ups! Se ha producido un error...",
+      "NEW_QUESTION": "Nueva pregunta",
+      "NEW_QUESTION_TITLE": "Nueva pregunta para la comunidad",
+      "QUESTION_FOR": "Pregunta para la comunidad",
+      "SAVE": "GUARDAR",
+      "TAGS": "Categorías",
+      "TAGS_HINT": "Empieza a escribir para seleccionar categorías",
+      "TITLE": "Pregunta a la comunidad",
+      "TITLE_DETAILS": "Pregunta",
+      "TITLE_LABEL": "Título",
+      "UPDATE_ANSWER_FAIL": "¡Ups! Se ha producido un error...",
+      "UPDATE_ANSWER_OK": "¡Respuesta actualizada!"
+    },
+    "CANCEL": "Cancel",
+    "CHANGE": "Change",
+    "COMPLETE": "Complete",
+    "DELETE": "Delete",
+    "DIRECTORY": "Directorio",
+    "DIRECTORY_PEOPLE": "personas",
+    "DIRECTORY_SUBTITLE": "Encuentra y conecta con compañeros y tutores",
+    "DISCARD": "Discard",
+    "EDIT": "Edit",
+    "EDIT_DETAILS": "Edit details",
+    "EXPORT": "Export",
+    "EXPORT_AGENDA": "Export Agenda",
+    "FEEDBACK": {
+      "DIALOG_TITLE": "Week {{numberWeek}}. Send your feedback",
+      "EVALUATE_EXPERIENCE": "Please evaluate your experience.",
+      "HOW_WAS_WEEK": "How was week {{number_of_week}}?",
+      "IMPROVE_ECOSYSTEM": "Help us improve the ExO Sprint by providing your weekly feedback",
+      "SEND_FEEDBACK": "Send feedback"
+    },
+    "GENERAL_AGENDA": "General agenda",
+    "GOAL_FOR_THIS": "Goal for this",
+    "GUIDELINES_COACHES": "Guidelines for ExO Sprint Coaches",
+    "GUIDELINES_COACHES_CLOSE": "Do you need to take a look at guidelines again?",
+    "GUIDELINES_COACHES_TO_OPEN": "See guidelines here",
+    "LAPSE_TYPE": {
+      "DAY": "Day",
+      "WEEK": "Week"
+    },
+    "MEDIA": "Media Library",
+    "NEW_REQUEST": "New Request",
+    "OPEN": "Open",
+    "REMEMBER": "Remember to encourage your team to use this feature",
+    "REQUEST": "Request",
+    "REQUEST_ACTIVITY": "Request activity",
+    "RESOURCES": "Resources",
+    "SECTIONS": {
+      "AGENDA": "AGENDA",
+      "ALUMNI": "Alumni",
+      "AMBASSADOR": "Ambassador",
+      "CLIENTS": "Clients",
+      "COACH": "Coach",
+      "CONSULTANT": "Consultant",
+      "DELIVERY_PARTNERS": "Delivery Partners",
+      "DIRECTORY": "DIRECTORY",
+      "ECOSYSTEM": "Community",
+      "EXO AUTOMATED_SPRINT": "AUTOMATED SPRINT",
+      "EXO SPRINT": "SPRINT",
+      "EXO WORKSHOP": "WORKSHOP",
+      "FASTRACK": "FASTRACK",
+      "INVESTOR": "Investor",
+      "MAIN": "MAIN",
+      "MEDIA": "MEDIA LIBRARY",
+      "REQUEST": "REQUEST",
+      "RESOURCES": "RESOURCES",
+      "SPEAKERS": "Speakers",
+      "TRAINER": "Trainer"
+    },
+    "SET_SESSION": "Set session",
+    "SPEAK_COACH": "Speak with your ExO Sprint Coach to make a request",
+    "TEAM_COMMUNICATION": {
+      "DIALOG": {
+        "TITLE": "Conversación"
+      },
+      "GO_TO_ZOOM": "Go to Zoom",
+      "INTRODUCTION": "Comunicate con tus compañeros aqui",
+      "ITEM": {
+        "NEW": "mensajes nuevos"
+      },
+      "TITLE": "Comunicación de equipo"
+    },
+    "TICKETS_REMAINING": "tickets remaining",
+    "TIME_ZONE": "Time zone",
+    "TIPS": "Consejos",
+    "TOOLS": "Herramientas",
+    "UPLOAD_ASSIGNMENT": "Upload your assignment file",
+    "VIEW_DETAILS": "View details",
+    "WORK_FOR_THIS": "Work for this"
+  },
+  "PUBLIC": {
+    "ALREADY_HAVE_ACCOUNT": "I already have an account",
+    "BACK_TO_LOGIN": "Back to login",
+    "CHANGE": "Change",
+    "CONFIRM_PASSWORD": "Confirm password",
+    "EMAIL": "Email",
+    "ERROR_MESSAGES": {
+      "AUTH_ALREADY_ASSOCIATED": "The email associated to this LinkedIn account %seems to belong to another member%.",
+      "AUTH_FAILED": "This LinkedIn account %doesn't appear in OpenExO%. Log in with your email and authorize access from your profile.",
+      "DEFAULT": "Something went wrong when trying to connect. If you have further questions, please contact support@openexo.com.",
+      "INVALID_EMAIL": "This LinkedIn account %seems to be already in use%.",
+      "SOCIAL_AUTH_NOT_AVAILABLE": "At the moment, logging in with LinkedIn is only possible for ExO Consultants. For further information, please contact support@openexo.com",
+      "SOCIAL_AUTH_NOT_LINKED": "This LinkedIn account %doesn't appear in OpenExO%. Log in with your email and authorize access from your profile."
+    },
+    "FORGOTTEN_PW": "I've forgotten my password",
+    "GO_TO_LOGIN": "GO TO LOGIN",
+    "GO_TO_LOGIN_LOW": "Go to login",
+    "HAVE_ACCOUNT": "I have an account",
+    "HELP": "Help",
+    "LINKEDIN_LOGIN": "LOG IN WITH LINKEDIN",
+    "LOGIN_OMEGA_PARAGRAPH1": "It seems you are trying to access an out-of-date version of the OpenExO Platform. In order to move forward and access the Platform, your account needs some updates. ",
+    "LOGIN_OMEGA_PARAGRAPH2": "Please, contact us at support@openexo.com and we will solve this for you.",
+    "LOGIN_OMEGA_TITLE": "Unable to access Platform",
+    "LOGIN_TITLE": "Login",
+    "LOG_IN": "LOG IN",
+    "NEW_OPENEXO": "New at OpenExO?",
+    "NEW_PASSWORD": "New password",
+    "OR": "or",
+    "PASSWORD": "Password",
+    "PASSWORD_8CH_MIN": "Password must have at least 8 characters",
+    "PASSWORD_NOT_MATCH": "Passwords don't match",
+    "PASSWORD_RESET": "Your password has been successfully reset.",
+    "PASSWORD_RESET_REQUESTED": "Password reset requested.",
+    "PASSWORD_RESET_USE": "You can use it now on the login page.",
+    "RECEIVE_EMAIL": "You'll receive an email to reset your password.",
+    "REQUEST_PASSWORD_RESET": "Request password reset",
+    "RESET_PASSWORD": "RESET PASSWORD",
+    "SET_NEW_PASSWORD": "SET NEW PASSWORD",
+    "SET_NEW_PASSWORD_LOW": "Set new password",
+    "SIGN_UP": "SIGN UP",
+    "SIGN_UP_EMAIL": "Sign up with your email",
+    "SIGN_UP_LINKEDIN": "SIGN UP WITH LINKEDIN",
+    "SIGN_UP_LOW": "Sign up",
+    "TYPE_PASSWORD": "Please type your new password",
+    "TZ": "Time zone",
+    "WRITE_EMAIL": "Write your email address"
+  },
+  "REGISTRATION": {
+    "ACCEPT": "Accept",
+    "BACK_BUTTON": "Back",
+    "CANCEL": "Cancel",
+    "COMMENT_US": "Leave us a comment (optional)",
+    "DECLINE": "Decline",
+    "DECLINE_AGREEMENT": "Decline Agreement",
+    "DONE_BUTTON": "Done",
+    "EXO_AGREEMENT": "ExO Agreement",
+    "FULL_NAME": "Full Name",
+    "HEADLINE": "Headline",
+    "HELP_US": "Help us improve the process",
+    "HINT_BIO": "Briefly summarize your bio in no more than 100 words.",
+    "HINT_DESCRIBE": "2-4 words describing you, your purpose, and/or line of work",
+    "NEXT_BUTTON": "Next",
+    "NOT_ACCESS_EXO": "You will not have access to OpenExO",
+    "PDF": "Download PDF",
+    "PREFERRED_NAME": "Preferred Name",
+    "PROFILE_PICTURE": "Profile Picture",
+    "PROFILE_SUMMARY": "Quick Bio (Optional)",
+    "SELECT_LANG": "Which languages do you speak?",
+    "STEPS": {
+      "0": {
+        "BUTTON": "Continue",
+        "NAME": "Salim Ismail",
+        "PARAGRAPH1": "We are living in the most exciting time in human history. New technologies are disrupting everything and changing our world every day. Thanks to this, we can now venture beyond the boundaries of our planet, connect and collaborate in unprecedented ways and completely reinvent how our businesses and institutions operate and how we live our everyday lives.",
+        "PARAGRAPH2": "Our massive transformative purpose at OpenExO is to 'Transform the World for a Better Future'. We do this by empowering our global ExO Community through certification to build Exponential Organizations (ExOs). Here you can interact with like-minded, forward-thinking people from around the world, get certified in the ExO Model and sprint methodology, take part in transformation projects and pursue a variety of personal and professional development opportunities. We are here to empower your magic to scale.",
+        "PARAGRAPH3": "We are glad you are joining us on our quest to make the future better than our past.",
+        "PARAGRAPH4": "Welcome.",
+        "PARAGRAPH5": "I am looking forward to meeting you soon.",
+        "POSITION": "Chairman",
+        "TITLEA": "Welcome to",
+        "TITLEB": "the OpenExO Community"
+      },
+      "1": {
+        "BASIC_INFO": "Let's Start with the Basics",
+        "COMMUNITY": "Help the community get to know you",
+        "FILL_OUT": "You can always update or change this information in your profile",
+        "HEADLINE": "Purpose",
+        "HEADLINE_HINT": "The value you create in the world and who you create it for",
+        "HELP_PEOPLE": "Say cheese",
+        "LOCATION": "Location"
+      },
+      "2": {
+        "BUTTON": "GO TO COMMUNITY",
+        "SUBTITLE": "Take a guided tour with us through the OpenExO Community and Platform",
+        "TITLE": "Discover the OpenExO Community",
+        "VIDEO1_TITLE": "OpenExO Community Platform and MarketPlace",
+        "VIDEO2_TITLE": "OpenExO Platform Walkthrough"
+      }
+    },
+    "SURE_DECLINE_AGREEMENT": "Are you sure you want to decline?",
+    "WELCOME": "Welcome"
+  },
+  "RESOURCES": {
+    "ADD": "ADD",
+    "ATTACH": "ATTACH FILE",
+    "CANCEL": "CANCEL",
+    "DRAG_AND_DROP": "Drag and drop a file or click here",
+    "LINK": "ADD LINK",
+    "LINK_LOWER": "Add link",
+    "LINK_TO": "Link to",
+    "RESOURCE": "Resource",
+    "RESOURCES": "Resources",
+    "SIZE_LIMIT": "Size limit",
+    "TEXT_TO_DISPLAY": "Text to display"
+  },
+  "SEARCHER_TABLE": {
+    "DELETE_SPEAKER": "Remove speaker",
+    "EMPTY_SPEAKER": "You need speakers for your event, start adding some and they will appear here.",
+    "MAIN_SPEAKER": "Main speaker"
+  },
+  "SERVICE": {
+    "ADVICES": {
+      "TITLE": "Advices for the week"
+    },
+    "ASSIGNMENTS": {
+      "DELIVER": "Entregas",
+      "EXPLORE": "Explora",
+      "LEARN": {
+        "EXO AUTOMATED SPRINT": "Aprendizaje",
+        "EXO GENERIC PROJECT": "Aprendizaje",
+        "FASTRACK": "Assignment"
+      },
+      "REFLECT": "Balance"
+    },
+    "DELIVER": {
+      "CHANGE_PRIVATE_SNACKBAR": "Ahora este archivo es privado, solo tus coaches y tú lo podréis ver.",
+      "CHANGE_PUBLIC_SNACKBAR": "Ahora este archivo es público. Los miembros de tu equipo y los coaches lo podrán ver.",
+      "DELETE_SUCCESS": " Eliminado con éxito",
+      "PARAGRAPH1_A": "¡Enhorabuena por el trabajo de esta semana! Aquí se almacenarán todos los ejercicios que el equipo haya completado. Lo ideal es que se entreguen al finalizar el ",
+      "PARAGRAPH1_B": " a menos que el equipo haya acordado algo distinto. De esta manera, el coach del equipo tendrá tiempo de revisar el contenido antes de vuestra próxima reunión. Los documentos estarán disponibles tanto para el coach como para ti, a modo de referencia para el futuro.",
+      "PARAGRAPH1_STRONG": "cuarto día de esta semana,",
+      "PRIVATE": "Privado",
+      "TITLE": "Ejercicios completados",
+      "UPLOAD_SUCCESS": "Archivos subidos con éxito",
+      "UPLOAD_TEXT": "Haz clic aquí para subir archivos"
+    },
+    "MENU": {
+      "ADVISOR_REQUEST": "Advisor Requests",
+      "ASK_THE_ECOSYSTEM": "Pregunta a la comunidad",
+      "DIRECTORY": "Directorio",
+      "MEDIA_LIBRARY": "Mediateca",
+      "STEPS": {
+        "EXO AUTOMATED SPRINT": "ExO Sprint",
+        "EXO CERTIFICATION WORKSHOP": "ExO Workshop",
+        "EXO GENERIC PROJECT": "ExO Sprint",
+        "EXO SPRINT": "ExO Sprint",
+        "FASTRACK": "Fastrack",
+        "SPRINTS AUTOMATED": "ExO Sprint"
+      },
+      "SWARM_SESSIONS": "Swarm Sessions",
+      "TEAM_COMMUNICATION": "Comunicación de equipo",
+      "VIEWING_AS": "Equipo seleccionado"
+    },
+    "REFLECT": {
+      "FEEDBACK": {
+        "FEELING": {
+          "1": "Really Bad",
+          "2": "Bad",
+          "3": "So-so",
+          "4": "Satisfied",
+          "5": "Awesome"
+        }
+      },
+      "PARAGRAPH1": "The week's coming to an end and that means it's time to test what you learned. You can take the quiz as many times as you want. The results will be added to your team's Sprint ranking and you will need an average score of 80% for your certification",
+      "PARAGRAPH1_COACH": "This quiz tests the team’s learnings for this week. Each team member can take the quiz as many times as they want and they will need an average score of 80% to obtain their certification. The results will be added to the team’s Sprint ranking.",
+      "PERSONAL_FEEDBACK": {
+        "COMMENTS": "Comments",
+        "COMMENTS_SUGGESTIONS": "Comments and suggestions",
+        "COMMENT_OPTIONAL": "Write a comment or suggestion (optional)",
+        "ERROR_EVALUATE_COORDINATOR": "Over here! Rate your Coach...",
+        "ERROR_EVALUATE_FEELINGS": "Surely you felt something...",
+        "ERROR_EVALUATE_HEAD_COACH": "Over here! Rate your Head Coach...",
+        "FEEDBACK_SUCCESS": "Feedback sent successfully",
+        "FEEDBACK_TITLE": "How did you feel during the Sprint this week?",
+        "FEELING_AWESOME": "Awesome",
+        "FEELING_REALLY_BAD": "Terrible",
+        "GO_TO_SURVEY": "Go to the ExO Sprint Team Member Weekly Survey",
+        "GO_TO_SURVEY_COACH": "Go to the ExO Sprint Coach Weekly Survey",
+        "HOW_DID_YOU_FEEL": "How do you feel about this week?",
+        "MORE_FEEDBACK": "Do you want to provide more feedback about this week?",
+        "PARAGRAPH_COACH": "See how the week went according to your team and take a moment to reflect on your own Sprint experience.",
+        "PARAGRAPH_DELIVERY": "See how the week went according to both Coach and participants.",
+        "PARAGRAPH_HEAD_COACH": "See how the week went according to both Coach and participants.",
+        "PARAGRAPH_PARTICIPANT": "Take a moment to reflect on your Sprint experience this week.",
+        "RATE_YOUR_HEAD_COACH": "Rate your Head Coach",
+        "RATE_YOUR_TEAM_COACH": "Rate the performance of your Coach",
+        "RATE_YOUR_TEAM_COACH_PARAGRAPH": "Did your coach help you to complete the tasks and inspire you this week?",
+        "SEND": "Send",
+        "TITLE": "Weekly Check-in"
+      },
+      "RECEIVED_FEEDBACK": {
+        "COACH_RATE": "Your performance rating average",
+        "COMMENT": "comment",
+        "DELIVERY_RATE": "Head Coach performance rating average",
+        "DOWNLOAD": "Download Report",
+        "EMPTY_MOMENT": "Data is still flowing in and the report is not yet ready for download, check back soon!",
+        "EMPTY_MOMENT_REPORT": "Data is still flowing in and the report is not yet ready for download, check back soon!",
+        "FELT": "felt",
+        "GENERAL_FEELING": "General feeling",
+        "HEADER_COACH": "This week according to Coach",
+        "HEADER_DELIVERY": "This week according to Coach",
+        "HEADER_PARTICIPANTS": "This week according to participants",
+        "HEADER_TEAM_NAME": "This week according to",
+        "HEAD_COACH_ABOUT": "Performance rating average of ",
+        "HEAD_COACH_ABOUT_END": "(Coach)",
+        "HEAD_COACH_RATE_FROM_COACH": "Your performance rating average",
+        "HEAD_COACH_RATE_FROM_TEAM": "Coach performance rating average",
+        "NO_DATA": "No feedback received so far",
+        "RATED": "rated",
+        "RECEIVED": "Feedback received"
+      },
+      "TAKE_QUIZ": "Start",
+      "TAKE_QUIZ_COACH": "See the quiz",
+      "TEAM_RANKING": "Team ranking",
+      "TEAM_RANKING_FOOTER": "Waiting for your quiz results",
+      "TEAM_RANKING_FOOTER_COACH": "Waiting for your team's quiz results",
+      "TITLE": "Weekly quiz",
+      "TRY_AGAIN_1": "Do you want to",
+      "TRY_AGAIN_2": "Repeat quiz?",
+      "TYPEFORM_TITLE": "Fill the quiz for {{stepName}}",
+      "WEEKLY_FEEDBACK": "Weekly Feedback",
+      "YOUR_MARK": "Your score",
+      "YOUR_MARK_FOOTER": "Let's measure your learning"
+    },
+    "ROLES": {
+      "MEMBER": "Team Member"
+    },
+    "TASKS": {
+      "BACK_TO": "Volver a",
+      "GO_TO": "IR AL EJERCICIO",
+      "MARK_ALL_DONE": "Marcar todo como completado",
+      "MARK_ALL_TODO": "Marcar todo como inacabado",
+      "MARK_AS_DONE": "Marcar como completado",
+      "MARK_AS_TODO": "Marcar como inacabado",
+      "TASK": "Ejercicio",
+      "TITLE": "Ejercicios",
+      "TITLE_DIALOG": "Descripción del ejercicio"
+    }
+  },
+  "SHARED": {
+    "CROP_IMAGE_LIMIT": "El archivo seleccionado supera el máximo tamaño permitido (2,5MB)",
+    "CROP_YOUR_IMAGE": "Recortar image",
+    "IMAGE": {
+      "ALT": "Foto de usuario"
+    },
+    "OK": "OK",
+    "READLESS": "Mostrar menos",
+    "READMORE": "Mostrar mas",
+    "SAVE": "GUARDAR",
+    "SOMETHING_WENT_WRONG": "¡Ups! Se ha producido un error."
+  },
+  "SWARM": {
+    "ADVISORS": "ADVISORS",
+    "ALL_QUESTIONS_TITLE": "All your Team's Swarm Session Questions",
+    "CARD": {
+      "ADVISOR": "Advisor",
+      "DATETIME": "Date & time",
+      "INFO": "Session info",
+      "SEE_ALL_NEXT": "See all next sessions",
+      "SEE_PROFILE": "See profile"
+    },
+    "CREATE_ANSWER_OK": "Answer added",
+    "CREATE_QUESTION_OK": "Question added",
+    "DELETE_ANSWER_OK": "Answer deleted",
+    "DELETE_QUESTION_OK": "Question deleted",
+    "DESCRIPTION": "A team of hand-picked advisors will respond to your questions in a real-time session",
+    "DIALOGS": {
+      "SERVICE_SESSION_END": {
+        "BUTTON": "Ok",
+        "MESSAGE": "Time to relax and reflect on the responses you've received. You might see a few more answers or edits from advisors appear.",
+        "TITLE": "Woohoo!! This Swarm Session is officially ended"
+      },
+      "SERVICE_SESSION_START": {
+        "BUTTON": "ok",
+        "MESSAGE": "This Swarm Session will run for {{duration}}, from {{startTime}} - {{endTime}}.",
+        "TITLE": "Ready, set, go! Your Swarm Session is now live"
+      },
+      "SESSION_END": {
+        "BUTTON": "Back",
+        "MESSAGE": "Feel free to put your feet up and relax or to continue reading and answering questions.",
+        "TITLE": "Amazing job! Swarm Session has ended"
+      }
+    },
+    "EDIT_QUESTION_OK": "Question updated",
+    "EMPTY": {
+      "INFO_PLATFORM": {
+        "ADVICE": "Talk to your Team Coach about adding Swarm Sessions and gain access to a hand-picked team of advisors specialized in your team's questions and problems.",
+        "LIST1": "Swarm sessions often last one hour, but they can be programmed for any set period of time. Advisors pinpoint all of their expertise and energy on questions you enter before and during the session",
+        "LIST2": "In a concentrated burst they feed off of each other's answers and your live comments with resulting effects leagues beyond the understanding of any single individual",
+        "NOTICE": "Swarm Sessions are based on swarm intelligence in the animal world where ants, bees, birds and fish work together in small decentralized self-organized teams to solve complex problems. In OpenExO, technology and industry specialists at the top of their field with diverse background knowledge and skill sets use their collective aggregated knowledge to find solutions to your team's problems.",
+        "SUBTITLE": "Clients say Swarm Sessions are amazzzing!",
+        "TITLE": "What is a Swarm Session?"
+      },
+      "MAIN": "Questions in the making...",
+      "NO_QUESTIONS_PLATFORM": "Oops! There are no questions yet",
+      "SECONDARY": "Get your thinking cap ready and check back later"
+    },
+    "EMPTY_SUBTITLE_ECO": "Start answering: As an expert answer challenging topics or provide feedback",
+    "EMPTY_TITLE_ECO": "Start answering questions",
+    "FINISH_SOON": "Finishing soon",
+    "HALFWAY": "Halfway Through",
+    "JUST_FINISHED": "Just finished",
+    "NEW_QUESTION": "Nueva pregunta",
+    "NOTICE_BOX": {
+      "ALREADY_FINISHED": "This session is already finished. Advisors keep answering questions for some minutes",
+      "ENDED": "Swarm Session has ended, but you can continue to answer or edit questions",
+      "MORE_ACCESS": "Need more access to the Community? Talk to your Team Coach about scheduling additional Swarm Sessions.",
+      "NO_MORE": "There is not more Swarm Sessions scheduled for your team so far. Did you know that you could have more Swarm Sessions from OpenExO Community Members? Ask your coach for a new one!"
+    },
+    "ONGOING": "Live now",
+    "PROMPTS": {
+      "ANSWER": {
+        "DELETE_PROMPT": "Once you delete it completely, you can't recover it",
+        "DELETE_TITLE": "Do you really want to delete your answer?"
+      },
+      "QUESTION": {
+        "DELETE_TITLE": "¿Seguro que quieres eliminar esta pregunta?"
+      }
+    },
+    "QUESTION": {
+      "NUM_COMMENTS": "Nº comentarios",
+      "ACTIVITY": "Actividad"
+    },
+    "QUESTION_FOR": "Question for advisors",
+    "REFRESH_ANNOUNCE": {
+      "ANSWER_ADDED": "There are new responses",
+      "ANSWER_DELETED": "An answer has been deleted",
+      "ANSWER_EDITED": "An answer has been edited",
+      "NEW_UPDATES": "There are new updates",
+      "QUESTION_ADDED": "There are new questions"
+    },
+    "SESSION_END": "Session is over",
+    "SESSION_SELECT": {
+      "PLACEHOLDER": "Select session"
+    },
+    "SESSION_TITLE": "Session",
+    "SIDEBAR": {
+      "ADVISORS": "Advisors"
+    },
+    "SUBTITLE": "Use the power of collective intelligence as you converge with a team of technology  and industry advisors to find solutions to these questions in real time",
+    "SUBTITLE_SPRINT": "A hand-picked team of advisors converge on your problem using their diverse background knowledge and skill set to collectively find solutions to your questions in real time",
+    "TITLE": "Swarm Session",
+    "TODAY": "Happens today!",
+    "UPDATE_ANSWER_OK": "Answer updated",
+    "WRONG": "¡Ups! Se ha producido un error. ¡Inténtalo de nuevo!"
+  },
+  "TOOLTIP": {
+    "ACCOUNT_SETTINGS": "Account settings",
+    "ADVISOR_REQUEST": "Advisor request",
+    "AGENDA_FOR_TODAY": "Agenda for today",
+    "ATTACHED_DOCUMENT": "Attached document",
+    "AVAILABLE_ACTIONS": "Available actions",
+    "CAMPAIGNS": "Referral",
+    "CHANGE_PICTURE": "Edit",
+    "CHANGE_TZ": "Change time zone",
+    "CHANGE_VIDEO": "Edit",
+    "CLOSE": "Close",
+    "DELETE": "Delete",
+    "DIRECTORY": "Directorio",
+    "DOWNLOAD": "Download",
+    "EVALUATION_DONE": "Evaluation done",
+    "EXAM_DONE": "Exam done",
+    "EXPORT_AGENDA": "Export Agenda",
+    "FILE": "File",
+    "GENERAL_AGENDA": "General agenda",
+    "GO_TO_EVALUATION": "Go to the evaluation",
+    "INFO": "Info",
+    "LINK": "Link",
+    "LOCATION": "Location",
+    "LOGOUT": "Logout",
+    "MORE_INFO": "More info",
+    "NEW_REQUEST": "New Request",
+    "NEXT": "Next",
+    "OPEN_NEW_TAB": "Open in new tab",
+    "PREVIOUS": "Previous",
+    "PROFILE_PICTURE": "Profile picture",
+    "PURPOSE": "Purpose",
+    "REMOVE": "Remove",
+    "RESOURCES": "Resources",
+    "SEE_CONSULTANT": "See extended consultant profile",
+    "SHORT_NAME": "Short-form",
+    "SHOW_HIDE_PW": "Show/hide password",
+    "TAKE_EXAM": "Take the exam",
+    "TIP": "Tip",
+    "UPLOAD_PICTURE": "Upload your profile picture",
+    "VIEW_PROFILE": "User profile"
+  },
+  "UPDATE_TOS": {
+    "ACCEPT": "I ACCEPT THESE TERMS",
+    "AGREEMENT": "Consulting agreement (for advisors, coaches, consultants, and trainer):",
+    "CANCEL": "CANCEL",
+    "PARAGRAPH1": "Our Terms of Service and Agreements have changed, and have now been simplified. Please review the documents before proceeding.",
+    "PARAGRAPH2": "By logging in you confirm the acceptance of these agreements.",
+    "TERMS_OF_SERVICE": "Terms of service:",
+    "TITLE": "Terms of Service and Agreements update"
+  },
+  "UTILS": {
+    "TYPEFORM": {
+      "QUIZ": "Quiz",
+      "RECOMMEND": "Recommendations"
+    }
+  },
+  "VALIDATORS_ERRORS": {
+    "AUTOCOMPLETE": "You must choose from the list provided",
+    "AUTOCOMPLETE_MAX_ITEMS": "The maximum number of items is reached",
+    "DUPLICATED_URL": "The url already exits",
+    "EMAIL": "This is not a valid email",
+    "MAX_LENGTH": "The maximum length is {{length}} characters",
+    "MIN_DATE": "It must be after",
+    "MIN_LENGTH": "The minimum length is {{length}} characters",
+    "MIN_SELECTED_CHECKBOXES": "Please select at least one of the options provided",
+    "NULL": "Este campo no puede estar vacio",
+    "NUMBER_VALIDATOR": "This value must be a number",
+    "PATTERN": "The field has to follow the {{pattern}} pattern",
+    "REQUIRED": "Este campo no puede estar vacio",
+    "REQUIRED_ENTER": "Type at least one. Remember to press enter after typing your",
+    "REQUIRED_TRUE": "The field value has to be True",
+    "URL_VALIDATOR": "The url is not valid"
+  }
+}

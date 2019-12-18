@@ -1,0 +1,19 @@
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/colors';
+
+.card-content.card-content {
+  padding: map-get($spaceMeasures, 'sm') 0; // Overwrite _card.scss
+}
+
+.group-system {
+  padding: 0 map-get($spaceMeasures, 'sm');
+}
+
+.conversations {
+  padding: map-get($spaceMeasures, 'xxs') 0;
+  width: 96%;
+  &.selected{
+    background-color: map-get($exo-blue, '500-0.16');
+    border-radius: 0 map-get($spaceMeasures, 'lg') map-get($spaceMeasures, 'lg') 0;
+  }
+}

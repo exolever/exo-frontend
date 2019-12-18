@@ -1,0 +1,45 @@
+<div class="container">
+
+  <div
+    *ngIf="fromPlatformProject; else search"
+    fxLayout="row"
+    fxLayout.lt-sm="column"
+    fxLayoutAlign="space-between start"
+    fxLayoutAlign.lt-sm="start start"
+  >
+    <app-search [fromPlatformProject]="fromPlatformProject" fxFlex="90" class="pad-right-lg"></app-search>
+    <app-sorter></app-sorter>
+  </div>
+
+  <ng-template #search>
+    <app-search></app-search>
+  </ng-template>
+
+  <div
+    *ngIf="(!(totalResources$ | async) || (totalResources$ | async) === 0) && !(isLoading | async)"
+    class="title subheading-2"
+  >
+    {{'MEDIA.SEARCH.EMPTY' | translate}}.
+  </div>
+
+  <div fxFlexFill *ngIf="isLoading | async; else videosGrid" fxLayout="row" fxLayoutAlign="center" class="push-top-xxs">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+  <ng-template #videosGrid>
+    <mat-grid-list cols="{{cardsPerRow}}" rowHeight="4:5" gutterSize="16px">
+      <mat-grid-tile *ngFor="let resource of resources$ | async; trackBy: trackByPk" [@transitionItemList]="resource">
+        <app-resource-card [resource]="resource"></app-resource-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </ng-template>
+
+  <mat-paginator
+    [ngClass]="{'project': isInProjectContext()}"
+    *ngIf="totalResources$ | async"
+    [length]="totalResources$ | async"
+    [pageIndex]="pageIndex | async"
+    [pageSize]="pageSize | async"
+    [pageSizeOptions]="[5, 10, 15, 20, 25]"
+    (page)="changePage($event)">
+  </mat-paginator>
+</div>

@@ -1,0 +1,24 @@
+@import 'variables';
+@import 'themes/exo-platform-dark-theme';
+
+// config
+$swarm-end-height: 72px;
+$box-shadow: 0 2px 8px 0 rgba(70, 70, 75, 0.32);
+
+
+.container {
+  background-color: mat-color($exo-blue, 500);
+  border-radius: 8px;
+  box-shadow: $box-shadow;
+  animation: opacity-animation .6s ease-in-out;
+  button,
+  .end-text {
+    color: map-get($mat-dark-theme-foreground, base);
+  }
+}
+
+
+@keyframes opacity-animation {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

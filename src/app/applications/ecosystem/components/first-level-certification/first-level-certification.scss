@@ -1,0 +1,14 @@
+@import "~@openexo/design-system/variables";
+
+.mat-card {
+  margin: 0 map-get($spaceMeasures, 'xs');
+
+  .mat-card-content {
+    max-width: map-get($componentMeasure, '20x');
+    @media #{map-get($mediaqueries, 'xxs')} {
+      padding-left: map-get($spaceMeasures, 'xs');
+      padding-right: map-get($spaceMeasures, 'xs');
+    }
+  }
+}
+

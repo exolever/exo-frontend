@@ -1,0 +1,118 @@
+@import 'themes/exo-platform-light-theme';
+@import 'themes/exo-platform-dark-theme';
+@import '~@openexo/design-system/variables';
+
+$height: 72px;
+$width-figure: 72px;
+$size-icon: 24px;
+$file-kind-height: 16px;
+$border-uploader: mat-color($mat-light-theme-background, 'unselected-chip');
+
+:host {
+   min-width: 0;
+}
+
+.tool-card {
+  height: $height;
+
+  .reduced-padding {
+    padding-bottom: map-get($spaceMeasures, 'xxs');
+    padding-top: map-get($spaceMeasures, 'xxs');
+  }
+
+  .right-divider {
+    border-right: 1px solid mat-color($exo-grey, 900, 0.64);
+  }
+
+  figure {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    width: $width-figure;
+    height: $height;
+    :hover{
+      background-color: map_get($mat-light-theme-foreground, disabled);
+    }
+  }
+
+  .thumbnail-icon {
+    opacity: 0;
+    position: absolute;
+    font-size: $size-icon;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: $height;
+    width: $width-figure;
+  }
+
+  .thumbnail-icon:hover {
+    opacity: 1;
+    &:before {
+      top: $size-icon;
+      left: $size-icon;
+      position: absolute;
+    }
+    fa-icon {
+      background-color: transparent;
+    }
+  }
+
+  .thumbnail-rectangle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 16px;
+    width: $width-figure;
+    border-radius: 1px;
+  }
+
+  .thumbnail-rectangle__pdf {
+    background-color: mat-color($mat-dark-theme-background, 'resource-color-pdf');
+  }
+
+  .thumbnail-rectangle__spreadsheet {
+    background-color: mat-color($mat-dark-theme-background, 'resource-color-spreadsheet');
+  }
+
+  .thumbnail-rectangle__document {
+    background-color: mat-color($mat-dark-theme-background, 'resource-color-document');
+  }
+
+  .thumbnail-rectangle__slides {
+    background-color: mat-color($mat-dark-theme-background, 'resource-color-slides');
+  }
+
+  .thumbnail-rectangle__form {
+    background-color: mat-color($mat-dark-theme-background, 'resource-color-form');
+  }
+
+  .cloud_upload {
+    min-width: $width-figure;
+    height: $height;
+    border-right: $border-uploader;
+    cursor: pointer;
+  }
+
+  // Needed because we want to truncate text inside a child flex element: https://codepen.io/aj-foster/pen/emBYPW
+  .tool-info {
+    min-width: 0;
+  }
+
+  .tool-options {
+    margin-left: auto;
+  }
+
+  .privacy {
+    // CSS to change Default/'Accent' color.
+    ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+      background-color: map_get($exo-blue, 700);
+    }
+
+    ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+      background-color: map_get($exo-blue, 500);
+    }
+  }
+}

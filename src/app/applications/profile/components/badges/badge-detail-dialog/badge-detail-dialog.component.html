@@ -1,0 +1,27 @@
+<div mat-dialog-title>
+  <h2>{{'PROFILE.PLATFORM.BADGES.CATEGORY.' + badge.category  | translate}} - {{roleEnum.toString(badge.role)}}</h2>
+</div>
+<mat-dialog-content>
+  <perfect-scrollbar *ngIf="badge.activities.length; else noDescription" class="perfect-scrollbar with-actions ps-show-always">
+    <div fxLayout="column">
+      <div *ngFor="let activity of badge.activities; let isLast = last" class="body-2">
+        <div class="body-2">{{activity.description}}</div>
+        <div class="caption-1 push-bottom">{{activity.date | formatDate: 'short'}} </div>
+        <mat-divider *ngIf="!isLast"></mat-divider>
+      </div>
+    </div>
+  </perfect-scrollbar>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div fxLayoutAlign="end">
+    <button mat-flat-button color="primary" (click)="dialogRef.close()" exoLineClamp [lines]="2">
+      {{'ECOSYSTEM.PROFILE.DIALOGS.SHARE.DONE' | translate}}
+    </button>
+  </div>
+</mat-dialog-actions>
+
+<ng-template #noDescription>
+  <div class="body-1">
+    {{roleEnum.toString(badge.role)}}
+  </div>
+</ng-template>

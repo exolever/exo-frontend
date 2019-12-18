@@ -1,0 +1,10 @@
+<section fxLayout="column">
+  <header class="push-bottom-lg push-top-lg pad-left pad-right text-align-center">
+    <h1 class="w-100">{{ 'ECOSYSTEM.CIRCLES.SUMMARY_TITLE' | translate }}</h1>
+    <p class="subheading-2 foreground-secondary-text">{{ 'ECOSYSTEM.CIRCLES.SUMMARY_SUBTITLE' | translate }}</p>
+  </header>
+  <section class="push-top pad-left pad-right pad-bottom">
+    <exo-router-tabs [tabs]="tabs"></exo-router-tabs>
+    <router-outlet></router-outlet>
+  </section>
+</section>

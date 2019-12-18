@@ -1,0 +1,28 @@
+<section>
+  <div fxLayout="row" fxLayoutAlign="start center" class="push-bottom-sm push-top-sm">
+    <mat-icon role="link" (click)="goBack()" class="push-right-xxs pointer">arrow_back</mat-icon>
+    <label>
+      {{'SERVICE.TASKS.BACK_TO' | translate }} <strong>{{assignment?.name}}</strong>
+    </label>
+  </div>
+
+  <span class="task-label section">{{'SERVICE.TASKS.TASK' | translate }}</span>
+  <div class="headline" fxLayout="row" fxLayoutAlign="space-between start">
+    <label>{{task?.name}}</label>
+    <app-task-status [task]="task"
+                      (done)="onMarkAsDone(task)"
+                      (toDo)="onMarkAsToDo(task)"></app-task-status>
+  </div>
+
+  <mat-divider class="pad-top"></mat-divider>
+
+  <app-information-block *ngFor="let block of task?.blocks; let first = first"
+    [block]="block"
+    [step]="step"
+    [assignment]="assignment"
+    [ngClass]="{'push-top-sm': first, 'push-top-lg': !first}"
+    class="information-block"
+    (markAsDone)="onMarkAsDone($event)"
+    (markAsTodo)="onMarkAsTodo($event)">
+  </app-information-block>
+</section>

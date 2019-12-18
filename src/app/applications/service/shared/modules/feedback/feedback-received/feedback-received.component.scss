@@ -1,0 +1,48 @@
+@import "variables";
+
+.list-item > * {
+  padding: $sm;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid mat-color($exo-grey, 50);
+  }
+}
+.pointer-none {
+  pointer-events: none;
+}
+
+.rates {
+  .star {
+    color: mat-color($exo-amber, 500);
+    font-size: $sm;
+  }
+}
+
+.feelings {
+
+  mat-icon.mood-bad {
+    color: mat-color($exo-red, 700);
+  }
+
+  mat-icon.sentiment-very-dissatisfied {
+    color: mat-color($exo-red, 700);
+  }
+
+  mat-icon.sentiment-dissatisfied {
+    color: mat-color($exo-grey, 700);
+  }
+
+  mat-icon.sentiment-satisfied-alt {
+    color: mat-color($exo-teal, 600);
+  }
+
+  mat-icon.sentiment-very-satisfied {
+    color: mat-color($exo-teal, 600);
+  }
+}
+
+
+  .number {
+    color: mat-color($exo-grey, 900, 0.64);
+  }
+

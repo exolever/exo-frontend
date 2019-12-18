@@ -1,0 +1,18 @@
+<header fxLayout="row" fxLayoutAlign="space-between center">
+  <ng-content select="h3"></ng-content>
+  <ng-content select=".private"></ng-content>
+</header>
+<ng-content select=".description"></ng-content>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" fxLayout="column">
+  <app-toggle-item
+    *ngFor="let activity of list"
+    [item]="activity"
+    [status]="form.get(activity.code)?.value"
+    (toggle)="onToggle($event)"
+  >
+  </app-toggle-item>
+  <button *ngIf="dirty" color="primary" class="button-submit" type="submit" mat-flat-button>
+    {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+  </button>
+</form>

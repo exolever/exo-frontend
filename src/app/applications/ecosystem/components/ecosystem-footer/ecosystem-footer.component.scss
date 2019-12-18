@@ -1,0 +1,15 @@
+@import 'variables';
+@import '~@openexo/design-system/variables';
+
+div.container {
+  padding: 20px 40px 90px 40px;
+  .image {
+    margin-right: 16px;
+    .circle-logo {
+      width: 30px;
+      height: 30px;
+      background-size: contain;
+      background: url($static-root + 'assets/public/footer_logo.svg') no-repeat;
+    }
+  }
+}

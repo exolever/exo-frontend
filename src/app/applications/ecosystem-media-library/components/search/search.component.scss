@@ -1,0 +1,33 @@
+@import "variables";
+
+::ng-deep.mat-form-field {
+  margin-bottom: 0;
+}
+
+.bullet {
+  padding: 4px 10px;
+}
+
+.search {
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
+}
+
+.results {
+  @media only screen and (max-width: 960px)  {
+    width: 100%;
+  }
+}
+
+.filter-button-container {
+  width: 0;
+  @media only screen and (max-width: $screen-sm) {
+    width: 100%;
+  }
+}
+
+
+mat-form-field.mat-form-field {
+  margin: 0;
+}

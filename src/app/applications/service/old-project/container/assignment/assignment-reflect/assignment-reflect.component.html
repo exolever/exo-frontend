@@ -1,0 +1,12 @@
+<app-assignment-reflect
+  [quizDone]="quizDone$ | async"
+  [step]="step$ | async"
+  [team]="(step$ | async)?.team"
+  [user]="user$ | async"
+  [feedback]="feedback$ | async"
+  [receivedFeedback]="receivedFeedback$ | async"
+  [role]="role$ | async"
+  (openQuiz)="openQuiz($event)"
+  (sendFeedback)="onSendFeedback($event)"
+  (fillSurvey)="onFillSurvey($event)">
+</app-assignment-reflect>

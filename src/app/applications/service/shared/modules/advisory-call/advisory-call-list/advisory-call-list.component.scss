@@ -1,0 +1,21 @@
+@import "~@openexo/design-system/mixins";
+@import "~@openexo/design-system/variables";
+
+$emptyMomentBackgroundRoute: $static-root + 'assets/empty_moments/tickets_empty_moment_coach';
+
+:host {
+  width: 100%;
+  .advisory-call-container {
+    max-width: map-get($componentMeasure, '20x');
+    margin: 0 auto;
+    .empty-moment {
+      & > .image {
+        @include retina-background-image($emptyMomentBackgroundRoute, 'png', 128px, 124px);
+        width: 128px;
+        height: 124px;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+      }
+    }
+  }
+}

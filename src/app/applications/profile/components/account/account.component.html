@@ -1,0 +1,247 @@
+<section [fxFlex]="'0 1 ' + config.layoutMaxWidth">
+  <div *ngIf="route.snapshot.queryParams['goBack']" class="push-left-sm push-top-sm">
+    <app-back-to-snippet
+      [priorNavigationTranslateString]="route.snapshot.queryParams['goBack']"
+      (back)="location.back()"
+    ></app-back-to-snippet>
+  </div>
+  <div fxLayout="column" class="pad-top-lg pad-bottom-lg pad-left-sm pad-right-sm">
+    <div fxLayout="column" class="push-bottom text-align-center">
+      <h1 fxLayoutAlign="center center" fxFlex="grow" class="text-align-center push-top-none">
+        <mat-icon class="push-right-xxxs">settings</mat-icon>
+        <span>{{ 'ECOSYSTEM.ACCOUNT.SETTINGS' | translate }}</span>
+      </h1>
+      <p class="subheading-2 foreground-secondary-text text-align-center">{{ 'ECOSYSTEM.ACCOUNT.DESCRIPTION' | translate }}</p>
+    </div>
+    <section *ngIf="form; else loading" class="push-top-sm">
+      <mat-card fxFlex="grow">
+        <mat-card-content>
+          <h3>{{ 'ECOSYSTEM.ACCOUNT.ACCOUNT' | translate }}</h3>
+          <p class="caption-1 push-none">{{ 'ECOSYSTEM.ACCOUNT.EMAIL_CAPTION' | translate }}</p>
+          <div
+            class="user-email"
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            fxLayout.lt-sm="column"
+            fxLayoutAlign.lt-sm="start start"
+            class="push-bottom-sm push-top-sm push-right-xxs"
+          >
+            <h3 class="subheading-2 user-email">{{user.email}}</h3>
+            <button
+              mat-button
+              color="primary"
+              (click)="changeEmail()"
+              ngClass.lt-sm="push-top"
+            >
+              {{ 'ECOSYSTEM.ACCOUNT.CHANGE_EMAIL' | translate }}
+            </button>
+          </div>
+          <form [formGroup]="form" novalidate fxLayout="column">
+            <div formGroupName="accounts" fxLayout="column" class="accounts">
+              <mat-form-field appearance="fill">
+                <mat-label>
+                  {{'ACCOUNTS.NEW_PASSWORD' | translate}}
+                </mat-label>
+                <input
+                  matInput
+                  #showhideinput
+                  type="password"
+                  autocomplete="current-password"
+                  formControlName="password"
+                />
+                <mat-icon
+                  (click)="toggleShowHidePassword($event)"
+                  matSuffix
+                  class="foreground-icon pointer icon-show-hide"
+                  matTooltip="{{ 'TOOLTIP.SHOW_HIDE_PW' | translate }}"
+                >
+                  visibility
+                </mat-icon>
+                <mat-hint>
+                  {{'ACCOUNTS.8CHARACTERS' | translate}}
+                </mat-hint>
+                <mat-error data-e2e="change-pass-error">
+                  {{'ACCOUNTS.8CHARACTERS' | translate}}
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <button
+              *ngIf="showAccountButton"
+              class="submit-button"
+              type="button"
+              (click)="submitPassword()"
+              mat-flat-button
+              color="primary"
+            >
+              {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+            </button>
+            <!-- <section class="push-top push-bottom-lg" fxLayout="column">
+            <h3>{{'ACCOUNTS.LANGUAGES.LANGUAGE' | translate}}</h3>
+            <p class="caption-1">{{ 'ECOSYSTEM.ACCOUNT.LANGUAGE_CAPTION' | translate }}</p>
+            <div
+              formGroupName="languages"
+              fxLayout="column"
+              class="push-top-sm languages"
+            >
+              <mat-form-field appearance="fill" class="push-bottom-none">
+                <mat-label>
+                  {{'ACCOUNTS.LANGUAGES.LANGUAGE' | translate}}
+                </mat-label>
+                <mat-select
+                  [formControl]="form.get('languages.language')"
+                  data-e2e="lang-selector"
+                >
+                  <mat-option
+                    *ngFor="let lang of languages"
+                    [value]="lang.pk"
+                    [attr.data-e2e]="'lang-selec-'+lang.name | lowercase"
+                  >
+                    {{ lang.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <button
+              *ngIf="showLanguageButton"
+              class="submit-button"
+              type="button"
+              (click)="submitLanguages()"
+              mat-flat-button
+              color="primary"
+            >
+              {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+            </button>
+            </section> -->
+            <section class="notification push-bottom-lg" fxLayout="column">
+              <h3>{{'ECOSYSTEM.PROFILE.ACCOUNT.NOTIFICATION' | translate}} ({{'COMMON.OPTIONAL' | translate }})</h3>
+              <p class="caption-1">
+                {{ 'ECOSYSTEM.PROFILE.ACCOUNT.NOTIFICATION_DESCRIPTION' | translate }}
+              </p>
+              <div
+                formGroupName="notifications"
+                fxLayout="column"
+                class="push-top-sm notifications"
+              >
+                <ng-template ngFor [ngForOf]="notificationsList" let-notification>
+                  <!--- if the value is not set from the backend, means we should not display the notification (EXO-2307) -->
+                  <div *ngIf="notification.value !== null && notification.value !== undefined"
+                      class="notification-item"
+                      fxLayout="row"
+                      fxLayoutAlign="space-between center"
+                  >
+                    <p class="body-2 notification-name" ngClass.lt-sm="pad-right-xxxs">{{transformName(notification.name)}}</p>
+                    <mat-slide-toggle
+                      class="slide-toggle"
+                      [checked]="notification.value"
+                      (change)="changeNotification($event, notification)"
+                    ></mat-slide-toggle>
+                  </div>
+                </ng-template>
+              </div>
+            <button
+              *ngIf="showNotificationsButton"
+              class="submit-button"
+              type="button"
+              (click)="submitNotifications()"
+              mat-flat-button
+              color="primary"
+            >
+              {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+            </button>
+            </section>
+            <section *ngIf="user.pkConsultant" class="push-bottom-lg" fxLayout="column">
+              <h3>{{'ECOSYSTEM.ACCOUNT.CONTRACTING_FORM.CONTRACTING_TITLE' | translate}} ({{'COMMON.OPTIONAL' | translate }})</h3>
+              <p class="caption-1">{{ 'ECOSYSTEM.ACCOUNT.CONTRACTING_CAPTION' | translate }}</p>
+              <div
+                formGroupName="contractings"
+                fxLayout="column"
+                class="push-top-sm contracts"
+              >
+                <mat-form-field appearance="fill">
+                  <mat-label>
+                    {{'ECOSYSTEM.ACCOUNT.CONTRACTING_FORM.LEGAL_NAME' | translate}}
+                  </mat-label>
+                  <input
+                    matInput
+                    type="text"
+                    formControlName="name"
+                    data-e2e="full-legal-name"
+                  >
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>
+                    {{'ECOSYSTEM.ACCOUNT.CONTRACTING_FORM.ADDRESS' | translate}}
+                  </mat-label>
+                  <input
+                    matInput
+                    autocomplete="address-line1"
+                    formControlName="address"
+                    data-e2e="company-address"
+                  >
+                  <mat-hint align="start">{{'ECOSYSTEM.ACCOUNT.CONTRACTING_FORM.ADDRESS_HINT' | translate}}</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>
+                    {{'ECOSYSTEM.ACCOUNT.CONTRACTING_FORM.COMPANY_NAME' | translate}}
+                  </mat-label>
+                  <input
+                    matInput
+                    autocomplete="organization"
+                    formControlName="company_name"
+                    data-e2e="company-name"
+                  >
+                  <mat-hint align="start">{{'ECOSYSTEM.ACCOUNT.CONTRACTING_FORM.COMPANY_NAME_HINT' | translate}}</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="push-bottom-none">
+                  <mat-label>
+                    {{'ECOSYSTEM.ACCOUNT.CONTRACTING_FORM.TAX_ID' | translate}}
+                  </mat-label>
+                  <input
+                    matInput
+                    formControlName="tax_id"
+                  >
+                </mat-form-field>
+              </div>
+              <button
+                *ngIf="showContractingButton"
+                class="submit-button"
+                type="button"
+                (click)="submitContractings()"
+                mat-flat-button
+                color="primary"
+              >
+                {{ 'ECOSYSTEM.PROFILE.EDIT.SUBMIT_BUTTON' | translate }}
+              </button>
+            </section>
+
+            <section *ngIf="agreements?.length" class="agreements">
+              <h3>{{ 'ECOSYSTEM.ACCOUNT.AGREEMENTS' | translate }}</h3>
+              <div
+                class="agreements-list"
+                *ngFor="let userAgreement of agreements; let i = index"
+              >
+                <div class="agreement" matLine fxLayout="row" fxLayoutAlign="space-between center">
+                  <p class="body-1 agreement__name">
+                    {{userAgreement.name}}
+                    <span *ngIf="userAgreement.isInactive()" class="foreground-secondary-text">({{'ACCOUNTS.AGREEMENTS_OUTDATED' | translate | lowercase }})</span>
+                  </p>
+                  <a class="agreement__download" matTooltip="{{'TOOLTIP.DOWNLOAD' | translate}}" href="{{userAgreement.pdf}}" target="_blank" [attr.data-e2e]="'download'+(i+1)">
+                    <mat-icon class="file-download">file_download</mat-icon>
+                  </a>
+                </div>
+              </div>
+            </section>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </section>
+  </div>
+</section>
+
+<!-- templates -->
+<!-- loading -->
+<ng-template #loading>
+  <div fxLayoutAlign="center center">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+</ng-template>

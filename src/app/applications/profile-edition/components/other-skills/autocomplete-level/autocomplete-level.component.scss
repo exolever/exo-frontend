@@ -1,0 +1,14 @@
+@import 'themes/exo-platform-light-theme';
+
+.input-autocomplete {
+  width: 310px;
+  @media (min-width: 380px){
+    width: 360px;
+  }
+}
+
+.item-card {
+  padding: 16px;
+  background-color: map-get($mat-light-theme-background, activities);
+  margin-bottom: 16px;
+}

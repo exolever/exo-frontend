@@ -1,0 +1,20 @@
+<div fxLayout="column" fxLayoutAlign="center center" *ngIf="isActive()" class="pad exo-platform">
+  <h1 class="push-top-lg push-bottom-none">{{title}}</h1>
+  <h3 class="foreground-secondary-text pad-bottom-lg">{{subtitle}}</h3>
+  <mat-card
+    ngClass.gt-sm="big"
+    ngClass.lt-md="expanded"
+    fxLayout="row"
+    fxLayout.lt-md="column-reverse"
+    fxLayoutAlign="start stretch">
+    <div fxFlex="grow">
+      <mat-card-content style="min-height: 525px; margin-bottom: 0;" class="pad-sm">
+        <ng-content select="main"></ng-content>
+        <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="16px">
+          <button type="button" mat-flat-button color="accent" (click)="previous()" *ngIf="previousButton">{{previousButton}}</button>
+          <button type="button" mat-flat-button color="primary" (click)="next()" *ngIf="nextButton">{{nextButton}}</button>
+        </div>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>

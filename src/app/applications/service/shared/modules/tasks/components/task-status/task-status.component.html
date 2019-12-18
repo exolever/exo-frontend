@@ -1,0 +1,17 @@
+<div class="status-icons push-right" fxLayout="column" fxLayoutAlign="center center" *ngIf="task">
+  <mat-icon *ngIf="task.isToDo()"
+            matTooltip="{{ 'SERVICE.TASKS.MARK_AS_DONE' | translate }}"
+            (click)="markAsDone()"
+            class="mat-32 pointer task-pending"
+  >
+    check_circle
+  </mat-icon>
+
+  <mat-icon *ngIf="task.isDone()"
+            matTooltip="{{ 'SERVICE.TASKS.MARK_AS_TODO' | translate }}"
+            (click)="markAsToDo()"
+            class="mat-32 pointer task-done"
+  >
+    check_circle
+  </mat-icon>
+</div>

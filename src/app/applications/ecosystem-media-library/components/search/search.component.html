@@ -1,0 +1,38 @@
+<div fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-between end">
+  <div class="search" fxFlex="90" fxFlex.md="80">
+    <mat-form-field [floatLabel]="'never'" class="w-100">
+        <mat-icon matPrefix class="search-icon pad-right">search</mat-icon>
+        <input
+          matInput
+          type="text"
+          placeholder="{{'MEDIA.SEARCH.HELP' | translate}}"
+          [formControl]="searchBox"
+          [value]="text | async"
+          #search
+        >
+        <mat-icon matSuffix class="pointer" *ngIf="searchBox.value" (click)="searchBox.setValue('')">close</mat-icon>
+    </mat-form-field>
+  </div>
+  <div fxFlex="none" *ngIf="!fromPlatformProject" fxLayout="row" fxLayoutAlign="center center" class="filter-button-container">
+    <button
+      mat-flat-button
+      class="push-bottom"
+      fxHide.gt-sm
+      color="primary"
+      (click)="openFilters()">
+      <span>{{'MEDIA.FILTERS.FILTER_FAB' | translate}}</span>
+      <span
+        *ngIf="numberOfFilters$ | async as numberOfFilter"
+        class="bullet foreground-text push-left">{{numberOfFilter}}</span>
+    </button>
+  </div>
+  <div fxFlex="none" class="results" fxLayout="row" fxLayoutAlign="space-between flex-end">
+    <p *ngIf="totalResources$ | async; else noResources" class="results body-1 push-bottom foreground-secondary-text" i18n>
+      {{totalResources$ | async}} {totalResources$ | async, plural, =1 { {{'MEDIA.ECOSYSTEM.RESULT' | translate | lowercase}} } other { {{'MEDIA.ECOSYSTEM.RESULTS' | translate | lowercase}} }}
+    </p>
+    <ng-template #noResources>
+      <p class="results body-1 push-bottom foreground-secondary-text" i18n>{{'COMMON.NO' | translate}} {{'MEDIA.ECOSYSTEM.RESULTS' | translate}}</p>
+    </ng-template>
+    <app-sorter *ngIf="!fromPlatformProject" fxLayout="row" fxHide.gt-sm fxLayoutAlign="center center"></app-sorter>
+  </div>
+</div>

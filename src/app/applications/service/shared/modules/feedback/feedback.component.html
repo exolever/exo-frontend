@@ -1,0 +1,138 @@
+<section class="exo-platform">
+  <h2 class="push-top">{{ 'SERVICE.REFLECT.PERSONAL_FEEDBACK.TITLE' | translate }}</h2>
+  <p class="push-bottom-xxs">{{getParagraph()}}</p>
+  <div>
+    <button
+      (click)="onDownloadReport()"
+      *ngIf="step.canDownload"
+      [disabled]="!hasFeedback(receivedFeedback)"
+      mat-button
+      color="primary"
+    >
+      {{'SERVICE.REFLECT.RECEIVED_FEEDBACK.DOWNLOAD' | translate }}
+    </button>
+  </div>
+  <exo-alert *ngIf="!hasFeedback(receivedFeedback) && step.canDownload"
+    typeAlert="info"
+    message="{{'SERVICE.REFLECT.RECEIVED_FEEDBACK.EMPTY_MOMENT' | translate }}"
+  ></exo-alert>
+
+  <div *ngIf="!isParticipant()">
+    <div *ngFor="let feed of receivedFeedback" class="push-bottom-lg push-top">
+      <app-feedback-received
+        [feedback]="feed"
+        [role]="role"
+        [team]="team"
+      ></app-feedback-received>
+    </div>
+  </div>
+  <mat-card *ngIf="feedback && !feedback.rate && canSeeResults(); else seeResults">
+    <mat-card-content>
+      <form [formGroup]="form" fxLayout="column" fxLayoutAlign="start start" novalidate>
+        <h3 class="push-top-none">
+          <ng-container
+            *ngIf="forTeamMember(); else rankHeadCoach">{{'SERVICE.REFLECT.PERSONAL_FEEDBACK.RATE_YOUR_TEAM_COACH' | translate }}</ng-container>
+          <ng-template
+            #rankHeadCoach>{{'SERVICE.REFLECT.PERSONAL_FEEDBACK.RATE_YOUR_HEAD_COACH' | translate }}</ng-template>
+        </h3>
+        <p
+          *ngIf="forTeamMember()">{{'SERVICE.REFLECT.PERSONAL_FEEDBACK.RATE_YOUR_TEAM_COACH_PARAGRAPH' | translate }}</p>
+        <app-material-icon-star-rating
+          [numberOfGrades]="maxGrade"
+          formControlName="coordinatorRating"
+        ></app-material-icon-star-rating>
+        <mat-error
+          *ngIf="feedbackError && form.get('coordinatorRating').errors"
+          [@transitionHintErrorMessages]="'enter'"
+        >
+          <ng-container *ngIf="forTeamMember(); else rankErrorCoach">
+            {{'SERVICE.REFLECT.PERSONAL_FEEDBACK.ERROR_EVALUATE_COORDINATOR' | translate }}
+          </ng-container>
+          <ng-template #rankErrorCoach>
+            {{'SERVICE.REFLECT.PERSONAL_FEEDBACK.ERROR_EVALUATE_HEAD_COACH' | translate }}
+          </ng-template>
+        </mat-error>
+
+        <h3 class="push-top-sm">{{'SERVICE.REFLECT.PERSONAL_FEEDBACK.HOW_DID_YOU_FEEL' | translate }}</h3>
+
+        <section class="feeling-rating">
+          <mat-button-toggle-group #group="matButtonToggleGroup" class="push-top" formControlName="feelingsRating">
+            <mat-button-toggle *ngFor="let feeling of feelings; let i = index" [value]="i+1">
+              <mat-icon>{{feeling.icon}}</mat-icon>
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+          <mat-hint class="push-top-xxs push-bottom-xxxs" fxLayout="row" fxLayoutAlign="space-between center">
+            <span>{{ 'SERVICE.REFLECT.PERSONAL_FEEDBACK.FEELING_REALLY_BAD' | translate }}</span>
+            <span>{{ 'SERVICE.REFLECT.PERSONAL_FEEDBACK.FEELING_AWESOME' | translate }}</span>
+          </mat-hint>
+          <mat-error *ngIf="feedbackError && form.get('feelingsRating').errors"
+                     [@transitionHintErrorMessages]="'enter'">
+            {{'SERVICE.REFLECT.PERSONAL_FEEDBACK.ERROR_EVALUATE_FEELINGS' | translate }}
+          </mat-error>
+        </section>
+
+        <h3 class="push-top-sm">{{'SERVICE.REFLECT.PERSONAL_FEEDBACK.COMMENTS_SUGGESTIONS' | translate }}</h3>
+        <mat-form-field class="push-top w-100 push-bottom-xxs">
+          <textarea #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMaxRows="5"
+                    cdkAutosizeMinRows="3"
+                    cdkTextareaAutosize
+                    formControlName="comment"
+                    matInput
+                    placeholder="{{'SERVICE.REFLECT.PERSONAL_FEEDBACK.COMMENT_OPTIONAL' | translate }}"></textarea>
+        </mat-form-field>
+        <button (click)="sendRating()" class="push-top" color="primary" fxFlexAlign="end" mat-flat-button>
+          {{ 'SERVICE.REFLECT.PERSONAL_FEEDBACK.SEND' | translate }}
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<ng-template #seeResults>
+  <div *ngIf="feedback && feedback.rate">
+    <div class="pad-right-sm pad-left-sm my-feedback-wrapper" fxLayout="row"
+         fxLayoutAlign="space-between">
+      <div class="weight-bold" fxFlex="grow" fxLayout="column"
+           fxLayoutAlign="center">{{'SERVICE.REFLECT.RECEIVED_FEEDBACK.RECEIVED' | translate }}</div>
+      <div class="right-side" fxLayout="row">
+        <div class="start-rating" fxLayout="column" fxLayoutAlign="center">
+          <app-material-icon-star-rating
+            [allowHalf]="true"
+            [numberOfGrades]="maxGrade"
+            [rating]="feedback.rate"
+            [readOnly]="true"
+            [showOnlyFilled]="true"
+            [size]="'regular'"
+            fxHide.lt-sm
+            class="star-rating"
+            fxLayout="row"
+          ></app-material-icon-star-rating>
+          <div fxHide.gt-xs fxLayout="row">
+            <mat-icon class="star push-none">star</mat-icon>
+            <span fxFlexAlign="center">{{feedback.rate}}/{{maxGrade}}</span>
+          </div>
+        </div>
+        <div [ngClass]="{'right-divider': !!feedback.comments}" fxFlex="grow" fxFlexAlign="center"
+             fxLayoutAlign="center center" class="left-divider push-left-xxs">
+          <mat-icon [ngClass]="feelings[feedback.feedback - 1].icon" [ngClass.gt-xs]="{'pad-left-xxs pad-right-xxs': true}" class="satisfaction-icon">
+            {{feelings[feedback.feedback - 1].icon}}
+          </mat-icon>
+        </div>
+        <div *ngIf="!!feedback?.comments" [ngClass.gt-xs]="'pad-left-xxs'" fxFlex="grow" fxFlexAlign="center"
+             fxLayoutAlign="center center">
+          <mat-icon>message</mat-icon>
+        </div>
+      </div>
+    </div>
+    <div class="body-2 push-top-sm">
+      {{'SERVICE.REFLECT.PERSONAL_FEEDBACK.MORE_FEEDBACK' | translate }}
+      <a (click)="openSurvey()" class="pad-bottom-sm" href="#">
+        <ng-container
+          *ngIf="forTeamMember(); else surveyLinkCoach">{{'SERVICE.REFLECT.PERSONAL_FEEDBACK.GO_TO_SURVEY' | translate }}</ng-container>
+        <ng-template
+          #surveyLinkCoach>{{'SERVICE.REFLECT.PERSONAL_FEEDBACK.GO_TO_SURVEY_COACH' | translate }}</ng-template>
+      </a>
+    </div>
+  </div>
+</ng-template>

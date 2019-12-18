@@ -1,0 +1,16 @@
+@import '~@openexo/design-system/variables';
+@import 'variables';
+
+$unit: map-get($componentMeasure, '1x');
+
+.help-icon {
+  color: mat-color($exo-teal, A400);
+}
+
+.body-popover {
+  max-width: map-get($componentMeasure, '6x'); // 288px; 
+  background-color: white;
+  @media only screen and (max-width: $screen-exo-xxs) {
+    max-width: calc(#{$unit} * 5); // 240px;
+  }
+}

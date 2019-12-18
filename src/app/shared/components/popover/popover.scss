@@ -1,0 +1,16 @@
+@import 'variables';
+
+$mat-popover-border-radius:4px !default;
+
+// TODO: fix height and weight taking into account different resolutions
+
+.mat-popover-panel {
+  @include mat-elevation(8);
+  max-height: 100vh;
+  border-radius: $mat-popover-border-radius;
+  box-shadow: 0 2px 9px 0 rgba(178, 178, 178, 0.5);
+
+  @include cdk-high-contrast {
+    outline: solid 1px;
+  }
+}

@@ -1,0 +1,65 @@
+@import "variables";
+@import '~@openexo/design-system/variables';
+
+$width: map-get($spaceMeasures, 'lg');
+$height: map-get($spaceMeasures, 'lg');
+
+.applicants-card {
+  background-color: #e3e8ee;
+  padding: map-get($spaceMeasures, 'lg');
+}
+
+mat-icon {
+  font-size: 60px;
+  opacity: .64;
+}
+
+.people {
+  display: inline-block;
+  padding-left: map-get($spaceMeasures, 'sm');
+  margin-bottom: map-get($spaceMeasures, 'xs');
+  .avatar {
+    margin-left: -24px; // If you want image being together or separates.
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    width: $width;
+    height: $height;
+    &.remain {
+      background-color: #3a1090;
+      color: white;
+      .h-100 {
+        height: 100%;
+      }
+    }
+  }
+}
+
+.applicant-selected {
+  height: 100%;
+  .mat-card-content {
+    padding-top: map-get($spaceMeasures, 'lg');
+  }
+}
+
+.avatars {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  margin: 0 0 map-get($spaceMeasures, 'xs') map-get($spaceMeasures, 'xs');
+  .avatar {
+    margin-left: -16px;
+    position: relative;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    width: map-get($componentMeasure, '1x');
+    height: map-get($componentMeasure, '1x');
+    &.remain {
+      background-color: map-get($exo-purple, 900);
+      color: white;
+      .h-100 {
+        height: 100%;
+      }
+    }
+  }
+}

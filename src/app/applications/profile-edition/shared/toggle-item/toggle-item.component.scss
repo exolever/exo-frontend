@@ -1,0 +1,34 @@
+@import 'themes/exo-platform-light-theme';
+
+.activity {
+  padding: 24px;
+  background-color: map-get($mat-light-theme-background, activities);
+  margin-bottom: 24px;
+
+  .slide-toggle {
+    margin-left: auto;
+  }
+
+  .circle-icon {
+    background-color: map-get($mat-light-theme-background, mat-button-hover);
+    margin-right: 16px;
+    height: 48px;
+    width: 48px;
+    border-radius: 13em;
+    mat-icon {
+      color: map-get($mat-light-theme-background, activities-icon);
+      &.active {
+        color: map-get($mat-light-theme-background, activities-icon-active)
+      }
+    }
+  }
+
+  // CSS to change Default/'Accent' color.
+  ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: map-get($mat-light-theme-background, activities-toggle-active);
+  }
+
+  ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: map-get($mat-light-theme-background, activities-icon-active);
+  }
+}

@@ -1,0 +1,13 @@
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/theming';
+
+mat-card-content span {
+  color: mat-color($exo-purple, 500);
+}
+
+.form-wrapper {
+  width: auto;
+  @media #{map-get($mediaqueries, 'gt-sm')} {
+    width: map-get($breakpoints, 'sm');
+  }
+}

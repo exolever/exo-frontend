@@ -1,0 +1,9 @@
+@import "variables";
+
+// config
+$ok-icon-size: 177px;
+
+.icon-ok {
+  color: mat-color($mat-teal, A400);
+  font-size: $ok-icon-size;
+}

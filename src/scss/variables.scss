@@ -1,0 +1,36 @@
+@import "themes/variables";
+@import "typographies/variables";
+
+/***********************************************************
+* Breakpoints
+***********************************************************/
+$screen-exo-xxs: 480px !default;
+$screen-exo-xxs-max: $screen-exo-xxs !default;
+
+$screen-xs: 599px !default;
+$screen-xs-max: $screen-xs !default;
+
+$screen-sm: 959px !default;
+$screen-sm-min: ($screen-xs-max +1) !default;
+$screen-sm-max: $screen-sm !default;
+
+$screen-md: 1279px !default;
+$screen-md-min: ($screen-sm-max +1) !default;
+$screen-md-max: $screen-md !default;
+
+$screen-lg: 1919px !default;
+$screen-lg-min: ($screen-md-max +1) !default;
+$screen-lg-max: $screen-lg !default;
+
+/***********************************************************
+* Sizes and padding spaces platform
+***********************************************************/
+$xxxs: 4px;
+$xxs: 8px;
+$xs: 16px;
+$sm: 24px;
+$md: 32px;
+$lg: 40px;
+$xl: 48px;
+$xxl: 56px;
+$xxxl: 64px;

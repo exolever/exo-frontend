@@ -1,0 +1,58 @@
+@import "variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spinner-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.video-responsive {
+  overflow:hidden;
+  padding-bottom:56.25%;
+  position:relative;
+  height:0;
+  background-color: black;
+
+  div.iframe-wrapper {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    iframe{
+      left:0;
+      top:0;
+      height:100%;
+      width:100%;
+      position:absolute;
+    }
+  }
+
+  .overlay-close__icon {
+    position: absolute;
+    z-index: 1;
+    top: 16px; // xs
+    right: 16px;
+    mat-icon {
+      background-color: #eceff1;
+      border-radius: 50%;
+    }
+  }
+}
+
+.video-container {
+  background-color: white;
+  width: 100%;
+}
+
+.overlay-content {
+  width: 86vw;
+  max-width: 100vh;
+  padding: 1em;
+}

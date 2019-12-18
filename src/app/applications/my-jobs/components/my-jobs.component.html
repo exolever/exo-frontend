@@ -1,0 +1,71 @@
+<section class="my-jobs--container" fxLayout="column">
+  <header class="push-bottom-lg push-top-lg text-align-center">
+    <h1>
+      {{'ECOSYSTEM.MY_JOBS.TITLE' | translate}}
+    </h1>
+    <h3 class="push-top-none foreground-secondary-text">
+      {{'ECOSYSTEM.MY_JOBS.SUBTITLE' | translate}}
+    </h3>
+  </header>
+  <mat-form-field floatLabel="never" class="w-100">
+    <mat-icon matPrefix class="search-icon pad-right">search</mat-icon>
+    <input
+      matInput
+      type="text"
+      placeholder="{{'FORUM.SEARCH' | translate}}"
+      [formControl]="searchBox"
+      [value]="text$ | async"
+      #search
+    >
+    <mat-icon matSuffix class="pointer" *ngIf="searchBox.value" (click)="searchBox.setValue('')">close</mat-icon>
+  </mat-form-field>
+  <section *ngIf="!(loading$ | async) && !(emptyMoment$ | async); else loading" fxLayout="row wrap" fxLayoutAlign="start stretch"
+           fxLayoutAlign.lt-sm="center stretch" fxLayoutGap="16px">
+    <app-my-jobs-card
+      *ngFor="let job of items$ | async"
+      [job]="job"
+      class="push-bottom"
+      data-e2e="jobs"
+      fxFlex.gt-md="0 1 calc(25% - 16px)"
+      fxFlex.lt-sm="0 1 calc(100% - 16px)"
+      fxFlex.md="0 1 calc(33% - 16px)"
+      fxFlex.sm="0 1 calc(50% - 16px)"
+      fxLayoutAlign="stretch">
+    </app-my-jobs-card>
+  </section>
+
+  <mat-paginator
+    (page)="paginatorChange($event)"
+    *ngIf="!(emptyMoment$ | async) && !(loading$ | async)"
+    [length]="totalJobs$ | async"
+    [pageIndex]="(pageIndex$ | async) -1"
+    [pageSizeOptions]="[5, 15, 25]"
+    [pageSize]="pageSize$ | async"
+    class="paginator">
+  </mat-paginator>
+
+  <div
+    *ngIf="emptyMoment$ | async"
+    class="my-jobs--empty-moment"
+    fxLayout="column" fxLayoutAlign="center center"
+  >
+    <exo-empty-moment>
+      <div class="empty-message text-align-center">
+        <div class="subheading-2">
+          {{'ECOSYSTEM.MY_JOBS.EMPTY_TITLE' | translate}}
+        </div>
+        <div>
+          {{'ECOSYSTEM.MY_JOBS.EMPTY_SUBTITLE' | translate}}
+          <a class="caption-1"
+             routerLink="../../opportunities">{{'ECOSYSTEM.MY_JOBS.EMPTY_SUBTITLE_LINK' | translate}}</a>
+        </div>
+      </div>
+    </exo-empty-moment>
+  </div>
+</section>
+
+<ng-template #loading>
+  <div *ngIf="loading$ | async" fxLayoutAlign="center center">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+</ng-template>

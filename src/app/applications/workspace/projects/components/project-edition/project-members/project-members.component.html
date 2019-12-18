@@ -1,0 +1,76 @@
+<section>
+  <h2 class="title-help-icon">
+    {{ 'ECOSYSTEM.WORKSPACE.PROJECTS.EDIT.NAVIGATION.MEMBERS' | translate }}
+    <app-help-popover
+      [htmlContent]="'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.HELP' | translate"
+    ></app-help-popover>
+  </h2>
+  <p>{{ 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.SUBTITLE' | translate }}</p>
+  <div class="push-top push-bottom-lg" *ngIf="showAlertNoTeam">
+    <exo-alert
+      message="{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.WARNING_NO_TEAM' | translate}}"
+      typeAlert="warning"
+    >
+    </exo-alert>
+  </div>
+  <div class="push-bottom" ngClass.gt-sm="push-top-lg" fxLayout="row" fxLayout.lt-md="column-reverse" fxLayoutAlign="end center" fxLayoutAlign.lt-md="start end">
+    <div ngClass.lt-md="push-top" >
+      <button mat-flat-button color="accent" type="button" (click)="onNewParticipant()">
+        <mat-icon class="push-right-xxs">add</mat-icon>{{ 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.CREATE_EXO_PARTICIPANT' | translate }}
+      </button>
+    </div>
+    <div ngClass.gt-sm="push-left">
+      <button mat-flat-button color="primary" type="button" (click)="onNewCollaborators()">
+        <mat-icon class="push-right-xxs">add</mat-icon>{{ 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.CREATE_EXO_COLLABORATOR' | translate }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="(emptyMoment$ | async) && !(loading$ | async)" fxLayout="column" fxLayoutAlign="center center">
+    <exo-empty-moment>
+      <div class="empty-message text-align-center">
+        <div class="subheading-2">{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.EMPTY_TITLE' | translate}}</div>
+        <div class="caption-1">{{'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.USERS.EMPTY_SUBTITLE' | translate}}</div>
+      </div>
+    </exo-empty-moment>
+  </div>
+  <ng-container *ngIf="!(emptyMoment$ | async)">
+    <div *ngIf="loading$ | async; else userListTpl" fxLayoutAlign="center center">
+      <app-component-spinner-loader></app-component-spinner-loader>
+    </div>
+    <ng-template #userListTpl>
+      <div *ngFor="let projectMember of members$ | async" class="row-member" fxLayout="row" fxLayoutAlign="space-between center">
+        <exo-avatar-system
+          [name]="projectMember.member.user.shortName"
+          [description]="projectMember.description"
+          class="w-100"
+        >
+          <exo-avatar [src]="projectMember.member.user.getPicture(48)"
+                      [size]="'xs'"
+          ></exo-avatar>
+        </exo-avatar-system>
+        <button class="foreground-icon" mat-icon-button [matTooltipDisabled]="tooltipDisabled" matTooltip="{{'TOOLTIP.AVAILABLE_ACTIONS' | translate }}"
+          [matMenuTriggerFor]="menu" (click)="stopPropagation($event)">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" x-position="before" (closed)="onMenuClosed()">
+          <button *ngIf="projectMember.member.canEdit()" mat-menu-item (click)="onEdit(projectMember.member)">
+            <span>{{'COMMON.ACTIONS.EDIT'| translate| titlecase }}</span>
+          </button>
+          <button *ngIf="projectMember.member.canDelete()" mat-menu-item (click)="onDelete(projectMember.member)">
+            <span>{{'COMMON.ACTIONS.DELETE'| translate | titlecase }}</span>
+          </button>
+        </mat-menu>
+      </div>
+    </ng-template>
+    <mat-paginator
+      *ngIf="!(emptyMoment$ | async) && !(loading$ | async) && (totalUsers$ | async)"
+      class="transparent"
+      (page)="paginatorChange($event)"
+      [length]="totalUsers$ | async"
+      [pageSize]="pageSize$ | async"
+      [pageIndex]="pageIndex$ | async"
+      [pageSizeOptions]="[5, 15, 25]">
+    </mat-paginator>
+  </ng-container>
+</section>

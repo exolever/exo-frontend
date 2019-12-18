@@ -1,0 +1,88 @@
+<mat-card class="w-100 pointer" (click)="goToDetails(opportunity)">
+  <mat-card-content>
+    <div fxLayout="row" fxLayoutAlign="space-between start" class="push-bottom-xxs">
+      <div fxLayout="row">
+        <div fxLayout="column" fxFlexAlign="center" class="push-right-xxs section">
+          <span [ngClass]="{'disabled': opportunity.isClosed()}" matTooltip="{{opportunity.exoRole ? opportunity.getRoleName() : ''}}">
+            {{opportunity.exoRole ? opportunity.getRoleName() : ''}}
+          </span>
+        </div>
+        <span *ngIf="opportunity.isClosed()" class="pretty-label grey caption-2 slight-opacity push-right-xxs">{{'ECOSYSTEM.OPPORTUNITIES.CLOSED' | translate | uppercase }}</span>
+        <span *ngIf="opportunity.isTargetFixed()" class="pretty-label purple caption-2" >{{'ECOSYSTEM.OPPORTUNITIES.TARGETED' | translate | uppercase }}</span>
+      </div>
+      <app-opportunity-menu-actions [opportunity]="opportunity" (sendAction)="manageActions($event)"></app-opportunity-menu-actions>
+    </div>
+    <div class="push-bottom-xxs content" [ngClass]="{'disabled': opportunity.isClosed()}" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between start" fxLayoutAlign.lt-sm="start start">
+      <div class="subject" fxFlex="75">
+        <div class="title" exoLineClamp [lines]="2" [matTooltip]="opportunity.subject" [ngClass]="{'unreaded': !opportunity.alreadyVisited}">
+          {{ opportunity.subject }}
+        </div>
+        <div class="entity" fxLayout="row" fxLayoutAlign="start start">
+          <div *ngIf="opportunity.entity" fxLayoutAlign="start center" class="foreground-secondary-text subheading-2 push-right" exoLineClamp [lines]="1">
+            {{ opportunity.entity }}
+          </div>
+          <div fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="push-right-xxxs" matTooltip="{{'ECOSYSTEM.OPPORTUNITIES.POSITIONS' | translate}}">group</mat-icon>
+            <label class="caption-1">
+              {{opportunity.numPositions}} {opportunity.numPositions, plural, =1 { {{'ECOSYSTEM.OPPORTUNITIES.POSITION' | translate }} } other { {{'ECOSYSTEM.OPPORTUNITIES.POSITIONS' | translate }} }}
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="applicants">
+        <div class="avatars">
+          <span *ngIf="maxAvatars < opportunity.applicants.length" class="avatar remain">
+            <span class="h-100" fxLayout="column" fxLayoutAlign="center center">
+              {{opportunity.applicants.length - maxAvatars}}+
+            </span>
+          </span>
+          <ng-container *ngFor="let applicant of opportunity.applicants; let i = index">
+            <span class="avatar" *ngIf="i < maxAvatars">
+              <exo-avatar
+                [src]="applicant.user.profilePictures[1][1]"
+                [alt]="applicant.user.fullName"
+                [tooltip]="applicant.user.fullName"
+              >
+              </exo-avatar>
+            </span>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap.gt-xs="16px" fxLayoutGap.lt-md="8px">
+      <!-- Deadline for applications -->
+      <div fxLayoutAlign="start center" fxLayout="row" *ngIf="getTimeToDeadline() as timeLineDate">
+        <mat-icon
+          [ngClass]="{'point-red': showDeadlineRed(), 'point-orange': showDeadlineOrange()}"
+          matTooltip="{{'ECOSYSTEM.OPPORTUNITIES.TOOLTIP.DEADLINE' | translate}}"
+          class="push-right-xxxs"
+        >hourglass_empty</mat-icon>
+        <label class="caption-1">{{timeLineDate}}</label>
+      </div>
+
+      <!-- Number of applicants -->
+      <div fxLayout="row" fxLayoutAlign="start center" *ngIf="opportunity.numApplicants">
+        <mat-icon matTooltip="{{'ECOSYSTEM.OPPORTUNITIES.APPLICANTS.TITLE' | translate}}" class="push-right-xxxs">person</mat-icon>
+        <label class="caption-1">{{ opportunity.numApplicants }}</label>
+      </div>
+
+      <!-- Number of messages -->
+      <div fxLayout="row" fxLayoutAlign="start center" *ngIf="opportunity.numMessages?.total">
+        <mat-icon
+          [ngClass]="{'new-messages': opportunity.numMessages?.unread > 0 }"
+          matTooltip="{{'ECOSYSTEM.OPPORTUNITIES.TOOLTIP.MESSAGES' | translate}}"
+          class="push-right-xxxs"
+        >forum</mat-icon>
+        <span class="caption-1" *ngIf="opportunity.numMessages?.unread">{{opportunity.numMessages?.unread}}</span>
+      </div>
+
+      <!-- Opportunity id -->
+      <div [matTooltip]="'ECOSYSTEM.OPPORTUNITIES.TOOLTIP.ID' | translate">
+        <label class="caption-1">
+          {{'ECOSYSTEM.OPPORTUNITIES.ID' | translate}}{{opportunity.pk}}
+        </label>
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>

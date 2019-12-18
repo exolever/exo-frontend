@@ -1,0 +1,12 @@
+<form fxLayout="column" [formGroup]="form" novalidate autocomplete="off">
+  <div class="filters" fxFlexAlign="space-between" [ngClass]="{ 'in-dialog': inDialog}">
+    <ngx-select-dropdown (change)="selectionChanged($event)" formControlName="category" [multiple]="true" [config]="typeEventConfig" [options]="typeEventOptions"></ngx-select-dropdown>
+    <ngx-select-dropdown (change)="selectionChanged($event)" formControlName="followType" [multiple]="true" [config]="followTypeConfig" [options]="followTypeOptions"></ngx-select-dropdown>
+    <ngx-select-dropdown (change)="selectionChanged($event)" formControlName="country" [multiple]="true" [config]="countryConfig" [options]="countryOptions" [ngClass]="{'withScroll': countryOptions.length > 5}"></ngx-select-dropdown>
+    <ngx-select-dropdown (change)="selectionChanged($event)" formControlName="languages" [multiple]="true" [config]="languageConfig" [options]="languageOptions" [ngClass]="{'withScroll': languageOptions.length > 5}"></ngx-select-dropdown>
+  </div>
+  <div class="clear-results" fxLayout="row" fxLayoutAlign="end start">
+    <div class="clear-filters pointer" (click)="clearFilters()">Clear filters</div>
+    <div *ngIf="!inDialog" class="total-results">{{events?.length}} Results</div>
+  </div>
+</form>

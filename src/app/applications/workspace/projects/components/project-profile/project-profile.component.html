@@ -1,0 +1,57 @@
+<section fxLayout="column" fxLayoutAlign="start center" *ngIf="project$ | async as project">
+  <mat-card class="card-section push-top-lg w-100">
+    <mat-card-content>
+      <div fxLayout="row" class="section">{{ project.templateName | uppercase }}</div>
+      <h2>{{project.name}}</h2>
+      <div fxLayout="row" fxLayoutAlign="space-between start">
+        <exo-avatar-system fxFlex="grow"
+          class="push-bottom-sm"
+          [name]="project.creator?.fullName"
+          [description]="project.creator?.userTitle"
+        >
+          <exo-avatar
+            [src]="project.creator.profilePictures[1][1]"
+            [alt]="project.creator?.fullName"
+            [tooltip]="project.creator?.fullName"
+        ></exo-avatar>
+        </exo-avatar-system>
+        <ng-container *ngIf="project.canEdit()">
+          <button class="foreground-icon" mat-icon-button matTooltip="{{'TOOLTIP.AVAILABLE_ACTIONS' | translate }}"
+            [matMenuTriggerFor]="menu" (click)="stopPropagation($event)">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" x-position="before" (closed)="onMenuClosed()">
+            <button mat-menu-item (click)="onEdit(project)">
+              <span>{{'COMMON.ACTIONS.EDIT'| translate| titlecase }}</span>
+            </button>
+          </mat-menu>
+        </ng-container>
+      </div>
+      <app-project-status-label [project]="project"></app-project-status-label>
+      <div class="push-top-sm">
+        <exo-alert
+          *ngIf="project.canEdit()"
+          [isCloseable]="true"
+          typeAlert="info"
+          message="{{'ECOSYSTEM.WORKSPACE.PROJECTS.ALERT_PROFILE' | translate}}"
+          closeButtonText="{{'COMMON.CLOSE' | translate}}"
+        ></exo-alert>
+      </div>
+      <div fxLayout="row wrap" class="push-top-sm" fxLayoutGap="8px">
+        <div *ngIf="project.client" fxLayout="row" class="icon-pretty-label" matTooltip="{{'ECOSYSTEM.WORKSPACE.PROJECTS.TOOLTIPS.CLIENT' | translate}}">
+          <mat-icon class="push-right-xxxs">domain</mat-icon>
+          <label class="body-1">{{project.client}}</label>
+        </div>
+        <div fxLayout="row" class="icon-pretty-label" matTooltip="{{'ECOSYSTEM.WORKSPACE.PROJECTS.TOOLTIPS.LOCATION' | translate}}">
+          <mat-icon class="push-right-xxxs">place</mat-icon>
+          <label class="body-1">{{project.location}}</label>
+        </div>
+        <div fxLayout="row" class="icon-pretty-label" matTooltip="{{'ECOSYSTEM.WORKSPACE.PROJECTS.TOOLTIPS.START_DATE' | translate}}">
+          <mat-icon class="push-right-xxxs">calendar_today</mat-icon>
+          <label class="body-1">{{project.start| formatDate: 'short'}}</label>
+        </div>
+      </div>
+      <div class="push-top push-bottom" [innerHtml]="project.description | safeHtml"></div>
+    </mat-card-content>
+  </mat-card>
+</section>

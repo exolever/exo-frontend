@@ -1,0 +1,14 @@
+@import "variables";
+
+.private-icon {
+  font-size: 1.1em;
+  margin-right: .3em;
+}
+
+/** forced margins, defined this way bc theme overrides with !important */
+.top-margin {
+  margin-top: $xs !important;
+}
+.bottom-margin {
+  margin-bottom: $xs !important;
+}

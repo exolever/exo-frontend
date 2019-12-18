@@ -1,0 +1,16 @@
+@import "variables";
+@import '~@openexo/design-system/variables';
+$unit: map-get($componentMeasure, '1x');
+
+#not-found {
+  background-color: #FAFAFA;
+  height: 100vh;
+  .error-description {
+    color: mat-color($exo-grey, 900);
+  }
+  .not-found-container{
+    max-width: calc(#{$unit} * 12);
+    margin: 0 auto;
+    height: calc(100vh - #{$unit} * 2);
+  }
+}

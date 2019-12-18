@@ -1,0 +1,49 @@
+<div class="persistent-message" *ngFor="let persistentMessage of userPersistentMessagesList" [@transitionItemList]="userPersistentMessagesList">
+  <div class="{{persistentMessage.getLevel()|lowercase}} pad" fxLayout="row" fxLayoutAlign="space-between start">
+    <div fxLayout="row">
+      <div [ngSwitch]="persistentMessage.level" class="pad-right-xxs">
+        <mat-icon *ngSwitchCase="levelEnum.ERROR" >error_outline</mat-icon>
+        <mat-icon *ngSwitchCase="levelEnum.SUCCESS">done</mat-icon>
+      </div>
+      <div [ngSwitch]="persistentMessage.getCode()" class="body-1">
+        <div *ngSwitchCase="persistentMessageCodeEnum.P" class="message-item">
+          {{'MESSAGES.EMAIL' | translate}} {{persistentMessage.getValueForVariable('email')}} {{'MESSAGES.UNVERIFIED' | translate}}.
+          <span
+            (click)="sendAction( persistentMessageActionEnum.RESEND_VERIFICATION_EMAIL, persistentMessage, false, 'MESSAGES.VERIFICATION_SENT' )"
+            class="weight-bold pointer action">{{'MESSAGES.RESEND' | translate}}</span>
+          {{ 'COMMON.OR' | translate }}
+          <span
+            (click)="sendAction( persistentMessageActionEnum.DISCARD_PENDING_EMAIL, persistentMessage, true, 'MESSAGES.EMAIL_DISCARDED' )"
+            class="weight-bold pointer action">{{'MESSAGES.REMOVE' | translate}}</span>.
+        </div>
+        <div *ngSwitchCase="persistentMessageCodeEnum.V" class="message-item">
+          {{'MESSAGES.YOUREMAIL' | translate}}:
+          <span class="weight-bold">{{persistentMessage.getValueForVariable('email')}}</span>
+        </div>
+        <div *ngSwitchCase="persistentMessageCodeEnum.W" class="message-item">
+          {{ 'MESSAGES.PENDING_PASS' | translate }}.
+          <span class="weight-bold" (click)="navigateToAccountSettings()">{{ 'MESSAGES.GO_TO_SETTINGS' | translate }}</span>
+          {{ 'MESSAGES.CHANGE_PASS' | translate }}
+        </div>
+        <div *ngSwitchCase="persistentMessageCodeEnum.R" class="message-item">
+          <span *ngIf="persistentMessage.level === levelEnum.ERROR">{{'MEDIA.MESSAGES.UPLOAD_ERROR' | translate}}</span>
+          <span *ngIf="persistentMessage.level === levelEnum.SUCCESS">
+            {
+              persistentMessage.getValueForVariable('counter') || 0, plural,
+              =0 {}
+              =1 {{{'MEDIA.MESSAGES.UPLOAD_SUCCESS' | translate }}}
+              other {{{'MEDIA.MESSAGES.YOUR' | translate }} {{persistentMessage.getValueForVariable('counter')}} {{'MEDIA.MESSAGES.UPLOAD_SUCCESS_PLURAL' | translate }}}
+            }
+          </span>
+        </div>
+        <!-- this message will display when there is an unrecognized error code response -->
+        <div *ngSwitchDefault class="message-item-default">
+          {{ 'MESSAGES.UNRECOGNIZED_CODE' | translate }}
+        </div>
+      </div>
+    </div>
+    <div *ngIf="persistentMessage.canBeClosed" fxFlexAlign="center">
+      <mat-icon (click)="sendAction( persistentMessageActionEnum.CLOSE_PERSISTENT_MESSAGE, persistentMessage, true )" class="pointer close-message mat-16">close</mat-icon>
+    </div>
+  </div>
+</div>

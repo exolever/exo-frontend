@@ -1,0 +1,91 @@
+<div *ngIf="!isReadOnly" fxLayout="row" fxLayoutAlign="start center">
+  <mat-form-field appearance="fill" class="push-none" fxFlex="grow">
+    <mat-icon class="mat-24 pad-right-sm" matPrefix>search</mat-icon>
+    <input
+      [formControl]="searchField"
+      [matAutocomplete]="auto"
+      class="form-control"
+      [placeholder]="placeholder ? placeholder : 'COMMON.START_TYPING' | translate"
+      matInput
+    >
+    <mat-icon (click)="searchField.setValue('')" *ngIf="searchField.value" class="pointer" matSuffix>close</mat-icon>
+    <mat-error>{{searchField.errors | humanizeFormErrors}}</mat-error>
+  </mat-form-field>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onAdd($event)">
+    <mat-option *ngFor="let consultant of filteredConsultants" [value]="consultant">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <exo-avatar-system [name]="consultant.fullName">
+          <exo-avatar
+            [src]="consultant.thumbnail"
+            [size]="'xs'"
+          ></exo-avatar>
+        </exo-avatar-system>
+      </div>
+    </mat-option>
+  </mat-autocomplete>
+</div>
+
+<div
+  *ngIf="consultants.length"
+  [cdkDropListDisabled]="!isSortable"
+  cdkDropList
+  (cdkDropListDropped)="consultants.length !== 1 && drop($event)"
+  fxLayout="column"
+  class="list-box push-bottom-lg push-top-xs"
+>
+  <div
+    cdkDrag
+    (cdkDragStarted)="drag()"
+    *ngFor="let item of searcherConsultantItems"
+    class="list-item"
+    [ngClass]="{'sortable': isSortable}"
+    fxFlexLayout="row"
+    fxLayoutAlign="space-between center"
+  >
+    <div fxFlex="grow" fxLayout="row">
+      <mat-icon
+        *ngIf="isSortable && consultants.length !== 1"
+        fxFlexAlign="center"
+        class="drag-indicator"
+      >
+        drag_indicator
+      </mat-icon>
+      <div
+        ngClass.gt-sm="push-left-xs"
+        ngClass.lt-md="push-left-xxs"
+        class="w-100"
+        fxLayout="row"
+        fxLayout.lt-sm="column"
+        fxLayoutAlign="space-between"
+        fxLayoutAlign.lt-sm="start"
+      >
+        <exo-avatar-system
+          [name]="item.consultant.fullName"
+          [description]="item.consultant.userTitle"
+          [truncateName]="true"
+          [truncateDescription]="true"
+        >
+          <exo-avatar
+            [alt]="item.consultant.thumbnail ? item.consultant.thumbnail : item.consultant.profilePictures[3][1]"
+            [size]="'sm'"
+            [src]="item.consultant.thumbnail ? item.consultant.thumbnail : item.consultant.profilePictures[3][1]"
+            [tooltip]="item.consultant.fullName"
+          >
+          </exo-avatar>
+        </exo-avatar-system>
+        <ng-container *ngIf="item.template">
+          <ng-container *ngTemplateOutlet="item.template"></ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div *ngIf="!isReadOnly && item.canBeDeleted" class="right-side" fxLayout="row" class="push-left-xxs">
+      <button (click)="onDelete(item.consultant)" class="delete-btn pointer" type="button">
+        <mat-icon matTooltip="{{'TOOLTIP.REMOVE' | translate}}">close</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="emptyMoment && !+consultants.length && !isReadOnly" class="push-bottom-lg">
+  <span class="subheading-2 foreground-secondary-text">{{emptyMoment}}</span>
+</div>

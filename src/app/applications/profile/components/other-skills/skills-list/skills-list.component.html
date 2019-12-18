@@ -1,0 +1,22 @@
+<div
+  class="container push-top-sm pad-top-sm pad-bottom-sm"
+  fxLayout="row wrap"
+  fxLayoutAlign="center start"
+  [fxFlex]="'0 1 ' + config.layoutMiddleWidth"
+  fxFlex.lt-md="grow"
+  [ngStyle]="{ height: getSkillListContainerHeight() }"
+>
+  <div *ngFor="let skill of skills"
+       fxLayout="row wrap"
+       fxFlex="grow"
+       class="pad-left-sm pad-right-sm"
+  >
+    <p fxFlex="grow" class="push-none body-2">{{skill.name}}</p>
+    <div fxLayout fxLayoutAlign="start center" fxFlex="grow" class="point-bars push-top-xxs push-bottom">
+      <div fxFlex="1 1 33.3%" [ngClass]="{ 'marked': skill.level > 0 }"></div>
+      <div fxFlex="1 1 33.3%" [ngClass]="{ 'marked': skill.level > 1 }"></div>
+      <div fxFlex="1 1 33.4%" [ngClass]="{ 'marked': skill.level > 2 }"></div>
+    </div>
+  </div>
+</div>
+

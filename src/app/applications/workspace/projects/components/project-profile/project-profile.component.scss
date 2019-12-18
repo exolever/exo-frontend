@@ -1,0 +1,13 @@
+@import '~@openexo/design-system/variables';
+
+:host {
+  flex: 0 1 map-get($componentMeasure, '20x');
+  box-sizing: border-box;
+  max-width: 100%;
+  @media #{map-get($mediaqueries, 'gt-md')} {
+    max-width: map-get($componentMeasure, '20x');
+    padding: 0;
+  }
+  margin: map-get($componentMeasure, '1x') 0;
+  padding: 0 map-get($componentMeasure, '0.3x');
+}

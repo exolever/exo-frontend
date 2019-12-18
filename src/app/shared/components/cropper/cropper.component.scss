@@ -1,0 +1,22 @@
+@import "variables";
+
+::ng-deep.cropper {
+  @media (max-width: $screen-exo-xxs-max){
+    width: 220px;
+    height: 132px;
+    min-width: calc(80vw - 32px);
+  }
+  @media (min-width: $screen-exo-xxs-max) and (max-width: $screen-xs-max){
+    width: 350px;
+    height: 210px;
+    min-width: calc(80vw - 32px);
+  }
+  @media (min-width: $screen-sm-min){
+    width: 430px;
+    height: 258px;
+  }
+}
+
+.hidden {
+  display: none;
+}

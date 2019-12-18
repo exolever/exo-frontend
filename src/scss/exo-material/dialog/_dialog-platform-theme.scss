@@ -1,0 +1,11 @@
+@mixin exo-dialog-platform-theme($theme) {
+  $background: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  mat-dialog-container {
+    div.mat-dialog-title {
+      color: mat-color($foreground, 'base');
+    }
+  }
+
+}

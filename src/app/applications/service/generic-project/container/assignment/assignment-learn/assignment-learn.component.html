@@ -1,0 +1,10 @@
+<app-assignment-learn
+  [assignment]="assignment$ | async"
+  [blocks]="blocks$ | async"
+  [step]="step$ | async"
+  (markAsTodo)="onMarkAsTodo($event)"
+  (markAsDone)="onMarkAsDone($event)"
+  (markAllAsTodo)="onMarkAllAsTodo($event)"
+  (markAllAsDone)="onMarkAllAsDone($event)"
+>
+</app-assignment-learn>

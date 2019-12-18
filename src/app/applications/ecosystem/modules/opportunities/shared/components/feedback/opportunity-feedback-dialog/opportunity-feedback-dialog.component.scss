@@ -1,0 +1,14 @@
+.mat-slider-horizontal {
+  &.mat-slider-thumb-label-showing{
+    margin-top: unset;
+  }
+}
+
+.form-feedback {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (max-width: 600px) {
+    max-width: 100%;
+  }
+}

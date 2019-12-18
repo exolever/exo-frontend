@@ -1,0 +1,16 @@
+@import "variables";
+.mat-dialog-content {
+  p:first-child{
+    margin-top:0px;
+  }
+  p:last-child{
+    margin-bottom:0px;
+  }
+}
+.mat-dialog-actions {
+  padding-bottom: 0px;
+  padding-top: $xl;
+  &.reduced-margin{
+    padding-top: $sm;
+  }
+}

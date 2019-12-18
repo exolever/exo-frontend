@@ -1,0 +1,26 @@
+<div class="canvas-container">
+    <div fxLayout="column" fxLayoutAlign="start stretch" class="pad-left pad-right pad-top-lg pad-bottom-lg">
+      <h1 class="text-align-center">
+        {{'ECOSYSTEM.CANVAS.TITLE' | translate}}
+      </h1>
+      <h3 class="subheading-2 foreground-secondary-text text-align-center">
+        {{'ECOSYSTEM.CANVAS.SUBTITLE' | translate}}
+      </h3>
+      <mat-card class="card-section">
+        <mat-card-content fxLayout="row">
+          <div fxHide.lt-md fxShow.gt-sm class="push-right-lg canvas-image canvas-image-desktop" ></div>
+          <div fxLayout="column" fxLayoutAlign="start stretch" class="w-100">
+            <h2 fxFlexAlign.lt-md="center" class="push-bottom-none">{{'ECOSYSTEM.CANVAS.TITLE' | translate}}</h2>
+            <div fxFlexAlign="center" show.lt-md fxHide.gt-sm class="canvas-image push-bottom push-top"></div>
+            <div class="body-1 description push-top-sm" >
+              {{'ECOSYSTEM.CANVAS.DESCRIPTION' | translate}}<br/>
+              {{'ECOSYSTEM.CANVAS.DESCRIPTION_2' | translate}}<br/>
+              {{'ECOSYSTEM.CANVAS.DESCRIPTION_3' | translate}}<br/>
+              {{'ECOSYSTEM.CANVAS.DESCRIPTION_4' | translate}}
+            </div>
+            <button fxFlexAlign="end" class="push-top" mat-flat-button color="primary" (click)="download()">{{'ECOSYSTEM.CANVAS.DOWNLOAD' | translate}}</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>

@@ -1,0 +1,21 @@
+<section class="exo-platform">
+  <h2 class="title">{{ 'ECOSYSTEM.PROFILE.DIALOGS.SHARE.TITLE' | translate }}</h2>
+  <p class="body-1">{{ 'ECOSYSTEM.PROFILE.DIALOGS.SHARE.BODY' | translate }}</p>
+  <div fxLayout="row wrap" fxLayoutAlign="stretch center">
+    <mat-form-field appearance="fill" fxFlex="1 0 auto">
+      <mat-label>{{ 'ECOSYSTEM.PROFILE.DIALOGS.SHARE.INPUT_PLACEHOLDER' | translate }}</mat-label>
+      <input #urlInputText matInput type="text">
+    </mat-form-field>
+    <div fxLayoutAlign="end" fxFlex="0 0 auto" class="copy-clipboard">
+      <button mat-button color="primary" class="push-left" (click)="onCopyToClipboard($event)">
+        {{ 'ECOSYSTEM.PROFILE.DIALOGS.SHARE.COPY_BUTTON' | translate }}
+      </button>
+    </div>
+  </div>
+  <div fxLayoutAlign="end">
+    <button mat-flat-button
+            color="primary"
+            (click)="dialogRef.close()"
+    >{{'ECOSYSTEM.PROFILE.DIALOGS.SHARE.DONE' | translate}}</button>
+  </div>
+</section>

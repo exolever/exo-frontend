@@ -1,0 +1,10 @@
+<button class="foreground-icon" *ngIf="hasOptions()" mat-icon-button matTooltip="{{'TOOLTIP.AVAILABLE_ACTIONS' | translate }}"
+    [matTooltipDisabled]="tooltipDisabled" [matMenuTriggerFor]="menu" (click)="stopPropagation($event)">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu" x-position="before" (closed)="onMenuClosed()">
+  <button mat-menu-item (click)="onAction(opt.action)" *ngFor="let opt of actionsToShow" fxLayout="row" fxLayoutAlign="start center" >
+    <span>{{'ECOSYSTEM.OPPORTUNITIES.ACTIONS.' + opt.translationKey | translate}}</span>
+  </button>
+</mat-menu>
+

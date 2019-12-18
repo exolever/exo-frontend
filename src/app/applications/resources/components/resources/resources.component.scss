@@ -1,0 +1,22 @@
+@import "variables";
+
+:host{
+  .manyResourceAdd{
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    align-content: stretch;
+    -webkit-box-align: stretch;
+    ::deep.typeButton{
+      @media (min-width: $screen-sm-min){
+        margin-right: 20px;
+      }
+      @media (max-width: $screen-xs-max){
+        margin-bottom: 20px;
+        button {
+            width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+<section class="exo-platform" fxLayout="column">
+  <nav class="exo-platform-dark-theme" *ngIf="user$ | async as user">
+    <mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" >
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <button mat-icon-button (click)="snav.toggle()"  fxHide.gt-sm >
+          <mat-icon *ngIf="snav.opened" >close</mat-icon>
+          <mat-icon *ngIf="!snav.opened" >menu</mat-icon>
+        </button>
+        <div
+          class="circle-logo pointer"
+          [matTooltip]="navigateText(user)"
+          (click)="canGoEcosystem(user) ? router.navigate([urlService.getPath([Urls.ECOSYSTEM])]) : undefined"
+        ></div>
+      </div>
+      <exo-user-menu [user]="user" [project]="project"></exo-user-menu>
+    </mat-toolbar>
+  </nav>
+  <div #teamSelectionBar *ngIf="showTeamSelectionBar()">
+    <app-team-selection-bar
+      [teams]="teams$ | async"
+      [teamSelected]="teamSelected$ | async"
+      [user]="user$ | async"
+      (teamChanged)="onChangeTeam($event)"
+      class="sticky"
+    ></app-team-selection-bar>
+  </div>
+  <mat-sidenav-container>
+    <mat-sidenav
+      #snav
+      [mode]="isMobile ? 'over' : 'side'"
+    >
+      <ng-container [ngTemplateOutlet]="tplMenuLinks" [ngTemplateOutletContext]="{project: project}" ></ng-container>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div fxLayout="column">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</section>
+<ng-template #tplMenuLinks let-project="project">
+  <perfect-scrollbar class="perfect-scrollbar ps-show-always lateral-menu exo-platform-dark-theme">
+    <mat-divider></mat-divider>
+    <div
+      class="nav-steps push-top-sm push-left-lg"
+      [ngClass]="{'expand': !stepsFolded}"
+      (click)="stepsFolded = !stepsFolded"
+      fxLayout="row"
+      fxLayoutAlign="start start"
+      *ngIf="project.steps.length > 0"
+    >
+      <a class="project-template subheading-2 push-bottom-none">
+        {{ project?.templateName }}
+      </a>
+      <mat-icon *ngIf="stepsFolded; else expandLess">expand_more</mat-icon>
+      <ng-template #expandLess><mat-icon>expand_less</mat-icon></ng-template>
+    </div>
+    <div fxLayout="column">
+      <nav fxLayout="column" class="steps-container push-left" *ngIf="!stepsFolded">
+        <a (click)="onClickToNavigate()"
+          class="body-1 push-top-sm push-left-lg"
+          routerLinkActive="active-step"
+          *ngFor="let step of project.steps"
+          [routerLink]="urlService.getPath([Urls.GENERIC_STEP, pkProject, pkTeam, step.pk])"
+        >
+          {{step.name}}
+        </a>
+      </nav>
+      <a [routerLink]="urlService.getPath([Urls.GENERIC_MEDIA, pkProject, pkTeam])"
+        routerLinkActive="active-section"
+        class="subheading-2 push-top-sm push-left-lg"
+        (click)="onClickToNavigate()"
+        [routerLinkActiveOptions]="{ exact: true }">{{ 'SERVICE.MENU.MEDIA_LIBRARY' | translate }}
+      </a>
+      <a *ngIf="project?.settings?.directoryEnabled"
+        [routerLink]="urlService.getPath([Urls.GENERIC_DIRECTORY, pkProject, pkTeam])"
+        routerLinkActive="active-section"
+        class="subheading-2 push-left-lg"
+        (click)="onClickToNavigate()"
+        [routerLinkActiveOptions]="{ exact: true }">{{ 'SERVICE.MENU.DIRECTORY' | uppercase | translate }}
+      </a>
+      <mat-divider class="push-bottom-sm"></mat-divider>
+      <div *ngIf="project?.settings?.teamCommunicationsModuleEnabled" fxLayout="row" fxLayoutAlign="start center">
+        <a class="team-communication-link push-right-none subheading-2 push-left-lg"
+          [routerLink]="urlService.getPath([Urls.GENERIC_TEAM_TALKS, pkProject, pkTeam])"
+          routerLinkActive="active-section"
+          (click)="onClickToNavigate()"
+          [routerLinkActiveOptions]="{ exact: true }">{{ 'SERVICE.MENU.TEAM_COMMUNICATION' | translate }}
+        </a>
+        <exo-forum-icon class="push-left-xxxs" *ngIf="showUnread && unreadConversations > 0" color="white"></exo-forum-icon>
+      </div>
+      <a *ngIf="project?.settings?.askEcosystemEnabled"
+        [routerLink]="urlService.getPath([Urls.GENERIC_ASK_ECOSYSTEM, pkProject, pkTeam])"
+        routerLinkActive="active-section"
+        class="subheading-2 push-left-lg"
+        (click)="onClickToNavigate()"
+        [routerLinkActiveOptions]="{ exact: true }">{{ 'SERVICE.MENU.ASK_THE_ECOSYSTEM' | translate }}
+      </a>
+      <a *ngIf="project?.settings?.ticketsModuleEnabled"
+        [routerLink]="urlService.getPath([Urls.GENERIC_ADVISOR_REQUEST, pkProject, pkTeam])"
+        routerLinkActive="active-section"
+        class="subheading-2 push-left-lg"
+        (click)="onClickToNavigate()"
+        [routerLinkActiveOptions]="{ exact: true }">{{ 'SERVICE.MENU.ADVISOR_REQUEST' | translate }}
+      </a>
+      <a *ngIf="project?.settings?.swarmSessionsModuleEnabled"
+        [routerLink]="urlService.getPath([Urls.GENERIC_SWARM_SESSIONS_SERVICE_UNSELECTED, pkProject, pkTeam])"
+        routerLinkActive="active-section"
+        class="subheading-2 push-left-lg"
+        (click)="onClickToNavigate()"
+        [routerLinkActiveOptions]="{ exact: true }">{{ 'SERVICE.MENU.SWARM_SESSIONS' | translate }}
+      </a>
+    </div>
+  </perfect-scrollbar>
+</ng-template>

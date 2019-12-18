@@ -1,0 +1,71 @@
+<section class="exo-platform pad" fxLayout="column" fxLayoutAlign="start stretch">
+  <div class="text-align-center push-top-lg">
+    <h3 class="push-bottom-none section primary-color">{{team.name}}</h3>
+    <h1 class="push-top-sm">{{'PROJECT.ASK_ECOSYSTEM.TITLE' | translate}}</h1>
+    <h3 class="subheading-2 slight-opacity">{{'PROJECT.ASK_ECOSYSTEM.INTRODUCTION' | translate }}</h3>
+    <div>
+      <button mat-flat-button color="primary" class="push-bottom-lg" routerLink="./create">
+        <span fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="push-right-xxxs">add</mat-icon>
+          {{ 'PROJECT.ASK_ECOSYSTEM.NEW_QUESTION' | translate }}
+        </span>
+      </button>
+    </div>
+  </div>
+  <mat-form-field floatLabel="never" class="w-100" *ngIf="(totalQuestion$ | async) > 0 || (text$ | async)">
+    <mat-icon matPrefix class="search-icon pad-right">search</mat-icon>
+    <input
+      matInput
+      type="text"
+      placeholder="{{'FORUM.SEARCH' | translate}}"
+      [formControl]="searchBox"
+      [value]="text$ | async"
+      #search
+    >
+    <mat-icon matSuffix class="pointer" *ngIf="searchBox.value" (click)="searchBox.setValue('')">close</mat-icon>
+  </mat-form-field>
+
+  <div *ngIf="loading$ | async" fxLayoutAlign="center center">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+
+  <section *ngIf="(emptyMoment$ | async) && !(loading$ | async)" fxLayout="column" fxLayoutAlign="center center">
+    <exo-empty-moment>
+      <div class="empty-message text-align-center">
+        <div class="text-center subheading-2 push-bottom-none">
+          <span *ngIf="!(text$ | async); else titleNoResults">{{'PROJECT.ASK_ECOSYSTEM.EMPTY_TITLE' | translate}}</span>
+          <ng-template #titleNoResults>{{'PROJECT.ASK_ECOSYSTEM.EMPTY_TITLE_SEARCH' | translate}}</ng-template>
+        </div>
+        <div class="text-center push-top-none slight-opacity caption-1">
+          <span *ngIf="!(text$ | async); else subtitleNoResults">{{'PROJECT.ASK_ECOSYSTEM.EMPTY_SUBTITLE' | translate}}</span>
+          <ng-template #subtitleNoResults>{{'PROJECT.ASK_ECOSYSTEM.EMPTY_SUBTITLE_SEARCH' | translate}}</ng-template>
+        </div>
+      </div>
+    </exo-empty-moment>
+  </section>
+
+  <h3 i18n *ngIf="(text$ | async) && !(loading$ | async) && (totalQuestion$ | async) as totalQuestions">
+    {{totalQuestions}} {totalQuestions, plural, =1 { {{'FORUM.QUESTION_SEARCH' | translate}} } other { {{'FORUM.QUESTIONS_SEARCH' | translate}} }}
+  </h3>
+
+  <ng-container *ngIf="!(emptyMoment$ | async) && !(loading$ | async)">
+    <app-post-summary *ngFor="let question of questions$ | async"
+      class="push-bottom"
+      [post]="question"
+      [user]="user$ | async"
+      (seeDetails)="onSeeDetails($event)"
+      (edit)="onEdit($event)"
+      (delete)="onDelete($event)"
+      >
+    </app-post-summary>
+
+    <mat-paginator
+      class="transparent"
+      (page)="paginatorChange($event)"
+      [length]="totalQuestion$ | async"
+      [pageSize]="pageSize$ | async"
+      [pageIndex]="pageIndex$ | async"
+      [pageSizeOptions]="[5, 15, 25]">
+    </mat-paginator>
+  </ng-container>
+</section>

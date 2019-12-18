@@ -1,0 +1,55 @@
+@import "variables";
+@import "further-reset";
+
+// config
+$toggleWidth: 104px;
+$toggleHeight: 48px;
+$ratingCardWidth: 288px;
+$ratingCardHeight: 95px;
+
+* {
+  user-select: none;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .31);
+}
+
+.rating-toggle-control {
+  width: $toggleWidth;
+  height: $toggleHeight;
+  background-color: mat-color($exo-indigo, 900, 0.08);
+  border-radius: 3em;
+  z-index: 13;
+  transition: background-color .3s ease-in-out;
+  mat-icon {
+    font-size: 22px;
+  }
+  mat-icon,
+  .vote {
+    color: mat-color($exo-purple, 500);
+  }
+  &.is-rated {
+    background-color: mat-color($exo-amber, 500);
+    mat-icon,
+    .vote {
+      color: white;
+    }
+  }
+}
+.star-rating {
+  position: absolute;
+  top: auto;
+  right: 24px;
+  width: $ratingCardWidth;
+  height: $ratingCardHeight;
+  z-index: 13;
+  mat-card {
+    height: 100%;
+  }
+}

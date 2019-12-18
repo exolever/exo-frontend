@@ -1,0 +1,15 @@
+<mat-chip-list>
+  <a *ngFor="let resource of resources"
+     [attr.href]="isLinkToExternal(resource.mimetype) ? resource.filename ? resource.filename : resource.name : resource.url ? resource.url : resource.link"
+     [attr.class]="'chip-wrapper pointer ' + getAttachedResourceIconAndColor(resource.mimetype).color"
+     [attr.download]="isLinkToExternal(resource.mimetype)"
+     target="_blank"
+  >
+    <mat-chip class="pointer mat-basic-chip w-100">
+      <mat-icon>
+        {{ getAttachedResourceIconAndColor(resource.mimetype).icon }}
+      </mat-icon>
+      <span class="body-2">{{ resource.filename ? resource.filename.toLowerCase() : resource.name.toLowerCase() }}</span>
+    </mat-chip>
+  </a>
+</mat-chip-list>

@@ -1,0 +1,61 @@
+<mat-card>
+  <mat-card-content>
+    <p class="section primary-color">
+      {{'ECOSYSTEM.CIRCLES.CIRCLES_DISCOVERY' | translate }}
+    </p>
+    <section>
+      <!-- desktop -->
+      <div class="circles-container" fxShow.gt-sm fxHide.lt-md>
+        <perfect-scrollbar #perfectscroll [config]="{suppressScrollY: loadingData}" (psYReachEnd)="seeMore()" class="perfect-scrollbar ps-show-always">
+          <ng-container *ngTemplateOutlet="circlesList"></ng-container>
+        </perfect-scrollbar>
+      </div>
+      <!-- mobile-->
+      <div fxShow.lt-md fxHide.gt-sm>
+        <div class="push-top">
+          <ng-container *ngTemplateOutlet="circlesList"></ng-container>
+          <div class="text-align-center push-top-xs">
+            <button *ngIf="(suggestedCircles$ | async)?.length < totalResults; else seeLessButton" mat-button color="primary" (click)="seeMore()">
+              {{'ECOSYSTEM.CIRCLES.SEARCH_MEMBERS.SEE_MORE' | translate }}
+            </button>
+          </div>
+          <ng-template #seeLessButton>
+            <div class="text-align-center push-top-xs">
+              <button *ngIf="totalResults > 15" mat-button color="primary" (click)="seeLess()">{{'ECOSYSTEM.CIRCLES.SEARCH_MEMBERS.SEE_LESS' | translate }}</button>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </section>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #circlesList>
+  <div
+    *ngFor="let circle of suggestedCircles$ | async; let isLast = last"
+    fxLayout="row" fxLayoutAlign="space-between center"
+    [ngClass]="{'subheading-2': true, 'push-top': true, 'push-bottom-none': isLast, 'pad-right-xxxs': true}"
+  >
+    <div fxLayout="row" fxLayoutAlign="start center"
+      [matTooltip]="circle.description"
+      exoLineClamp [lines]="2">
+      <img [src]="circle.image" class="push-right-xxs circle-logo">
+      {{circle.name}}
+    </div>
+    <button
+      class="push-left-xxs"
+      mat-icon-button
+      (click)="onJoin(circle)"
+      matTooltip="{{'ECOSYSTEM.CIRCLES.JOIN_HELP' | translate}}  {{circle.name}}"
+      color="accent">
+      <mat-icon>arrow_right_alt</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="(suggestedCircles$ | async)?.length === 0 && !loadingData" class="body-1 push-bottom-none">
+      {{'ECOSYSTEM.CIRCLES.NEW_CIRCLES_EMPTY' | translate }}
+  </div>
+  <div *ngIf="loadingData" class="push" fxLayout="row" fxLayoutAlign="center center">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+</ng-template>

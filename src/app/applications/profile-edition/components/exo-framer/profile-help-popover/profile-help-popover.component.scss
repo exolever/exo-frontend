@@ -1,0 +1,13 @@
+@import 'themes/exo-platform-light-theme';
+
+.mat-card{
+  width: 300px;
+}
+
+.mat-blue-500 {
+  color: map-get($mat-light-theme-background, activities-icon-active);
+}
+
+.popover__title {
+  padding: 24px 24px 0;
+}

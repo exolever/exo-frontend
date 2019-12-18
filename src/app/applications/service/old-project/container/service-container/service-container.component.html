@@ -1,0 +1,153 @@
+<!-- the top menu bar of the project view -->
+<section class="exo-platform">
+  <nav class="exo-platform-dark-theme">
+    <mat-toolbar #toolbar class="nav-bar">
+      <div class="left-items">
+        <!-- hamburgguer with animation -->
+        <div *ngIf="!isDesktop" class="toggle-container">
+          <div id="sidenav-toggle"
+               mat-icon-button
+               class="toggle-sidenav"
+               [ngClass]="{ 'open': isOpenedSidenav }"
+               aria-label="Toggle sidenav"
+               (click)="onSidenavToggle()"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div
+          class="circle-logo pointer"
+          [matTooltip]="navigateText()"
+          (click)="canGoEcosystem() ? router.navigate([urlService.getPath([Urls.ECOSYSTEM])]) : undefined"></div>
+      </div>
+      <div fxLayout="row">
+        <exo-user-menu [user]="user" [project]="project"></exo-user-menu>
+      </div>
+    </mat-toolbar>
+
+    <!-- container for the collapsible sidebar -->
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav
+        #drawer
+        class="sidenav"
+        [ngClass.lt-md]="'mobile'"
+        autoFocus=false
+        disableClose=true
+        [fixedTopGap]="topSpacing"
+        [fixedInViewport]="true"
+        mode="over"
+        [opened]="isOpenedSidenav"
+      >
+        <perfect-scrollbar class="perfect-scrollbar ps-show-always">
+          <ng-container *ngIf="steps$ | async as steps">
+            <mat-divider></mat-divider>
+            <div
+              class="nav-steps push-top-sm"
+              [ngClass]="{'expand': !stepsFolded}"
+              (click)="stepsFolded = !stepsFolded"
+              fxLayout="row"
+              fxLayoutAlign="start start"
+              *ngIf="steps.length > 0"
+            >
+              <h3 class="menu-steps">
+                {{ project?.template }}
+              </h3>
+              <mat-icon *ngIf="stepsFolded; else expandLess">expand_more</mat-icon>
+              <ng-template #expandLess><mat-icon>expand_less</mat-icon></ng-template>
+            </div>
+            <nav class="steps-container" [ngClass]="{'folded-steps': stepsFolded}">
+              <ng-container *ngFor="let step of steps">
+                <a
+                  *ngIf="step.hasAssignments; else stepDisabled"
+                  class="steps-assignments pad-left-lsm"
+                  [routerLink]="urlService.getPath([Urls.STEP, pkProject, pkTeam, step.pk])"
+                  routerLinkActive="active-sidenav-link"
+                >
+                  {{ step.name }}
+                </a>
+                <ng-template #stepDisabled>
+                  <p
+                    class="pad-left-lsm step-disabled"
+                  >
+                    {{ step.name }}
+                  </p>
+                </ng-template>
+              </ng-container>
+            </nav>
+          </ng-container>
+          <h3 [routerLink]="urlService.getPath([Urls.MEDIA, pkProject, pkTeam])"
+              routerLinkActive="active-sidenav-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+          >
+            {{ 'SERVICE.MENU.MEDIA_LIBRARY' | translate }}
+          </h3>
+          <h3
+            *ngIf="project?.directoryEnabled"
+            [routerLink]="urlService.getPath([Urls.DIRECTORY, pkProject, pkTeam])"
+            routerLinkActive="active-sidenav-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            {{ 'SERVICE.MENU.DIRECTORY' | uppercase | translate }}
+          </h3>
+          <mat-divider class="push-bottom-sm"></mat-divider>
+          <div fxLayout="row" fxLayoutAlign="start center" *ngIf="project?.teamCommunicationsModuleEnabled">
+            <h3 class="team-communication-link push-right-none"
+                [routerLink]="urlService.getPath([Urls.TEAM_TALKS, pkProject, pkTeam])"
+                routerLinkActive="active-sidenav-link"
+                [routerLinkActiveOptions]="{ exact: true }"
+            >
+              {{ 'SERVICE.MENU.TEAM_COMMUNICATION' | translate }}
+            </h3>
+            <exo-forum-icon class="push-left-xxxs" *ngIf="showUnread && unreadConversations > 0" color="white"></exo-forum-icon>
+          </div>
+          <h3 *ngIf="project?.askEcosystemEnabled"
+              [routerLink]="urlService.getPath([Urls.ASK_ECOSYSTEM, pkProject, pkTeam])"
+              routerLinkActive="active-sidenav-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+          >
+            {{ 'SERVICE.MENU.ASK_THE_ECOSYSTEM' | translate }}
+          </h3>
+          <h3 *ngIf="project?.ticketsModuleEnabled"
+              [routerLink]="urlService.getPath([Urls.ADVISOR_REQUEST, pkProject, pkTeam])"
+              routerLinkActive="active-sidenav-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+          >
+            {{ 'SERVICE.MENU.ADVISOR_REQUEST' | translate }}
+          </h3>
+          <h3 *ngIf="project?.swarmSessionsModuleEnabled"
+              [routerLink]="urlService.getPath([Urls.SWARM_SESSIONS_SERVICE_UNSELECTED, pkProject, pkTeam])"
+              routerLinkActive="active-sidenav-link"
+              [routerLinkActiveOptions]="{ exact: true }"
+          >
+            {{ 'SERVICE.MENU.SWARM_SESSIONS' | translate }}
+          </h3>
+        </perfect-scrollbar>
+      </mat-sidenav>
+    </mat-sidenav-container>
+  </nav>
+  <!-- content of the project -->
+  <div fxLayout="column" fxLayoutAlign="center" [ngClass.lt-md]="'mobile-body'" [ngClass]="{ 'sidebar-margin': isDesktop }" class="animate-margin" #projectNavBar>
+    <section
+      *ngIf="(teams$ | async).length > 1"
+      appStickyOnScroll
+      [offsetTopElement]="projectNavBar"
+      [classOnAbsolute]="{'z-index': 10, top: !isXSResolution ? '64px' : '56px'}"
+      [classOnFixed]="{'z-index': 10, top: 0}"
+      [ngClass]="isDesktop ? 'fit-width' : 'w-100'"
+      [ngStyle]="{'top': topSpacing+'px'}"
+    >
+      <app-team-selection-bar
+        #teamSelectionBar
+        [teams]="teams$ | async"
+        [teamSelected]="teamSelected$ | async"
+        [user]="user"
+        (teamSelectionLoaded)="teamSelectionLoaded()"
+        (teamChanged)="onChangeTeam($event)"
+      >
+      </app-team-selection-bar>
+    </section>
+    <router-outlet [ngClass]="{ 'push-top-sm': (teams$ | async).length > 1 }"></router-outlet>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+<div class="pad-top-lg pad-bottom-lg alternate-background"
+     fxLayoutAlign="center"
+     fxFlex="grow"
+>
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    [fxFlex]="'0 1 ' + config.layoutMaxWidth"
+    [style.width]="'100%'"
+  >
+    <div
+      class="pad-left-sm pad-right-sm"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      [style.width]="'100%'"
+      [style.maxWidth]="'calc(' + config.layoutMiddleWidth + ' - 48px )'"
+    >
+      <h1 *ngIf="title" class="headline bottom-margin text-align-center">
+        {{ title }}
+      </h1>
+      <h3 *ngIf="subtitle" class="subheading-2 foreground-secondary-text push-bottom text-align-center">
+        {{ subtitle }}
+      </h3>
+      <p *ngIf="nonValidated" class="caption-1 foreground-secondary-text text-align-center push-bottom">
+        {{ 'PROFILE.PLATFORM.COMMON.NON_VALIDATED' | translate }}
+      </p>
+      <div *ngIf="privateForYou" class="push-bottom" fxLayout="row" fxLayoutAlign="center center">
+        <mat-icon class="private-icon">lock</mat-icon>
+        <p fxLayoutAlign="center" class="caption-1 push-none">
+          {{ 'PROFILE.PLATFORM.PRIVATE' | translate }}
+        </p>
+      </div>
+    </div>
+    <div fxLayout="row wrap"
+         fxLayoutAlign="center"
+         class="pad-left-sm pad-right-sm"
+         [style.width]="'100%'"
+    >
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

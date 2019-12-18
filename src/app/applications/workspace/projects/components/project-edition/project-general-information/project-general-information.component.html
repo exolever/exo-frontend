@@ -1,0 +1,14 @@
+<div>
+  <h2 class="title-help-icon">
+    {{ 'ECOSYSTEM.WORKSPACE.PROJECTS.EDIT.NAVIGATION.GENERAL' | translate }}
+    <app-help-popover
+      [htmlContent]="'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.GENERIC.HELP' | translate"
+    ></app-help-popover>
+  </h2>
+  <p>{{ 'ECOSYSTEM.WORKSPACE.PROJECTS.FORM.GENERIC.SUBTITLE' | translate }}</p>
+  <app-project-general-form
+    [project]="project$|async"
+    (dataToSave)="onSubmit($event)"
+    (changeDataForm)="changeDataForm($event)"
+  ></app-project-general-form>
+</div>

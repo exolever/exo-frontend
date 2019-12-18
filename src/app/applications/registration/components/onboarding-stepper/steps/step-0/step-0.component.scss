@@ -1,0 +1,50 @@
+@import "variables";
+@import "~@openexo/design-system/mixins";
+@import "~@openexo/design-system/variables";
+
+.step0-wrapper {
+  left: 0;
+  right: 0;
+  text-align: center;
+  max-width: 960px;
+  margin: auto auto;
+}
+
+.bck-image {
+  max-width: 280px;
+  margin: 48px auto;
+  img {
+    width:100%;
+  }
+}
+
+.avatar-image {
+  @include retina-background-image($static-root + 'assets/onboarding/salim', 'png', 72px, 72px);
+  width: 72px;
+  height: 72px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+.main-box {
+  color: mat-color($exo-grey, 900);
+  background-color: white;
+  border-radius: 6px;
+  padding: 32px 56px;
+  @media screen and (max-width: $screen-xs) {
+    padding: 0px;
+  }
+}
+
+.text {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+}

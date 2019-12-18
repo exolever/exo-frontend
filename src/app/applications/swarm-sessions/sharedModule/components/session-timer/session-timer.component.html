@@ -1,0 +1,11 @@
+<ng-container *ngIf="timeToShow$ | async as time">
+  <div *ngIf="showBox" class="title pad-left-sm pad-right-sm pad-top-xxs pad-bottom-xxs" [ngClass]="{
+    'half-session-passed': halfSessionPassed,
+    'about-to-expire': aboutToExpire,
+    'no-border-radius': isMobile
+  }">
+    <mat-icon class="push-right-xxs">hourglass_empty</mat-icon>
+    <span>{{ time }}</span>
+  </div>
+</ng-container>
+

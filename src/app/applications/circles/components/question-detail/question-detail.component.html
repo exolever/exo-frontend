@@ -1,0 +1,68 @@
+<ng-container *ngIf="question$ | async as question; else loading">
+  <section class="exo-platform pad-left pad-right push-top" fxLayout="column" fxLayoutAlign="start start" #timerFrame *ngIf="circle$ | async">
+    <mat-card class="w-100">
+      <mat-card-content *ngIf="user$ | async as user">
+        <app-post-detail
+          [post]="question"
+          [user]="user"
+          title="{{'ECOSYSTEM.CIRCLES.QUESTION_FOR' | translate}}"
+          (favorite)="onFavoriteQuestion(question.pk, $event)"
+          (edit)="onEdit($event)"
+          (delete)="onDeleteQuestion($event)">
+        </app-post-detail>
+        <div i18n *ngIf="totalAnswers$ | async as numberAnswers" class="text-left push-top-xl title push-bottom-none">
+          {{numberAnswers}} {numberAnswers, plural, =1 { {{'FORUM.COMMENT' | translate}} } other { {{'FORUM.COMMENTS' | translate}} }}
+        </div>
+        <exo-avatar-system
+          class="push-bottom-sm inline-block push-top-xl"
+          *ngIf="question$ | async as question"
+          [name]="user.fullName"
+          [description]="user.projectTitle || user.userTitle">
+          <exo-avatar
+            [src]="user.profilePictures[1].url"
+            [alt]="user.fullName"
+            [tooltip]="user.fullName"
+          ></exo-avatar>
+        </exo-avatar-system>
+        <app-write-comment
+          *ngIf="(question$ | async) && !readOnly"
+          class="w-100 inline-block"
+          [user]="user$ | async"
+          commentLabel="{{'ECOSYSTEM.CIRCLES.COMMENT' | translate }}"
+          saveButton="{{'ECOSYSTEM.CIRCLES.COMMENT_BUTTON' | translate }}"
+          (saved)="onNewAnswer($event)"
+          [mentionsAPI]="mentionsAPI"
+        ></app-write-comment>
+        <div *ngIf="loading$ | async" fxLayoutAlign="center center">
+          <app-component-spinner-loader></app-component-spinner-loader>
+        </div>
+        <app-answer *ngFor="let answer of answers$ | async"
+          class="push-top-lg inline-block w-100"
+          [canBeVoted]="answer.canVote"
+          [answer]="answer"
+          [user]="user$ | async"
+          (edit)="enableAnswerEdition($event)"
+          (delete)="onDeleteAnswer($event)"
+          (rating)="onRating(answer.pk, $event)"
+          (favorite)="onFavoriteAnswer(answer.pk, $event)"
+          [mentionsAPI]="mentionsAPI">
+        </app-answer>
+        <mat-paginator
+          *ngIf="!(emptyMoment$ | async) && !(loading$ | async) && (totalAnswers$ | async)"
+          class="transparent push-top-lg"
+          (page)="paginatorChange($event)"
+          [length]="totalAnswers$ | async"
+          [pageSize]="pageSize$ | async"
+          [pageIndex]="pageIndex$ | async"
+          [pageSizeOptions]="[5, 15, 25]">
+        </mat-paginator>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</ng-container>
+
+<ng-template #loading>
+  <div fxLayoutAlign="center center" class="push">
+    <app-component-spinner-loader></app-component-spinner-loader>
+  </div>
+</ng-template>

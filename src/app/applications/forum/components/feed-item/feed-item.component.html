@@ -1,0 +1,69 @@
+<mat-card (click)="seeDetails.emit(post.pk)" class="pointer push-bottom">
+  <mat-card-content>
+    <div class="w-100"
+      fxLayout="row"
+      fxLayout.xxs="column"
+      fxLayoutGap.xxs="24px"
+      fxLayoutAlign="space-between start"
+      fxLayoutAlign.xxs="start stretch">
+      <exo-avatar-system
+        [name]="post.createdBy.fullName"
+        [description]="post.createdBy.projectTitle || post.createdBy.userTitle"
+        [connected]="post.createdBy.onLine"
+        (click)="goToProfile($event)"
+        class="pointer">
+        <exo-avatar
+          [src]="post.createdBy.profilePictures[1].url"
+          [alt]="post.createdBy.fullName"
+          [tooltip]="post.createdBy.fullName"
+        ></exo-avatar>
+      </exo-avatar-system>
+      <div fxLayout="row" fxAlign="stretch" fxLayoutAlign="end center" fxLayoutAlign.xxs="space-between center">
+        <div class="caption-1 edited">
+          {{post.modified | amTimeAgo}} <i *ngIf="post.hasBeenEdited" class="push-left-xxs">{{'FORUM.EDITED' | translate }}</i>
+        </div>
+        <ng-template #dateCreation>
+          <span  class="caption-1">{{post.modified | amTimeAgo}}</span>
+        </ng-template>
+      </div>
+    </div>
+    <h3 [ngClass]="{ 'slight-opacity': post.seen, 'unread-spot': !post.seen }" class="push-top-sm push-bottom-sm">
+      {{post.title}}
+    </h3>
+    <div fxLayout="row" fxLayout.xxs="column" fxLayoutAlign="space-between center" fxLayoutAlign.xxs="start" fxLayoutGap="24px">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <img src="{{post['circle']?.image}}" class="circle-icon"/>
+        <span class="push-left-xxxs">{{post['circle']?.name}}</span>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="24px">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="message-icon-container" fxLayout="row" fxLayoutAlign="start center">
+            <mat-icon class="push-right-xxxs slight-opacity">comment</mat-icon>
+            <svg *ngIf="hasNewAnswers() && !isNew()" class="unread-spot-svg" height="10" width="10">
+              <circle class="outer" cx="5" cy="5" r="5"/>
+              <circle class="inner" cx="5" cy="5" r="4"/>
+            </svg>
+          </div>
+          <span [ngClass]="{'caption-2': hasNewAnswers() && !isNew(), 'caption-1': !hasNewAnswers() || isNew()}">
+              {{post.answers}} <span fxHide.lt-sm>{post.answers, plural, =1 { {{'FORUM.COMMENT' | translate}} } other { {{'FORUM.COMMENTS' | translate}} }}</span>
+              <span *ngIf="hasNewAnswers() && !isNew()">({{post.answersUnseen}} {{'FORUM.NEW' | translate }})</span>
+          </span>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center" >
+          <mat-icon color="warn" *ngIf="post.liked">favorite</mat-icon>
+          <mat-icon *ngIf="!post.liked">favorite</mat-icon>
+          <label class="caption-1 push-left-xxxs">{{post.numLikes}}</label>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon>remove_red_eye</mat-icon>
+          <label class="caption-1 push-left-xxxs">{{post.numViews}}</label>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+
+
+

@@ -1,0 +1,24 @@
+<section class="wanted-activities">
+  <app-toggle-form
+    *ngIf="user"
+    [form]="form"
+    [list]="activitiesList"
+    (submitted)="onSubmit()"
+    (onToggleItem)="toggleItem()"
+  >
+    <h3>
+      {{ 'ECOSYSTEM.PROFILE.EDIT.INTERESTS.TITLE' | translate }}
+    </h3>
+    <p class="private caption-1 push-none">
+      <mat-icon class="mat-16">
+        lock
+      </mat-icon>
+      {{ 'ECOSYSTEM.PROFILE.EDIT.PRIVATE' | translate }}
+    </p>
+    <div class="description push-bottom-sm">
+      <p class="caption-1 push-none">
+        {{ 'ECOSYSTEM.PROFILE.EDIT.INTERESTS.DESCRIPTION' | translate }}
+      </p>
+    </div>
+  </app-toggle-form>
+</section>

@@ -1,0 +1,9 @@
+@import "~@openexo/design-system/variables";
+
+.item {
+  height: 64px;
+  & img {
+    max-width: map-get($spaceMeasures, 'sm');;
+    max-height: map-get($spaceMeasures, 'sm');;
+  }
+}

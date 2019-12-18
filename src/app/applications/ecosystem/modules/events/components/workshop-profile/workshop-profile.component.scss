@@ -1,0 +1,35 @@
+@import '~@openexo/design-system/variables';
+@import '~@openexo/design-system/theming';
+
+:host {
+  width: 100%;
+
+  @media #{map-get($mediaqueries, 'gt-md')} {
+    flex: 0 1 1280px;
+    box-sizing: border-box;
+    max-width: 1280px;
+  }
+  #floating-events {
+    position: absolute;
+    z-index: 33;
+    top: 0;
+    right: 0;
+    background-color: mat-color($exo-blue, 500);
+    @media #{map-get($mediaqueries, 'lt-sm')} {
+      width: map-get($spaceMeasures, 'lg');
+      min-width: map-get($spaceMeasures, 'lg');
+      padding: 0;
+    }
+  }
+  //.wrapper {
+  //  @media #{map-get($mediaqueries, 'gt-sm')} {
+  //    width: map-get($breakpoints, 'sm');
+  //  }
+  //}
+  .margin-none {
+    margin: 0 !important;
+  }
+  .text-right {
+    text-align: right;
+  }
+}

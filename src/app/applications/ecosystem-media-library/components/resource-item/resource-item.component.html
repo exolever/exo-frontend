@@ -1,0 +1,69 @@
+<mat-card class="tool-card" fxLayout="row">
+
+  <figure *ngIf="resource.thumbnail" class="tool-thumbnail">
+    <img alt="thumbnail image" height="72px" src="/assets/images/resources/{{resource.thumbnail}}">
+    <a class="thumbnail-icon" fxLayout="row" fxLayoutAlign="center center" href="{{resource.link}}" target="_blank">
+      <fa-icon [icon]="['fas', 'download']" [inverse]="true"></fa-icon>
+    </a>
+    <div *ngIf="thumbnailRectangle" [ngClass]="thumbnailRectangle" class="thumbnail-rectangle"></div>
+  </figure>
+
+  <div [ngClass]="{'pad-top-xxs pad-bottom-xxs': showPrivacy}"
+       class="tool-info pad"
+       fxFlex="grow"
+       fxLayout="column"
+       fxLayoutAlign="center"
+  >
+    <div class="caption-2 tool-title text-truncate">
+      {{ resource.name }}
+    </div>
+    <div *ngIf="resource.mimetype" class="tool-caption caption-1 pad-top-xxxs foreground-secondary-text text-truncate"
+         fxLayout="row">
+      <span [ngClass]="{'right-divider': !!resource.uploaderName}" class="pad-right-xxs">
+        {{ resource.mimetype }}
+      </span>
+      <exo-avatar *ngIf="resource?.getOwnerName()"
+                  [size]="'xs'"
+                  [src]="resource.getOwnerAvatar()"
+                  [tooltip]="resource.getOwnerName()"
+                  class="push-left-xxs"
+      ></exo-avatar>
+    </div>
+
+  </div>
+  <div *ngIf="showToggle()" fxLayout="column" fxLayoutAlign="center">
+    <div class="privacy"
+         fxLayout="row">
+      <label class="subheading-2 push-none">{{'SERVICE.DELIVER.PRIVATE' | translate}}</label>
+      <mat-slide-toggle
+        class="push-left push-right"
+        (change)="doAction(actionsEnum.CHANGE_VISIBILITY)"
+        [checked]="resource.visibility === isPrivate()"
+      ></mat-slide-toggle>
+    </div>
+  </div>
+  <div *ngIf="showActions" class="tool-options push-right" fxLayout="column" fxLayoutAlign="center">
+    <div *ngIf="actions.length !== 1; else singleAction">
+      <button [matMenuTriggerFor]="menu" mat-icon-button>
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button (click)="doAction(action.action)"
+                *ngFor="let action of actions"
+                mat-menu-item
+        >
+          <span class="body-1">
+            {{action.text}}
+          </span>
+        </button>
+      </mat-menu>
+    </div>
+    <ng-template #singleAction>
+      <div *ngFor="let action of actions">
+        <button (click)="doAction(action.action)" class="tool-options__button" mat-icon-button>
+          <mat-icon matTooltip="{{action.text}}">{{action.thumbnail}}</mat-icon>
+        </button>
+      </div>
+    </ng-template>
+  </div>
+</mat-card>

@@ -1,0 +1,38 @@
+<ng-container *ngIf="conversations$ | async as conversations">
+  <div *ngIf="conversations.length > 0; else emptyMoment"
+       class="mailbox-list"
+       fxLayout="row"
+       fxLayoutAlign="start start"
+       fxLayoutGap="24px"
+       fxLayout.lt-md="column"
+  >
+    <ng-container *ngIf="isSmallScreen !== undefined">
+      <app-conversation-list
+          fxFlex="1 1 296px" fxFlex.lt-md="grow" class="w-100"
+          [conversations]="conversations"
+          [smallDevices]="isSmallScreen"
+          [selected]="conversationSelected$ | async"
+          (selectConversation)="loadMessages($event)"
+      >
+      </app-conversation-list>
+    </ng-container>
+    <ng-container *ngIf="!isSmallScreen && conversationSelected$ | async as conversation">
+      <app-conversation-messages
+          fxFlex="grow" fxFill
+          [conversation]="conversation"
+          [loading]="loading$ | async"
+          [replyingMessage]="replyingMessage$ | async"
+          (submit)="onSubmit($event, conversation)"
+          (scrolled)="onScroll($event, conversation)"
+      >
+      </app-conversation-messages>
+    </ng-container>
+  </div>
+  <ng-template #emptyMoment>
+    <exo-empty-moment>
+      <p class="empty-message subheading-2 text-align-center">
+        {{ 'ECOSYSTEM.MAILBOX.EMPTY_MOMENT' | translate }}
+      </p>
+    </exo-empty-moment>
+  </ng-template>
+</ng-container>

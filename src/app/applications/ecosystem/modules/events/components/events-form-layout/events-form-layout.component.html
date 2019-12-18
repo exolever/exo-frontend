@@ -1,0 +1,61 @@
+<div #layoutContainer
+     class="push-bottom-lg push-top-sm"
+     fxLayout="row"
+     fxLayout.lt-md="column"
+     [ngClass.lt-md]="'pad-xxs'"
+     fxLayoutGap="16px">
+  <section class="push-bottom-lg" fxLayout="column">
+    <mat-card class="form-wrapper card-section">
+      <mat-card-content>
+        <div *ngIf="!isReviewer; else reviewer">
+          <section>
+            <span
+              class="section push-bottom-sm"> {{'ECOSYSTEM.EVENTS.FORM.FORM_TYPE' | translate}} </span>
+          </section>
+          <section *ngIf="!(event$ | async) as events" class="push-top-sm">
+            <h1>{{'ECOSYSTEM.EVENTS.FORM.FORM_TITLE_CREATE' | translate}}</h1>
+          </section>
+          <section *ngIf="(event$ | async) as event" class="push-top-sm">
+            <h1>
+              {{'ECOSYSTEM.EVENTS.FORM.EDIT' | translate }}
+              {{event.typeEventName}}
+            </h1>
+          </section>
+        </div>
+        <ng-template #reviewer>
+          <section>
+          <span
+            class="section push-bottom-sm"> {{'ECOSYSTEM.EVENTS.FORM.REVIEW' | translate}} </span>
+          </section>
+          <section class="push-top-sm">
+            <h1>{{'ECOSYSTEM.EVENTS.FORM.FORM_TITLE_REVIEW' | translate}}</h1>
+          </section>
+
+        </ng-template>
+
+        <div>
+          <app-event-form #formComponent
+                          (formChanges)="onFormChange($event)"
+                          [event]="(event$ | async)"
+                          [isReviewer]="isReviewer"></app-event-form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+  <div fxFlex.gt-sm="308px">
+    <section class="push-bottom-lg" fxLayout="column">
+      <app-events-card-preview
+        [classOnAbsolute]="{top: 'unset'}"
+        [classOnFixed]="{top: '24px'}"
+        [disableOnMobile]="true"
+        [event]="eventPreview"
+        [isReviewer]="isReviewer"
+        [offsetTopElement]="layoutContainer"
+        appStickyOnScroll
+        ngClass.gt-sm="prev-wrapper"
+        ngClass.lt-sm="w-100"
+      >
+      </app-events-card-preview>
+    </section>
+  </div>
+</div>

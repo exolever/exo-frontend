@@ -1,0 +1,6 @@
+<div class="video-container" fxLayout="column" fxLayoutAlign="center center">
+  <div class="video-responsive" *ngIf="embed" #frame [innerHTML]="video.iframe | safeHtml"></div>
+  <figure #frame *ngIf="!embed" class="video-thumbnail" (click)="openVideo()">
+    <img [src]="video.thumbnail" alt="Thumbnail Video">
+  </figure>
+</div>

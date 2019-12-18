@@ -1,0 +1,68 @@
+<div class="wrapper">
+  <div class="container-search" novalidate>
+      <mat-form-field floatLabel="never" appearance="fill" class="w-100 searcher">
+        <mat-icon matPrefix class="search-icon pad-right">search</mat-icon>
+        <input
+          matInput
+          type="text"
+          placeholder={{translations.searchPlaceholder}}
+          [formControl]="searchControl"
+          autocomplete="off"
+          #search
+        >
+        <mat-icon matSuffix class="pointer" *ngIf="searchControl.value" (click)="searchControl.setValue('')">close</mat-icon>
+      </mat-form-field>
+  </div>
+  <div class="w-100">
+    <div class="container-people">
+      <mat-card 
+        *ngFor="let person of people" 
+        class="person-card push-right-sm push-bottom-sm pointer" 
+        (click)="goToPublicProfile(person.slug)"
+      >
+          <mat-card-content>
+            <exo-avatar-system 
+              [name]="person.fullName" 
+              [description]="person.userTitle"
+              direction="column"
+              class="push-bottom w-100 pad-top"
+            >
+              <exo-avatar [src]="domain + person.profilePictures.url"
+                          [size]="'lg'"
+                          [certificates]="person.certifications"
+              ></exo-avatar>
+            </exo-avatar-system>
+            <div class="location-language-container">
+              <p class="caption-1 location foreground-secondary-text">
+                <mat-icon class="mat-16 push-right-xxs">room</mat-icon>
+                <span class="text-truncate">{{person.location}}</span>
+              </p>
+              <p class="caption-1 language foreground-secondary-text push-bottom-none">
+                <mat-icon class="mat-16 push-right-xxs">language</mat-icon>
+                <span class="text-truncate">{{person.languages}}</span>
+              </p>
+            </div>
+          </mat-card-content>
+      </mat-card>  
+    </div>
+    
+    <mat-paginator
+      *ngIf="people?.length > 0"
+      class="people-paginator"
+      (page)="paginatorChange($event)"
+      [length]="totalResults"
+      [pageSize]="searchTerms.page_size"
+      [pageIndex]="searchTerms.page - 1"
+      [pageSizeOptions]="[12, 24, 48]">
+    </mat-paginator>
+  </div>
+  <div class="no-people" *ngIf="people?.length === 0" >
+    <h3 class="no-people-message" [innerHtml]="translations.emptyMoment"></h3>
+  </div>
+
+  <div *ngIf="isLoading">
+    <exo-loader></exo-loader>
+  </div>
+
+</div>
+

@@ -1,0 +1,36 @@
+@import "variables";
+
+@mixin exo-snackbar-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .mat-simple-snackbar-action,
+  .mat-simple-snackbar-action button.mat-button span {
+    color: mat-color($exo-red, 500);
+  }
+
+  .mat-simple-snackbar-action button {
+    max-height: 48px;
+  }
+
+  .mat-snack-bar-container {
+    height: 48px;
+    color: white;
+    @media (max-width: $screen-xs-max) {
+      width: 100%;
+    }
+    max-width: 600px;
+    background: mat-color($background, 'status-bar');
+    &.error {
+      background: mat-color($exo-red, 500);
+    }
+    &.success {
+      background: mat-color($exo-teal, A400);
+    }
+    &.error, &.success {
+      .mat-button span {
+        color: white;
+      }
+    }
+  }
+}

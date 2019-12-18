@@ -1,0 +1,21 @@
+@import '~@openexo/design-system/colors';
+
+:host {
+  .forum-icon {
+    position: relative;
+    &.white {
+      color: $exo-light-primary-text;
+    }
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: map-get($exo-blue, 500);
+      position: absolute;
+      right: -2px;
+    }
+  }
+
+}

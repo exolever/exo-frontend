@@ -1,0 +1,31 @@
+@import 'variables';
+
+:host ::ng-deep{
+
+  .mat-tab-label {
+    opacity: 1;
+  }
+
+  mat-tab-header.mat-tab-header {
+    border: 0;
+  }
+
+  .mat-tab-label-active {
+    color: mat-color($exo-service-light-primary);
+  }
+
+  .badge {
+    position: relative;
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: map_get($exo-blue, A400);
+      position: absolute;
+      right: -8px;
+      top: -8px;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+mat-card.no-shadow {
+  box-shadow: none !important;
+}
+button::ng-deep {
+  span {
+    font-size: 20px;
+  }
+}
+.centered {
+  text-align: center;
+}

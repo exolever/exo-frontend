@@ -1,0 +1,179 @@
+<mat-horizontal-stepper #stepper [linear]="true" (selectionChange)="changeStep($event)">
+  <mat-step [stepControl]="firstFormGroup" editable="true" #step1 >
+    <ng-template matStepLabel>{{labels.STEP1}}</ng-template>
+    <form [formGroup]="firstFormGroup" class="container-form" novalidate autocomplete="off" id="level">
+      <mat-form-field *ngIf="isNewUser">
+        <label>{{labels.NAME_LABEL}} <span class="required">*</span></label>
+        <input
+          matInput
+          formControlName="fullName">
+        <mat-error >{{firstFormGroup.get('fullName').errors | humanizeFormErrors: language}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <label>{{labels.EMAIL_LABEL}} <span class="required">*</span></label>
+        <input
+          [email]="true"
+          matInput
+          formControlName="email">
+        <mat-error>{{firstFormGroup.get('email').errors | humanizeFormErrors: language}}</mat-error>
+      </mat-form-field>
+      <mat-form-field *ngIf="!isNewUser">
+        <label>{{labels.PASSWORD_LABEL}} <span class="required">*</span></label>
+        <input
+          matInput
+          type="password"
+          formControlName="password">
+        <mat-error>{{firstFormGroup.get('password').errors | humanizeFormErrors: language}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <label>{{labels.CODE_LABEL}} <span *ngIf="isCertificationForFT()" class="required">*</span> </label>
+          <input
+            matInput
+            formControlName="coupon">
+          <mat-error>{{firstFormGroup.get('coupon').errors | humanizeFormErrors: language}}</mat-error>
+        </mat-form-field>
+      <div class="policy-field push-bottom push-top" >
+        <mat-checkbox formControlName="policy" color="primary" class="push-bottom">
+            <div [innerHtml]="labels.POLICY"></div>
+        </mat-checkbox>
+        <mat-error *ngIf="firstFormGroup.get('policy').touched">{{firstFormGroup.get('policy').errors | humanizeFormErrors: language}}</mat-error>
+      </div>
+    </form>
+    <div *ngIf="genericError" class="mat-error">{{genericError}}</div>
+    <div class="flex-column-start">
+      <button (click)="onNextStep(firstFormGroup, 2)" [disabled]="!firstFormGroup.valid" mat-flat-button color="primary" >
+        {{isNewUser ? labels.NEXT : labels.LOGIN}}
+      </button>
+      <ng-container *ngIf="showAlertGoToLevel2" [ngTemplateOutlet]="alertTpl"></ng-container>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" editable="true">
+    <ng-template matStepLabel>{{labels.STEP2}}</ng-template>
+    <h3 *ngIf="!isNewUser" class="push-top">
+        {{labels.HI}} {{firstFormGroup.get('fullName').value}}
+    </h3>
+    <form [formGroup]="secondFormGroup" class="container-form" novalidate autocomplete="off">
+      <mat-form-field>
+        <label>{{labels.PROGRAM_LABEL}} <span class="required">*</span></label>
+        <mat-select formControlName="cohort">
+          <mat-option *ngFor="let cohort of cohorts$ | async" [value]="cohort">
+            {{cohort.label}}
+          </mat-option>
+        </mat-select>
+        <mat-error>{{secondFormGroup.get('cohort').errors | humanizeFormErrors: language}}</mat-error>
+      </mat-form-field>
+      <table *ngIf="showBillingTable()">
+        <thead>
+          <tr>
+            <th class="border">{{labels.CONCEPT}}</th>
+            <th class="border">{{labels.AMOUNT}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border">{{secondFormGroup.get('cohort').value.programLabel}}</td>
+            <td class="text-center border">{{secondFormGroup.get('cohort').value.price}} {{secondFormGroup.get('cohort').value.currency}}</td>
+          </tr>
+          <tr *ngIf="firstFormGroup.get('coupon')">
+            <td class="border">{{labels.CODE_LABEL}} (<i>{{secondFormGroup.get('cohort').value.coupon}}</i>) {{labels.DISCOUNT}}:</td>
+            <td class="text-center border" *ngIf="secondFormGroup.get('cohort').value.discount as discount; else noDiscount;">
+              {{discount}} {{secondFormGroup.get('cohort').value.currency}}
+            </td>
+            <ng-template #noDiscount>
+              <td class="text-center border">-</td>
+            </ng-template>
+          </tr>
+          <tr>
+            <td [ngClass]="{'border': isCertificationLevel3(), 'text-right': true, 'bold': true}">{{labels.TOTAL_AMOUNT}}</td>
+            <td [ngClass]="{'border': isCertificationLevel3(), 'text-center': true, 'bold': true}">{{secondFormGroup.get('cohort').value.finalPrice}} {{secondFormGroup.get('cohort').value.currency}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-container formGroupName="applicationDetails">
+        <mat-form-field>
+          <label>{{labels.WHY}}</label>
+          <textarea
+            class="textarea-field"
+            matInput
+            formControlName="reasons"></textarea>
+          <mat-error >{{secondFormGroup.get('applicationDetails').get('reasons').errors | humanizeFormErrors: language}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <label>{{labels.WHERE}}</label>
+          <mat-select formControlName="whereMetUs">
+            <mat-option *ngFor="let value of labels.meetUpList" [value]="value">
+              {{value}}
+            </mat-option>
+          </mat-select>
+          <mat-error >{{secondFormGroup.get('applicationDetails').get('whereMetUs').errors | humanizeFormErrors: language}}</mat-error>
+        </mat-form-field>
+      </ng-container>
+
+      <!-- <div>
+        <label class="body-1">{{labels.PAYMENT_METHOD}}<span class="required">*</span></label>
+      </div>
+      <mat-radio-group formControlName="paymentMethod" class="push-top-xxxs" color="primary">
+        <mat-radio-button value="CARD" class="push-right-sm">{{labels.PAYMENT_CARD}}</mat-radio-button>
+        <mat-radio-button value="OTHER">{{labels.PAYMENT_OTHER}}</mat-radio-button>
+      </mat-radio-group> -->
+
+      <mat-form-field>
+        <label class="body-1">{{labels.BILLING_NAME}} <span class="required">*</span></label>
+        <input
+          matInput
+          formControlName="billingName">
+        <mat-hint>{{labels.BILLING_NAME_HINT}}</mat-hint>
+        <mat-error>{{secondFormGroup.get('billingName').errors | humanizeFormErrors: language}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <label class="body-1">{{labels.BILLING_ADDRESS}} <span class="required">*</span></label>
+        <input
+          matInput
+          formControlName="billingAddress">
+        <mat-hint>{{labels.BILLING_ADDRESS_HINT}}</mat-hint>
+        <mat-error>{{secondFormGroup.get('billingAddress').errors | humanizeFormErrors: language}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <label class="body-1">{{labels.TAXID}}</label>
+        <input
+          matInput
+          formControlName="taxId">
+        <mat-hint>{{labels.TAXID_HINT}}</mat-hint>
+        <mat-error>{{secondFormGroup.get('taxId').errors | humanizeFormErrors: language}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <label class="body-1">{{labels.COUNTRY}} <span class="required">*</span></label>
+        <input
+          matInput
+          [matAutocomplete]="countryAutocomplete"
+          formControlName="country">
+        <mat-hint>{{labels.COUNTRY_HINT}}</mat-hint>
+        <mat-error>{{secondFormGroup.get('country').errors | humanizeFormErrors: language}}</mat-error>
+      </mat-form-field>
+      <mat-autocomplete #countryAutocomplete [displayWith]="displayForCountries">
+        <mat-option *ngFor="let country of filteredCountries$ | async" [value]="country">
+          {{country.name}}
+        </mat-option>
+      </mat-autocomplete>
+      <div *ngIf="genericError" class="mat-error">{{genericError}}</div>
+      <ng-container *ngIf="showAlertGoToLevel2; else showBtnPayTpl" [ngTemplateOutlet]="alertTpl"></ng-container>
+      <ng-template #showBtnPayTpl>
+        <div class="push-top-sm">
+          <button mat-flat-button color="primary" (click)="onPay()">{{labels.PROCEED_PAYMENT}}</button>
+        </div>
+      </ng-template>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
+
+
+<ng-template #alertTpl>
+  <exo-alert class="push-top"
+    message="{{labels.CERTIFICATION_NEEDED}}"
+    typeAlert="info"
+    [isCloseable]="false"
+    actionButtonText="{{labels.JOIN}}"
+    (sendAction) = "goToLevel2()"
+  >
+  </exo-alert>
+</ng-template>

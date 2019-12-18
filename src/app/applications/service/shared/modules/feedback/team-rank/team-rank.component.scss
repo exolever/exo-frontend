@@ -1,0 +1,22 @@
+@import 'themes/exo-platform-light-theme';
+
+.circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+  margin-left: 6px;
+  background-color: map-get($mat-light-theme-foreground, dividers);
+  &.active {
+    background-color: map-get($mat-light-theme-background, resource-rating-done);
+  }
+}
+
+.progress-team {
+  ::ng-deep .mat-progress-bar-buffer {
+    background-color: map-get($mat-light-theme-foreground, dividers);
+  }
+  ::ng-deep .mat-progress-bar-background {
+    fill: rgba(70, 70, 75, 0);
+  }
+}

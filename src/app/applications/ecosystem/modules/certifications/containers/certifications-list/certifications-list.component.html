@@ -1,0 +1,61 @@
+<section *ngFor="let certification of certifications$ | async; let last=last; let even=even;"
+         class="push-bottom-xl"
+>
+  <ng-container *ngIf="user$ | async as user">
+    <div
+      class="certificate-container w-100 push-bottom-lg" [fxLayout]="even ? 'row' : 'row-reverse'"
+      fxLayoutAlign="flex-start" fxLayoutGap="36px"
+    >
+      <div>
+        <img
+          class="certificate-image"
+          [src]="getImage(certification, (user && user.isCertifiedIn(certification)))"
+          alt="Certification image"
+        />
+      </div>
+      <div class="certificate-info push-bottom">
+        <p class="certificate-title subheading-2">
+          <strong>
+            {{ getTitle(certification) }}
+          </strong>
+          <span *ngIf="(getStatus(certification, user) === statusEnum.Requested)"
+                class="pretty-label green caption-2 push-left-xxs">{{'ECOSYSTEM.CIRCLES.DIALOG.CERTIFICATIONS.REQUESTED' | translate | uppercase }}</span>
+          <span *ngIf="(getStatus(certification, user) === statusEnum.Pending)"
+                class="pretty-label blue caption-2 push-left-xxs">{{'ECOSYSTEM.CIRCLES.DIALOG.CERTIFICATIONS.IN_PROGRESS' | translate | uppercase }}</span>
+        </p>
+        <p class="certificate-description">
+          {{ getDescription(certification) }}
+        </p>
+        <p *ngIf="getNextCohorts(certification)?.length > 0">
+          {{ 'PROFILE.PLATFORM.CERTIFICATIONS.NEXT_PROGRAMS' | translate }}:
+          <ng-container *ngFor="let cohort of getNextCohorts(certification); let l = last">
+            {{ cohort.date | formatDate: 'short' }}<span *ngIf="!l">,</span>
+          </ng-container>
+        </p>
+        <button *ngIf="(user && !user.isCertifiedIn(certification)) else seeCertificates"
+                mat-flat-button color="primary" (click)="cta(user, certification)"
+                class="push-top"
+        >
+          {{ getButtonText(certification, user) }}
+        </button>
+        <ng-template #seeCertificates>
+          <a
+            *ngFor="let certificate of user.getCertificates(certification)"
+            class="mat-link pad-top dialog__content--link"
+            [href]="certificate.url"
+            target="_blank"
+          >
+            {{ 'CERTIFICATES.DIALOG.SEE_CERTIFICATE' | translate }}
+          </a>
+        </ng-template>
+      </div>
+    </div>
+    <hr *ngIf="!last" [class]="even ? 'certificate-hr-before' : 'certificate-hr-after'" class="push-top-xl">
+  </ng-container>
+</section>
+
+<section class="faq">
+  <a class="body-1" href="https://help.openexo.com/en/articles/3332341-frequently-asked-questions-about-certification-faq" target="_blank">
+    {{ 'PROFILE.PLATFORM.CERTIFICATIONS.FAQ' | translate }}
+  </a>
+</section>

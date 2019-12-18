@@ -1,0 +1,105 @@
+<app-overlay-template [title]="data.title" (close)="closeOverlay()" [isFullWidth]="true">
+  <form [formGroup]="form" novalidate class="form-feedback">
+    <div class="push-bottom-sm" *ngIf="data.showStatus">
+      <p class="headline">
+        {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.STATUS.TITLE' | translate}}
+      </p>
+      <mat-radio-group class="push-bottom" disableRipple="true" formControlName="status" fxLayout="column" fxLayoutAlign="start start">
+        <mat-radio-button class="push-bottom" color="primary" [value]="enumStatus.Successful">
+          {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.STATUS.SUCCESSFUL' | translate}}
+        </mat-radio-button>
+        <mat-radio-button color="primary" [value]="enumStatus.Uncompleted">
+          {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.STATUS.UNCOMPLETED' | translate}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <mat-form-field *ngIf="form.get('status').value === enumStatus.Uncompleted" appearance="fill" class="w-100">
+        <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.MORE_INFO' | translate}}</mat-label>
+        <textarea matInput formControlName="statusInfo"></textarea>
+        <mat-error>{{form.get('statusInfo').errors | humanizeFormErrors}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="feedback-consultant">
+      <p class="headline">
+        {{ data.showStatus ? ('ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.FEEDBACK_CONSULTANT' | translate) : ('ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.FEEDBACK_CLIENT' | translate) }}
+      </p>
+      <div class="push-bottom-sm">
+        <p class="foreground-secondary-text body-2">
+          {{ data.showStatus ? ('ECOSYSTEM.OPPORTUNITIES.FEEDBACK.BRIEF.TITLE.CLIENT' | translate) : ('ECOSYSTEM.OPPORTUNITIES.FEEDBACK.BRIEF.TITLE.CONSULTANT' | translate) }}
+
+        </p>
+        <p class="caption-1">
+          {{ data.showStatus ? ('ECOSYSTEM.OPPORTUNITIES.FEEDBACK.BRIEF.SUBTITLE.CLIENT' | translate) : ('ECOSYSTEM.OPPORTUNITIES.FEEDBACK.BRIEF.SUBTITLE.CONSULTANT' | translate) }}
+        </p>
+        <app-material-icon-star-rating
+          [numberOfGrades]="5"
+          [allowHalf]="false"
+          size="medium"
+          formControlName="explained"
+        ></app-material-icon-star-rating>
+      </div>
+      <div class="push-bottom-sm">
+        <p class="foreground-secondary-text body-2">
+          {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.COLLABORATION.TITLE' | translate}}
+        </p>
+        <p class="caption-1">
+          {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.COLLABORATION.SUBTITLE' | translate}}
+        </p>
+        <app-material-icon-star-rating
+          [numberOfGrades]="5"
+          [allowHalf]="false"
+          size="medium"
+          formControlName="collaboration"
+        ></app-material-icon-star-rating>
+      </div>
+      <div class="push-bottom-sm">
+        <p class="foreground-secondary-text body-2">
+          {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.COMMUNICATION.TITLE' | translate}}
+        </p>
+        <p class="caption-1">
+          {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.COMMUNICATION.SUBTITLE' | translate}}
+        </p>
+        <app-material-icon-star-rating
+          [numberOfGrades]="5"
+          [allowHalf]="false"
+          size="medium"data
+          formControlName="communication"
+        ></app-material-icon-star-rating>
+      </div>
+      <div>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>{{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.REVIEW' | translate}}</mat-label>
+          <textarea matInput formControlName="comment"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="push-bottom-lg">
+      <p class="headline">
+        {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.RECOMMENDATION.TITLE' | translate}}
+      </p>
+      <p class="caption-1">
+        {{ data.showStatus ? ('ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.RECOMMENDATION.SUBTITLE.CLIENT' | translate:{ name: data.feedback.userApplicant.shortName}) :
+          ('ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.RECOMMENDATION.SUBTITLE.CONSULTANT' | translate)
+           }}
+      </p>
+      <div class="w-100">
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+          <mat-hint>{{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.RECOMMENDATION.NOT_RECOMMEND' | translate}}</mat-hint>
+          <mat-hint>{{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.RECOMMENDATION.HIGHLY_RECOMMEND' | translate}}</mat-hint>
+        </div>
+        <mat-slider
+          class="w-100" color="primary" [formControlName]="'recommendation'" [min]="0" [max]="maxLevel" thumbLabel
+        >
+        </mat-slider>
+      </div>
+    </div>
+  </form>
+  <mat-divider class="push-bottom-sm"></mat-divider>
+  <div fxLayout="row" fxLayoutAlign="end start" fxLayoutGap="16px" class="push-bottom-sm">
+    <button type="button" mat-flat-button color="accent" (click)="onCancel()">
+      {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.CANCEL' | translate}}
+    </button>
+    <button type="button" mat-flat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">
+      {{'ECOSYSTEM.OPPORTUNITIES.FEEDBACK.FORM.CONFIRM' | translate}}
+    </button>
+  </div>
+</app-overlay-template>

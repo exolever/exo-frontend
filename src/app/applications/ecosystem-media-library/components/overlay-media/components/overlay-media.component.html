@@ -1,0 +1,41 @@
+<div class="overlay-content"
+       [@slideContent]="animationState"
+       (@slideContent.start)="onAnimationStart($event)"
+       (@slideContent.done)="onAnimationDone($event)">
+  <div class="exo-platform">
+    <div class="video-container" fxLayout="column" fxLayoutAlign="space-around stretch">
+      <div class="video-responsive">
+        <button class="overlay-close__icon" mat-icon-button (click)="closeOverlay()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <div class="iframe-wrapper" [innerHTML]="data.video.iframe | safeHtml"></div>
+      </div>
+      <div class="pad">
+        <div class="title" fxLayout="row" fxLayoutAlign="space-between">
+          <span class="title">{{data.video.name}}</span>
+          <span *ngIf="!data.fromAssignments" class="body-1">
+          {{data.video.duration | formatDurationTime}}
+        </span>
+        </div>
+        <div class="description" *ngIf="data.video.description">
+          <p class="body-1" *ngIf="!data.fromAssignments">
+            {{data.video.description}}
+          </p>
+        </div>
+        <div *ngIf="!data.fromAssignments && data.video.tags" class="tags">
+          <div class="caption-2">{{data.video.tags | join: ', '}}</div>
+        </div>
+        <div *ngIf="data.fromAssignments" class="body-1 push-top">
+          <p class="subheading-2">
+            {{'MEDIA.OVERLAY.CATEGORIES' | translate}}
+          </p>
+          <mat-chip-list>
+            <mat-chip *ngFor="let category of data.video.tags">
+              {{category}}
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

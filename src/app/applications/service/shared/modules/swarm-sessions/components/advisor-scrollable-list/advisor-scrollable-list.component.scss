@@ -1,0 +1,47 @@
+@import 'variables';
+@import "further-reset";
+
+:host {
+  width: 100%;
+  .scroll-menu {
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    position: relative;
+    transition: ease all 0.4s;
+    overflow-x: auto; /* [1] */
+    -webkit-overflow-scrolling: touch; /* [4] */
+    -ms-overflow-style: -ms-autohiding-scrollbar; /* [5] */
+    &:hover {
+      border-left: 1px solid rgba(0, 0, 0, 0.20);
+      border-right: 1px solid rgba(0, 0, 0, 0.20);
+    }
+    .hourglass-icon-container {
+      position: relative;
+      .hourglass {
+        font-size: 72px;
+      }
+      .unread-spot-svg {
+        top: 0;
+        right: 12px;
+        position: absolute;
+        .inner {
+          fill: mat-color($exo-teal, 500);
+          &.half-passed {
+            fill: mat-color($exo-amber, 500);
+          }
+          &.about-to-finish {
+            fill: mat-color($exo-red, 500);
+          }
+        }
+        .outer {
+          fill: #FFF;
+        }
+      }
+    }
+  }
+  ::ng-deep {
+    .mat-select-value-text {
+      padding-left: $xs;
+    }
+  }
+}

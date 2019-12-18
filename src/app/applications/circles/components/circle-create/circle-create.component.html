@@ -1,0 +1,10 @@
+<section class="exo-platform pad" fxLayout="column" fxLayoutAlign="start start">
+  <mat-card class="w-100">
+    <mat-card-content>
+      <div class="push-top-sm">
+        <h3 class="headline push-bottom-sm">{{'ECOSYSTEM.CIRCLES.CREATE_CIRCLE.TITLE' | translate }}</h3>
+      </div>
+      <app-circles-form (cancel)="goBack()" (save)="onSave($event)"></app-circles-form>
+    </mat-card-content>
+  </mat-card>
+</section>
